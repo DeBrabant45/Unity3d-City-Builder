@@ -21,6 +21,7 @@ public class PlayerRemoveBuildingState : PlayerState
     public override void OnConfirmAction()
     {
         this._buildingManager.ConfirmRemoval();
+        base.OnConfirmAction();
     }
 
     public override void OnBuildRoad(string structureName)

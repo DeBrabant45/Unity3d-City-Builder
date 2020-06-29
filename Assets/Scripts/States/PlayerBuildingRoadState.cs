@@ -26,6 +26,7 @@ public class PlayerBuildingRoadState : PlayerState
     public override void OnConfirmAction()
     {
         this._buildingManager.ConfirmPlacement();
+        base.OnConfirmAction();
     }
 
     public override void OnBuildSingleStructure(string structureName)

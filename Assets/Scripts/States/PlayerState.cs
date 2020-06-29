@@ -15,7 +15,7 @@ public abstract class PlayerState
 
     public virtual void OnConfirmAction()
     {
-        
+        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
     }
 
     public virtual void OnInputPointerDown(Vector3 position)
