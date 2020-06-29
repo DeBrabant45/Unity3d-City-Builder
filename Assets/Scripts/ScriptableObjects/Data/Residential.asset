@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
+  m_Name: Residential
+  m_EditorClassIdentifier: 
+  buildingName: Residential
+  prefab: {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}
+  placementCost: 0
+  upkeepCost: 0
+  income: 0
+  requireRoadAccess: 1
+  requirePower: 1
+  requireWater: 1
+  upgradable: 1
+  prefabVariants:
+  - {fileID: 7005307079094063810, guid: c77e949770bd8a54f8256dab2e9d5956, type: 3}
+  - {fileID: 4424897985589242500, guid: 2578772fa254f6f4593ab5496d706359, type: 3}
+  availableUpgrades:
+  - prefabVariants:
+    - {fileID: 6407806084271674788, guid: 57c398b4b793a614293c3d48d8ea46ab, type: 3}
+    - {fileID: 2679059358018586621, guid: 024b517407c9ae44993494f0b31da891, type: 3}
+    - {fileID: 6743178300494436748, guid: 1b89a9244d90032439c6154c27e062fd, type: 3}
+    HappinessThreshold: 0
+    newIncome: 0
+    newUpkeep: 0
+  - prefabVariants:
+    - {fileID: 6870371079923077599, guid: 72a7f07404f80e248a26bf96e29539ff, type: 3}
+    - {fileID: 4979051744302872479, guid: 06096a1e4c0f223409936dc5959b1768, type: 3}
+    - {fileID: 7071884780968094295, guid: adc6f2718ceb6bc459a54285b9f9c0d0, type: 3}
+    HappinessThreshold: 0
+    newIncome: 0
+    newUpkeep: 0
+  zoneType: 0

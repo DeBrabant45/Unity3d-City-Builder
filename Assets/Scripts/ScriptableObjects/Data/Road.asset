@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06c94e3104c05b488048cefb9e21731, type: 3}
+  m_Name: Road
+  m_EditorClassIdentifier: 
+  buildingName: Road
+  prefab: {fileID: 1046759497217224246, guid: 2a74761dd523f864398408b1fea40e6f, type: 3}
+  placementCost: 0
+  upkeepCost: 0
+  income: 0
+  requireRoadAccess: 0
+  requirePower: 0
+  requireWater: 0
+  cornerPrefab: {fileID: 8844013322122185506, guid: b3bf4733577630c4ab64cb9cfaaf5bd5,
+    type: 3}
+  threeWayPrefab: {fileID: 4730560012720588634, guid: d409ae9d86ce93f4ebe501a20052ba8b,
+    type: 3}
+  fourWayPrefab: {fileID: 4988593472733303505, guid: 5eafd473e55dbc042ba2959344fea2cd,
+    type: 3}
