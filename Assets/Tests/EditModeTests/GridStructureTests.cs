@@ -56,7 +56,7 @@ namespace Tests
             //Act
             Vector3 returnPosition = _structure.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject("TestGameObject");
-            _structure.PlaceStructureOnTheGrid(testGameObject, position);
+            _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
             Assert.IsTrue(_structure.IsCellTaken(position));
         }
@@ -68,7 +68,7 @@ namespace Tests
             //Act
             Vector3 returnPosition = _structure.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject("TestGameObject");
-            _structure.PlaceStructureOnTheGrid(testGameObject, position);
+            _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
             Assert.IsTrue(_structure.IsCellTaken(position));
         }
@@ -80,7 +80,7 @@ namespace Tests
             //Act
             Vector3 returnPosition = _structure.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject("TestGameObject");
-            _structure.PlaceStructureOnTheGrid(testGameObject, position);
+            _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
             Assert.IsTrue(_structure.IsCellTaken(position));
         }
@@ -92,7 +92,7 @@ namespace Tests
             //Act
             Vector3 returnPosition = _structure.CalculateGridPosition(position);
             GameObject testGameObject = null;
-           _structure.PlaceStructureOnTheGrid(testGameObject, position);
+           _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
             Assert.IsFalse(_structure.IsCellTaken(position));
         }
@@ -104,7 +104,7 @@ namespace Tests
             //Act
             Vector3 returnPosition = _structure.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject ("TestGameObject");
-           _structure.PlaceStructureOnTheGrid(testGameObject, position);
+           _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
             Assert.Throws<IndexOutOfRangeException>(()=> _structure.IsCellTaken(position));
         }

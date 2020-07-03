@@ -2650,7 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337a4b8cfb55a21469485452806794b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementManager: {fileID: 671726620}
+  placementManagerGameObject: {fileID: 671726618}
   uIController: {fileID: 732681944}
   cameraMovement: {fileID: 163952604}
   structureRepository: {fileID: 598470406}

@@ -59,6 +59,23 @@ public class StructureRepository : MonoBehaviour
         return null;
     }
 
+    public StructureBaseSO GetStructureData(string structureName, StructureType structureType)
+    {
+        switch (structureType)
+        {
+            case StructureType.Zone:
+                return modelDataCollection.zoneStructures.Where(structure => structure.buildingName == structureName).FirstOrDefault();
+            case StructureType.SingleStructure:
+                return modelDataCollection.singleStructures.Where(structure => structure.buildingName == structureName).FirstOrDefault();
+            case StructureType.Road:
+                return modelDataCollection.roadStructure;
+            case StructureType.None:
+                return null;
+        }
+
+        return null;
+    }
+
     private GameObject GetSingleStructureBuildingPrefabByName(string structureName)
     {
         var foundStructure = modelDataCollection.singleStructures.Where(structure => structure.buildingName == structureName).FirstOrDefault();
@@ -80,5 +97,6 @@ public enum StructureType
 {
     Zone,
     SingleStructure,
-    Road
+    Road,
+    None
 }

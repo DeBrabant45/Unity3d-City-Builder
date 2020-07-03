@@ -14,36 +14,41 @@ public class PlayerRemoveBuildingState : PlayerState
 
     public override void OnCancel()
     {
-        this._buildingManager.CancelRemoval();
+        this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.selectionState, null);
     }
 
     public override void OnConfirmAction()
     {
-        this._buildingManager.ConfirmRemoval();
+        this._buildingManager.ConfirmModification();
         base.OnConfirmAction();
     }
 
     public override void OnBuildRoad(string structureName)
     {
-        this._buildingManager.CancelRemoval();
+        this._buildingManager.CancelModification();
         base.OnBuildRoad(structureName);
     }
 
     public override void OnBuildSingleStructure(string structureName)
     {
-        this._buildingManager.CancelRemoval();
+        this._buildingManager.CancelModification();
         base.OnBuildSingleStructure(structureName);
     }
 
     public override void OnBuildZone(string structureName)
     {
-        this._buildingManager.CancelRemoval();
+        this._buildingManager.CancelModification();
         base.OnBuildZone(structureName);
     }
 
     public override void OnInputPointerDown(Vector3 position)
     {
         this._buildingManager.PrepareStructureForRemovalAt(position);
+    }
+
+    public override void EnterState(string model)
+    {
+        this._buildingManager.PrepareBuildingManager(this.GetType());
     }
 }

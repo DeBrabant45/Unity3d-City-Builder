@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     private BuildingManager _buildingManager;
     private int _cellSize = 3;
     private PlayerState state;
+    private IPlacementManager _placementManager;
 
-    public PlacementManager placementManager;
+    public GameObject placementManagerGameObject;
     public IInputManager inputManager;
     public UIController uIController;
     public CameraMovement cameraMovement;
@@ -27,9 +28,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake() 
     {
-        _buildingManager = new BuildingManager(_cellSize, width, length, placementManager, structureRepository);
-        PrepareStates();
-
 #if (UNITY_EDITOR && TEST) || !(UNITY_IOS || UNITY_ANDROID)
         inputManager = gameObject.AddComponent<InputManager>();
 #endif       
@@ -48,10 +46,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _placementManager = placementManagerGameObject.GetComponent<IPlacementManager>();
+        _buildingManager = new BuildingManager(_cellSize, width, length, _placementManager, structureRepository);
+        PrepareStates();
         PrepareGameComponents();
         AssignInputListeners();
         AssignUIControllerListeners();
-
     }
 
     private void PrepareGameComponents()

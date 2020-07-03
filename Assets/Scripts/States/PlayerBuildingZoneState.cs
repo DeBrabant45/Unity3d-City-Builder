@@ -15,35 +15,36 @@ public class PlayerBuildingZoneState : PlayerState
 
     public override void EnterState(string structureName)
     {
+        this._buildingManager.PrepareBuildingManager(this.GetType());
         this._structureName = structureName;
     }
 
     public override void OnInputPointerDown(Vector3 position)
     {
-        this._buildingManager.PrepareStructureForPlacement(position, this._structureName, StructureType.Zone);
+        this._buildingManager.PrepareStructureForModification(position, this._structureName, StructureType.Zone);
     }
 
     public override void OnConfirmAction()
     {
-        this._buildingManager.ConfirmPlacement();
+        this._buildingManager.ConfirmModification();
         base.OnConfirmAction();
     }
     
     public override void OnBuildRoad(string structureName)
     {
-        this._buildingManager.CancelPlacement();
+        this._buildingManager.CancelModification();
         base.OnBuildRoad(structureName);
     }
 
     public override void OnBuildSingleStructure(string structureName)
     {
-        this._buildingManager.CancelPlacement();
+        this._buildingManager.CancelModification();
         base.OnBuildSingleStructure(structureName);
     }
 
     public override void OnCancel()
     {
-        this._buildingManager.CancelPlacement();
+        this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.selectionState, null);
     }
 

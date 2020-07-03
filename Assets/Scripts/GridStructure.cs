@@ -45,17 +45,23 @@ public class GridStructure
         throw new IndexOutOfRangeException ("No index " + cellIndex + " in Grid");
     }
 
-    public void PlaceStructureOnTheGrid(GameObject structure, Vector3 gridPosition)
+    public void PlaceStructureOnTheGrid(GameObject structure, Vector3 gridPosition, StructureBaseSO structureData)
     {
         var cellIndex = CalculateGridIndex(gridPosition);
         if(CheckIndexValidity(cellIndex))
-            _grid[cellIndex.y, cellIndex.x].SetConstruction(structure);
+            _grid[cellIndex.y, cellIndex.x].SetConstruction(structure, structureData);
     }
 
     public GameObject GetStructureFromTheGrid(Vector3 gridPosition)
     {
         var cellIndex = CalculateGridIndex(gridPosition);
         return _grid[cellIndex.y, cellIndex.x].GetStructure(); 
+    }
+
+    public StructureBaseSO GetStructureDataFromTheGrid(Vector3 gridPosition)
+    {
+        var cellIndex = CalculateGridIndex(gridPosition);
+        return _grid[cellIndex.y, cellIndex.x].GetStructureData();
     }
 
     public void RemoveStrucutreFromTheGrid(Vector3 gridPosition)
@@ -70,4 +76,42 @@ public class GridStructure
             return true;
         return false;
     }
+
+    public Vector3? GetPositionOfNeighborIfExists(Vector3 gridPoisition, Direction direction)
+    {
+        Vector3Int? neighborPoisition = Vector3Int.FloorToInt(gridPoisition);
+
+        switch (direction)
+        {
+            case Direction.Up:
+                neighborPoisition += new Vector3Int(0, 0, _cellSize);
+                break;
+            case Direction.Right:
+                neighborPoisition += new Vector3Int(_cellSize, 0, 0);
+                break;
+            case Direction.Down:
+                neighborPoisition += new Vector3Int(0, 0, -_cellSize);
+                break;
+            case Direction.Left:
+                neighborPoisition += new Vector3Int(-_cellSize, 0, 0);
+                break;
+        }
+
+        var index = CalculateGridIndex(neighborPoisition.Value);
+        if(CheckIndexValidity(index) == false)
+        {
+            return null;
+        }
+
+        return neighborPoisition;
+    }
 }
+
+public enum Direction
+{
+    Up = 1,
+    Right = 2,
+    Down = 4,
+    Left = 8
+}
+
