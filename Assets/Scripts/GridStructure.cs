@@ -77,7 +77,7 @@ public class GridStructure
         return false;
     }
 
-    public Vector3? GetPositionOfNeighborIfExists(Vector3 gridPoisition, Direction direction)
+    public Vector3Int? GetPositionOfNeighborIfExists(Vector3 gridPoisition, Direction direction)
     {
         Vector3Int? neighborPoisition = Vector3Int.FloorToInt(gridPoisition);
 
