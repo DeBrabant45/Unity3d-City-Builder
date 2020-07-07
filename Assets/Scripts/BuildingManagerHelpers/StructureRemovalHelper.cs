@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StructureRemovalHelper : StructureModificationHelper
 {
+    private Dictionary<Vector3Int, GameObject> _roadsToBeRemoved = new Dictionary<Vector3Int, GameObject>();
+
     public StructureRemovalHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager) : base(structureRepository, grid, placementManager)
     {
 
@@ -21,6 +24,18 @@ public class StructureRemovalHelper : StructureModificationHelper
         {
             _grid.RemoveStrucutreFromTheGrid(gridPosition);
         }
+        var roadPlacementHelper = StructureModificationFactory.GetHelper(typeof(PlayerBuildingRoadState));
+        foreach (var keyValuePair in _roadsToBeRemoved)
+        {
+            Dictionary<Vector3Int, GameObject> neighborDictionary = RoadManager.GetRoadNeighborsPosition(_grid, keyValuePair.Key);
+            if(neighborDictionary.Count > 0)
+            {
+                var structureData = _grid.GetStructureDataFromTheGrid(neighborDictionary.Keys.First());
+                ((RoadPlacementModificationHelper)roadPlacementHelper).ModifyRoadCellsOnTheGrid(neighborDictionary, structureData);
+            }
+
+        }
+
         this._placementManager.RemoveStructures(_structuresToBeModified.Values);
         _structuresToBeModified.Clear();
     }
@@ -48,11 +63,20 @@ public class StructureRemovalHelper : StructureModificationHelper
     {
         _placementManager.ResetBuildingLook(structure);
         _structuresToBeModified.Remove(gridPositionInt);
+        if (RoadManager.CheckIfNeighborHasRoadOnTheGrid(_grid, gridPositionInt) && _roadsToBeRemoved.ContainsKey(gridPositionInt))
+        {
+            _roadsToBeRemoved.Remove(gridPositionInt);
+        }
     }
 
     private void AddStructureForRemoval(Vector3Int gridPositionInt, GameObject structure)
     {
         _structuresToBeModified.Add(gridPositionInt, structure);
         _placementManager.SetBuildingForRemoval(structure);
+
+        if(RoadManager.CheckIfNeighborHasRoadOnTheGrid(_grid, gridPositionInt) && _roadsToBeRemoved.ContainsKey(gridPositionInt) == false)
+        {
+            _roadsToBeRemoved.Add(gridPositionInt, structure);
+        }
     }
 }

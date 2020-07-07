@@ -11,7 +11,6 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
     public override void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
         base.PrepareStructureForModification(inputPosition, structureName, structureType);
-        //GameObject buildingPrefab = this._structureRepository.GetBuildingPrefabByName(structureName, structureType);
         GameObject buildingPrefab = _structureData.prefab;
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
         var gridPositionInt = Vector3Int.FloorToInt(gridPosition);

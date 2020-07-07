@@ -37,6 +37,29 @@ public static class RoadManager
         return false;
     }
 
+    public static Dictionary<Vector3Int, GameObject> GetRoadNeighborsPosition(GridStructure grid, Vector3Int position)
+    {
+        Dictionary<Vector3Int, GameObject> dictionaryToReturn = new Dictionary<Vector3Int, GameObject>();
+        List<Vector3Int?> neighborPossibleLocations = new List<Vector3Int?>();
+        neighborPossibleLocations.Add(grid.GetPositionOfNeighborIfExists(position, Direction.Up));
+        neighborPossibleLocations.Add(grid.GetPositionOfNeighborIfExists(position, Direction.Down));
+        neighborPossibleLocations.Add(grid.GetPositionOfNeighborIfExists(position, Direction.Left));
+        neighborPossibleLocations.Add(grid.GetPositionOfNeighborIfExists(position, Direction.Right));
+
+        foreach (var possiblePosition in neighborPossibleLocations)
+        {
+            if(possiblePosition.HasValue)
+            {
+                if(CheckIfNeighborHasRoadOnTheGrid(grid, possiblePosition.Value) && dictionaryToReturn.ContainsKey(possiblePosition.Value) == false)
+                {
+                    dictionaryToReturn.Add(possiblePosition.Value, grid.GetStructureFromTheGrid(possiblePosition.Value));
+                }
+            }
+        }
+
+        return dictionaryToReturn;
+    }
+
     public static bool CheckIfNeighborHasRoadWithinDictionary(Vector3Int? neighborPosition, Dictionary<Vector3Int, GameObject> structuresToBeModified)
     {
         return structuresToBeModified.ContainsKey(neighborPosition.Value);
