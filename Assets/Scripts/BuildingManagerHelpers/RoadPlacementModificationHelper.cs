@@ -18,7 +18,7 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
         if(_grid.IsCellTaken(gridPosition) == false)
         {
             var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
-            var roadStructure = GetCorrectRoadPrefab(gridPosition, _structureData);
+            var roadStructure = RoadManager.GetCorrectRoadPrefab(gridPosition, _structureData, _structuresToBeModified, _grid);
             if(_structuresToBeModified.ContainsKey(gridPositionInt))
             {
                 RevokeRoadPlacementAt(gridPositionInt);
@@ -67,7 +67,7 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
         if (RoadManager.CheckIfNeighborHasRoadWithinDictionary(neighborPositionInt, _structuresToBeModified))
         {
             RevokeRoadPlacementAt(neighborPositionInt);
-            var neighborStructure = GetCorrectRoadPrefab(neighborGridPosition.Value, _structureData);
+            var neighborStructure = RoadManager.GetCorrectRoadPrefab(neighborGridPosition.Value, _structureData, _structuresToBeModified, _grid);
             PlaceNewRoadAt(neighborStructure, neighborGridPosition.Value, neighborPositionInt);
         }
     }
@@ -84,26 +84,6 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
         _structuresToBeModified.Remove(gridPositionInt);
     }
 
-    private RoadStructureHelper GetCorrectRoadPrefab(Vector3 gridPosition, StructureBaseSO structureDat)
-    {
-        var neighborStatus = RoadManager.GetRoadNeighborStatus(gridPosition, _grid, _structuresToBeModified);
-        RoadStructureHelper roadToReturn = null;
-        roadToReturn = RoadManager.CheckIfStraightRoadFits(neighborStatus, roadToReturn, structureDat);
-        if (roadToReturn != null)
-            return roadToReturn;
-        roadToReturn = RoadManager.CheckIfCornerRoadFits(neighborStatus, roadToReturn, structureDat);
-        if (roadToReturn != null)
-            return roadToReturn;
-        roadToReturn = RoadManager.CheckIfThreewayRoadFits(neighborStatus, roadToReturn, structureDat);
-        if (roadToReturn != null)
-            return roadToReturn;
-        roadToReturn = RoadManager.CheckIfFourwayRoadFits(neighborStatus, roadToReturn, structureDat);
-        if (roadToReturn != null)
-            return roadToReturn;
-
-        return roadToReturn;
-    }
-
     public override void CancelModifications()
     {
         base.CancelModifications();
@@ -112,20 +92,8 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
 
     public override void ConfirmModifications()
     {
-        ModifyRoadCellsOnTheGrid(_existingRoadStructuresToBeModified, _structureData);
+        RoadManager.ModifyRoadCellsOnTheGrid(_existingRoadStructuresToBeModified, _structureData, _structuresToBeModified, _grid, _placementManager);
         base.ConfirmModifications();
     }
 
-    public void ModifyRoadCellsOnTheGrid(Dictionary<Vector3Int, GameObject> neighborDictionary, StructureBaseSO structureData)
-    {
-        foreach (var keyValuePair in neighborDictionary)
-        {
-            _grid.RemoveStrucutreFromTheGrid(keyValuePair.Key);
-            _placementManager.DestroySingleStructure(keyValuePair.Value);
-            var roadStructure = GetCorrectRoadPrefab(keyValuePair.Key, structureData);
-            var structure = _placementManager.PlaceStructureOnTheMap(keyValuePair.Key, roadStructure.RoadPrefab, roadStructure.RoadPrefabRotation);
-            _grid.PlaceStructureOnTheGrid(structure, keyValuePair.Key, structureData);
-        }
-        neighborDictionary.Clear();
-    }
 }

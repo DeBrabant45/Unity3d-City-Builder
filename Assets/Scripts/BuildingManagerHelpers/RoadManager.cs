@@ -62,10 +62,13 @@ public static class RoadManager
 
     public static bool CheckIfNeighborHasRoadWithinDictionary(Vector3Int? neighborPosition, Dictionary<Vector3Int, GameObject> structuresToBeModified)
     {
+        if (structuresToBeModified == null)
+            return false;
+
         return structuresToBeModified.ContainsKey(neighborPosition.Value);
     }
 
-    internal static RoadStructureHelper CheckIfStraightRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
+    public static RoadStructureHelper CheckIfStraightRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
     {
         if (neighborStatus == ((int)Direction.Up | (int)Direction.Down) || neighborStatus == (int)Direction.Up || neighborStatus == (int)Direction.Down)
         {
@@ -79,7 +82,7 @@ public static class RoadManager
         return roadToReturn;
     }
 
-    internal static RoadStructureHelper CheckIfThreewayRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
+    public static RoadStructureHelper CheckIfThreewayRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
     {
         if (neighborStatus == ((int)Direction.Up | (int)Direction.Right | (int)Direction.Down))
         {
@@ -101,7 +104,7 @@ public static class RoadManager
         return roadToReturn;
     }
 
-    internal static RoadStructureHelper CheckIfFourwayRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
+    public static RoadStructureHelper CheckIfFourwayRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
     {
         if (neighborStatus == ((int)Direction.Up | (int)Direction.Right | (int)Direction.Down | (int)Direction.Left))
         {
@@ -111,7 +114,7 @@ public static class RoadManager
         return roadToReturn;
     }
 
-    internal static RoadStructureHelper CheckIfCornerRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
+    public static RoadStructureHelper CheckIfCornerRoadFits(int neighborStatus, RoadStructureHelper roadToReturn, StructureBaseSO structureData)
     {
         if(neighborStatus == ((int)Direction.Up | (int)Direction.Right))
         {
@@ -129,6 +132,39 @@ public static class RoadManager
         {
             roadToReturn = new RoadStructureHelper(((RoadStructureSO)structureData).cornerPrefab, RotationValue.R270);
         }
+
+        return roadToReturn;
+    }
+
+    public static void ModifyRoadCellsOnTheGrid(Dictionary<Vector3Int, GameObject> neighborDictionary, StructureBaseSO structureData, Dictionary<Vector3Int, GameObject> structuresToBeModified, GridStructure grid, IPlacementManager placementManager)
+    {
+        foreach (var keyValuePair in neighborDictionary)
+        {
+            grid.RemoveStrucutreFromTheGrid(keyValuePair.Key);
+            placementManager.DestroySingleStructure(keyValuePair.Value);
+            var roadStructure = GetCorrectRoadPrefab(keyValuePair.Key, structureData, structuresToBeModified, grid);
+            var structure = placementManager.PlaceStructureOnTheMap(keyValuePair.Key, roadStructure.RoadPrefab, roadStructure.RoadPrefabRotation);
+            grid.PlaceStructureOnTheGrid(structure, keyValuePair.Key, structureData);
+        }
+        neighborDictionary.Clear();
+    }
+
+    public static RoadStructureHelper GetCorrectRoadPrefab(Vector3 gridPosition, StructureBaseSO structureDat, Dictionary<Vector3Int, GameObject> structuresToBeModified, GridStructure grid)
+    {
+        var neighborStatus = RoadManager.GetRoadNeighborStatus(gridPosition, grid, structuresToBeModified);
+        RoadStructureHelper roadToReturn = null;
+        roadToReturn = RoadManager.CheckIfStraightRoadFits(neighborStatus, roadToReturn, structureDat);
+        if (roadToReturn != null)
+            return roadToReturn;
+        roadToReturn = RoadManager.CheckIfCornerRoadFits(neighborStatus, roadToReturn, structureDat);
+        if (roadToReturn != null)
+            return roadToReturn;
+        roadToReturn = RoadManager.CheckIfThreewayRoadFits(neighborStatus, roadToReturn, structureDat);
+        if (roadToReturn != null)
+            return roadToReturn;
+        roadToReturn = RoadManager.CheckIfFourwayRoadFits(neighborStatus, roadToReturn, structureDat);
+        if (roadToReturn != null)
+            return roadToReturn;
 
         return roadToReturn;
     }

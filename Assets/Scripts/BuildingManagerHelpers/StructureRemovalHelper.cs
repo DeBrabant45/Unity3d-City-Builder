@@ -24,14 +24,14 @@ public class StructureRemovalHelper : StructureModificationHelper
         {
             _grid.RemoveStrucutreFromTheGrid(gridPosition);
         }
-        var roadPlacementHelper = StructureModificationFactory.GetHelper(typeof(PlayerBuildingRoadState));
+
         foreach (var keyValuePair in _roadsToBeRemoved)
         {
             Dictionary<Vector3Int, GameObject> neighborDictionary = RoadManager.GetRoadNeighborsPosition(_grid, keyValuePair.Key);
             if(neighborDictionary.Count > 0)
             {
                 var structureData = _grid.GetStructureDataFromTheGrid(neighborDictionary.Keys.First());
-                ((RoadPlacementModificationHelper)roadPlacementHelper).ModifyRoadCellsOnTheGrid(neighborDictionary, structureData);
+                RoadManager.ModifyRoadCellsOnTheGrid(neighborDictionary, structureData, null, _grid, _placementManager);
             }
 
         }

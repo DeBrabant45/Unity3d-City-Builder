@@ -23,5 +23,23 @@ namespace Tests
             cell.SetConstruction(null, null);
             Assert.IsFalse(cell.IsTaken);
         }
+
+        [Test]
+        public void CellSetGameOjectRemovePasses()
+        {
+            Cell cell = new Cell();
+            cell.SetConstruction(new GameObject(), null);
+            cell.RemoveStructure();
+            Assert.IsFalse(cell.IsTaken);
+        }
+
+        [Test]
+        public void CellGetStructureData()
+        {
+            Cell cell = new Cell();
+            RoadStructureSO roadSO = new RoadStructureSO();
+            cell.SetConstruction(new GameObject(), roadSO);
+            Assert.AreEqual(roadSO, cell.GetStructureData());
+        }
     }
 }
