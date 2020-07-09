@@ -52,6 +52,21 @@ public class GridStructure
             _grid[cellIndex.y, cellIndex.x].SetConstruction(structure, structureData);
     }
 
+    public HashSet<Vector3Int> GetAllPositionsFromTo(Vector3Int minPoint, Vector3Int maxPoint)
+    {
+        HashSet<Vector3Int> positionsToReturn = new HashSet<Vector3Int>();
+        for(int row = minPoint.z; row <= maxPoint.z; row++)
+        {
+            for(int col = minPoint.x; col <= maxPoint.x; col++)
+            {
+                Vector3 gridPosition = CalculateGridPosition(new Vector3(col, 0, row));
+                positionsToReturn.Add(Vector3Int.FloorToInt(gridPosition));
+            }
+        }
+
+        return positionsToReturn;
+    }
+
     public GameObject GetStructureFromTheGrid(Vector3 gridPosition)
     {
         var cellIndex = CalculateGridIndex(gridPosition);
