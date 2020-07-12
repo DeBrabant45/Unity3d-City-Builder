@@ -11,7 +11,7 @@ namespace Tests
         private GridStructure _grid;
         private GameObject _roadStraight = new GameObject();
         private GameObject _roadCorner = new GameObject();
-        private RoadStructureSO _roadSO = new RoadStructureSO();
+        private RoadStructureSO _roadSO = ScriptableObject.CreateInstance<RoadStructureSO>();
         private GameObject _road3Way = new GameObject();
         private GameObject _road4Way = new GameObject();
 

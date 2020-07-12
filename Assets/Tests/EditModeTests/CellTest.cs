@@ -37,7 +37,7 @@ namespace Tests
         public void CellGetStructureData()
         {
             Cell cell = new Cell();
-            RoadStructureSO roadSO = new RoadStructureSO();
+            RoadStructureSO roadSO = ScriptableObject.CreateInstance<RoadStructureSO>();
             cell.SetConstruction(new GameObject(), roadSO);
             Assert.AreEqual(roadSO, cell.GetStructureData());
         }

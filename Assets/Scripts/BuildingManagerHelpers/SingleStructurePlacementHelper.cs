@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SingleStructurePlacementHelper : StructureModificationHelper
 {
-    public SingleStructurePlacementHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager) : base(structureRepository, grid, placementManager)
+    public SingleStructurePlacementHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager, IResourceManager resourceManager) 
+        : base(structureRepository, grid, placementManager, resourceManager)
     {
     }
 
@@ -19,10 +20,12 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
         {
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
+                _resourceManager.AddMoneyAmount(_structureData.placementCost);
                 RevokeStructurePlacementAt(gridPositionInt);
             }
-            else
+            else if(_resourceManager.CanIBuyIt(_structureData.placementCost))
             {
+                _resourceManager.SpendMoney(_structureData.placementCost);
                 PlaceNewStructureAt(gridPosition, buildingPrefab, gridPositionInt);
             }
 
@@ -39,5 +42,14 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
     private void PlaceNewStructureAt(Vector3 gridPosition, GameObject buildingPrefab, Vector3Int gridPositionInt)
     {
         _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, buildingPrefab));
+    }
+
+    public override void CancelModifications()
+    {
+        foreach (var item in _structuresToBeModified)
+        {
+            _resourceManager.AddMoneyAmount(_structureData.placementCost);
+        }
+        base.CancelModifications();
     }
 }

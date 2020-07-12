@@ -17,14 +17,14 @@ namespace Tests
         public void Init()
         {
             structureRepo = Substitute.For<StructureRepository>();
-            CollectionSO collection = new CollectionSO();
+            CollectionSO collection = ScriptableObject.CreateInstance<CollectionSO>();
             testRoad = new GameObject();
             testSingleStructure = new GameObject();
             testZone = new GameObject();
-            var road = new RoadStructureSO();
+            var road = ScriptableObject.CreateInstance<RoadStructureSO>();
             road.buildingName = "Road";
             road.prefab = testRoad;
-            var facility = new SingleFacilitySO();
+            var facility = ScriptableObject.CreateInstance<SingleFacilitySO>();
             facility.buildingName = "PowerPlant";
             facility.prefab = testSingleStructure;
             var zone = new ZoneStructureSO();

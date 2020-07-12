@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     public LayerMask inputMask;
 
+    public ResourceManager resourceManager;
+
     private void Awake() 
     {
 #if (UNITY_EDITOR && TEST) || !(UNITY_IOS || UNITY_ANDROID)
@@ -47,7 +49,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _placementManager = placementManagerGameObject.GetComponent<IPlacementManager>();
-        _buildingManager = new BuildingManager(_cellSize, width, length, _placementManager, structureRepository);
+        _buildingManager = new BuildingManager(_cellSize, width, length, _placementManager, structureRepository, resourceManager);
+        resourceManager.PrepareResourceManager(_buildingManager);
         PrepareStates();
         PrepareGameComponents();
         AssignInputListeners();

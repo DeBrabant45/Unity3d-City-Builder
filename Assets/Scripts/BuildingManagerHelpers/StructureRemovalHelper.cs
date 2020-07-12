@@ -7,7 +7,8 @@ public class StructureRemovalHelper : StructureModificationHelper
 {
     private Dictionary<Vector3Int, GameObject> _roadsToBeRemoved = new Dictionary<Vector3Int, GameObject>();
 
-    public StructureRemovalHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager) : base(structureRepository, grid, placementManager)
+    public StructureRemovalHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager, IResourceManager resourceManager) 
+        : base(structureRepository, grid, placementManager, resourceManager)
     {
 
     }

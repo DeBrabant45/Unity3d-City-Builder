@@ -45,6 +45,24 @@ public class GridStructure
         throw new IndexOutOfRangeException ("No index " + cellIndex + " in Grid");
     }
 
+    public IEnumerable<StructureBaseSO> GetAllStrucutures()
+    {
+        List<StructureBaseSO> structureDataList = new List<StructureBaseSO>();
+        for (int row = 0; row < _grid.GetLength(0); row++)
+        {
+            for (int col = 0; col < _grid.GetLength(1); col++)
+            {
+                var data = _grid[row, col].GetStructureData();
+                if(data != null)
+                {
+                    structureDataList.Add(data);
+                }
+            }
+        }
+
+        return structureDataList;
+    }
+
     public void PlaceStructureOnTheGrid(GameObject structure, Vector3 gridPosition, StructureBaseSO structureData)
     {
         var cellIndex = CalculateGridIndex(gridPosition);

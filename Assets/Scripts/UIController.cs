@@ -31,6 +31,8 @@ public class UIController : MonoBehaviour
     public Button closeBuildMenuBtn;
 
     public GameObject buildButtonPrefab;
+
+    public TextMeshProUGUI moneyValue;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +60,7 @@ public class UIController : MonoBehaviour
         CreateButtonsInPanel(roadsPanel.transform, new List<string>() { structureRepository.GetRoadStructureName() }, OnBuildRoadCallback);
     }
 
+
     private void CreateButtonsInPanel(Transform panelTransform, List<string> dataToShow, Action<string> callback)
     {
         if(dataToShow.Count > panelTransform.childCount)
@@ -78,7 +81,12 @@ public class UIController : MonoBehaviour
             }
         }
     }
-    
+
+    public void SetMoneyValue(int moneyAmount)
+    {
+        moneyValue.text = moneyAmount + "";
+    }
+
     private void OnBuildZoneCallback(string nameOfStructure)
     {
         PrepareUIForBuilding();

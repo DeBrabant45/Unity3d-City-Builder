@@ -9,12 +9,14 @@ public abstract class StructureModificationHelper
     protected IPlacementManager _placementManager;
     protected Dictionary<Vector3Int, GameObject> _structuresToBeModified = new Dictionary<Vector3Int, GameObject>();
     protected StructureBaseSO _structureData;
+    protected IResourceManager _resourceManager;
 
-    public StructureModificationHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager)
+    public StructureModificationHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager, IResourceManager resourceManager)
     {
         this._structureRepository = structureRepository;
         this._grid = grid;
         this._placementManager = placementManager;
+        this._resourceManager = resourceManager;
     }
 
     public GameObject AccessStructureInDictionary(Vector3 gridPosition)

@@ -7,7 +7,8 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
 {
     private Dictionary<Vector3Int, GameObject> _existingRoadStructuresToBeModified = new Dictionary<Vector3Int, GameObject>();
 
-    public RoadPlacementModificationHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager) : base(structureRepository, grid, placementManager)
+    public RoadPlacementModificationHelper(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager, IResourceManager resourceManager) 
+        : base(structureRepository, grid, placementManager, resourceManager)
     {
     }
 

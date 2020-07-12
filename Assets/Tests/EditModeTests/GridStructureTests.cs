@@ -8,13 +8,15 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
+    [TestFixture]
     public class GridStructureTests
     {
-        GridStructure _structure;
-        [OneTimeSetUp]
+        GridStructure _grid;
+
+        [SetUp]
         public void Init()
         {
-            _structure = new GridStructure(3, 100, 100);
+            _grid = new GridStructure(3, 100, 100);
         }
         #region GridPositionTests
         // A Test behaves as an ordinary method
@@ -23,7 +25,7 @@ namespace Tests
         {
             Vector3 position = new Vector3(0, 0, 0);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             //Assert
             Assert.AreEqual(Vector3.zero, returnPosition);
         }
@@ -33,7 +35,7 @@ namespace Tests
         {
             Vector3 position = new Vector3(2.9f, 0, 2.9f);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             //Assert
             Assert.AreEqual(Vector3.zero, returnPosition);
         }
@@ -43,7 +45,7 @@ namespace Tests
         {
             Vector3 position = new Vector3(3.1f, 0, 0);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             //Assert
             Assert.AreNotEqual(Vector3.zero, returnPosition);
         }
@@ -54,11 +56,11 @@ namespace Tests
         {
             Vector3 position = new Vector3(3, 0, 3);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject("TestGameObject");
-            _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
+            _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
-            Assert.IsTrue(_structure.IsCellTaken(position));
+            Assert.IsTrue(_grid.IsCellTaken(position));
         }
 
         [Test]
@@ -66,11 +68,11 @@ namespace Tests
         {
             Vector3 position = new Vector3(0, 0, 0);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject("TestGameObject");
-            _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
+            _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
-            Assert.IsTrue(_structure.IsCellTaken(position));
+            Assert.IsTrue(_grid.IsCellTaken(position));
         }
 
         [Test]
@@ -78,11 +80,11 @@ namespace Tests
         {
             Vector3 position = new Vector3(297, 0, 0297);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject("TestGameObject");
-            _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
+            _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
-            Assert.IsTrue(_structure.IsCellTaken(position));
+            Assert.IsTrue(_grid.IsCellTaken(position));
         }
 
         [Test]
@@ -90,11 +92,11 @@ namespace Tests
         {
             Vector3 position = new Vector3(3, 0, 3);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             GameObject testGameObject = null;
-           _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
+           _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
-            Assert.IsFalse(_structure.IsCellTaken(position));
+            Assert.IsFalse(_grid.IsCellTaken(position));
         }
 
         [Test]
@@ -102,11 +104,11 @@ namespace Tests
         {
             Vector3 position = new Vector3(303, 0, 303);
             //Act
-            Vector3 returnPosition = _structure.CalculateGridPosition(position);
+            Vector3 returnPosition = _grid.CalculateGridPosition(position);
             GameObject testGameObject = new GameObject ("TestGameObject");
-           _structure.PlaceStructureOnTheGrid(testGameObject, position, null);
+           _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
-            Assert.Throws<IndexOutOfRangeException>(()=> _structure.IsCellTaken(position));
+            Assert.Throws<IndexOutOfRangeException>(()=> _grid.IsCellTaken(position));
         }
 
         [Test]
@@ -115,7 +117,7 @@ namespace Tests
             Vector3Int startPosition = new Vector3Int(0, 0, 0);
             Vector3Int endPosition = new Vector3Int(6, 0, 3);
 
-            var returnValues = _structure.GetAllPositionsFromTo(startPosition, endPosition);
+            var returnValues = _grid.GetAllPositionsFromTo(startPosition, endPosition);
             Assert.IsTrue(returnValues.Count == 6);
             Assert.IsTrue(returnValues.Contains(new Vector3Int(0, 0, 0)));
             Assert.IsTrue(returnValues.Contains(new Vector3Int(3, 0, 0)));
@@ -124,6 +126,20 @@ namespace Tests
             Assert.IsTrue(returnValues.Contains(new Vector3Int(3, 0, 3)));
             Assert.IsTrue(returnValues.Contains(new Vector3Int(6, 0, 3)));
 
+        }
+
+        [Test]
+        public void GetDataStrucutureTest()
+        {
+            RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
+            SingleStructureBaseSO singleStructure = ScriptableObject.CreateInstance<SingleFacilitySO>();
+            GameObject gameObject = new GameObject();
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(0, 0, 0), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(99, 0, 0), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(0, 0, 99), singleStructure);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(99, 0, 99), singleStructure);
+            var list = _grid.GetAllStrucutures().ToList();
+            Assert.IsTrue(list.Count == 4);
         }
     }
 }

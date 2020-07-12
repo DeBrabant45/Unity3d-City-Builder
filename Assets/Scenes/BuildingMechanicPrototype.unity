@@ -1282,6 +1282,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 856964078}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &562556773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2863726036424190605, guid: 559c11d47e063bc4991c465e37cd193d,
+    type: 3}
+  m_PrefabInstance: {fileID: 162469748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &598470405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,6 +1583,7 @@ MonoBehaviour:
   closeBuildMenuBtn: {fileID: 771273387}
   buildButtonPrefab: {fileID: 887964655198250043, guid: e124772d9a861464d9b127a204043749,
     type: 3}
+  moneyValue: {fileID: 562556773}
 --- !u!4 &732681945
 Transform:
   m_ObjectHideFlags: 0
@@ -2365,6 +2378,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202424671}
   m_CullTransparentMesh: 0
+--- !u!1 &1213432028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213432030}
+  - component: {fileID: 1213432029}
+  m_Layer: 0
+  m_Name: ResourceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1213432029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213432028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9092fabebfae1647b93121c91d47670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIController: {fileID: 732681944}
+--- !u!4 &1213432030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213432028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 842.05, y: 1.2190261, z: 224.6414}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1216567798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2716,7 @@ MonoBehaviour:
   inputMask:
     serializedVersion: 2
     m_Bits: 512
+  resourceManager: {fileID: 1213432029}
 --- !u!4 &1767781387
 Transform:
   m_ObjectHideFlags: 0

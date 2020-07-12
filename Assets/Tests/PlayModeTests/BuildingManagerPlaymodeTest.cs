@@ -34,7 +34,7 @@ namespace Tests
             road.prefab = roadPrefab;
             collection.roadStructure = road;
             structureRepository.modelDataCollection = collection;
-            _buildingManager = new BuildingManager(3, 10, 10, placementManager, structureRepository);
+            _buildingManager = new BuildingManager(3, 10, 10, placementManager, structureRepository, Substitute.For<ResourceManager>());
         }
 
         [UnityTest]
