@@ -49,6 +49,11 @@ public abstract class StructureModificationHelper
         _structureData = null;
     }
 
+    public virtual void StopContinuousPlacement()
+    {
+
+    }
+
     public virtual void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
         if(_structureData == null && structureType != StructureType.None)

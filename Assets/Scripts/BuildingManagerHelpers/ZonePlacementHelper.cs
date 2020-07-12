@@ -39,9 +39,55 @@ public class ZonePlacementHelper : StructureModificationHelper
         Vector3Int minPoint = Vector3Int.FloorToInt(_startPoint);
         Vector3Int maxPoint = Vector3Int.FloorToInt(endPoint);
 
-        ZoneCalculator.PrepareStartAndEndPoints(_startPoint, endPoint, minPoint, maxPoint, _mapBottomLeftCorner);
+        ZoneCalculator.PrepareStartAndEndPoints(_startPoint, endPoint, ref minPoint, ref maxPoint, _mapBottomLeftCorner);
         HashSet<Vector3Int> newPositionsSet = _grid.GetAllPositionsFromTo(minPoint, maxPoint);
         _previousEndPosition = endPoint;
         ZoneCalculator.CalculateZone(newPositionsSet, _structuresToBeModified, _gameObjectsToReuse);
+
+        foreach (var positionToPlaceStructure in newPositionsSet)
+        {
+            if(_grid.IsCellTaken(positionToPlaceStructure))
+                continue;
+
+            GameObject structureToAdd = null;
+            if(_gameObjectsToReuse.Count > 0)
+            {
+                var gameObjectToReuse = _gameObjectsToReuse.Dequeue();
+                gameObjectToReuse.SetActive(true);
+                structureToAdd = _placementManager.MoveStructureOnTheMap(positionToPlaceStructure, gameObjectToReuse, _structureData.prefab);
+            }
+            else
+            {
+                structureToAdd = _placementManager.CreateGhostStructure(positionToPlaceStructure, _structureData.prefab);
+            }
+
+            _structuresToBeModified.Add(positionToPlaceStructure, structureToAdd);
+        }
+    }
+
+    public override void CancelModifications()
+    {
+        base.CancelModifications();
+        ResetZonePlacementHelper();
+    }
+
+    public override void ConfirmModifications()
+    {
+        base.ConfirmModifications();
+        ResetZonePlacementHelper();
+    }
+
+    private void ResetZonePlacementHelper()
+    {
+        _placementManager.RemoveStructures(_gameObjectsToReuse);
+        _gameObjectsToReuse.Clear();
+        _startPositionAcquired = false;
+        _previousEndPosition = null;
+    }
+
+    public override void StopContinuousPlacement()
+    {
+        _startPositionAcquired = false;
+        base.StopContinuousPlacement();
     }
 }

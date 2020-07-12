@@ -10,4 +10,5 @@ public interface IPlacementManager
     void ResetBuildingLook(GameObject structure);
     void SetBuildingForRemoval(GameObject structureToRemove);
     GameObject PlaceStructureOnTheMap(Vector3 gridPosition, GameObject buildingPrefab, RotationValue rotationValue);
+    GameObject MoveStructureOnTheMap(Vector3Int positionToPlaceStructure, GameObject gameObjectToReuse, GameObject prefab);
 }

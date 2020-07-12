@@ -108,5 +108,22 @@ namespace Tests
             //Assert
             Assert.Throws<IndexOutOfRangeException>(()=> _structure.IsCellTaken(position));
         }
+
+        [Test]
+        public void GetAllPositionsFromTo()
+        {
+            Vector3Int startPosition = new Vector3Int(0, 0, 0);
+            Vector3Int endPosition = new Vector3Int(6, 0, 3);
+
+            var returnValues = _structure.GetAllPositionsFromTo(startPosition, endPosition);
+            Assert.IsTrue(returnValues.Count == 6);
+            Assert.IsTrue(returnValues.Contains(new Vector3Int(0, 0, 0)));
+            Assert.IsTrue(returnValues.Contains(new Vector3Int(3, 0, 0)));
+            Assert.IsTrue(returnValues.Contains(new Vector3Int(6, 0, 0)));
+            Assert.IsTrue(returnValues.Contains(new Vector3Int(0, 0, 3)));
+            Assert.IsTrue(returnValues.Contains(new Vector3Int(3, 0, 3)));
+            Assert.IsTrue(returnValues.Contains(new Vector3Int(6, 0, 3)));
+
+        }
     }
 }

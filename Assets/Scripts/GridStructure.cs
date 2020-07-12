@@ -100,19 +100,15 @@ public class GridStructure
         {
             case Direction.Up:
                 neighborPoisition += new Vector3Int(0, 0, _cellSize);
-                Debug.Log(neighborPoisition + " this is up");
                 break;
             case Direction.Right:
                 neighborPoisition += new Vector3Int(_cellSize, 0, 0);
-                Debug.Log(neighborPoisition + " this is right");
                 break;
             case Direction.Down:
                 neighborPoisition += new Vector3Int(0, 0, -_cellSize);
-                Debug.Log(neighborPoisition + " this is down");
                 break;
             case Direction.Left:
                 neighborPoisition += new Vector3Int(-_cellSize, 0, 0);
-                Debug.Log(neighborPoisition + " this is left");
                 break;
         }
 

@@ -5,12 +5,12 @@ using UnityEngine;
 
 public static class ZoneCalculator
 {
-    public static bool CheckIfPositionHasChanged(Vector3 gridPosition, Vector3 previousPoistion, GridStructure grid)
+    public static bool CheckIfPositionHasChanged(Vector3 intputPosition, Vector3 previousPoistion, GridStructure grid)
     {
-        return Vector3Int.FloorToInt(gridPosition).Equals(Vector3Int.FloorToInt(previousPoistion)) == false;
+        return Vector3Int.FloorToInt(grid.CalculateGridPosition(intputPosition)).Equals(Vector3Int.FloorToInt(grid.CalculateGridPosition(previousPoistion))) == false;
     }
 
-    public static void PrepareStartAndEndPoints(Vector3 startPoint, Vector3 endPoint, Vector3Int minPoint, Vector3Int maxPoint, Vector3 mapBottomLeftCorner)
+    public static void PrepareStartAndEndPoints(Vector3 startPoint, Vector3 endPoint, ref Vector3Int minPoint, ref Vector3Int maxPoint, Vector3 mapBottomLeftCorner)
     {
         Vector3 startPositionForCalculations = new Vector3(startPoint.x, 0, startPoint.z);
         Vector3 endPositionForCalculations = new Vector3(endPoint.x, 0, endPoint.z);
@@ -24,7 +24,7 @@ public static class ZoneCalculator
         var startPointDistance = Mathf.Abs(Vector3.Distance(mapBottomLeftCorner, startPositionForCalculations));
         var endPointDistance = Mathf.Abs(Vector3.Distance(mapBottomLeftCorner, endPositionForCalculations));
         minPoint = Vector3Int.FloorToInt(startPointDistance < endPointDistance ? startPositionForCalculations : endPositionForCalculations);
-        maxPoint = Vector3Int.FloorToInt(startPointDistance >= endPointDistance ? endPositionForCalculations : startPositionForCalculations);
+        maxPoint = Vector3Int.FloorToInt(startPointDistance >= endPointDistance ? startPositionForCalculations : endPositionForCalculations);
     }
 
     public static void CalculateZone(HashSet<Vector3Int> newPositionsSet, Dictionary<Vector3Int, GameObject> structuresToBeModified, Queue<GameObject> gameObjectsToReuse)
