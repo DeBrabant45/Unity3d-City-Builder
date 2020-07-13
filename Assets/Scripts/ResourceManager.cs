@@ -5,16 +5,20 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour, IResourceManager
 {
-    private MoneyHelper _moneyHelper;
-
+    [SerializeField]
     private int _startMoneyAmount = 5000;
+    [SerializeField]
+    private int _removalPrice = 20;
+    [SerializeField]
     private float _moneyCalculationInterval = 2;
+    private MoneyHelper _moneyHelper;
     private BuildingManager _buildingManager;
 
     public UIController uIController;
+    public int StartMoneyAmount { get => _startMoneyAmount; }
+    public float MoneyCalculationInterval { get => _moneyCalculationInterval; }
+    int IResourceManager.RemovalPrice { get => _removalPrice; }
 
-    public int StartMoneyAmount { get => _startMoneyAmount; set => _startMoneyAmount = value; }
-    public float MoneyCalculationInterval { get => _moneyCalculationInterval; set => _moneyCalculationInterval = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -97,5 +101,11 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     void Update()
     {
 
+    }
+
+    public int HowManyStructureCanIPlace(int placementCost, int numberOfStructures)
+    {
+        int amount = (int)(_moneyHelper.MoneyAmount / placementCost);
+        return amount > numberOfStructures ? numberOfStructures : amount;
     }
 }

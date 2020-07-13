@@ -15,6 +15,10 @@ public class StructureRemovalHelper : StructureModificationHelper
 
     public override void CancelModifications()
     {
+        foreach (var structure in _structuresToBeModified)
+        {
+            _resourceManager.AddMoneyAmount(_resourceManager.RemovalPrice);
+        }
         this._placementManager.PlaceStructuresOnTheMap(_structuresToBeModified.Values);
         _structuresToBeModified.Clear();
     }
@@ -50,11 +54,13 @@ public class StructureRemovalHelper : StructureModificationHelper
             var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
+                _resourceManager.AddMoneyAmount(_resourceManager.RemovalPrice);
                 RevokeStructureRemovalPlacementAt(gridPositionInt, structure);
             }
-            else
+            else if(_resourceManager.CanIBuyIt(_resourceManager.RemovalPrice))
             {
                 AddStructureForRemoval(gridPositionInt, structure);
+                _resourceManager.SpendMoney(_resourceManager.RemovalPrice);
             }
 
         }

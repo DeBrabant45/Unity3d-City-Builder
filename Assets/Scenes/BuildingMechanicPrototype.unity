@@ -2407,6 +2407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9092fabebfae1647b93121c91d47670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startMoneyAmount: 5000
+  _removalPrice: 20
+  _moneyCalculationInterval: 2
   uIController: {fileID: 732681944}
 --- !u!4 &1213432030
 Transform:
