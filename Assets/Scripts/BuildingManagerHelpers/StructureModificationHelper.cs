@@ -17,6 +17,7 @@ public abstract class StructureModificationHelper
         this._grid = grid;
         this._placementManager = placementManager;
         this._resourceManager = resourceManager;
+        _structureData = ScriptableObject.CreateInstance<NullStructureSO>();
     }
 
     public GameObject AccessStructureInDictionary(Vector3 gridPosition)
@@ -48,7 +49,7 @@ public abstract class StructureModificationHelper
     private void ResetHelpersData()
     {
         _structuresToBeModified.Clear();
-        _structureData = null;
+        _structureData = ScriptableObject.CreateInstance<NullStructureSO>();
     }
 
     public virtual void StopContinuousPlacement()
@@ -58,7 +59,7 @@ public abstract class StructureModificationHelper
 
     public virtual void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
-        if(_structureData == null && structureType != StructureType.None)
+        if(_structureData.GetType() == typeof(NullStructureSO) && structureType != StructureType.None)
         {
             _structureData = this._structureRepository.GetStructureData(structureName, structureType);
         }

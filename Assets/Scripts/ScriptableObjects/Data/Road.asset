@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06c94e3104c05b488048cefb9e21731, type: 3}
   m_Name: Road
   m_EditorClassIdentifier: 
+  income: 0
   buildingName: Road
   prefab: {fileID: 1046759497217224246, guid: 2a74761dd523f864398408b1fea40e6f, type: 3}
-  placementCost: 0
-  upkeepCost: 0
-  income: 0
+  placementCost: 20
+  upkeepCost: 20
   requireRoadAccess: 0
   requirePower: 0
   requireWater: 0
@@ -26,3 +26,4 @@ MonoBehaviour:
     type: 3}
   fourWayPrefab: {fileID: 4988593472733303505, guid: 5eafd473e55dbc042ba2959344fea2cd,
     type: 3}
+  prefabRotation: 0

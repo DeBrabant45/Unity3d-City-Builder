@@ -32,7 +32,10 @@ namespace Tests
                 _grid.PlaceStructureOnTheGrid(_tempObject, _gridPosition1, null);
                 _grid.PlaceStructureOnTheGrid(_tempObject, _gridPosition2, null);
 
-                _structureModificationHelper = new StructureRemovalHelper(structureRepository, _grid, placementManager, Substitute.For<ResourceManager>());
+                IResourceManager resourceManager = Substitute.For<IResourceManager>();
+                resourceManager.CanIBuyIt(default).Returns(true);
+
+                _structureModificationHelper = new StructureRemovalHelper(structureRepository, _grid, placementManager, resourceManager);
             }
 
             // A Test behaves as an ordinary method

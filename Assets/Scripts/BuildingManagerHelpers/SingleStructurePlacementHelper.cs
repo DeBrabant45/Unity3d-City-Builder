@@ -46,10 +46,7 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
 
     public override void CancelModifications()
     {
-        foreach (var item in _structuresToBeModified)
-        {
-            _resourceManager.AddMoneyAmount(_structureData.placementCost);
-        }
+        _resourceManager.AddMoneyAmount(_structuresToBeModified.Count * _structureData.placementCost);
         base.CancelModifications();
     }
 }

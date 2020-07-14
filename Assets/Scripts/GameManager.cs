@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     private int _cellSize = 3;
     private PlayerState state;
     private IPlacementManager _placementManager;
+    private IResourceManager _resourceManager;
 
     public GameObject placementManagerGameObject;
+    public GameObject resourceManagerGameObject;
     public IInputManager inputManager;
     public UIController uIController;
     public CameraMovement cameraMovement;
@@ -25,8 +27,6 @@ public class GameManager : MonoBehaviour
     public PlayerBuildingZoneState buildingZoneState;
 
     public LayerMask inputMask;
-
-    public ResourceManager resourceManager;
 
     private void Awake() 
     {
@@ -48,9 +48,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Any interface assignment needs to called before the buildingmanager is assigned or
+        //you will get an object refernce not set to an instance of an object
         _placementManager = placementManagerGameObject.GetComponent<IPlacementManager>();
-        _buildingManager = new BuildingManager(_cellSize, width, length, _placementManager, structureRepository, resourceManager);
-        resourceManager.PrepareResourceManager(_buildingManager);
+        _resourceManager = resourceManagerGameObject.GetComponent<IResourceManager>();
+        //
+        _buildingManager = new BuildingManager(_cellSize, width, length, _placementManager, structureRepository, _resourceManager);
+        _resourceManager.PrepareResourceManager(_buildingManager);
         PrepareStates();
         PrepareGameComponents();
         AssignInputListeners();

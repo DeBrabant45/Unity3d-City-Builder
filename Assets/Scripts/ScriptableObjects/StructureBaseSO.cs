@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class StructureBaseSO : ScriptableObject
 {
     [SerializeField]
-    private int income;
+    protected int income;
 
     public string buildingName;
     public GameObject prefab;

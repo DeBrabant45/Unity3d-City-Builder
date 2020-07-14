@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
   m_Name: Residential
   m_EditorClassIdentifier: 
+  income: 10
   buildingName: Residential
   prefab: {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}
-  placementCost: 0
+  placementCost: 10
   upkeepCost: 0
-  income: 0
   requireRoadAccess: 1
   requirePower: 1
   requireWater: 1

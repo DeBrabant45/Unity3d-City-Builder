@@ -2711,6 +2711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placementManagerGameObject: {fileID: 671726618}
+  resourceManagerGameObject: {fileID: 1213432028}
   uIController: {fileID: 732681944}
   cameraMovement: {fileID: 163952604}
   structureRepository: {fileID: 598470406}
@@ -2719,7 +2720,6 @@ MonoBehaviour:
   inputMask:
     serializedVersion: 2
     m_Bits: 512
-  resourceManager: {fileID: 1213432029}
 --- !u!4 &1767781387
 Transform:
   m_ObjectHideFlags: 0

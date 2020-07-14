@@ -9,4 +9,5 @@
     bool CanIBuyIt(int amount);
     bool SpendMoney(int amount);
     int HowManyStructureCanIPlace(int placementCost, int count);
+    void PrepareResourceManager(BuildingManager buildingManager);
 }
