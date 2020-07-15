@@ -832,7 +832,7 @@ PrefabInstance:
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 340
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
@@ -862,7 +862,7 @@ PrefabInstance:
     - target: {fileID: 7092152104927166074, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 340
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7092152104927166074, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
@@ -957,6 +957,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 162469748}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &162469750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2863726035141216878, guid: 559c11d47e063bc4991c465e37cd193d,
+    type: 3}
+  m_PrefabInstance: {fileID: 162469748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &163952602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1596,7 @@ MonoBehaviour:
   buildButtonPrefab: {fileID: 887964655198250043, guid: e124772d9a861464d9b127a204043749,
     type: 3}
   moneyValue: {fileID: 562556773}
+  populationValue: {fileID: 162469750}
 --- !u!4 &732681945
 Transform:
   m_ObjectHideFlags: 0

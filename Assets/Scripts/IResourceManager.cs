@@ -10,4 +10,6 @@
     bool SpendMoney(int amount);
     int HowManyStructureCanIPlace(int placementCost, int count);
     void PrepareResourceManager(BuildingManager buildingManager);
+    void AddToPopulation(int amount);
+    void ReducePopulation(int amount);
 }

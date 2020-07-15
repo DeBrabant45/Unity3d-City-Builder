@@ -33,6 +33,7 @@ public class UIController : MonoBehaviour
     public GameObject buildButtonPrefab;
 
     public TextMeshProUGUI moneyValue;
+    public TextMeshProUGUI populationValue;
     
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,11 @@ public class UIController : MonoBehaviour
                 button.onClick.AddListener(() => callback(button.GetComponentInChildren<TextMeshProUGUI>().text));
             }
         }
+    }
+
+    public void SetPopulationValue(int population)
+    {
+        populationValue.text = population + "";
     }
 
     public void SetMoneyValue(int moneyAmount)

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class StructureRemovalHelper : StructureModificationHelper
     {
         foreach (var gridPosition in _structuresToBeModified.Keys)
         {
+            PrepareStructureForRemoval(gridPosition);
             _grid.RemoveStrucutreFromTheGrid(gridPosition);
         }
 
@@ -43,6 +45,18 @@ public class StructureRemovalHelper : StructureModificationHelper
 
         this._placementManager.RemoveStructures(_structuresToBeModified.Values);
         _structuresToBeModified.Clear();
+    }
+
+    private void PrepareStructureForRemoval(Vector3Int gridPosition)
+    {
+        var data = _grid.GetStructureDataFromTheGrid(gridPosition);
+        if(data != null)
+        {
+            if(data.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)data).zoneType == ZoneType.Residentaial)
+            {
+                _resourceManager.ReducePopulation(1);
+            }
+        }
     }
 
     public override void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
