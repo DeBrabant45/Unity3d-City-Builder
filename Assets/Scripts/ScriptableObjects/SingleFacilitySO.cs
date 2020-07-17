@@ -12,20 +12,20 @@ public class SingleFacilitySO : SingleStructureBaseSO
     public int upkeepPerCustomer;
     public FacilityType facilityType = FacilityType.None;
 
-    public void RemoveProvider(StructureBaseSO providerStructure)
+    public void RemoveClient(StructureBaseSO client)
     {
-        if(_customers.Contains(providerStructure))
+        if(_customers.Contains(client))
         {
             if(facilityType == FacilityType.Water)
             {
-                providerStructure.RemoveWaterFacility();
+                client.RemoveWaterFacility();
             }
             if (facilityType == FacilityType.Water)
             {
-                providerStructure.RemovePowerFacility();
+                client.RemovePowerFacility();
             }
 
-            _customers.Remove(providerStructure);
+            _customers.Remove(client);
         }
     }
 
@@ -37,6 +37,36 @@ public class SingleFacilitySO : SingleStructureBaseSO
     public int GetNumberOfCustomers()
     {
         return _customers.Count;
+    }
+
+    public void AddClient(IEnumerable<StructureBaseSO> structuresAaroundFacility)
+    {
+        foreach (var nearByStructure in structuresAaroundFacility)
+        {
+            if(maxCustomers > _customers.Count && nearByStructure != this)
+            {
+                if(facilityType == FacilityType.Water && nearByStructure.requireWater)
+                {
+                    if (nearByStructure.AddWaterFacility(this))
+                        _customers.Add(nearByStructure);
+                }
+                if(facilityType == FacilityType.Water && nearByStructure.requireWater)
+                {
+                    if (nearByStructure.AddWaterFacility(this))
+                        _customers.Add(nearByStructure);
+                }
+            }
+        }
+    }
+
+    public override IEnumerable<StructureBaseSO> PrepareForRemoval()
+    {
+        base.PrepareForRemoval();
+        foreach (var clientStructure in _customers)
+        {
+            RemoveClient(clientStructure);
+        }
+        return _customers;
     }
 }
 

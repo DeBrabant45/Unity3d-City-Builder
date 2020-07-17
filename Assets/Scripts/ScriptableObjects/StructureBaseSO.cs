@@ -65,32 +65,37 @@ public abstract class StructureBaseSO : ScriptableObject
         AddRoadProvider(structuresInRange);
     }
 
-    public void AddPowerFacility(SingleFacilitySO facility)
+    public bool AddPowerFacility(SingleFacilitySO facility)
     {
         if(_powerProvider == null)
         {
             _powerProvider = facility;
+            return true;
         }
+        return false;
     }
 
-    public void AddWaterFacility(SingleFacilitySO facility)
+    public bool AddWaterFacility(SingleFacilitySO facility)
     {
         if(_waterProvider == null)
         {
             _waterProvider = facility;
+            return true;
         }
+        return false;
     }
 
-    public void PrepareForRemoval()
+    public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
         {
-            _powerProvider.RemoveProvider(this);
+            _powerProvider.RemoveClient(this);
         }
         if (_waterProvider != null)
         {
-            _waterProvider.RemoveProvider(this);
+            _waterProvider.RemoveClient(this);
         }
+        return null;
     }
 
     private void AddRoadProvider(IEnumerable<StructureBaseSO> structuresInRange)
