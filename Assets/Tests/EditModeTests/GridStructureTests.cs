@@ -50,7 +50,7 @@ namespace Tests
             Assert.AreNotEqual(Vector3.zero, returnPosition);
         }
         #endregion
-        
+
         [Test]
         public void PlaceStructure303AndCheckIsTakenPasses()
         {
@@ -94,7 +94,7 @@ namespace Tests
             //Act
             Vector3 returnPosition = _grid.CalculateGridPosition(position);
             GameObject testGameObject = null;
-           _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
+            _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
             Assert.IsFalse(_grid.IsCellTaken(position));
         }
@@ -105,10 +105,10 @@ namespace Tests
             Vector3 position = new Vector3(303, 0, 303);
             //Act
             Vector3 returnPosition = _grid.CalculateGridPosition(position);
-            GameObject testGameObject = new GameObject ("TestGameObject");
-           _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
+            GameObject testGameObject = new GameObject("TestGameObject");
+            _grid.PlaceStructureOnTheGrid(testGameObject, position, null);
             //Assert
-            Assert.Throws<IndexOutOfRangeException>(()=> _grid.IsCellTaken(position));
+            Assert.Throws<IndexOutOfRangeException>(() => _grid.IsCellTaken(position));
         }
 
         [Test]
@@ -140,6 +140,93 @@ namespace Tests
             _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(99, 0, 99), singleStructure);
             var list = _grid.GetAllStrucutures().ToList();
             Assert.IsTrue(list.Count == 4);
+        }
+
+        [Test]
+        public void GetDataStrucutureInRange1Contains4Test()
+        {
+            RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
+            SingleStructureBaseSO singleStructure = ScriptableObject.CreateInstance<SingleFacilitySO>();
+            GameObject gameObject = new GameObject();
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 6), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 6), road);
+            var list = _grid.GetStructuresDataInRange(new Vector3(6, 0, 6), 1).ToList();
+            Assert.IsTrue(list.Count == 4);
+        }
+
+        [Test]
+        public void GetDataStrucutureInRange1Contains2Test()
+        {
+            RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
+            SingleStructureBaseSO singleStructure = ScriptableObject.CreateInstance<SingleFacilitySO>();
+            GameObject gameObject = new GameObject();
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 3), singleStructure);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 9), singleStructure);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 9), road);
+            var list = _grid.GetStructuresDataInRange(new Vector3(6, 0, 6), 1).ToList();
+            Assert.IsTrue(list.Count == 2);
+            Assert.IsTrue(list[0] == singleStructure);
+            Assert.IsTrue(list[1] == singleStructure);
+        }
+
+        [Test]
+        public void GetDataStrucutureInRange1Contains3Test()
+        {
+            RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
+            SingleStructureBaseSO singleStructure = ScriptableObject.CreateInstance<SingleFacilitySO>();
+            GameObject gameObject = new GameObject();
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 3), singleStructure);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 9), singleStructure);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 6), road);
+            var list = _grid.GetStructuresDataInRange(new Vector3(6, 0, 6), 1).ToList();
+            Assert.IsTrue(list.Count == 3);
+            Assert.IsTrue(list.Contains(singleStructure));
+            Assert.IsTrue(list.Contains(road));
+        }
+
+        [Test]
+        public void GetDataStrucutureInRange1Contains0Test()
+        {
+            RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
+            SingleStructureBaseSO singleStructure = ScriptableObject.CreateInstance<SingleFacilitySO>();
+            GameObject gameObject = new GameObject();
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 9), road);
+            var list = _grid.GetStructuresDataInRange(new Vector3(6, 0, 6), 1).ToList();
+            Assert.IsTrue(list.Count == 0);
+        }
+
+        [Test]
+        public void GetDataStructureInRange2Contains8Test()
+        {
+            RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
+            SingleStructureBaseSO singleStructure = ScriptableObject.CreateInstance<SingleFacilitySO>();
+            GameObject gameObject = new GameObject();
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 3), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(6, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 9), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(3, 0, 6), road);
+            _grid.PlaceStructureOnTheGrid(gameObject, new Vector3(9, 0, 6), road);
+            var list = _grid.GetStructuresDataInRange(new Vector3(6, 0, 6), 2).ToList();
+            Assert.IsTrue(list.Count == 8);
         }
     }
 }

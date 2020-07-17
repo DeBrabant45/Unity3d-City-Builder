@@ -138,6 +138,30 @@ public class GridStructure
 
         return neighborPoisition;
     }
+
+    public IEnumerable<StructureBaseSO> GetStructuresDataInRange(Vector3 gridPosition, int range)
+    {
+        var cellIndex = CalculateGridIndex(gridPosition);
+        List<StructureBaseSO> listToReturn = new List<StructureBaseSO>();
+        if (CheckIndexValidity(cellIndex) == false)
+            return listToReturn;
+        for (int row = cellIndex.y - range; row <= cellIndex.y + range; row++)
+        {
+            for (int col = cellIndex.x - range; col <= cellIndex.x + range; col++)
+            {
+                var tempPosition = new Vector2Int(col, row);
+                if(CheckIndexValidity(tempPosition) && Vector2.Distance(cellIndex, tempPosition) <= range)
+                {
+                    var data = _grid[row, col].GetStructureData();
+                    if(data != null)
+                    {
+                        listToReturn.Add(data);
+                    }
+                }
+            }
+        }
+        return listToReturn;
+    }
 }
 
 public enum Direction
