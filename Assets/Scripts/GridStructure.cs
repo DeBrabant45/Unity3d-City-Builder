@@ -31,6 +31,41 @@ public class GridStructure
         return new Vector3(x * _cellSize, 0, z * _cellSize);
     }
 
+    public List<Vector3Int> GetStructurePositionInRange(Vector3Int gridPosition, int range)
+    {
+        var cellIndex = CalculateGridIndex(gridPosition);
+        List<Vector3Int> listToReturn = new List<Vector3Int>();
+        if (CheckIndexValidity(cellIndex) == false)
+            return listToReturn;
+        for (int row = cellIndex.y - range; row <= cellIndex.y + range; row++)
+        {
+            for (int col = cellIndex.x - range; col <= cellIndex.x + range; col++)
+            {
+                var tempPosition = new Vector2Int(col, row);
+                if (CheckIndexValidity(tempPosition) && Vector2.Distance(cellIndex, tempPosition) <= range)
+                {
+                    var data = _grid[row, col].GetStructureData();
+                    if (data != null)
+                    {
+                        listToReturn.Add(GetGridPositionFromIndex(tempPosition));
+                    }
+                }
+            }
+        }
+        return listToReturn;
+    }
+
+    public bool ArePositionsInRange(Vector3Int gridPosition, Vector3Int structurePositionNearBy, int range)
+    {
+        var distance = Vector2.Distance(CalculateGridIndex(gridPosition), CalculateGridIndex(structurePositionNearBy));
+        return distance <= range;
+    }
+
+    private Vector3Int GetGridPositionFromIndex(Vector2Int tempPosition)
+    {
+        return new Vector3Int(tempPosition.x * _cellSize, 0, tempPosition.y * _cellSize);
+    }
+
     private Vector2Int CalculateGridIndex(Vector3 gridPosition)
     {
         return new Vector2Int((int)(gridPosition.x / _cellSize), (int)(gridPosition.z / _cellSize)); 
@@ -97,7 +132,7 @@ public class GridStructure
         return _grid[cellIndex.y, cellIndex.x].GetStructureData();
     }
 
-    public void RemoveStrucutreFromTheGrid(Vector3 gridPosition)
+    public void RemoveStructureFromTheGrid(Vector3 gridPosition)
     {
         var cellIndex = CalculateGridIndex(gridPosition);
         _grid[cellIndex.y, cellIndex.x].RemoveStructure(); 

@@ -26,8 +26,11 @@ public class RoadStructureSO : StructureBaseSO
         List<StructureBaseSO> listToReturn = new List<StructureBaseSO>();
         foreach (var nearByStructure in structuresAround)
         {
-            nearByStructure.RemoveRoadProivder();
-            listToReturn.Add(nearByStructure);
+            if(nearByStructure.RoadProvider == this)
+            {
+                nearByStructure.RemoveRoadProivder();
+                listToReturn.Add(nearByStructure);
+            }
         }
 
         return listToReturn;

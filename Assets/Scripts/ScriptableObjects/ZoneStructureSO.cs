@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,9 +10,10 @@ public class ZoneStructureSO : StructureBaseSO
     public GameObject[] prefabVariants;
     public UpgradeType[] availableUpgrades;
     public ZoneType zoneType;
+    public int maxFacilitySearchRange;
 }
 
-[System.Serializable]
+[Serializable]
 public struct UpgradeType
 {
     public GameObject[] prefabVariants;

@@ -20,6 +20,8 @@ MonoBehaviour:
   requireRoadAccess: 1
   requirePower: 0
   requireWater: 0
-  range: 0
-  maxCustomers: 0
+  structureRange: 1
+  singleStructureRange: 5
+  maxCustomers: 10
   upkeepPerCustomer: 0
+  facilityType: 0

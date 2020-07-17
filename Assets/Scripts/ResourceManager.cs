@@ -100,12 +100,6 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         uIController.SetPopulationValue(_populationHelper.Population);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public int HowManyStructureCanIPlace(int placementCost, int numberOfStructures)
     {
         int amount = (int)(_moneyHelper.MoneyAmount / placementCost);

@@ -20,7 +20,7 @@ public class SingleFacilitySO : SingleStructureBaseSO
             {
                 client.RemoveWaterFacility();
             }
-            if (facilityType == FacilityType.Water)
+            if (facilityType == FacilityType.Power)
             {
                 client.RemovePowerFacility();
             }
@@ -45,7 +45,7 @@ public class SingleFacilitySO : SingleStructureBaseSO
         {
             if(maxCustomers > _customers.Count && nearByStructure != this)
             {
-                if(facilityType == FacilityType.Water && nearByStructure.requireWater)
+                if(facilityType == FacilityType.Power && nearByStructure.requirePower)
                 {
                     if (nearByStructure.AddWaterFacility(this))
                         _customers.Add(nearByStructure);
@@ -59,14 +59,20 @@ public class SingleFacilitySO : SingleStructureBaseSO
         }
     }
 
+    public bool IsFull()
+    {
+        return GetNumberOfCustomers() >= maxCustomers;
+    }
+
     public override IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         base.PrepareForRemoval();
-        foreach (var clientStructure in _customers)
+        List<StructureBaseSO> tempList = new List<StructureBaseSO>(_customers);
+        foreach (var clientStructure in tempList)
         {
             RemoveClient(clientStructure);
         }
-        return _customers;
+        return tempList;
     }
 }
 

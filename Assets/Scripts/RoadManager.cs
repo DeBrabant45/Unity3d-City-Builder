@@ -140,11 +140,11 @@ public static class RoadManager
     {
         foreach (var keyValuePair in neighborDictionary)
         {
-            grid.RemoveStrucutreFromTheGrid(keyValuePair.Key);
+            grid.RemoveStructureFromTheGrid(keyValuePair.Key);
             placementManager.DestroySingleStructure(keyValuePair.Value);
             var roadStructure = GetCorrectRoadPrefab(keyValuePair.Key, structureData, structuresToBeModified, grid);
             var structure = placementManager.PlaceStructureOnTheMap(keyValuePair.Key, roadStructure.RoadPrefab, roadStructure.RoadPrefabRotation);
-            grid.PlaceStructureOnTheGrid(structure, keyValuePair.Key, structureData);
+            grid.PlaceStructureOnTheGrid(structure, keyValuePair.Key, GameObject.Instantiate(structureData));
         }
         neighborDictionary.Clear();
     }

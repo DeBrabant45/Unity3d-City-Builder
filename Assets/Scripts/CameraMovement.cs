@@ -14,12 +14,6 @@ public class CameraMovement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void MoveCamera(Vector3 pointerPosition)
     {
         if(_basePointerPosition.HasValue == false)
