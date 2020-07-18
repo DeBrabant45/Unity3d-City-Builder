@@ -34,6 +34,8 @@ public class UIController : MonoBehaviour
 
     public TextMeshProUGUI moneyValue;
     public TextMeshProUGUI populationValue;
+
+    public UIStructureInfoPanelHelper structureInfoPanelHelper;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,16 @@ public class UIController : MonoBehaviour
         openBuildingMenuBtn.onClick.AddListener(OnOpenBuildMenu);
         removeBtn.onClick.AddListener(OnRemovalHandler);
         closeBuildMenuBtn.onClick.AddListener(OnCloseMenuHandler);
+    }
+
+    public void HideStructureInfo()
+    {
+        structureInfoPanelHelper.Hide();
+    }
+
+    public bool GetStructureInfoVisability()
+    {
+        return structureInfoPanelHelper.gameObject.activeSelf;
     }
 
     private void OnOpenBuildMenu()
@@ -91,6 +103,21 @@ public class UIController : MonoBehaviour
     public void SetMoneyValue(int moneyAmount)
     {
         moneyValue.text = moneyAmount + "";
+    }
+
+    public void DisplayBasicStructureInfo(StructureBaseSO data)
+    {
+        structureInfoPanelHelper.DisplayBasicStructureInfo(data);
+    }
+
+    public void DisplayZoneStructureInfo(ZoneStructureSO data)
+    {
+        structureInfoPanelHelper.DisplayZoneStructureInfo(data);
+    }
+
+    public void DisplayFacilityStructureInfo(SingleFacilitySO data)
+    {
+        structureInfoPanelHelper.DisplayFacilityStructureInfo(data);
     }
 
     private void OnBuildZoneCallback(string nameOfStructure)

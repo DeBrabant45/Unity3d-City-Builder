@@ -47,7 +47,7 @@ public class SingleFacilitySO : SingleStructureBaseSO
             {
                 if(facilityType == FacilityType.Power && nearByStructure.requirePower)
                 {
-                    if (nearByStructure.AddWaterFacility(this))
+                    if (nearByStructure.AddPowerFacility(this))
                         _customers.Add(nearByStructure);
                 }
                 if(facilityType == FacilityType.Water && nearByStructure.requireWater)

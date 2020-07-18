@@ -77,4 +77,14 @@ public class BuildingManager
     {
         _structureModificationHelper.StopContinuousPlacement();
     }
+
+    public StructureBaseSO GetStructureDataFromPosition(Vector3 inputPosition)
+    {
+        Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
+        if (_grid.IsCellTaken(gridPosition))
+        {
+            return _grid.GetStructureDataFromTheGrid(gridPosition);
+        }
+        return null;
+    }
 }
