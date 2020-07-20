@@ -4,24 +4,10 @@ using UnityEngine;
 
 public class PlayerRemoveBuildingState : PlayerState
 {
-    private BuildingManager _buildingManager;
-
     public PlayerRemoveBuildingState(GameManager gameManager, BuildingManager buildingManager)
-        :base(gameManager)
+        :base(gameManager, buildingManager)
     {
-        this._buildingManager = buildingManager;    
-    }
 
-    public override void OnCancel()
-    {
-        this._buildingManager.CancelModification();
-        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
-    }
-
-    public override void OnConfirmAction()
-    {
-        this._buildingManager.ConfirmModification();
-        base.OnConfirmAction();
     }
 
     public override void OnBuildRoad(string structureName)

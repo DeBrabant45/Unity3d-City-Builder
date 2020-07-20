@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class PlayerSelectionState : PlayerState
 {
-    private BuildingManager _buildingManager;
     private Vector3? _previousPosition;
 
     public PlayerSelectionState(GameManager gameManager, BuildingManager buildingManager) 
-        :base(gameManager)
+        :base(gameManager, buildingManager)
     {
-        this._buildingManager = buildingManager;
+
     }
+
     public override void EnterState(string model)
     {
         base.EnterState(model);
         if (this._gameManager.uIController.GetStructureInfoVisability())
         {
-            StructureBaseSO data = _buildingManager.GetStructureDataFromPosition(_previousPosition.Value);
+            StructureBaseSO data = this._buildingManager.GetStructureDataFromPosition(_previousPosition.Value);
             if(data)
             {
                 UpdateStructureInfoPanel(data);

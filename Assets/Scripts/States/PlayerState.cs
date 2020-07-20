@@ -6,15 +6,18 @@ public abstract class PlayerState
 {
     protected GameManager _gameManager;
     protected CameraMovement _cameraMovement;
+    protected BuildingManager _buildingManager;
 
-    public PlayerState(GameManager gameManager)
+    public PlayerState(GameManager gameManager, BuildingManager buildingManager)
     {
         this._gameManager = gameManager;
+        this._buildingManager = buildingManager;
         this._cameraMovement = _gameManager.cameraMovement;
     }
 
     public virtual void OnConfirmAction()
     {
+        this._buildingManager.ConfirmModification();
         this._gameManager.TransitionToState(this._gameManager.selectionState, null);
     }
 
@@ -37,6 +40,7 @@ public abstract class PlayerState
     {
 
     }
+
     public virtual void OnBuildZone(string structureName)
     {
         this._gameManager.TransitionToState(this._gameManager.buildingZoneState, structureName);
@@ -54,6 +58,7 @@ public abstract class PlayerState
     
     public virtual void OnRemovalStructure()
     {
+        this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.removalState, null);
     }
 
@@ -67,5 +72,9 @@ public abstract class PlayerState
         _cameraMovement.StopCameraMovement();
     }
 
-    public abstract void OnCancel();
+    public virtual void OnCancel()
+    {
+        this._buildingManager.CancelModification();
+        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+    }
 }

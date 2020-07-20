@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerBuildingRoadState : PlayerState
 {
-    private BuildingManager _buildingManager;
     private string _structureName;
 
     public PlayerBuildingRoadState(GameManager gameManager, BuildingManager buildingManager)
-        :base(gameManager)
+        :base(gameManager, buildingManager)
     {
-        this._buildingManager = buildingManager;
+
     }
     
     public override void EnterState(string structureName)
@@ -24,12 +23,6 @@ public class PlayerBuildingRoadState : PlayerState
         this._buildingManager.PrepareStructureForModification(position, this._structureName, StructureType.Road);
     }
 
-    public override void OnConfirmAction()
-    {
-        this._buildingManager.ConfirmModification();
-        base.OnConfirmAction();
-    }
-
     public override void OnBuildSingleStructure(string structureName)
     {
         this._buildingManager.CancelModification();
@@ -40,11 +33,5 @@ public class PlayerBuildingRoadState : PlayerState
     {
         this._buildingManager.CancelModification();
         base.OnBuildZone(structureName);
-    }
-
-    public override void OnCancel()
-    {
-        this._buildingManager.CancelModification();
-        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
     }
 }

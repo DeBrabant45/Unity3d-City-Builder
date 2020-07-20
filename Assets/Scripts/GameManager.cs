@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int width, length;
     //States
     public PlayerState State { get => state; }
+
     public PlayerSelectionState selectionState;
     public PlayerBuildingSingleStructureState buildingSingleStructureState;
     public PlayerRemoveBuildingState removalState;
