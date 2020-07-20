@@ -10,24 +10,6 @@ public class PlayerRemoveBuildingState : PlayerState
 
     }
 
-    public override void OnBuildRoad(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildRoad(structureName);
-    }
-
-    public override void OnBuildSingleStructure(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildSingleStructure(structureName);
-    }
-
-    public override void OnBuildZone(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildZone(structureName);
-    }
-
     public override void OnInputPointerDown(Vector3 position)
     {
         this._buildingManager.PrepareStructureForRemovalAt(position);

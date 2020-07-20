@@ -22,16 +22,4 @@ public class PlayerBuildingSingleStructureState : PlayerState
     {
         this._buildingManager.PrepareStructureForModification(position, this._structureName, StructureType.SingleStructure);
     }
-
-    public override void OnBuildRoad(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildRoad(structureName);
-    }
-
-    public override void OnBuildZone(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildZone(structureName);
-    }
 }

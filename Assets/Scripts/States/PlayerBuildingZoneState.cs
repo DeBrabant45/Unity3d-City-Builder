@@ -33,15 +33,4 @@ public class PlayerBuildingZoneState : PlayerState
         this._buildingManager.StopContinuousPlacement();
     }
     
-    public override void OnBuildRoad(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildRoad(structureName);
-    }
-
-    public override void OnBuildSingleStructure(string structureName)
-    {
-        this._buildingManager.CancelModification();
-        base.OnBuildSingleStructure(structureName);
-    }
 }

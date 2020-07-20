@@ -43,16 +43,19 @@ public abstract class PlayerState
 
     public virtual void OnBuildZone(string structureName)
     {
+        this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.buildingZoneState, structureName);
     }
 
     public virtual void OnBuildSingleStructure(string structureName)
     {
+        this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.buildingSingleStructureState, structureName);
     }
 
     public virtual void OnBuildRoad(string structureName)
     {
+        this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.buildingRoadState, structureName);
     }
     

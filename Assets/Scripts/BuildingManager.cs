@@ -42,7 +42,7 @@ public class BuildingManager
 
     public void CancelModification()
     {
-        _structureModificationHelper.CancelModifications();
+        _structureModificationHelper?.CancelModifications();
     }
 
     public void PrepareStructureForRemovalAt(Vector3 inputPosition)
