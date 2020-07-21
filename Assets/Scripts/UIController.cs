@@ -62,7 +62,8 @@ public class UIController : MonoBehaviour
 
     private void OnOpenBuildMenu()
     {
-         buildingMenuPanel.SetActive(true);
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(true);
          PrepareBuildMenu();
     }
 
@@ -148,6 +149,7 @@ public class UIController : MonoBehaviour
 
     private void OnCancelActionCallback()
     {
+        AudioManager.Instance.PlayButtonClickedSound();
         cancelActionPanel.SetActive(false);
         _onCancelActionHandler?.Invoke();
     }
@@ -160,6 +162,7 @@ public class UIController : MonoBehaviour
 
     private void OnRemovalHandler()
     {
+        AudioManager.Instance.PlayButtonClickedSound();
         cancelActionPanel.SetActive(true);
         _onRemoveActionHandler?.Invoke();
         OnCloseMenuHandler();
@@ -167,6 +170,7 @@ public class UIController : MonoBehaviour
 
     private void OnCloseMenuHandler()
     {
+        AudioManager.Instance.PlayButtonClickedSound();
         buildingMenuPanel.SetActive(false);
     }
 

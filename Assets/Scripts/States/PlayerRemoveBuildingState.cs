@@ -19,4 +19,11 @@ public class PlayerRemoveBuildingState : PlayerState
     {
         this._buildingManager.PrepareBuildingManager(this.GetType());
     }
+
+    public override void OnConfirmAction()
+    {
+        AudioManager.Instance.PlayRemoveSound();
+        this._buildingManager.ConfirmModification();
+        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+    }
 }

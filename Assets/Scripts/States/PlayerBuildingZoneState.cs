@@ -32,5 +32,4 @@ public class PlayerBuildingZoneState : PlayerState
     {
         this._buildingManager.StopContinuousPlacement();
     }
-    
 }

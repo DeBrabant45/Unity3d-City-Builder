@@ -17,6 +17,7 @@ public abstract class PlayerState
 
     public virtual void OnConfirmAction()
     {
+        AudioManager.Instance.PlayPlaceBuildingSound();
         this._buildingManager.ConfirmModification();
         this._gameManager.TransitionToState(this._gameManager.selectionState, null);
     }
