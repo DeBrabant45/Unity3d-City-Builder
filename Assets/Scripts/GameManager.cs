@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public CameraMovement cameraMovement;
     public StructureRepository structureRepository;
     public int width, length;
+    public WorldManager worldManager;
     //States
     public PlayerState State { get => state; }
 
@@ -52,9 +53,11 @@ public class GameManager : MonoBehaviour
         //Any interface assignment needs to called before the buildingmanager is assigned or
         //you will get an object refernce not set to an instance of an object
         _placementManager = placementManagerGameObject.GetComponent<IPlacementManager>();
+        _placementManager.PreparePlacementManager(worldManager);
         _resourceManager = resourceManagerGameObject.GetComponent<IResourceManager>();
         //
-        _buildingManager = new BuildingManager(_cellSize, width, length, _placementManager, structureRepository, _resourceManager);
+        worldManager.PrepareWorld(_cellSize, width, length);
+        _buildingManager = new BuildingManager(worldManager.Grid, _placementManager, structureRepository, _resourceManager);
         _resourceManager.PrepareResourceManager(_buildingManager);
         PrepareStates();
         PrepareGameComponents();

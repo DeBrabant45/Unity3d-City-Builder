@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IPlacementManager
 {
+    void PreparePlacementManager(WorldManager worldManager);
     GameObject CreateGhostStructure(Vector3 gridPosition, GameObject buildingPrefab, RotationValue rotationValue = RotationValue.R0);
     void DestroySingleStructure(GameObject structure);
     void PlaceStructuresOnTheMap(IEnumerable<GameObject> structureCollection);

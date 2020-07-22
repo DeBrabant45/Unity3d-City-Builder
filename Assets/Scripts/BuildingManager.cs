@@ -11,9 +11,9 @@ public class BuildingManager
     private StructureModificationHelper _structureModificationHelper;
 
 
-    public BuildingManager(int cellSize, int width, int length, IPlacementManager placementManager, StructureRepository structureRepository, IResourceManager resourceManager)
+    public BuildingManager(GridStructure grid, IPlacementManager placementManager, StructureRepository structureRepository, IResourceManager resourceManager)
     {
-        _grid = new GridStructure(cellSize, width, length);
+        _grid = grid;
         this._placementManager = placementManager;
         this._structureRepository = structureRepository;
         StructureModificationFactory.PrepareFactory(structureRepository, _grid, placementManager, resourceManager);

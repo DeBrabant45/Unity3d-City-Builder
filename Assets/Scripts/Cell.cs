@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cell 
 {
     private GameObject _structureModel = null;
+    private List<GameObject> _natureElements = new List<GameObject>();
     private StructureBaseSO _structureData;
     private bool _isTaken = false;
 
@@ -35,5 +36,15 @@ public class Cell
     public StructureBaseSO GetStructureData()
     {
         return _structureData;
+    }
+
+    public void AddNatureObject(GameObject element)
+    {
+        _natureElements.Add(element);
+    }
+
+    public List<GameObject> GetNatureOnThisCell()
+    {
+        return _natureElements;
     }
 }
