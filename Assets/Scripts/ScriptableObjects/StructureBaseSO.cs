@@ -62,7 +62,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)
     {
-        AddRoadProvider(structuresInRange);
+        AddRoadAccessToClientStructure(structuresInRange);
     }
 
     public bool AddPowerFacility(SingleFacilitySO facility)
@@ -98,7 +98,7 @@ public abstract class StructureBaseSO : ScriptableObject
         return null;
     }
 
-    private void AddRoadProvider(IEnumerable<StructureBaseSO> structuresInRange)
+    private void AddRoadAccessToClientStructure(IEnumerable<StructureBaseSO> structuresInRange)
     {
         if(_roadProvider != null)
         {
@@ -106,7 +106,7 @@ public abstract class StructureBaseSO : ScriptableObject
         }
         foreach (var nearByStructure in structuresInRange)
         {
-            if(nearByStructure.GetType() == typeof(RoadStructureSO))
+            if (nearByStructure.GetType() == typeof(RoadStructureSO))
             {
                 _roadProvider = (RoadStructureSO)nearByStructure;
                 return;

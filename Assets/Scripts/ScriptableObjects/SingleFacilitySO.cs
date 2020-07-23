@@ -39,9 +39,9 @@ public class SingleFacilitySO : SingleStructureBaseSO
         return _customers.Count;
     }
 
-    public void AddClient(IEnumerable<StructureBaseSO> structuresAaroundFacility)
+    public void AddClient(IEnumerable<StructureBaseSO> structuresAroundFacility)
     {
-        foreach (var nearByStructure in structuresAaroundFacility)
+        foreach (var nearByStructure in structuresAroundFacility)
         {
             if(maxCustomers > _customers.Count && nearByStructure != this)
             {

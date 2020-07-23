@@ -8,9 +8,9 @@ public static class StructureEconomyManager
     private static void PrepareNewStructure(Vector3Int gridPosition, GridStructure grid)
     {
         var structureData = grid.GetStructureDataFromTheGrid(gridPosition);
-        var strucutresAaroundThisStructure = grid.GetStructuresDataInRange(gridPosition, structureData.structureRange);
+        var strucutresAroundThisStructure = grid.GetStructuresDataInRange(gridPosition, structureData.structureRange);
 
-        structureData.PrepareStructure(strucutresAaroundThisStructure);
+        structureData.PrepareStructure(strucutresAroundThisStructure);
     }
 
     public static void PrepareZoneStructure(Vector3Int gridPosition, GridStructure grid)
@@ -27,7 +27,7 @@ public static class StructureEconomyManager
                 {
                     SingleFacilitySO facility = (SingleFacilitySO)data;
                     if((facility.facilityType == FacilityType.Power && zoneData.HasPower() == false && zoneData.requirePower)
-                        || (facility.facilityType == FacilityType.Power && zoneData.HasPower() == false && zoneData.requirePower))
+                        || (facility.facilityType == FacilityType.Water && zoneData.HasWater() == false && zoneData.requireWater))
                     {
                         if(grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
                         {
@@ -54,16 +54,16 @@ public static class StructureEconomyManager
     public static void PrepareRoadStructure(Vector3Int gridPosition, GridStructure grid)
     {
         RoadStructureSO roadData = (RoadStructureSO)grid.GetStructureDataFromTheGrid(gridPosition);
-        var strucutresAaroundRoad = grid.GetStructuresDataInRange(gridPosition, roadData.structureRange);
-        roadData.PrepareStructure(strucutresAaroundRoad);
+        var structuresAroundRoad = grid.GetStructuresDataInRange(gridPosition, roadData.structureRange);
+        roadData.PrepareRoad(structuresAroundRoad);
     }
 
     public static void PrepareFacilityStructure(Vector3Int gridPosition, GridStructure grid)
     {
         PrepareNewStructure(gridPosition, grid);
         SingleFacilitySO facilityData = (SingleFacilitySO)grid.GetStructureDataFromTheGrid(gridPosition);
-        var structuresAaroundFacility = grid.GetStructuresDataInRange(gridPosition, facilityData.singleStructureRange);
-        facilityData.AddClient(structuresAaroundFacility);
+        var structuresAroundFacility = grid.GetStructuresDataInRange(gridPosition, facilityData.singleStructureRange);
+        facilityData.AddClient(structuresAroundFacility);
     }
 
     public static IEnumerable<StructureBaseSO> PrepareFacilityRemoval(Vector3Int gridPosition, GridStructure grid)
