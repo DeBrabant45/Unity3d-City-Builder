@@ -18,7 +18,7 @@ MonoBehaviour:
   placementCost: 10
   upkeepCost: 0
   requireRoadAccess: 1
-  requirePower: 1
+  requirePower: 0
   requireWater: 1
   structureRange: 1
   upgradable: 1
