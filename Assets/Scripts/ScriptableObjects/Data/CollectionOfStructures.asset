@@ -15,6 +15,8 @@ MonoBehaviour:
   roadStructure: {fileID: 11400000, guid: 83fb5b9fb38d930458c12f7a5f1cfbd0, type: 2}
   singleStructures:
   - {fileID: 11400000, guid: 02b0394423bfd5b46833a18e4fdbd588, type: 2}
+  - {fileID: 11400000, guid: fb21ccef14f2c854e809704a43378235, type: 2}
   zoneStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
-  - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
+  - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
+  - {fileID: 11400000, guid: 09ecc4d1d9d510a419ed9949bb0e5434, type: 2}

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b6c265081efd354ca70dfce98e7c767, type: 3}
-  m_Name: PowerPlant
+  m_Name: WaterTower
   m_EditorClassIdentifier: 
   income: 50
-  buildingName: Power plant
-  prefab: {fileID: 1874159045682050738, guid: dd1a6dc5c298f884590bc21cbf736ea9, type: 3}
+  buildingName: Water Tower
+  prefab: {fileID: 6261175787222129641, guid: 22c737b1417cb4246bbd8e2cd2e6c6a7, type: 3}
   placementCost: 2000
   upkeepCost: 0
   requireRoadAccess: 1
@@ -24,4 +24,4 @@ MonoBehaviour:
   singleStructureRange: 5
   maxCustomers: 10
   upkeepPerCustomer: 0
-  facilityType: 0
+  facilityType: 1

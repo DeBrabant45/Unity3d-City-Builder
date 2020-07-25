@@ -38,11 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8607061579444849359}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 97e1332091365d94288b130d8ef25400,
-        type: 3}
-      propertyPath: m_Name
-      value: WaterTower
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -97,6 +92,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 97e1332091365d94288b130d8ef25400,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterTower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e1332091365d94288b130d8ef25400, type: 3}

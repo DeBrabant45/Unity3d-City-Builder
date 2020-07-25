@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
+  m_Name: Commercial
+  m_EditorClassIdentifier: 
+  income: 40
+  buildingName: Commercial
+  prefab: {fileID: 4175728992974988726, guid: 8f482776b4ee0bc4f935e72822405008, type: 3}
+  placementCost: 200
+  upkeepCost: 0
+  requireRoadAccess: 1
+  requirePower: 1
+  requireWater: 1
+  structureRange: 1
+  upgradable: 0
+  prefabVariants: []
+  availableUpgrades: []
+  zoneType: 2
+  maxFacilitySearchRange: 5

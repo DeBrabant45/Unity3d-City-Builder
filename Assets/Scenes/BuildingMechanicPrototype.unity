@@ -1646,7 +1646,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 1728667044}
   transparentMaterial: {fileID: 2100000, guid: 19aeccfa875758143b1b8fc7176e8f84, type: 2}
-  worldManager: {fileID: 0}
 --- !u!1 &717796284
 GameObject:
   m_ObjectHideFlags: 0
