@@ -59,11 +59,11 @@ public class ZonePlacementHelper : StructureModificationHelper
             {
                 var gameObjectToReuse = _gameObjectsToReuse.Dequeue();
                 gameObjectToReuse.SetActive(true);
-                structureToAdd = _placementManager.MoveStructureOnTheMap(positionToPlaceStructure, gameObjectToReuse, _structureData.prefab);
+                structureToAdd = _placementManager.MoveStructureOnTheMap(positionToPlaceStructure, gameObjectToReuse, _structureRepository.GetRandomZonePrefab());
             }
             else
             {
-                structureToAdd = _placementManager.CreateGhostStructure(positionToPlaceStructure, _structureData.prefab);
+                structureToAdd = _placementManager.CreateGhostStructure(positionToPlaceStructure, _structureRepository.GetRandomZonePrefab());
             }
 
             _structuresToBeModified.Add(positionToPlaceStructure, structureToAdd);

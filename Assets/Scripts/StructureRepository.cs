@@ -8,6 +8,14 @@ public class StructureRepository : MonoBehaviour
 {
     public CollectionSO modelDataCollection;
 
+    public GameObject GetRandomZonePrefab()
+    {
+        var zones = modelDataCollection.zoneStructures;
+        var count = zones.Select(zone => zone.prefabVariants).Count();
+        var prefabRange = UnityEngine.Random.Range(0, count);
+        return zones.Select(zone => zone.prefabVariants[prefabRange]).FirstOrDefault();
+    }
+
     public List<string> GetZoneNames()
     {
         return modelDataCollection.zoneStructures.Select(zone => zone.buildingName).ToList();
