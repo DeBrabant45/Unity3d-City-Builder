@@ -59,15 +59,35 @@ public class ZonePlacementHelper : StructureModificationHelper
             {
                 var gameObjectToReuse = _gameObjectsToReuse.Dequeue();
                 gameObjectToReuse.SetActive(true);
-                structureToAdd = _placementManager.MoveStructureOnTheMap(positionToPlaceStructure, gameObjectToReuse, _structureRepository.GetRandomZonePrefab());
-            }
+                structureToAdd = _placementManager.MoveStructureOnTheMap(positionToPlaceStructure, gameObjectToReuse, SetZonePrefab());
+            }      
             else
             {
-                structureToAdd = _placementManager.CreateGhostStructure(positionToPlaceStructure, _structureRepository.GetRandomZonePrefab());
+                structureToAdd = _placementManager.CreateGhostStructure(positionToPlaceStructure, SetZonePrefab());
             }
 
             _structuresToBeModified.Add(positionToPlaceStructure, structureToAdd);
         }
+    }
+
+    private GameObject SetZonePrefab()
+    {
+        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residentaial)
+        {
+            return SetRandomResidentaialPrefab();
+        }
+        else
+        {
+            return _structureData.prefab;
+        }
+    }
+
+    private GameObject SetRandomResidentaialPrefab()
+    {
+        var zones = _structureRepository.modelDataCollection.zoneStructures;
+        var zoneStructurePrefabVariantsCount = zones.Select(zone => zone.prefabVariants).Count();
+        var zoneStructurePrefabVariantsRandomRange = UnityEngine.Random.Range(0, zoneStructurePrefabVariantsCount);
+        return zones.Select(zone => zone.prefabVariants[zoneStructurePrefabVariantsRandomRange]).FirstOrDefault();
     }
 
     private HashSet<Vector3Int> CalculateZoneCost(HashSet<Vector3Int> newPositionsSet)
