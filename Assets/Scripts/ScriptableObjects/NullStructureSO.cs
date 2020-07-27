@@ -13,6 +13,7 @@ public class NullStructureSO : StructureBaseSO
         requireRoadAccess = false;
         requirePower = false;
         requireWater = false;
+        upgradable = false;
         income = 0;
     }
 }

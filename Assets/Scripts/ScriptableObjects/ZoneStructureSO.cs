@@ -6,7 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New zone structure", menuName = "CityBuilder/StructureData/ZoneStructure")]
 public class ZoneStructureSO : StructureBaseSO
 {
-    public bool upgradable;
     public GameObject[] prefabVariants;
     public UpgradeType[] availableUpgrades;
     public ZoneType zoneType;

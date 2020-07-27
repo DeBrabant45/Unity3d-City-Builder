@@ -12,4 +12,5 @@ public interface IPlacementManager
     void SetBuildingForRemoval(GameObject structureToRemove);
     GameObject PlaceStructureOnTheMap(Vector3 gridPosition, GameObject buildingPrefab, RotationValue rotationValue);
     GameObject MoveStructureOnTheMap(Vector3Int positionToPlaceStructure, GameObject gameObjectToReuse, GameObject prefab);
+    void SetBuildingForUpgrade(GameObject structure);
 }

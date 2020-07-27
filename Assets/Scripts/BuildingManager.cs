@@ -50,6 +50,11 @@ public class BuildingManager
         _structureModificationHelper.PrepareStructureForModification(inputPosition,"", StructureType.None);
     }
 
+    public void PrepareStructureForUpgradeAt(Vector3 inputPosition)
+    {
+        _structureModificationHelper.PrepareStructureForModification(inputPosition,"", StructureType.None);
+    }
+
     public GameObject CheckForStructureInGrid(Vector3 inputPosition)
     {
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);

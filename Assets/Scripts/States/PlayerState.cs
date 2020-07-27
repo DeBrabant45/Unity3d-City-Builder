@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -80,5 +81,11 @@ public abstract class PlayerState
     {
         this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+    }
+
+    public void OnUpgradeStructure()
+    {
+        this._buildingManager.CancelModification();
+        this._gameManager.TransitionToState(this._gameManager.upgradeState, null);
     }
 }

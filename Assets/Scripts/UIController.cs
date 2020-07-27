@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
 
     private Action _onCancelActionHandler;
     private Action _onRemoveActionHandler;
+    private Action _onUpgradeActionHandler;
     private Action _onConfirmActionHandler;
 
     public StructureRepository structureRepository;
@@ -24,6 +25,7 @@ public class UIController : MonoBehaviour
     public GameObject buildingMenuPanel;
     public Button openBuildingMenuBtn;
     public Button removeBtn;
+    public Button upgradeBtn;
 
     public GameObject zonesPanel;
     public GameObject facilitiesPanel;
@@ -47,7 +49,16 @@ public class UIController : MonoBehaviour
         buildingMenuPanel.SetActive(false);
         openBuildingMenuBtn.onClick.AddListener(OnOpenBuildMenu);
         removeBtn.onClick.AddListener(OnRemovalHandler);
+        upgradeBtn.onClick.AddListener(OnUpgradeHandler);
         closeBuildMenuBtn.onClick.AddListener(OnCloseMenuHandler);
+    }
+
+    private void OnUpgradeHandler()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        cancelActionPanel.SetActive(true);
+        _onUpgradeActionHandler?.Invoke();
+        OnCloseMenuHandler();
     }
 
     public void HideStructureInfo()
@@ -232,5 +243,15 @@ public class UIController : MonoBehaviour
     public void RemoveListenerOnRemoveActionEvent(Action listener)
     {
         _onRemoveActionHandler -= listener;
+    }
+
+    public void AddListenerOnUpgradeActionEvent(Action listener)
+    {
+        _onUpgradeActionHandler += listener;
+    }
+
+    public void RemoveListenerOnUpgradeActionEvent(Action listener)
+    {
+        _onUpgradeActionHandler -= listener;
     }
 }

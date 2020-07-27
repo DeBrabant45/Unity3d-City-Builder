@@ -128,4 +128,9 @@ public class PlacementManager : MonoBehaviour, IPlacementManager
         return gameObjectToReuse;
     }
 
+    public void SetBuildingForUpgrade(GameObject structureToUpgrade)
+    {
+        Color colorToSet = Color.blue;
+        ModifyStructurePrefablook(structureToUpgrade, colorToSet);
+    }
 }

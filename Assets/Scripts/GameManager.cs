@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public PlayerRemoveBuildingState removalState;
     public PlayerBuildingRoadState buildingRoadState;
     public PlayerBuildingZoneState buildingZoneState;
+    public PlayerUpgradeBuildingState upgradeState;
 
     public LayerMask inputMask;
 
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         selectionState = new PlayerSelectionState(this, _buildingManager);
         removalState = new PlayerRemoveBuildingState(this, _buildingManager);
+        upgradeState = new PlayerUpgradeBuildingState(this, _buildingManager);
         buildingSingleStructureState = new PlayerBuildingSingleStructureState(this, _buildingManager);
         buildingRoadState = new PlayerBuildingRoadState(this, _buildingManager);
         buildingZoneState = new PlayerBuildingZoneState(this, _buildingManager);
@@ -53,10 +55,10 @@ public class GameManager : MonoBehaviour
         //Any interface assignment needs to called before the buildingmanager is assigned or
         //you will get an object refernce not set to an instance of an object
         _placementManager = placementManagerGameObject.GetComponent<IPlacementManager>();
-        _placementManager.PreparePlacementManager(worldManager);
         _resourceManager = resourceManagerGameObject.GetComponent<IResourceManager>();
         //
         worldManager.PrepareWorld(_cellSize, width, length);
+        _placementManager.PreparePlacementManager(worldManager);
         _buildingManager = new BuildingManager(worldManager.Grid, _placementManager, structureRepository, _resourceManager);
         _resourceManager.PrepareResourceManager(_buildingManager);
         PrepareStates();
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
         uIController.AddListenerOnRemoveActionEvent(() => state.OnRemovalStructure());
         uIController.AddListenerOnCancelActionEvent(() => state.OnCancel());
         uIController.AddListenerOnConfirmActionEvent(() => state.OnConfirmAction());
+        uIController.AddListenerOnUpgradeActionEvent(() => state.OnUpgradeStructure());
     }
 
     public void TransitionToState(PlayerState newState, string model)

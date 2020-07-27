@@ -22,7 +22,8 @@ MonoBehaviour:
   requireWater: 1
   structureRange: 1
   upgradable: 0
-  prefabVariants: []
+  prefabVariants:
+  - {fileID: 2407385385989057018, guid: ef20dddf30e01ea4f9aadb84f4ab9f71, type: 3}
   availableUpgrades: []
   zoneType: 2
   maxFacilitySearchRange: 5
