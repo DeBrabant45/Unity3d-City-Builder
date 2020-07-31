@@ -20,9 +20,13 @@ MonoBehaviour:
   requireRoadAccess: 1
   requirePower: 1
   requireWater: 1
+  upgradable: 1
   structureRange: 1
-  upgradable: 0
   prefabVariants: []
-  availableUpgrades: []
+  upgradePrefabVariants:
+  - {fileID: -927199367670048503, guid: c17bab825ecaf2149be6b9370f3b0b10, type: 3}
+  upgradedHappinessThreshold: 0
+  upgradedIncome: 0
+  upgradedUpkeep: 0
   zoneType: 1
   maxFacilitySearchRange: 5

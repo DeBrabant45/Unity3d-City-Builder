@@ -117,8 +117,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
         {
             if(_grid.GetStructureDataFromTheGrid(gridPosition).buildingName == structure.buildingName)
             {
-                //buildingPrefab = structure.availableUpgrades.Select(zone => zone.prefabVariants[0]).FirstOrDefault();
-                buildingPrefab = structure.prefabVariants[0];
+                buildingPrefab = structure.upgradePrefabVariants[0];
             }
         }
 
