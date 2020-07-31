@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerUpgradeBuildingState : PlayerState
 {
+    private string _structureName;
+
     public PlayerUpgradeBuildingState(GameManager gameManager, BuildingManager buildingManager) 
         : base(gameManager, buildingManager)
     {
@@ -15,8 +17,9 @@ public class PlayerUpgradeBuildingState : PlayerState
         this._buildingManager.PrepareStructureForUpgradeAt(position);
     }
 
-    public override void EnterState(string model)
+    public override void EnterState(string structureName)
     {
         this._buildingManager.PrepareBuildingManager(this.GetType());
+        this._structureName = structureName;
     }
 }

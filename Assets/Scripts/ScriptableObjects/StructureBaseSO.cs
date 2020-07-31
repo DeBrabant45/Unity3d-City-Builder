@@ -19,7 +19,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireRoadAccess;
     public bool requirePower;
     public bool requireWater;
-    public bool upgradable;
+    public bool upgradable = false;
     public int structureRange = 1;
 
     public SingleFacilitySO PowerProvider { get => _powerProvider; }

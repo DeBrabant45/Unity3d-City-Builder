@@ -17,7 +17,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
     public override void CancelModifications()
     {
         base.CancelModifications();
-        RemoveOldStructuresFromUpgrade();
+        SetOldStructuresBackToActive();
         _structuresToBeModified.Clear();
     }
 
@@ -29,18 +29,10 @@ public class StructureUpgradeHelper : StructureModificationHelper
             PrepareStructureForUpgrade(gridPosition);
         }
 
-        if(_oldStructuresBeforeUpgrade != null)
-        {
-            foreach (var item in _oldStructuresBeforeUpgrade.Values)
-            {
-                item.SetActive(true);
-                _placementManager.DestroySingleStructure(item);
-            }
-        }
-
+        DestroyOldStructuresForUpgrade();
         _structuresToBeModified.Clear();
-        _oldStructuresBeforeUpgrade.Clear();
     }
+
 
     private void PrepareStructureForUpgrade(Vector3Int gridPosition)
     {
@@ -59,9 +51,8 @@ public class StructureUpgradeHelper : StructureModificationHelper
     public override void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
         base.PrepareStructureForModification(inputPosition, structureName, structureType);
-        GameObject buildingPrefab = _structureRepository.modelDataCollection.zoneStructures.Select(zone => zone.prefabVariants[0]).FirstOrDefault();
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
-        if (_grid.IsCellTaken(gridPosition) == true)
+        if (_grid.IsCellTaken(gridPosition) == true && _grid.GetStructureDataFromTheGrid(inputPosition).upgradable == true)
         {
             var structure = _grid.GetStructureFromTheGrid(gridPosition);
             var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
@@ -69,11 +60,11 @@ public class StructureUpgradeHelper : StructureModificationHelper
             {
                 //_resourceManager.AddMoneyAmount(_resourceManager.RemovalPrice);
                 RevokeStructureUpgradePlacementAt(gridPositionInt, structure);
-            }
+            } 
             else if (_resourceManager.CanIBuyIt(_resourceManager.RemovalPrice))
             {
                 AddOldStructureForUpgrade(gridPositionInt, structure);
-                PlaceUpgradedStructureAt(gridPosition, buildingPrefab, gridPositionInt);
+                PlaceUpgradedStructureAt(gridPosition, gridPositionInt);
                 //_resourceManager.SpendMoney(_resourceManager.RemovalPrice);
             }
 
@@ -96,7 +87,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
         _oldStructuresBeforeUpgrade.Add(gridPositionInt, structure);
     }
 
-    private void RemoveOldStructuresFromUpgrade()
+    private void SetOldStructuresBackToActive()
     {
         foreach (var oldStructure in _oldStructuresBeforeUpgrade.Values)
         {
@@ -106,8 +97,31 @@ public class StructureUpgradeHelper : StructureModificationHelper
         _oldStructuresBeforeUpgrade.Clear();
     }
 
-    private void PlaceUpgradedStructureAt(Vector3 gridPosition, GameObject buildingPrefab, Vector3Int gridPositionInt)
+    private void DestroyOldStructuresForUpgrade()
     {
+        if (_oldStructuresBeforeUpgrade != null)
+        {
+            foreach (var item in _oldStructuresBeforeUpgrade.Values)
+            {
+                item.SetActive(true);
+                _placementManager.DestroySingleStructure(item);
+            }
+        }
+        _oldStructuresBeforeUpgrade.Clear();
+    }
+
+    private void PlaceUpgradedStructureAt(Vector3 gridPosition, Vector3Int gridPositionInt)
+    {
+        GameObject buildingPrefab = null;
+        foreach (var structure in _structureRepository.modelDataCollection.zoneStructures)
+        {
+            if(_grid.GetStructureDataFromTheGrid(gridPosition).buildingName == structure.buildingName)
+            {
+                //buildingPrefab = structure.availableUpgrades.Select(zone => zone.prefabVariants[0]).FirstOrDefault();
+                buildingPrefab = structure.prefabVariants[0];
+            }
+        }
+
         _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, buildingPrefab));
     }
 }

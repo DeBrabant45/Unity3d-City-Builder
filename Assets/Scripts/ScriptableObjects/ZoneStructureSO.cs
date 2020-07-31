@@ -7,6 +7,7 @@ using UnityEngine;
 public class ZoneStructureSO : StructureBaseSO
 {
     public GameObject[] prefabVariants;
+    public GameObject[] upgradefab;
     public UpgradeType[] availableUpgrades;
     public ZoneType zoneType;
     public int maxFacilitySearchRange;
