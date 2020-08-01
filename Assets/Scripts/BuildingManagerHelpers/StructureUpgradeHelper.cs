@@ -44,28 +44,29 @@ public class StructureUpgradeHelper : StructureModificationHelper
             {
                 _resourceManager.AddToPopulation(4);
             }
-            //StructureEconomyManager.CheckStructureTypeForRemovalPreparation(dataType, gridPosition, _grid);
+            //StructureEconomyManager.CheckStructureTypeForCreationPreparation(dataType, gridPosition, _grid);
         }
     }
 
     public override void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
-        base.PrepareStructureForModification(inputPosition, structureName, structureType);
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
+
         if (_grid.IsCellTaken(gridPosition) == true && _grid.GetStructureDataFromTheGrid(inputPosition).upgradable == true)
         {
+            _structureData = _grid.GetStructureDataFromTheGrid(gridPosition);
             var structure = _grid.GetStructureFromTheGrid(gridPosition);
             var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
-                //_resourceManager.AddMoneyAmount(_resourceManager.RemovalPrice);
                 RevokeStructureUpgradePlacementAt(gridPositionInt, structure);
+                _resourceManager.AddMoneyAmount(_structureData.upgradePlacementCost);
             } 
-            else if (_resourceManager.CanIBuyIt(_resourceManager.RemovalPrice))
+            else if (_resourceManager.CanIBuyIt(_structureData.upgradePlacementCost))
             {
                 AddOldStructureForUpgrade(gridPositionInt, structure);
                 PlaceUpgradedStructureAt(gridPosition, gridPositionInt);
-                //_resourceManager.SpendMoney(_resourceManager.RemovalPrice);
+                _resourceManager.SpendMoney(_structureData.upgradePlacementCost);
             }
 
         }

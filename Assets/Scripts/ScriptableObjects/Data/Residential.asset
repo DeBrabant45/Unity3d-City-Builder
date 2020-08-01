@@ -15,12 +15,13 @@ MonoBehaviour:
   income: 10
   buildingName: Residential
   prefab: {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}
-  placementCost: 10
+  placementCost: 100
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 1
   requireWater: 1
   upgradable: 1
+  upgradePlacementCost: 250
   structureRange: 1
   prefabVariants:
   - {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}

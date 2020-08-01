@@ -21,6 +21,7 @@ MonoBehaviour:
   requirePower: 1
   requireWater: 1
   upgradable: 1
+  upgradePlacementCost: 500
   structureRange: 1
   prefabVariants:
   - {fileID: 4175728992974988726, guid: 8f482776b4ee0bc4f935e72822405008, type: 3}
