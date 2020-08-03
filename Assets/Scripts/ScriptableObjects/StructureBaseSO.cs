@@ -20,6 +20,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requirePower;
     public bool requireWater;
     public bool upgradable = false;
+    public bool upgradeActive = false;
     public int upgradePlacementCost;
     public int structureRange = 1;
 
@@ -60,6 +61,11 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool HasRoadAccess()
     {
         return _roadProvider != null;
+    }
+
+    public bool HasUpgraded()
+    {
+        return upgradeActive;
     }
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)

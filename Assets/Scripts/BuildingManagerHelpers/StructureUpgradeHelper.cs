@@ -23,13 +23,13 @@ public class StructureUpgradeHelper : StructureModificationHelper
 
     public override void ConfirmModifications()
     {
-        base.ConfirmModifications();
+
         foreach (var gridPosition in _structuresToBeModified.Keys)
         {
             PrepareStructureForUpgrade(gridPosition);
         }
-
         DestroyOldStructuresForUpgrade();
+        base.ConfirmModifications();
         _structuresToBeModified.Clear();
     }
 
@@ -44,7 +44,8 @@ public class StructureUpgradeHelper : StructureModificationHelper
             {
                 _resourceManager.AddToPopulation(4);
             }
-            //StructureEconomyManager.CheckStructureTypeForCreationPreparation(dataType, gridPosition, _grid);
+            data.upgradeActive = true;
+            StructureEconomyManager.CheckStructureTypeForCreationPreparation(dataType, gridPosition, _grid);
         }
     }
 

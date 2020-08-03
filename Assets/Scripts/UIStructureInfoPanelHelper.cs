@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UIStructureInfoPanelHelper : MonoBehaviour
 {
-    public TextMeshProUGUI nameText, incomeText, upkeepText, clientText;
-    public Toggle powerToggle, waterToggle, roadToggle;
+    public TextMeshProUGUI nameText, incomeText, upkeepText, upgradeText, clientText;
+    public Toggle powerToggle, waterToggle, roadToggle, upgradeToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,8 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(powerToggle.gameObject);
         HideElement(waterToggle.gameObject);
         HideElement(roadToggle.gameObject);
+        HideElement(upgradeText.gameObject);
+        HideElement(upgradeToggle.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
         SetText(upkeepText, data.upkeepCost + "");
@@ -70,6 +72,15 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         {
             HideElement(waterToggle.gameObject);
         }
+
+        if(data.upgradable)
+        {
+            SetToggle(upgradeToggle, data.HasUpgraded());
+        }
+        else
+        {
+            HideElement(upgradeToggle.gameObject);
+        }
     }
 
     public void DisplayFacilityStructureInfo(SingleFacilitySO data)
@@ -104,6 +115,16 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         {
             HideElement(waterToggle.gameObject);
         }
+
+        if (data.upgradable)
+        {
+            SetToggle(upgradeToggle, data.HasUpgraded());
+        }
+        else
+        {
+            HideElement(upgradeToggle.gameObject);
+        }
+
         SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
     }
 
