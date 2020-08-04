@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
   m_Name: Agridcultural
   m_EditorClassIdentifier: 
-  income: 125
+  income: 50
   buildingName: Agridcultural
   prefab: {fileID: 4768111254948687981, guid: 9f01b4b35abb83644aca4b178f08b75f, type: 3}
   placementCost: 400
@@ -21,13 +21,14 @@ MonoBehaviour:
   requirePower: 1
   requireWater: 1
   upgradable: 1
+  upgradeActive: 0
   upgradePlacementCost: 800
   structureRange: 1
   prefabVariants: []
   upgradePrefabVariants:
   - {fileID: -927199367670048503, guid: c17bab825ecaf2149be6b9370f3b0b10, type: 3}
   upgradedHappinessThreshold: 0
-  upgradedIncome: 0
+  upgradedIncome: 100
   upgradedUpkeep: 0
   zoneType: 1
   maxFacilitySearchRange: 5

@@ -45,6 +45,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
                 _resourceManager.AddToPopulation(4);
             }
             data.upgradeActive = true;
+            data.SetUpgradedIncome(GetStructureUpgradeIncome(data));
             StructureEconomyManager.CheckStructureTypeForCreationPreparation(dataType, gridPosition, _grid);
         }
     }
@@ -119,10 +120,25 @@ public class StructureUpgradeHelper : StructureModificationHelper
         {
             if(_grid.GetStructureDataFromTheGrid(gridPosition).buildingName == structure.buildingName)
             {
-                buildingPrefab = structure.upgradePrefabVariants[0];
+                buildingPrefab = structure.upgradePrefabVariants[0];                
             }
         }
 
         _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, buildingPrefab));
+    }
+
+    public int GetStructureUpgradeIncome(StructureBaseSO structure)
+    {
+        int upgradeAmountToReturn = 0;
+        
+        foreach (var zone in _structureRepository.modelDataCollection.zoneStructures)
+        {
+            if (structure.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)structure).zoneType == zone.zoneType)
+            {
+                upgradeAmountToReturn = zone.upgradedIncome;
+            }
+        }
+
+        return upgradeAmountToReturn;
     }
 }

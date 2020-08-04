@@ -21,6 +21,7 @@ MonoBehaviour:
   requirePower: 1
   requireWater: 1
   upgradable: 1
+  upgradeActive: 0
   upgradePlacementCost: 500
   structureRange: 1
   prefabVariants:
@@ -28,7 +29,7 @@ MonoBehaviour:
   upgradePrefabVariants:
   - {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07, type: 3}
   upgradedHappinessThreshold: 0
-  upgradedIncome: 0
+  upgradedIncome: 80
   upgradedUpkeep: 0
   zoneType: 2
   maxFacilitySearchRange: 5

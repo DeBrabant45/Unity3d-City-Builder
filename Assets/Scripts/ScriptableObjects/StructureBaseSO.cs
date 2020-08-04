@@ -33,6 +33,15 @@ public abstract class StructureBaseSO : ScriptableObject
         return income;
     }
 
+    public virtual int SetUpgradedIncome(int upgradeIncome)
+    {
+        if(upgradeActive == true)
+        {
+            income = upgradeIncome;
+        }
+        return income;
+    }
+
     public void RemoveWaterFacility()
     {
         _waterProvider = null;
