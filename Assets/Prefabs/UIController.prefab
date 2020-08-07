@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7729659233332718103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7729659233332718105}
+  - component: {fileID: 7729659233332718104}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7729659233332718105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729659233332718103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 98.80005, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7729659233332718104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7729659233332718103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e077d37143f5eee47a7a506c0a29ba22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structureRepository: {fileID: 0}
+  buildResidentialAreaBtn: {fileID: 0}
+  cancelActionBtn: {fileID: 0}
+  confirmActionBtn: {fileID: 0}
+  cancelActionPanel: {fileID: 0}
+  buildingMenuPanel: {fileID: 0}
+  openBuildingMenuBtn: {fileID: 0}
+  removeBtn: {fileID: 0}
+  upgradeBtn: {fileID: 0}
+  zonesPanel: {fileID: 0}
+  facilitiesPanel: {fileID: 0}
+  roadsPanel: {fileID: 0}
+  closeBuildMenuBtn: {fileID: 0}
+  buildButtonPrefab: {fileID: 887964655198250043, guid: e124772d9a861464d9b127a204043749,
+    type: 3}
+  moneyValue: {fileID: 0}
+  populationValue: {fileID: 0}
+  structureInfoPanelHelper: {fileID: 0}
