@@ -27,6 +27,10 @@ public class UIController : MonoBehaviour
     public Button removeBtn;
     public Button upgradeBtn;
 
+    public GameObject helpMenuPanel;
+    public Button openHelpMenuBtn;
+    public Button closeHelpMenuBtn;
+
     public GameObject zonesPanel;
     public GameObject facilitiesPanel;
     public GameObject roadsPanel;
@@ -51,6 +55,22 @@ public class UIController : MonoBehaviour
         removeBtn.onClick.AddListener(OnRemovalHandler);
         upgradeBtn.onClick.AddListener(OnUpgradeHandler);
         closeBuildMenuBtn.onClick.AddListener(OnCloseMenuHandler);
+
+        helpMenuPanel.SetActive(false);
+        openHelpMenuBtn.onClick.AddListener(OnOpenHelpMenu);
+        closeHelpMenuBtn.onClick.AddListener(OnCloseHelpMenu);
+    }
+
+    private void OnCloseHelpMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        helpMenuPanel.SetActive(false);
+    }
+
+    private void OnOpenHelpMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        helpMenuPanel.SetActive(true);
     }
 
     private void OnUpgradeHandler()

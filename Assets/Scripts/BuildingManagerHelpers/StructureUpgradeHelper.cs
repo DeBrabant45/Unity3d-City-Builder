@@ -32,18 +32,19 @@ public class StructureUpgradeHelper : StructureModificationHelper
     private void PlaceUpgradedStructuresOnTheMap()
     {
         _placementManager.PlaceStructuresOnTheMap(_structuresToBeModified.Values);
-        Type structureType = _structureData.GetType();
+        Type structureType;
         foreach (var keyValuePair in _structuresToBeModified)
         {
             PrepareStructureForUpgrade(keyValuePair.Key);
             foreach (var structure in _newStructureData)
             {
+                structureType = structure.Value.GetType();
                 if (keyValuePair.Key == structure.Key)
                 {
                     _grid.PlaceStructureOnTheGrid(keyValuePair.Value, keyValuePair.Key, GameObject.Instantiate(structure.Value));
+                    StructureEconomyManager.CheckStructureTypeForCreationPreparation(structureType, keyValuePair.Key, _grid);
                 }
             }
-            StructureEconomyManager.CheckStructureTypeForCreationPreparation(structureType, keyValuePair.Key, _grid);
         }
     }
 
