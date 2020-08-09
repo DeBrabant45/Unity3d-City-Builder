@@ -41,6 +41,11 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI moneyValue;
     public TextMeshProUGUI populationValue;
 
+    public GameObject gameOverPanel;
+    public Button replayGameBtn;
+
+    public GameObject fadePanel;
+
     public UIStructureInfoPanelHelper structureInfoPanelHelper;
     
     // Start is called before the first frame update
@@ -59,6 +64,18 @@ public class UIController : MonoBehaviour
         helpMenuPanel.SetActive(false);
         openHelpMenuBtn.onClick.AddListener(OnOpenHelpMenu);
         closeHelpMenuBtn.onClick.AddListener(OnCloseHelpMenu);
+
+        gameOverPanel.SetActive(false);
+        replayGameBtn.onClick.AddListener(OnReplayGame);
+
+        fadePanel.SetActive(true);
+    }
+
+    private void OnReplayGame()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        LevelManager levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        levelManager.LoadLevel(1);
     }
 
     private void OnCloseHelpMenu()

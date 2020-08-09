@@ -56,7 +56,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
 
     private void ReloadGame()
     {
-        Debug.Log("Game Over");
+        uIController.gameOverPanel.SetActive(true);
     }
 
     public bool CanIBuyIt(int amount)

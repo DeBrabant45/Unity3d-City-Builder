@@ -374,6 +374,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1465468508723189258, guid: 61800f359a0873b4d8628d5b7e96e80d,
+        type: 3}
+      propertyPath: fadeInTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465468509711521249, guid: 61800f359a0873b4d8628d5b7e96e80d,
+        type: 3}
+      propertyPath: m_Name
+      value: FadePanelParent
+      objectReference: {fileID: 0}
     - target: {fileID: 4816044031590550737, guid: 61800f359a0873b4d8628d5b7e96e80d,
         type: 3}
       propertyPath: fadeInTime
