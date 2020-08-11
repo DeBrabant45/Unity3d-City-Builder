@@ -20,6 +20,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
         base.CancelModifications();
         SetOldStructuresBackToActive();
         _structuresToBeModified.Clear();
+        _newStructureData.Clear();
     }
 
     public override void ConfirmModifications()
@@ -27,6 +28,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
         DestroyOldStructuresForUpgrade();
         PlaceUpgradedStructuresOnTheMap();
         _structuresToBeModified.Clear();
+        _newStructureData.Clear();
     }
 
     private void PlaceUpgradedStructuresOnTheMap()
