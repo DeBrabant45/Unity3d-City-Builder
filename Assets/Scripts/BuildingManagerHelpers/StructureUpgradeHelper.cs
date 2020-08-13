@@ -77,13 +77,13 @@ public class StructureUpgradeHelper : StructureModificationHelper
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
                 RevokeStructureUpgradePlacementAt(gridPositionInt, structure);
-                _resourceManager.AddMoneyAmount(structureBase.upgradePlacementCost);
+                _resourceManager.ReduceShoppingCartAmount(structureBase.upgradePlacementCost);
             } 
-            else if (_resourceManager.CanIBuyIt(structureBase.upgradePlacementCost))
+            else
             {
                 AddOldStructureForUpgrade(gridPositionInt, structure);
                 PlaceUpgradedStructureAt(gridPosition, gridPositionInt, structureBase);
-                _resourceManager.SpendMoney(structureBase.upgradePlacementCost);
+                _resourceManager.AddToShoppingCartAmount(structureBase.upgradePlacementCost);
             }
 
         }

@@ -7,8 +7,8 @@ public class PlayerSelectionState : PlayerState
 {
     private Vector3? _previousPosition;
 
-    public PlayerSelectionState(GameManager gameManager, BuildingManager buildingManager) 
-        :base(gameManager, buildingManager)
+    public PlayerSelectionState(GameManager gameManager, BuildingManager buildingManager, IResourceManager resourceManager) 
+        :base(gameManager, buildingManager, resourceManager)
     {
 
     }

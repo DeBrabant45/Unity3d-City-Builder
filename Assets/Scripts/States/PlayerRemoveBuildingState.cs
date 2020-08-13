@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerRemoveBuildingState : PlayerState
 {
-    public PlayerRemoveBuildingState(GameManager gameManager, BuildingManager buildingManager)
-        :base(gameManager, buildingManager)
+    public PlayerRemoveBuildingState(GameManager gameManager, BuildingManager buildingManager, IResourceManager resourceManager)
+        :base(gameManager, buildingManager, resourceManager)
     {
 
     }
@@ -22,8 +22,16 @@ public class PlayerRemoveBuildingState : PlayerState
 
     public override void OnConfirmAction()
     {
-        AudioManager.Instance.PlayRemoveSound();
-        this._buildingManager.ConfirmModification();
-        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+        if (_resourceManager.CanIBuyIt(_resourceManager.ShoppingCartAmount()))
+        {
+            AudioManager.Instance.PlayRemoveSound();
+            this._buildingManager.ConfirmModification();
+            this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+        }
+        else
+        {
+            AudioManager.Instance.PlayInsufficientFundsSound();
+            this._gameManager.uIController.PrepareUIForBuilding();
+        }
     }
 }

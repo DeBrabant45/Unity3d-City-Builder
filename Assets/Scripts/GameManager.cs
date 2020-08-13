@@ -40,12 +40,12 @@ public class GameManager : MonoBehaviour
 
     private void PrepareStates()
     {
-        selectionState = new PlayerSelectionState(this, _buildingManager);
-        removalState = new PlayerRemoveBuildingState(this, _buildingManager);
-        upgradeState = new PlayerUpgradeBuildingState(this, _buildingManager);
-        buildingSingleStructureState = new PlayerBuildingSingleStructureState(this, _buildingManager);
-        buildingRoadState = new PlayerBuildingRoadState(this, _buildingManager);
-        buildingZoneState = new PlayerBuildingZoneState(this, _buildingManager);
+        selectionState = new PlayerSelectionState(this, _buildingManager, _resourceManager);
+        removalState = new PlayerRemoveBuildingState(this, _buildingManager, _resourceManager);
+        upgradeState = new PlayerUpgradeBuildingState(this, _buildingManager, _resourceManager);
+        buildingSingleStructureState = new PlayerBuildingSingleStructureState(this, _buildingManager, _resourceManager);
+        buildingRoadState = new PlayerBuildingRoadState(this, _buildingManager, _resourceManager);
+        buildingZoneState = new PlayerBuildingZoneState(this, _buildingManager, _resourceManager);
         state = selectionState;
     }
 

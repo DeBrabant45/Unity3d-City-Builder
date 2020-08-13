@@ -92,28 +92,21 @@ public class ZonePlacementHelper : StructureModificationHelper
 
     private HashSet<Vector3Int> CalculateZoneCost(HashSet<Vector3Int> newPositionsSet)
     {
-        _resourceManager.AddMoneyAmount(_structuresOldQty * _structureData.placementCost);
-        int numberOfZonesToPlace = _resourceManager.HowManyStructureCanIPlace(_structureData.placementCost, newPositionsSet.Count);
-        if (numberOfZonesToPlace < newPositionsSet.Count)
-        {
-            newPositionsSet = new HashSet<Vector3Int>(newPositionsSet.Take(numberOfZonesToPlace).ToList());
-        }
+        _resourceManager.ReduceShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
         _structuresOldQty = newPositionsSet.Count;
-        _resourceManager.SpendMoney(_structuresOldQty * _structureData.placementCost);
+        _resourceManager.AddToShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
         return newPositionsSet;
     }
 
     public override void CancelModifications()
     {
-        _resourceManager.AddMoneyAmount(_structuresOldQty * _structureData.placementCost);
-        _resourceManager.ReduceCartAmount(_structuresToBeModified.Count * _structureData.placementCost);
         base.CancelModifications();
         ResetZonePlacementHelper();
     }
 
     public override void ConfirmModifications()
     {
-        if(_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residentaial)
+        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residentaial)
         {
             _resourceManager.AddToPopulation(_structuresToBeModified.Count());
         }

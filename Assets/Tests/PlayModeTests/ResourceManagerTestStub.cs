@@ -15,7 +15,7 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
-    public void AddToCartAmount(int amount)
+    public void AddToShoppingCartAmount(int amount)
     {
 
     }
@@ -35,9 +35,14 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
         return true;
     }
 
-    public int HowManyStructureCanIPlace(int placementCost, int count)
+    public int ShoppingCartAmount()
     {
         return 0;
+    }
+
+    public void ClearShoppingCartAmount()
+    {
+
     }
 
     public void PrepareResourceManager(BuildingManager buildingManager)
@@ -45,7 +50,7 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
-    public void ReduceCartAmount(int amount)
+    public void ReduceShoppingCartAmount(int amount)
     {
 
     }
@@ -55,8 +60,8 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
-    public bool SpendMoney(int amount)
+    public void SpendMoney(int amount)
     {
-        return true;
+
     }
 }

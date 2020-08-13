@@ -7,11 +7,12 @@
     void AddMoneyAmount(int amount);
     void CalculateTownIncome();
     bool CanIBuyIt(int amount);
-    bool SpendMoney(int amount);
-    int HowManyStructureCanIPlace(int placementCost, int count);
+    void SpendMoney(int amount);
     void PrepareResourceManager(BuildingManager buildingManager);
     void AddToPopulation(int amount);
     void ReducePopulation(int amount);
-    void AddToCartAmount(int amount);
-    void ReduceCartAmount(int amount);
+    void AddToShoppingCartAmount(int amount);
+    void ReduceShoppingCartAmount(int amount);
+    int ShoppingCartAmount();
+    void ClearShoppingCartAmount();
 }

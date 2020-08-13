@@ -20,13 +20,13 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
         {
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
-                _resourceManager.AddMoneyAmount(_structureData.placementCost);
                 RevokeStructurePlacementAt(gridPositionInt);
+                _resourceManager.ReduceShoppingCartAmount(_structureData.placementCost);
             }
-            else if(_resourceManager.CanIBuyIt(_structureData.placementCost))
+            else
             {
-                _resourceManager.SpendMoney(_structureData.placementCost);
                 PlaceNewStructureAt(gridPosition, buildingPrefab, gridPositionInt);
+                _resourceManager.AddToShoppingCartAmount(_structureData.placementCost);
             }
 
         }
@@ -46,7 +46,6 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
 
     public override void CancelModifications()
     {
-        _resourceManager.AddMoneyAmount(_structuresToBeModified.Count * _structureData.placementCost);
         base.CancelModifications();
     }
 }

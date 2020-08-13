@@ -6,8 +6,8 @@ public class PlayerBuildingZoneState : PlayerState
 {
     private string _structureName;
 
-    public PlayerBuildingZoneState(GameManager gameManager, BuildingManager buildingManager)
-        :base(gameManager, buildingManager)
+    public PlayerBuildingZoneState(GameManager gameManager, BuildingManager buildingManager, IResourceManager resourceManager)
+        :base(gameManager, buildingManager, resourceManager)
     {
 
     }

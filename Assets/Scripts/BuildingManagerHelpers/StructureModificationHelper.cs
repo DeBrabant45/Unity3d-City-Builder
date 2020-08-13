@@ -46,6 +46,7 @@ public abstract class StructureModificationHelper
     public virtual void CancelModifications()
     {
         _placementManager.RemoveStructures(_structuresToBeModified.Values);
+        _resourceManager.ClearShoppingCartAmount();
         ResetHelpersData();
     }
 

@@ -6,8 +6,8 @@ public class PlayerBuildingRoadState : PlayerState
 {
     private string _structureName;
 
-    public PlayerBuildingRoadState(GameManager gameManager, BuildingManager buildingManager)
-        :base(gameManager, buildingManager)
+    public PlayerBuildingRoadState(GameManager gameManager, BuildingManager buildingManager, IResourceManager resourceManager)
+        :base(gameManager, buildingManager, resourceManager)
     {
 
     }

@@ -39,8 +39,11 @@ public class UIController : MonoBehaviour
     public GameObject buildButtonPrefab;
 
     public TextMeshProUGUI moneyValue;
-    public TextMeshProUGUI cartValue;
+    public TextMeshProUGUI shoppingCartValue;
     public TextMeshProUGUI populationValue;
+
+    public GameObject insufficientFundsPanel;
+    public Button closeInsufficientFundsBtn;
 
     public GameObject gameOverPanel;
     public Button replayGameBtn;
@@ -66,10 +69,19 @@ public class UIController : MonoBehaviour
         openHelpMenuBtn.onClick.AddListener(OnOpenHelpMenu);
         closeHelpMenuBtn.onClick.AddListener(OnCloseHelpMenu);
 
+        insufficientFundsPanel.SetActive(false);
+        closeInsufficientFundsBtn.onClick.AddListener(OnCloseInsufficientFundsAlert);
+
         gameOverPanel.SetActive(false);
         replayGameBtn.onClick.AddListener(OnReplayGame);
 
         fadePanel.SetActive(true);
+    }
+
+    private void OnCloseInsufficientFundsAlert()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        insufficientFundsPanel.SetActive(false);
     }
 
     private void OnReplayGame()
@@ -155,9 +167,9 @@ public class UIController : MonoBehaviour
         moneyValue.text = moneyAmount + "";
     }
 
-    public void SetCartValue(int cartAmount)
+    public void SetShoppingCartValue(int cartAmount)
     {
-        cartValue.text = cartAmount + "";
+        shoppingCartValue.text = cartAmount + "";
     }
 
     public void DisplayBasicStructureInfo(StructureBaseSO data)
@@ -196,7 +208,7 @@ public class UIController : MonoBehaviour
         OnCloseMenuHandler();
     }
 
-    private void PrepareUIForBuilding()
+    public void PrepareUIForBuilding()
     {
         cancelActionPanel.SetActive(true);
     }

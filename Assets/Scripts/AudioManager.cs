@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     private static AudioManager _instance;
 
     public static AudioManager Instance { get => _instance; }
-    public AudioClip buttonClickSound, placeBuildingSound, removebuildingSound;
+    public AudioClip buttonClickSound, placeBuildingSound, removebuildingSound, insufficientFundSound;
     public AudioSource effectAudioSource;
 
     private void Awake()
@@ -30,17 +30,24 @@ public class AudioManager : MonoBehaviour
         effectAudioSource.Play();
     }
 
-    internal void PlayRemoveSound()
+    public void PlayRemoveSound()
     {
         effectAudioSource.Stop();
         effectAudioSource.clip = removebuildingSound;
         effectAudioSource.Play();
     }
 
-    internal void PlayPlaceBuildingSound()
+    public void PlayPlaceBuildingSound()
     {
         effectAudioSource.Stop();
         effectAudioSource.clip = placeBuildingSound;
+        effectAudioSource.Play();
+    }
+
+    public void PlayInsufficientFundsSound()
+    {
+        effectAudioSource.Stop();
+        effectAudioSource.clip = insufficientFundSound;
         effectAudioSource.Play();
     }
 }

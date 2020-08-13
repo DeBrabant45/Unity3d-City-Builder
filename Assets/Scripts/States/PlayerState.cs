@@ -8,19 +8,29 @@ public abstract class PlayerState
     protected GameManager _gameManager;
     protected CameraMovement _cameraMovement;
     protected BuildingManager _buildingManager;
+    protected IResourceManager _resourceManager;
 
-    public PlayerState(GameManager gameManager, BuildingManager buildingManager)
+    public PlayerState(GameManager gameManager, BuildingManager buildingManager, IResourceManager resourceManager)
     {
         this._gameManager = gameManager;
         this._buildingManager = buildingManager;
+        this._resourceManager = resourceManager;
         this._cameraMovement = _gameManager.cameraMovement;
     }
 
     public virtual void OnConfirmAction()
     {
-        AudioManager.Instance.PlayPlaceBuildingSound();
-        this._buildingManager.ConfirmModification();
-        this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+        if(_resourceManager.CanIBuyIt(_resourceManager.ShoppingCartAmount()))
+        {
+            AudioManager.Instance.PlayPlaceBuildingSound();
+            this._buildingManager.ConfirmModification();
+            this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+        }
+        else
+        {
+            AudioManager.Instance.PlayInsufficientFundsSound();
+            this._gameManager.uIController.PrepareUIForBuilding();
+        }
     }
 
     public virtual void OnInputPointerDown(Vector3 position)

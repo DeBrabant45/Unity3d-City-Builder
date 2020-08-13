@@ -6,8 +6,8 @@ public class PlayerUpgradeBuildingState : PlayerState
 {
     private string _structureName;
 
-    public PlayerUpgradeBuildingState(GameManager gameManager, BuildingManager buildingManager) 
-        : base(gameManager, buildingManager)
+    public PlayerUpgradeBuildingState(GameManager gameManager, BuildingManager buildingManager, IResourceManager resourceManager) 
+        : base(gameManager, buildingManager, resourceManager)
     {
 
     }

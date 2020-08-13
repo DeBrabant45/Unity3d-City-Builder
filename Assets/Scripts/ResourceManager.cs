@@ -14,7 +14,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     private MoneyHelper _moneyHelper;
     private BuildingManager _buildingManager;
     private PopulationHelper _populationHelper;
-    private CartHelper _cartHelper;
+    private ShoppingCartHelper _shoppingCartHelper;
 
     public UIController uIController;
     public int StartMoneyAmount { get => _startMoneyAmount; }
@@ -27,7 +27,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         _moneyHelper = new MoneyHelper(_startMoneyAmount);
         _populationHelper = new PopulationHelper();
-        _cartHelper = new CartHelper();
+        _shoppingCartHelper = new ShoppingCartHelper();
         UpdateUI();
     }
 
@@ -37,23 +37,17 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         InvokeRepeating("CalculateTownIncome", 0, MoneyCalculationInterval);
     }
 
-    public bool SpendMoney(int amount)
+    public void SpendMoney(int amount)
     {
-        if (CanIBuyIt(amount))
+        try
         {
-            try
-            {
-                _moneyHelper.ReduceMoneyAmount(amount);
-                UpdateUI();
-                return true;
-            }
-            catch (MoneyException)
-            {
-                ReloadGame();
-            }
+            _moneyHelper.ReduceMoneyAmount(amount);
+            UpdateUI();
         }
-
-        return false;
+        catch (MoneyException)
+        {
+            ReloadGame();
+        }
     }
 
     private void ReloadGame()
@@ -61,14 +55,24 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         uIController.gameOverPanel.SetActive(true);
     }
 
+    private void InsufficientFundsAlertBox()
+    {
+        uIController.insufficientFundsPanel.SetActive(true);
+    }
+
     public bool CanIBuyIt(int amount)
     {
         if (_moneyHelper.MoneyAmount >= amount)
         {
+            SpendMoney(amount);
+            ClearShoppingCartAmount();
             return true;
         }
-
-        return false;
+        else
+        {
+            InsufficientFundsAlertBox();
+            return false;
+        }
     }
 
     public void CalculateTownIncome()
@@ -100,13 +104,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         uIController.SetMoneyValue(_moneyHelper.MoneyAmount);
         uIController.SetPopulationValue(_populationHelper.Population);
-        uIController.SetCartValue(_cartHelper.CartAmount);
-    }
-
-    public int HowManyStructureCanIPlace(int placementCost, int numberOfStructures)
-    {
-        int amount = (int)(_moneyHelper.MoneyAmount / placementCost);
-        return amount > numberOfStructures ? numberOfStructures : amount;
+        uIController.SetShoppingCartValue(_shoppingCartHelper.ShoppingCartAmount);
     }
 
     public void AddToPopulation(int amount)
@@ -121,15 +119,26 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         UpdateUI();
     }
 
-    public void AddToCartAmount(int amount)
+    public void AddToShoppingCartAmount(int amount)
     {
-        _cartHelper.AddCartAmount(amount);
+        _shoppingCartHelper.AddShoppingCartAmount(amount);
         UpdateUI();
     }
 
-    public void ReduceCartAmount(int amount)
+    public void ReduceShoppingCartAmount(int amount)
     {
-        _cartHelper.ReduceCartAmount(amount);
+        _shoppingCartHelper.ReduceShoppingCartAmount(amount);
+        UpdateUI();
+    }
+
+    public int ShoppingCartAmount()
+    {
+        return _shoppingCartHelper.ShoppingCartAmount;
+    }
+
+    public void ClearShoppingCartAmount()
+    {
+        _shoppingCartHelper.ClearCartAmount();
         UpdateUI();
     }
 
