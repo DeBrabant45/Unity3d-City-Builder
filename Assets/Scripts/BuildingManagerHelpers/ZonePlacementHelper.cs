@@ -94,7 +94,7 @@ public class ZonePlacementHelper : StructureModificationHelper
     {
         _resourceManager.AddMoneyAmount(_structuresOldQty * _structureData.placementCost);
         int numberOfZonesToPlace = _resourceManager.HowManyStructureCanIPlace(_structureData.placementCost, newPositionsSet.Count);
-        if(numberOfZonesToPlace < newPositionsSet.Count)
+        if (numberOfZonesToPlace < newPositionsSet.Count)
         {
             newPositionsSet = new HashSet<Vector3Int>(newPositionsSet.Take(numberOfZonesToPlace).ToList());
         }
@@ -106,6 +106,7 @@ public class ZonePlacementHelper : StructureModificationHelper
     public override void CancelModifications()
     {
         _resourceManager.AddMoneyAmount(_structuresOldQty * _structureData.placementCost);
+        _resourceManager.ReduceCartAmount(_structuresToBeModified.Count * _structureData.placementCost);
         base.CancelModifications();
         ResetZonePlacementHelper();
     }

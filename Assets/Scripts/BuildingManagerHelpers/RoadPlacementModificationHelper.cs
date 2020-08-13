@@ -24,11 +24,13 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
             {
                 RevokeRoadPlacementAt(gridPositionInt);
                 _resourceManager.AddMoneyAmount(_structureData.placementCost);
+                _resourceManager.ReduceCartAmount(_structureData.placementCost);
             }
             else if(_resourceManager.CanIBuyIt(_structureData.placementCost))
             {
                 PlaceNewRoadAt(roadStructure, gridPosition, gridPositionInt);
                 _resourceManager.SpendMoney(_structureData.placementCost);
+                _resourceManager.AddToCartAmount(_structureData.placementCost);
             }
             AdjustNeighborsRoadStructures(gridPosition);
         }
@@ -90,12 +92,14 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
     public override void CancelModifications()
     {
         _resourceManager.AddMoneyAmount(_structuresToBeModified.Count * _structureData.placementCost);
+        _resourceManager.ReduceCartAmount(_structuresToBeModified.Count * _structureData.placementCost);
         base.CancelModifications();
         _existingRoadStructuresToBeModified.Clear();
     }
 
     public override void ConfirmModifications()
     {
+        _resourceManager.ReduceCartAmount(_structuresToBeModified.Count * _structureData.placementCost);
         RoadManager.ModifyRoadCellsOnTheGrid(_existingRoadStructuresToBeModified, _structureData, _structuresToBeModified, _grid, _placementManager);
         base.ConfirmModifications();
     }

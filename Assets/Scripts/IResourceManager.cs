@@ -12,4 +12,6 @@
     void PrepareResourceManager(BuildingManager buildingManager);
     void AddToPopulation(int amount);
     void ReducePopulation(int amount);
+    void AddToCartAmount(int amount);
+    void ReduceCartAmount(int amount);
 }

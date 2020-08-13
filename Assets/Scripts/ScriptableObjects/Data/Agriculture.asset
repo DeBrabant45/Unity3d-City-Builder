@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Agridcultural
   m_EditorClassIdentifier: 
   income: 50
-  buildingName: Agridcultural
+  buildingName: Agriculture
   prefab: {fileID: 4768111254948687981, guid: 9f01b4b35abb83644aca4b178f08b75f, type: 3}
   placementCost: 400
   upkeepCost: 0

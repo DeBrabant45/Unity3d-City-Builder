@@ -6,7 +6,7 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour, IResourceManager
 {
     [SerializeField]
-    private int _startMoneyAmount = 5000;
+    private int _startMoneyAmount = 2000;
     [SerializeField]
     private int _removalPrice = 20;
     [SerializeField]
@@ -14,6 +14,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     private MoneyHelper _moneyHelper;
     private BuildingManager _buildingManager;
     private PopulationHelper _populationHelper;
+    private CartHelper _cartHelper;
 
     public UIController uIController;
     public int StartMoneyAmount { get => _startMoneyAmount; }
@@ -26,6 +27,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         _moneyHelper = new MoneyHelper(_startMoneyAmount);
         _populationHelper = new PopulationHelper();
+        _cartHelper = new CartHelper();
         UpdateUI();
     }
 
@@ -98,6 +100,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         uIController.SetMoneyValue(_moneyHelper.MoneyAmount);
         uIController.SetPopulationValue(_populationHelper.Population);
+        uIController.SetCartValue(_cartHelper.CartAmount);
     }
 
     public int HowManyStructureCanIPlace(int placementCost, int numberOfStructures)
@@ -117,4 +120,17 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         _populationHelper.ReducePopulation(amount);
         UpdateUI();
     }
+
+    public void AddToCartAmount(int amount)
+    {
+        _cartHelper.AddCartAmount(amount);
+        UpdateUI();
+    }
+
+    public void ReduceCartAmount(int amount)
+    {
+        _cartHelper.ReduceCartAmount(amount);
+        UpdateUI();
+    }
+
 }

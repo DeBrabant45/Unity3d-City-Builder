@@ -39,6 +39,7 @@ public class UIController : MonoBehaviour
     public GameObject buildButtonPrefab;
 
     public TextMeshProUGUI moneyValue;
+    public TextMeshProUGUI cartValue;
     public TextMeshProUGUI populationValue;
 
     public GameObject gameOverPanel;
@@ -152,6 +153,11 @@ public class UIController : MonoBehaviour
     public void SetMoneyValue(int moneyAmount)
     {
         moneyValue.text = moneyAmount + "";
+    }
+
+    public void SetCartValue(int cartAmount)
+    {
+        cartValue.text = cartAmount + "";
     }
 
     public void DisplayBasicStructureInfo(StructureBaseSO data)

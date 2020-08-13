@@ -15,6 +15,11 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
+    public void AddToCartAmount(int amount)
+    {
+
+    }
+
     public void AddToPopulation(int amount)
     {
 
@@ -36,6 +41,11 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
     }
 
     public void PrepareResourceManager(BuildingManager buildingManager)
+    {
+
+    }
+
+    public void ReduceCartAmount(int amount)
     {
 
     }
