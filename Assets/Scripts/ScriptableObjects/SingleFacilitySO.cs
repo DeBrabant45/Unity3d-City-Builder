@@ -80,5 +80,6 @@ public enum FacilityType
 {
     Power,
     Water,
+    Silo,
     None
 }

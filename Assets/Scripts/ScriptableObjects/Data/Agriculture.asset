@@ -26,7 +26,7 @@ MonoBehaviour:
   structureRange: 1
   prefabVariants: []
   upgradePrefabVariants:
-  - {fileID: 8326822946732140218, guid: 27e146938db8c7c4e96b22f8c6e03f2a, type: 3}
+  - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
   upgradedHappinessThreshold: 0
   upgradedIncome: 100
   upgradedUpkeep: 0
