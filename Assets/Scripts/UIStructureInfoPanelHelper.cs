@@ -49,54 +49,11 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         SetText(incomeText, data.GetIncome() + "");
         SetText(upkeepText, data.upkeepCost + "");
         SetText(upgradeAmountText, data.upgradePlacementCost + "");
-        if(data.requirePower)
-        {
-            SetToggle(powerToggle, data.HasPower());
-        }
-        else
-        {
-            HideElement(powerToggle.gameObject);
-        }
-
-        if (data.requireRoadAccess)
-        {
-            SetToggle(roadToggle, data.HasRoadAccess());
-        }
-        else
-        {
-            HideElement(roadToggle.gameObject);
-        }
-
-        if (data.requireWater)
-        {
-            SetToggle(waterToggle, data.HasWater());
-        }
-        else
-        {
-            HideElement(waterToggle.gameObject);
-        }
-
-        if(data.upgradable)
-        {
-            SetToggle(upgradeToggle, data.HasUpgraded());
-            if(data.HasUpgraded() == true)
-            {
-                HideElement(upgradeAmountText.gameObject);
-            }
-        }
-        else
-        {
-            HideElement(upgradeToggle.gameObject);
-        }
-
-        if (data.requireSilo)
-        {
-            SetToggle(siloToggle, data.HasSilo());
-        }
-        else
-        {
-            HideElement(siloToggle.gameObject);
-        }
+        CheckStructureToDisplayPowerToggle(data);
+        CheckStructureToDisplayRoadToggle(data);
+        CheckStructureToDisplayWaterToggle(data);
+        CheckStructureToDisplayUpgradeToggle(data);
+        CheckStructureToDisplaySiloToggle(data);
     }
 
     public void DisplayFacilityStructureInfo(SingleFacilitySO data)
@@ -106,51 +63,11 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         SetText(incomeText, data.GetIncome() + "");
         SetText(upkeepText, data.upkeepCost + "");
         HideElement(upgradeAmountText.gameObject);
-        if(data.requirePower)
-        {
-            SetToggle(powerToggle, data.HasPower());
-        }
-        else
-        {
-            HideElement(powerToggle.gameObject);
-        }
-
-        if (data.requireRoadAccess)
-        {
-            SetToggle(roadToggle, data.HasRoadAccess());
-        }
-        else
-        {
-            HideElement(roadToggle.gameObject);
-        }
-
-        if (data.requireWater)
-        {
-            SetToggle(waterToggle, data.HasWater());
-        }
-        else
-        {
-            HideElement(waterToggle.gameObject);
-        }
-
-        if (data.upgradable)
-        {
-            SetToggle(upgradeToggle, data.HasUpgraded());
-        }
-        else
-        {
-            HideElement(upgradeToggle.gameObject);
-        }
-
-        if (data.requireSilo)
-        {
-            SetToggle(siloToggle, data.HasSilo());
-        }
-        else
-        {
-            HideElement(siloToggle.gameObject);
-        }
-
+        CheckStructureToDisplayPowerToggle(data);
+        CheckStructureToDisplayRoadToggle(data);
+        CheckStructureToDisplayWaterToggle(data);
+        CheckStructureToDisplayUpgradeToggle(data);
+        CheckStructureToDisplaySiloToggle(data);
         SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
     }
 
@@ -174,5 +91,66 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
     {
         ShowElement(element.gameObject);
         element.isOn = value;
+    }
+
+    private void CheckStructureToDisplayPowerToggle(StructureBaseSO structure)
+    {
+        if (structure.requirePower)
+        {
+            SetToggle(powerToggle, structure.HasPower());
+        }
+        else
+        {
+            HideElement(powerToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayRoadToggle(StructureBaseSO structure)
+    {
+        if (structure.requireRoadAccess)
+        {
+            SetToggle(roadToggle, structure.HasRoadAccess());
+        }
+        else
+        {
+            HideElement(roadToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplaySiloToggle(StructureBaseSO structure)
+    {
+        if (structure.requireSilo)
+        {
+            SetToggle(siloToggle, structure.HasSilo());
+        }
+        else
+        {
+            HideElement(siloToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayUpgradeToggle(StructureBaseSO structure)
+    {
+        SetToggle(upgradeToggle, structure.HasUpgraded());
+        if (structure.HasUpgraded() == true)
+        {
+            HideElement(upgradeAmountText.gameObject);
+        }
+        else
+        {
+            HideElement(upgradeToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayWaterToggle(StructureBaseSO structure)
+    {
+        if (structure.requireWater)
+        {
+            SetToggle(waterToggle, structure.HasWater());
+        }
+        else
+        {
+            HideElement(waterToggle.gameObject);
+        }
     }
 }
