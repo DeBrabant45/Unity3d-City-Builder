@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 50
   buildingName: Agriculture
-  prefab: {fileID: 4768111254948687981, guid: 9f01b4b35abb83644aca4b178f08b75f, type: 3}
+  prefab: {fileID: 7468051901424741856, guid: 1a1641d19afd6af4f9e6ea08325f104d, type: 3}
   placementCost: 400
   upkeepCost: 0
   requireRoadAccess: 1
@@ -26,7 +26,7 @@ MonoBehaviour:
   structureRange: 1
   prefabVariants: []
   upgradePrefabVariants:
-  - {fileID: -927199367670048503, guid: c17bab825ecaf2149be6b9370f3b0b10, type: 3}
+  - {fileID: 8326822946732140218, guid: 27e146938db8c7c4e96b22f8c6e03f2a, type: 3}
   upgradedHappinessThreshold: 0
   upgradedIncome: 100
   upgradedUpkeep: 0

@@ -84,7 +84,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         }
         catch (MoneyException)
         {
-
+            UpdateUI();
             ReloadGame();
         }
     }

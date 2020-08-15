@@ -91,6 +91,10 @@ public abstract class PlayerState
     {
         this._buildingManager.CancelModification();
         this._gameManager.TransitionToState(this._gameManager.selectionState, null);
+        if(_gameManager.uIController.insufficientFundsPanel.activeSelf == true)
+        {
+            _gameManager.uIController.insufficientFundsPanel.SetActive(false);
+        }
     }
 
     public void OnUpgradeStructure()
