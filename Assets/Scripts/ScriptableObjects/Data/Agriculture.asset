@@ -20,6 +20,7 @@ MonoBehaviour:
   requireRoadAccess: 1
   requirePower: 1
   requireWater: 1
+  requireSilo: 1
   upgradable: 1
   upgradeActive: 0
   upgradePlacementCost: 800

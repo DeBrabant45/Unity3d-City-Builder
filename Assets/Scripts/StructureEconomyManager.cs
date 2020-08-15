@@ -27,7 +27,8 @@ public static class StructureEconomyManager
                 {
                     SingleFacilitySO facility = (SingleFacilitySO)data;
                     if((facility.facilityType == FacilityType.Power && zoneData.HasPower() == false && zoneData.requirePower)
-                        || (facility.facilityType == FacilityType.Water && zoneData.HasWater() == false && zoneData.requireWater))
+                        || (facility.facilityType == FacilityType.Water && zoneData.HasWater() == false && zoneData.requireWater)
+                        || (facility.facilityType == FacilityType.Silo && zoneData.HasSilo() == false && zoneData.requireSilo))
                     {
                         if(grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
                         {
@@ -48,7 +49,7 @@ public static class StructureEconomyManager
 
     private static bool DoesStructureRequireAnyResources(ZoneStructureSO zoneData)
     {
-        return(zoneData.requirePower && zoneData.HasPower() == false) || (zoneData.requireWater && zoneData.HasWater() == false);
+        return(zoneData.requirePower && zoneData.HasPower() == false) || (zoneData.requireWater && zoneData.HasWater() == false) || (zoneData.requireSilo && zoneData.HasSilo() == false);
     }
 
     public static void PrepareRoadStructure(Vector3Int gridPosition, GridStructure grid)

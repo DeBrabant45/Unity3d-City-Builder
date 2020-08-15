@@ -10,6 +10,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     private SingleFacilitySO _powerProvider = null;
     private SingleFacilitySO _waterProvider = null;
+    private SingleFacilitySO _siloProvider = null;
     private RoadStructureSO _roadProvider = null;
 
     public string buildingName;
@@ -19,6 +20,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireRoadAccess;
     public bool requirePower;
     public bool requireWater;
+    public bool requireSilo;
     public bool upgradable = false;
     public bool upgradeActive = false;
     public int upgradePlacementCost;
@@ -26,6 +28,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public SingleFacilitySO PowerProvider { get => _powerProvider; }
     public SingleFacilitySO WaterProvider { get => _waterProvider; }
+    public SingleFacilitySO SiloProvider { get => _siloProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
 
     public virtual int GetIncome()
@@ -42,19 +45,9 @@ public abstract class StructureBaseSO : ScriptableObject
         return income;
     }
 
-    public void RemoveWaterFacility()
-    {
-        _waterProvider = null;
-    }
-
     public bool HasPower()
     {
         return _powerProvider != null;
-    }
-
-    public void RemoveRoadProivder()
-    {
-        _roadProvider = null;
     }
 
     public bool HasWater()
@@ -62,19 +55,38 @@ public abstract class StructureBaseSO : ScriptableObject
         return _waterProvider != null;
     }
 
-    public void RemovePowerFacility()
-    {
-        _powerProvider = null;
-    }
-
     public bool HasRoadAccess()
     {
         return _roadProvider != null;
     }
 
+    public bool HasSilo()
+    {
+        return _siloProvider != null;
+    }
+
     public bool HasUpgraded()
     {
         return upgradeActive;
+    }
+
+    public void RemovePowerFacility()
+    {
+        _powerProvider = null;
+    }
+    public void RemoveWaterFacility()
+    {
+        _waterProvider = null;
+    }
+
+    public void RemoveSiloFacility()
+    {
+        _siloProvider = null;
+    }
+
+    public void RemoveRoadProivder()
+    {
+        _roadProvider = null;
     }
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)
@@ -102,6 +114,16 @@ public abstract class StructureBaseSO : ScriptableObject
         return false;
     }
 
+    public bool AddSiloFacility(SingleFacilitySO facility)
+    {
+        if(_siloProvider == null)
+        {
+            _siloProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
     public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
@@ -111,6 +133,10 @@ public abstract class StructureBaseSO : ScriptableObject
         if (_waterProvider != null)
         {
             _waterProvider.RemoveClient(this);
+        }
+        if (_siloProvider != null)
+        {
+            _siloProvider.RemoveClient(this);
         }
         return null;
     }

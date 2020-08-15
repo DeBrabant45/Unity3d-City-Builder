@@ -3055,6 +3055,7 @@ MonoBehaviour:
   powerToggle: {fileID: 1777548487}
   waterToggle: {fileID: 18071011}
   roadToggle: {fileID: 1449248479}
+  siloToggle: {fileID: 1484083724}
   upgradeToggle: {fileID: 668258883}
 --- !u!1 &1012317073
 GameObject:
@@ -3979,6 +3980,46 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866569536597453006, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570924188329889052, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570924188329889052, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570924188329889052, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1570924188329889052, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598229770008376022, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598229770008376022, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598229770008376022, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598229770008376022, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -4925,9 +4966,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7759558365476938705, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759558365476938705, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759558365476938705, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759558365476938705, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5914525277758705389, guid: 5b34c42f4c5ed064c9ed147c83f3e517, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b34c42f4c5ed064c9ed147c83f3e517, type: 3}
+--- !u!114 &1484083724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 229953567950641837, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484083723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1484657797
 GameObject:
   m_ObjectHideFlags: 0

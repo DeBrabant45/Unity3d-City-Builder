@@ -24,6 +24,10 @@ public class SingleFacilitySO : SingleStructureBaseSO
             {
                 client.RemovePowerFacility();
             }
+            if(facilityType == FacilityType.Silo)
+            {
+                client.RemoveSiloFacility();
+            }
 
             _customers.Remove(client);
         }
@@ -53,6 +57,11 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 if(facilityType == FacilityType.Water && nearByStructure.requireWater)
                 {
                     if (nearByStructure.AddWaterFacility(this))
+                        _customers.Add(nearByStructure);
+                }
+                if (facilityType == FacilityType.Silo && nearByStructure.requireSilo)
+                {
+                    if (nearByStructure.AddSiloFacility(this))
                         _customers.Add(nearByStructure);
                 }
             }

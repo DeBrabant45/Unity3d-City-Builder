@@ -16,6 +16,7 @@ MonoBehaviour:
   singleStructures:
   - {fileID: 11400000, guid: 02b0394423bfd5b46833a18e4fdbd588, type: 2}
   - {fileID: 11400000, guid: fb21ccef14f2c854e809704a43378235, type: 2}
+  - {fileID: 11400000, guid: 81c0e53be08c6484ea4d5e513aee025a, type: 2}
   zoneStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}

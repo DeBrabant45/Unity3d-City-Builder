@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIStructureInfoPanelHelper : MonoBehaviour
 {
     public TextMeshProUGUI nameText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText;
-    public Toggle powerToggle, waterToggle, roadToggle, upgradeToggle;
+    public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +32,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(powerToggle.gameObject);
         HideElement(waterToggle.gameObject);
         HideElement(roadToggle.gameObject);
+        HideElement(siloToggle.gameObject);
         HideElement(upgradeAmountText.gameObject);
         HideElement(upgradedText.gameObject);
         HideElement(upgradeToggle.gameObject);
@@ -87,6 +88,15 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         {
             HideElement(upgradeToggle.gameObject);
         }
+
+        if (data.requireSilo)
+        {
+            SetToggle(siloToggle, data.HasSilo());
+        }
+        else
+        {
+            HideElement(siloToggle.gameObject);
+        }
     }
 
     public void DisplayFacilityStructureInfo(SingleFacilitySO data)
@@ -130,6 +140,15 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         else
         {
             HideElement(upgradeToggle.gameObject);
+        }
+
+        if (data.requireSilo)
+        {
+            SetToggle(siloToggle, data.HasSilo());
+        }
+        else
+        {
+            HideElement(siloToggle.gameObject);
         }
 
         SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
