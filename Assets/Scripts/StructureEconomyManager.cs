@@ -86,6 +86,12 @@ public static class StructureEconomyManager
         structureData.PrepareForRemoval();
     }
 
+    public static void PrepareStructureForUpgrade(Vector3Int gridPosition, GridStructure grid, StructureBaseSO structureData)
+    {
+        structureData.PrepareForRemoval();
+        PrepareZoneStructure(gridPosition, grid);
+    }
+
     public static void CheckStructureTypeForCreationPreparation(Type structureType, Vector3Int gridPosition, GridStructure grid)
     {
         if (structureType == typeof(ZoneStructureSO))
@@ -115,6 +121,14 @@ public static class StructureEconomyManager
         else if (structureType == typeof(SingleFacilitySO))
         {
             PrepareFacilityRemoval(gridPosition, grid);
+        }
+    }
+
+    public static void CheckStructureTypeForUpgradePreparation(Type structureType, StructureBaseSO structureData, Vector3Int gridPosition, GridStructure grid)
+    {
+        if (structureType == typeof(ZoneStructureSO))
+        {
+            PrepareStructureForUpgrade(gridPosition, grid, structureData);
         }
     }
 
