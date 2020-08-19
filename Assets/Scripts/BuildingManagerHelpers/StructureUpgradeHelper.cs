@@ -19,49 +19,40 @@ public class StructureUpgradeHelper : StructureModificationHelper
     {
         base.CancelModifications();
         SetOldStructuresBackToActive();
-        _structuresToBeModified.Clear();
-        _newStructureData.Clear();
+        ResetHelpersData();
     }
 
     public override void ConfirmModifications()
     {
         DestroyOldStructuresForUpgrade();
         PlaceUpgradedStructuresOnTheMap();
-        _structuresToBeModified.Clear();
-        _newStructureData.Clear();
+        ResetHelpersData();
     }
 
     private void PlaceUpgradedStructuresOnTheMap()
     {
         _placementManager.PlaceStructuresOnTheMap(_structuresToBeModified.Values);
-        Type structureType;
-        foreach (var structureGameObject in _structuresToBeModified)
+        Type structureDataType;
+        foreach (var structureData in _newStructureData)
         {
-            PrepareStructureForUpgrade(structureGameObject.Key);
-            foreach (var structureData in _newStructureData)
-            {
-                structureType = structureData.Value.GetType();
-                if (structureGameObject.Key == structureData.Key)
-                {
-                    _grid.PlaceStructureOnTheGrid(structureGameObject.Value, structureGameObject.Key, GameObject.Instantiate(structureData.Value));
-                    StructureEconomyManager.CheckStructureTypeForUpgradePreparation(structureType, structureData.Value, structureGameObject.Key, _grid);
-                }
-            }
+            PrepareStructureForUpgrade(structureData.Value);
+            structureDataType = structureData.Value.GetType();
+            _grid.PlaceStructureOnTheGrid(structureData.Value.prefab, structureData.Key, GameObject.Instantiate(structureData.Value));
+            StructureEconomyManager.CheckStructureTypeForUpgradePreparation(structureDataType, structureData.Value, structureData.Key, _grid);
         }
     }
 
-    private void PrepareStructureForUpgrade(Vector3Int gridPosition)
+    private void PrepareStructureForUpgrade(StructureBaseSO structureData)
     {
-        var data = _grid.GetStructureDataFromTheGrid(gridPosition);
-        if (data != null)
+        if (structureData != null)
         {
-            Type dataType = data.GetType();
-            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)data).zoneType == ZoneType.Residentaial)
+            Type dataType = structureData.GetType();
+            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residentaial)
             {
                 _resourceManager.AddToPopulation(4);
             }
-            data.upgradeActive = true;
-            data.SetUpgradedIncome(GetStructureUpgradeIncome(data));
+            structureData.upgradeActive = true;
+            structureData.SetUpgradedIncome(StructureUpgradeIncome(structureData));
         }
     }
 
@@ -131,30 +122,19 @@ public class StructureUpgradeHelper : StructureModificationHelper
 
     private void PlaceUpgradedStructureAt(Vector3 gridPosition, Vector3Int gridPositionInt, StructureBaseSO structureBase)
     {
-        GameObject buildingPrefab = null;
-        foreach (var structure in _structureRepository.modelDataCollection.zoneStructures)
-        {
-            if(_grid.GetStructureDataFromTheGrid(gridPosition).buildingName == structure.buildingName)
-            {
-                buildingPrefab = structure.upgradePrefabVariants[0];
-            }
-        }
+        structureBase.prefab = _structureRepository.GetUpgradeBuildingPrefab(structureBase);
         _newStructureData.Add(gridPositionInt, structureBase);
-        _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, buildingPrefab));
+        _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, structureBase.prefab));
     }
 
-    public int GetStructureUpgradeIncome(StructureBaseSO structure)
+    public int StructureUpgradeIncome(StructureBaseSO structureData)
     {
-        int upgradeAmountToReturn = 0;
-        
-        foreach (var zone in _structureRepository.modelDataCollection.zoneStructures)
-        {
-            if (structure.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)structure).zoneType == zone.zoneType)
-            {
-                upgradeAmountToReturn = zone.upgradedIncome;
-            }
-        }
+        return _structureRepository.GetStructureUpgradeIncome(structureData);
+    }
 
-        return upgradeAmountToReturn;
+    private void ResetHelpersData()
+    {
+        _structuresToBeModified.Clear();
+        _newStructureData.Clear();
     }
 }

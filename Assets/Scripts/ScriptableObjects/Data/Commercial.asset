@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
   m_Name: Commercial
   m_EditorClassIdentifier: 
-  income: 40
+  income: 30
   buildingName: Commercial
   prefab: {fileID: 4175728992974988726, guid: 8f482776b4ee0bc4f935e72822405008, type: 3}
   placementCost: 200
@@ -20,16 +20,17 @@ MonoBehaviour:
   requireRoadAccess: 1
   requirePower: 1
   requireWater: 1
+  requireSilo: 0
   upgradable: 1
   upgradeActive: 0
-  upgradePlacementCost: 500
+  upgradePlacementCost: 400
   structureRange: 1
   prefabVariants:
   - {fileID: 4175728992974988726, guid: 8f482776b4ee0bc4f935e72822405008, type: 3}
   upgradePrefabVariants:
   - {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07, type: 3}
   upgradedHappinessThreshold: 0
-  upgradedIncome: 80
+  upgradedIncome: 60
   upgradedUpkeep: 0
   zoneType: 2
   maxFacilitySearchRange: 5

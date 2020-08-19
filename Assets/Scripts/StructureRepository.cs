@@ -35,7 +35,7 @@ public class StructureRepository : MonoBehaviour
                 structurePrefabToReturn = GetSingleStructureBuildingPrefabByName(structureName);
                 break;
             case StructureType.Road:
-                structurePrefabToReturn = GetRaodBuildingPrefab();
+                structurePrefabToReturn = GetRoadBuildingPrefab();
                 break;
             default:
                 throw new System.Exception("No such type" + structureType);
@@ -47,6 +47,39 @@ public class StructureRepository : MonoBehaviour
         }
 
         return structurePrefabToReturn;
+    }
+
+    public GameObject GetUpgradeBuildingPrefab(StructureBaseSO structureData)
+    {
+        GameObject upgradeStructurePrefabToReturn = null;
+        Type structureDataType = structureData.GetType();
+        if(structureDataType == typeof(ZoneStructureSO))
+        {
+            foreach (var structure in modelDataCollection.zoneStructures)
+            {
+                if (((ZoneStructureSO)structureData).zoneType == structure.zoneType)
+                {
+                    upgradeStructurePrefabToReturn = structure.upgradePrefabVariants[0];
+                }
+            }
+        }
+        else if(structureDataType == typeof(SingleFacilitySO))
+        {
+            upgradeStructurePrefabToReturn = ((SingleFacilitySO)structureData).upgradePrefab;
+        }
+        return upgradeStructurePrefabToReturn;
+    }
+
+    public int GetStructureUpgradeIncome(StructureBaseSO structureData)
+    {
+        int upgradeAmountToReturn = 0;
+        Type structureDataType = structureData.GetType();
+        if (structureDataType == typeof(ZoneStructureSO))
+        {
+            upgradeAmountToReturn = ((ZoneStructureSO)structureData).upgradedIncome;
+        }
+
+        return upgradeAmountToReturn;
     }
 
     private GameObject GetZoneBuildingPrefabByName(string structureName)
@@ -86,7 +119,7 @@ public class StructureRepository : MonoBehaviour
         return null;
     }
 
-    private GameObject GetRaodBuildingPrefab()
+    private GameObject GetRoadBuildingPrefab()
     {
         return modelDataCollection.roadStructure.prefab;
     }

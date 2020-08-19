@@ -16,10 +16,15 @@ MonoBehaviour:
   buildingName: Road
   prefab: {fileID: 1046759497217224246, guid: 2a74761dd523f864398408b1fea40e6f, type: 3}
   placementCost: 20
-  upkeepCost: 20
+  upkeepCost: 5
   requireRoadAccess: 0
   requirePower: 0
   requireWater: 0
+  requireSilo: 0
+  upgradable: 0
+  upgradeActive: 0
+  upgradePlacementCost: 0
+  structureRange: 1
   cornerPrefab: {fileID: 8844013322122185506, guid: b3bf4733577630c4ab64cb9cfaaf5bd5,
     type: 3}
   threeWayPrefab: {fileID: 4730560012720588634, guid: d409ae9d86ce93f4ebe501a20052ba8b,
