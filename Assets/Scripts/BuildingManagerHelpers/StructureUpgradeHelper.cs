@@ -33,21 +33,28 @@ public class StructureUpgradeHelper : StructureModificationHelper
     {
         _placementManager.PlaceStructuresOnTheMap(_structuresToBeModified.Values);
         Type structureDataType;
-        foreach (var structureData in _newStructureData)
+        foreach(var stuctureGameObject in _structuresToBeModified)
         {
-            PrepareStructureForUpgrade(structureData.Value);
-            structureDataType = structureData.Value.GetType();
-            _grid.PlaceStructureOnTheGrid(structureData.Value.prefab, structureData.Key, GameObject.Instantiate(structureData.Value));
-            StructureEconomyManager.CheckStructureTypeForUpgradePreparation(structureDataType, structureData.Value, structureData.Key, _grid);
+            PrepareStructureForUpgrade(stuctureGameObject.Key);
+            foreach (var structureData in _newStructureData)
+            {
+                if(structureData.Key == stuctureGameObject.Key)
+                {
+                    structureDataType = structureData.Value.GetType();
+                    _grid.PlaceStructureOnTheGrid(stuctureGameObject.Value, structureData.Key, GameObject.Instantiate(structureData.Value));
+                    StructureEconomyManager.CheckStructureTypeForUpgradePreparation(structureDataType, structureData.Value, stuctureGameObject.Key, _grid);
+                }
+            }
         }
     }
 
-    private void PrepareStructureForUpgrade(StructureBaseSO structureData)
+    private void PrepareStructureForUpgrade(Vector3Int gridPosition)
     {
+        var structureData = _grid.GetStructureDataFromTheGrid(gridPosition);
         if (structureData != null)
         {
             Type dataType = structureData.GetType();
-            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residentaial)
+            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
                 _resourceManager.AddToPopulation(4);
             }
@@ -59,8 +66,9 @@ public class StructureUpgradeHelper : StructureModificationHelper
     public override void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
+        var inputStructure = _grid.GetStructureDataFromTheGrid(inputPosition);
 
-        if (_grid.IsCellTaken(gridPosition) == true && _grid.GetStructureDataFromTheGrid(inputPosition).upgradable == true)
+        if (_grid.IsCellTaken(gridPosition) == true && inputStructure.upgradable == true && inputStructure.upgradeActive == false)
         {
             var structureBase = _grid.GetStructureDataFromTheGrid(gridPosition);
             var structure = _grid.GetStructureFromTheGrid(gridPosition);

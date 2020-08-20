@@ -7,11 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2679059358018586621, guid: 024b517407c9ae44993494f0b31da891,
-        type: 3}
-      propertyPath: m_Name
-      value: House_1_upgrade_1 (1) Variant Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 104725322504014438, guid: 024b517407c9ae44993494f0b31da891,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,5 +67,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 356696a134c1f544e88ff40eee47f5c2, type: 2}
+    - target: {fileID: 2679059358018586621, guid: 024b517407c9ae44993494f0b31da891,
+        type: 3}
+      propertyPath: m_Name
+      value: House_1_upgrade_1 (1) Variant Variant
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 024b517407c9ae44993494f0b31da891, type: 3}

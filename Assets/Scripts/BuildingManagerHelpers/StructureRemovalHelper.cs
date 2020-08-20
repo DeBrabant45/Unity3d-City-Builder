@@ -50,7 +50,7 @@ public class StructureRemovalHelper : StructureModificationHelper
         if(data != null)
         {
             Type dataType = data.GetType();
-            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)data).zoneType == ZoneType.Residentaial)
+            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)data).zoneType == ZoneType.Residential)
             {
                 _resourceManager.ReducePopulation(1);
             }

@@ -49,27 +49,6 @@ public class StructureRepository : MonoBehaviour
         return structurePrefabToReturn;
     }
 
-    public GameObject GetUpgradeBuildingPrefab(StructureBaseSO structureData)
-    {
-        GameObject upgradeStructurePrefabToReturn = null;
-        Type structureDataType = structureData.GetType();
-        if(structureDataType == typeof(ZoneStructureSO))
-        {
-            foreach (var structure in modelDataCollection.zoneStructures)
-            {
-                if (((ZoneStructureSO)structureData).zoneType == structure.zoneType)
-                {
-                    upgradeStructurePrefabToReturn = structure.upgradePrefabVariants[0];
-                }
-            }
-        }
-        else if(structureDataType == typeof(SingleFacilitySO))
-        {
-            upgradeStructurePrefabToReturn = ((SingleFacilitySO)structureData).upgradePrefab;
-        }
-        return upgradeStructurePrefabToReturn;
-    }
-
     public int GetStructureUpgradeIncome(StructureBaseSO structureData)
     {
         int upgradeAmountToReturn = 0;
@@ -124,6 +103,52 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.roadStructure.prefab;
     }
 
+    public GameObject GetUpgradeBuildingPrefab(StructureBaseSO structureData)
+    {
+        GameObject upgradeStructurePrefabToReturn = null;
+        Type structureDataType = structureData.GetType();
+        if (structureDataType == typeof(ZoneStructureSO))
+        {
+            upgradeStructurePrefabToReturn = GetZoneUpgradePrefab(structureData);
+        }
+        else if (structureDataType == typeof(SingleFacilitySO))
+        {
+            upgradeStructurePrefabToReturn = GetFacilityUpgradePrefab(structureData);
+        }
+
+        return upgradeStructurePrefabToReturn;
+    }
+
+    private GameObject GetFacilityUpgradePrefab(StructureBaseSO structureData)
+    {
+        return ((SingleFacilitySO)structureData).upgradePrefab;
+    }
+
+    private GameObject GetZoneUpgradePrefab(StructureBaseSO structureData)
+    {
+        if (((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
+        {
+            return SetRandomResidentialUpgradePrefab();
+        }
+
+        return ((ZoneStructureSO)structureData).upgradePrefab;
+    }
+
+    public GameObject SetRandomResidentialUpgradePrefab()
+    {
+        var zones = modelDataCollection.zoneStructures;
+        var residentialUpgradePrefabVariantsCount = zones.Select(zone => zone.upgradePrefabVariants).Count();
+        var residentialUpgradePrefabVariantsRandomRange = UnityEngine.Random.Range(0, residentialUpgradePrefabVariantsCount);
+        return zones.Select(zone => zone.upgradePrefabVariants[residentialUpgradePrefabVariantsRandomRange]).FirstOrDefault();
+    }
+
+    public GameObject SetRandomResidentaialPrefab()
+    {
+        var zones = modelDataCollection.zoneStructures;
+        var residentialPrefabVariantsCount = zones.Select(zone => zone.prefabVariants).Count();
+        var residentialPrefabVariantsRandomRange = UnityEngine.Random.Range(0, residentialPrefabVariantsCount);
+        return zones.Select(zone => zone.prefabVariants[residentialPrefabVariantsRandomRange]).FirstOrDefault();
+    }
 }
 
 public enum StructureType

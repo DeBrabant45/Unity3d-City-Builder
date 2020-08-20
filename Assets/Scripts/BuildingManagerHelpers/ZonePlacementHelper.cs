@@ -72,22 +72,14 @@ public class ZonePlacementHelper : StructureModificationHelper
 
     private GameObject SetZonePrefab()
     {
-        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residentaial)
+        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residential)
         {
-            return SetRandomResidentaialPrefab();
+            return _structureRepository.SetRandomResidentaialPrefab();
         }
         else
         {
             return _structureData.prefab;
         }
-    }
-
-    private GameObject SetRandomResidentaialPrefab()
-    {
-        var zones = _structureRepository.modelDataCollection.zoneStructures;
-        var zoneStructurePrefabVariantsCount = zones.Select(zone => zone.prefabVariants).Count();
-        var zoneStructurePrefabVariantsRandomRange = UnityEngine.Random.Range(0, zoneStructurePrefabVariantsCount);
-        return zones.Select(zone => zone.prefabVariants[zoneStructurePrefabVariantsRandomRange]).FirstOrDefault();
     }
 
     private HashSet<Vector3Int> CalculateZoneCost(HashSet<Vector3Int> newPositionsSet)
@@ -106,7 +98,7 @@ public class ZonePlacementHelper : StructureModificationHelper
 
     public override void ConfirmModifications()
     {
-        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residentaial)
+        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residential)
         {
             _resourceManager.AddToPopulation(_structuresToBeModified.Count());
         }

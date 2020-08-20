@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New zone structure", menuName = "CityBuilder/StructureData/ZoneStructure")]
 public class ZoneStructureSO : StructureBaseSO
 {
+    public GameObject upgradePrefab;
     public GameObject[] prefabVariants;
     public GameObject[] upgradePrefabVariants;
     public int upgradedHappinessThreshold;
@@ -17,7 +18,7 @@ public class ZoneStructureSO : StructureBaseSO
 
 public enum ZoneType
 {
-    Residentaial,
+    Residential,
     Agridcultural,
     Commercial
 }

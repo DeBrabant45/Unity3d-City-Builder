@@ -25,9 +25,10 @@ MonoBehaviour:
   upgradeActive: 0
   upgradePlacementCost: 300
   structureRange: 1
+  upgradePrefab: {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986,
+    type: 3}
   prefabVariants: []
-  upgradePrefabVariants:
-  - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
+  upgradePrefabVariants: []
   upgradedHappinessThreshold: 0
   upgradedIncome: 40
   upgradedUpkeep: 0
