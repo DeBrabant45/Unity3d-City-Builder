@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7281576361941262004}
   - component: {fileID: 5272057860291735823}
   - component: {fileID: 8224936368867257986}
+  - component: {fileID: 8094212559657215701}
   m_Layer: 0
   m_Name: Windmill_Blades (1)
   m_TagString: Untagged
@@ -58,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6703543885605516382}
   m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 1.552, y: 3.733, z: 1.162}
-  m_LocalScale: {x: 60, y: 60, z: 60}
+  m_LocalPosition: {x: 1.552, y: 2.48, z: 1.28}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 4621572521936104066}
   m_RootOrder: 0
@@ -112,6 +113,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8094212559657215701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703543885605516382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6844e1794d087504d89e238956b6a6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6868101027190456658
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 6868101027190456658}
   m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 1.4899998, y: 0, z: 1.49}
-  m_LocalScale: {x: 60, y: 60, z: 60}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children: []
   m_Father: {fileID: 4621572521936104066}
   m_RootOrder: 1

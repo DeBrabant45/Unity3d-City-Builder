@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8607061579444849359}
   m_Layer: 0
-  m_Name: WaterPlant
+  m_Name: UpgradedWaterTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.62
+      value: 1.51
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.62
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
@@ -96,17 +96,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 60
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 60
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 60
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 97e1332091365d94288b130d8ef25400,
         type: 3}

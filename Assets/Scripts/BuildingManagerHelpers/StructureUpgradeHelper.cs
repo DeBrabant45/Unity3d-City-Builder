@@ -58,8 +58,15 @@ public class StructureUpgradeHelper : StructureModificationHelper
             {
                 _resourceManager.AddToPopulation(4);
             }
+            if (dataType == typeof(ZoneStructureSO))
+            {
+                structureData.SetUpgradedIncome(StructureUpgradeIncome(structureData));
+            }
+            if(dataType == typeof(SingleFacilitySO))
+            {
+                ((SingleFacilitySO)structureData).SetUpgradedMaxCustomers();
+            }
             structureData.upgradeActive = true;
-            structureData.SetUpgradedIncome(StructureUpgradeIncome(structureData));
         }
     }
 

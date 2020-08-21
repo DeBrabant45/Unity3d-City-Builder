@@ -14,18 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 50
   buildingName: Silo
-  prefab: {fileID: 4768111254948687981, guid: 9f01b4b35abb83644aca4b178f08b75f, type: 3}
+  prefab: {fileID: 6834496759894321885, guid: 439daa8ae3cba794d982b41f126b297f, type: 3}
   placementCost: 500
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 0
   requireWater: 0
   requireSilo: 0
-  upgradable: 0
+  upgradable: 1
   upgradeActive: 0
   upgradePlacementCost: 0
   structureRange: 1
   singleStructureRange: 5
   maxCustomers: 1
   upkeepPerCustomer: 0
+  upgradePrefab: {fileID: 4768111254948687981, guid: 9f01b4b35abb83644aca4b178f08b75f,
+    type: 3}
+  maxCustomersUpgraded: 2
   facilityType: 2
