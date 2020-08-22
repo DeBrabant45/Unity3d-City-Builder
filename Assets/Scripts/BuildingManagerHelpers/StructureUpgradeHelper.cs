@@ -35,11 +35,11 @@ public class StructureUpgradeHelper : StructureModificationHelper
         Type structureDataType;
         foreach(var stuctureGameObject in _structuresToBeModified)
         {
-            PrepareStructureForUpgrade(stuctureGameObject.Key);
             foreach (var structureData in _newStructureData)
             {
-                if(structureData.Key == stuctureGameObject.Key)
+                if (structureData.Key == stuctureGameObject.Key)
                 {
+                    PrepareStructureForUpgrade(structureData.Value);
                     structureDataType = structureData.Value.GetType();
                     _grid.PlaceStructureOnTheGrid(stuctureGameObject.Value, structureData.Key, GameObject.Instantiate(structureData.Value));
                     StructureEconomyManager.CheckStructureTypeForUpgradePreparation(structureDataType, structureData.Value, stuctureGameObject.Key, _grid);
@@ -48,15 +48,15 @@ public class StructureUpgradeHelper : StructureModificationHelper
         }
     }
 
-    private void PrepareStructureForUpgrade(Vector3Int gridPosition)
+    private void PrepareStructureForUpgrade(StructureBaseSO structureData)
     {
-        var structureData = _grid.GetStructureDataFromTheGrid(gridPosition);
         if (structureData != null)
         {
             Type dataType = structureData.GetType();
+            structureData.upgradeActive = true;
             if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
-                _resourceManager.AddToPopulation(4);
+                _resourceManager.AddToPopulation(3);
             }
             if (dataType == typeof(ZoneStructureSO))
             {
@@ -66,7 +66,6 @@ public class StructureUpgradeHelper : StructureModificationHelper
             {
                 ((SingleFacilitySO)structureData).SetUpgradedMaxCustomers();
             }
-            structureData.upgradeActive = true;
         }
     }
 
