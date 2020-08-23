@@ -39,13 +39,14 @@ public static class TestHelpers
         CollectionSO collection = new CollectionSO();
         ZoneStructureSO zone = new ZoneStructureSO();
         GameObject TestPrefab = new GameObject();
-        GameObject Tests = new GameObject();
+        GameObject TestPrefab2 = new GameObject();
         zone.buildingName = "Commercial";
         zone.prefab = GetAGameObjectWithMaterial();
         zone.upgradable = true;
         zone.upgradeActive = false;
         zone.prefab = TestPrefab;
-        zone.upgradePrefab = Tests;
+        zone.upgradePrefab = TestPrefab2;
+        zone.upgradePrefabVariants = new GameObject[1];
         collection.zoneStructures = new List<ZoneStructureSO>();
         collection.zoneStructures.Add(zone);
         structureRepository.modelDataCollection = collection;
