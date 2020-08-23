@@ -1,6 +1,7 @@
 ﻿using NSubstitute;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class TestHelpers
@@ -25,31 +26,32 @@ public static class TestHelpers
         SingleFacilitySO facility = ScriptableObject.CreateInstance<SingleFacilitySO>();
         facility.buildingName = "Water Tower";
         facility.prefab = GetAGameObjectWithMaterial();
-        foreach(var item in collection.singleStructures)
-        {
-            if(facility.buildingName == item.buildingName)
-            {
-                facility = (SingleFacilitySO)item;
-            }
-        }
-        //collection.singleStructures = facility;
+        collection.singleStructures = new List<SingleStructureBaseSO>();
+        collection.singleStructures.Add(facility);
         structureRepository.modelDataCollection = collection;
 
         return structureRepository;
     }
 
-    //public static StructureRepository CreateStructureRepositoryContainingZoneStructure()
-    //{
-    //    StructureRepository structureRepository = Substitute.For<StructureRepository>();
-    //    CollectionSO collection = new CollectionSO();
-    //    ZoneStructureSO zone = new ZoneStructureSO();
-    //    zone.buildingName = "Residential";
-    //    zone.prefab = GetAGameObjectWithMaterial();
-    //    collection.zoneStructures = zone;
-    //    structureRepository.modelDataCollection.zoneStructures= collection;
+    public static StructureRepository CreateStructureRepositoryContainingZoneStructure()
+    {
+        StructureRepository structureRepository = Substitute.For<StructureRepository>();
+        CollectionSO collection = new CollectionSO();
+        ZoneStructureSO zone = new ZoneStructureSO();
+        GameObject TestPrefab = new GameObject();
+        GameObject Tests = new GameObject();
+        zone.buildingName = "Commercial";
+        zone.prefab = GetAGameObjectWithMaterial();
+        zone.upgradable = true;
+        zone.upgradeActive = false;
+        zone.prefab = TestPrefab;
+        zone.upgradePrefab = Tests;
+        collection.zoneStructures = new List<ZoneStructureSO>();
+        collection.zoneStructures.Add(zone);
+        structureRepository.modelDataCollection = collection;
 
-    //    return structureRepository;
-    //}
+        return structureRepository;
+    }
 
     public static GameObject GetAGameObjectWithMaterial()
     {
