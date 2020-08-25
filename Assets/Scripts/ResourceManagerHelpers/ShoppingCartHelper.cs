@@ -21,7 +21,7 @@ public class ShoppingCartHelper
         }
     }
 
-    public void ClearCartAmount()
+    public void ClearShoppingCartAmount()
     {
         _shoppingCartAmount = 0;
     }

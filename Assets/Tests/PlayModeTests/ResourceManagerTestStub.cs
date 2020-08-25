@@ -64,4 +64,9 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
     {
 
     }
+
+    public void SetUpgradedPopulationAmount(int pastAmount, int newAmount)
+    {
+
+    }
 }

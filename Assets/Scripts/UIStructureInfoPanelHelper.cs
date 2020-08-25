@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIStructureInfoPanelHelper : MonoBehaviour
 {
-    public TextMeshProUGUI nameText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText;
+    public TextMeshProUGUI nameText, residentsText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText;
     public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle;
 
     // Start is called before the first frame update
@@ -45,10 +45,11 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
     {
         Show();
         HideElement(clientText.gameObject);
+        HideElement(upkeepText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        SetText(upkeepText, data.upkeepCost + "");
         SetText(upgradeAmountText, data.upgradePlacementCost + "");
+        CheckStructureToDisplayResidentsText(data);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
         CheckStructureToDisplayWaterToggle(data);
@@ -151,6 +152,18 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         else
         {
             HideElement(waterToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayResidentsText(ZoneStructureSO structure)
+    {
+        if (structure.zoneType == ZoneType.Residential)
+        {
+            SetText(residentsText, structure.GetResidentsAmount() + "");
+        }
+        else
+        {
+            HideElement(residentsText.gameObject);
         }
     }
 }

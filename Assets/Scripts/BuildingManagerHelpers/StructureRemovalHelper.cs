@@ -46,13 +46,20 @@ public class StructureRemovalHelper : StructureModificationHelper
 
     private void PrepareStructureForRemoval(Vector3Int gridPosition)
     {
-        var data = _grid.GetStructureDataFromTheGrid(gridPosition);
-        if(data != null)
+        var structureData = _grid.GetStructureDataFromTheGrid(gridPosition);
+        if(structureData != null)
         {
-            Type dataType = data.GetType();
-            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)data).zoneType == ZoneType.Residential)
+            Type dataType = structureData.GetType();
+            if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
-                _resourceManager.ReducePopulation(1);
+                if(structureData.HasUpgraded() == true)
+                {
+                    _resourceManager.ReducePopulation(((ZoneStructureSO)structureData).SetUpgradedResidentsAmount());
+                }
+                else
+                {
+                    _resourceManager.ReducePopulation(((ZoneStructureSO)structureData).GetResidentsAmount());
+                }
             }
             StructureEconomyManager.CheckStructureTypeForRemovalPreparation(dataType, gridPosition, _grid);
         }

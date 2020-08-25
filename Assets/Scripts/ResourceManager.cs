@@ -107,6 +107,13 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         uIController.SetShoppingCartValue(_shoppingCartHelper.ShoppingCartAmount);
     }
 
+    public void SetUpgradedPopulationAmount(int pastAmount, int newAmount)
+    {
+        _populationHelper.ReducePopulation(pastAmount);
+        _populationHelper.AddPopulation(newAmount);
+        UpdateUI();
+    }
+
     public void AddToPopulation(int amount)
     {
         _populationHelper.AddPopulation(amount);
@@ -138,7 +145,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
 
     public void ClearShoppingCartAmount()
     {
-        _shoppingCartHelper.ClearCartAmount();
+        _shoppingCartHelper.ClearShoppingCartAmount();
         UpdateUI();
     }
 

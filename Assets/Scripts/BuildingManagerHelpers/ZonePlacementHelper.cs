@@ -100,7 +100,7 @@ public class ZonePlacementHelper : StructureModificationHelper
     {
         if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residential)
         {
-            _resourceManager.AddToPopulation(_structuresToBeModified.Count());
+            _resourceManager.AddToPopulation(((ZoneStructureSO)_structureData).GetResidentsAmount() * _structuresToBeModified.Count);
         }
         base.ConfirmModifications();
         ResetZonePlacementHelper();

@@ -52,11 +52,13 @@ public class StructureUpgradeHelper : StructureModificationHelper
     {
         if (structureData != null)
         {
+            var zoneStructure = (ZoneStructureSO)structureData;
             Type dataType = structureData.GetType();
             structureData.upgradeActive = true;
             if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
-                _resourceManager.AddToPopulation(3);
+                structureData = zoneStructure;
+                _resourceManager.SetUpgradedPopulationAmount(zoneStructure.GetResidentsAmount(), zoneStructure.SetUpgradedResidentsAmount());
             }
             if (dataType == typeof(ZoneStructureSO))
             {
