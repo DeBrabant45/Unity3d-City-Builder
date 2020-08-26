@@ -621,7 +621,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 40, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 353900116273741328}
     characterCount: 1
@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 40, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 398101224738062271}
     characterCount: 1
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -20, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525276517831086}
     characterCount: 8
@@ -2113,7 +2113,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -20, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525276913354973}
     characterCount: 7
@@ -2779,7 +2779,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 40, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525277338482986}
     characterCount: 1
@@ -3349,7 +3349,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 20, y: 0, z: -20, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525277658700770}
     characterCount: 1
@@ -3718,18 +3718,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d8fa5057e891341a13a431c3fec428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
-  residentsText: {fileID: 0}
-  incomeText: {fileID: 0}
-  upkeepText: {fileID: 0}
-  upgradeAmountText: {fileID: 0}
-  upgradedText: {fileID: 0}
-  clientText: {fileID: 0}
-  powerToggle: {fileID: 0}
-  waterToggle: {fileID: 0}
-  roadToggle: {fileID: 0}
-  siloToggle: {fileID: 0}
-  upgradeToggle: {fileID: 0}
+  nameText: {fileID: 5914525277370162031}
+  residentsText: {fileID: 398101224738062271}
+  incomeText: {fileID: 5914525277658700770}
+  upkeepText: {fileID: 5914525277338482986}
+  upgradeAmountText: {fileID: 353900116273741328}
+  upgradedText: {fileID: 6729076617023070208}
+  clientText: {fileID: 5914525278308620348}
+  powerToggle: {fileID: 5914525277103124621}
+  waterToggle: {fileID: 5914525277061223353}
+  roadToggle: {fileID: 5914525276975538812}
+  siloToggle: {fileID: 229953567950641837}
+  upgradeToggle: {fileID: 7999503956537831918}
 --- !u!1 &5914525277941992695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3934,7 +3934,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -20, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525278064540972}
     characterCount: 6
@@ -4267,7 +4267,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -40, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525278288474485}
     characterCount: 5
@@ -4579,7 +4579,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 40, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 5914525278308620348}
     characterCount: 3
@@ -5037,14 +5037,14 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_firstOverflowCharacterIndex: -1
@@ -5068,7 +5068,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 35, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2017532122366215451}
     characterCount: 9

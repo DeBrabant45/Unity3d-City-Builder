@@ -1048,22 +1048,22 @@ PrefabInstance:
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 10
+      value: 340
       objectReference: {fileID: 0}
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7092152104881539869, guid: 559c11d47e063bc4991c465e37cd193d,
         type: 3}
@@ -3047,6 +3047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 1154211120}
+  residentsText: {fileID: 1317773772}
   incomeText: {fileID: 1972533638}
   upkeepText: {fileID: 1777437280}
   upgradeAmountText: {fileID: 1920181477}
@@ -3732,6 +3733,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8868545679011311514}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1317773772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 398101224738062271, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484083723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1401965811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3984,6 +3997,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1316067723141975807, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316067723141975807, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316067723141975807, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1316067723141975807, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1570924188329889052, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -4094,6 +4127,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgraded Text
       objectReference: {fileID: 0}
+    - target: {fileID: 4046946086608327878, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046946086608327878, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046946086608327878, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046946086608327878, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5247955010844193396, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
         type: 3}
       propertyPath: m_IsActive
@@ -4103,6 +4156,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UpgradedToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786840487091934988, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786840487091934988, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786840487091934988, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786840487091934988, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5914525276459215140, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
         type: 3}
@@ -5133,7 +5206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When a players money hits 0 the game will be over
+  m_text: 'When a players currency hits 0 the game will be over
 
 
 '
@@ -5205,7 +5278,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1523115544}
-    characterCount: 51
+    characterCount: 54
     spriteCount: 0
     spaceCount: 12
     wordCount: 11
