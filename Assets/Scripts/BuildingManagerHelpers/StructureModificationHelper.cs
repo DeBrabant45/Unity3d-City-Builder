@@ -21,16 +21,6 @@ public abstract class StructureModificationHelper
         _structureData = ScriptableObject.CreateInstance<NullStructureSO>();
     }
 
-    public GameObject AccessStructureInDictionary(Vector3 gridPosition)
-    {
-        var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
-        if(_structuresToBeModified.ContainsKey(gridPositionInt))
-        {
-            return _structuresToBeModified[gridPositionInt];
-        }
-        return null;
-    }
-
     public virtual void ConfirmModifications()
     {
         _placementManager.PlaceStructuresOnTheMap(_structuresToBeModified.Values);
@@ -69,4 +59,13 @@ public abstract class StructureModificationHelper
         }
     }
 
+    public GameObject AccessStructureInDictionary(Vector3 gridPosition)
+    {
+        var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
+        if (_structuresToBeModified.ContainsKey(gridPositionInt))
+        {
+            return _structuresToBeModified[gridPositionInt];
+        }
+        return null;
+    }
 }

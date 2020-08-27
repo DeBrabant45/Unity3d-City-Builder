@@ -57,8 +57,23 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition2, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition2);
             Assert.AreEqual(_tempObject, objectInDictionary);
-        }
-
+        }       
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneRevokeStructureUpgradePlacementAtPasses()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition2, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition2, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition2);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition2);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition2);
+            Assert.IsNull(objectInDictionary);
+            Assert.IsNull(objectInOldStructureDictionary);
+            Assert.IsNull(objectInNewStructureDictionary);
+        }        
+        
         // A Test behaves as an ordinary method
         [Test]
         public void ResidentialZoneCancelUpgradePasses()
@@ -67,7 +82,11 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition2, "", StructureType.None);
             _structureModificationHelper.CancelModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition2);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition2);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition2);
             Assert.IsNull(objectInDictionary);
+            Assert.IsNull(objectInOldStructureDictionary);
+            Assert.IsNull(objectInNewStructureDictionary);
         }
 
         // A Test behaves as an ordinary method

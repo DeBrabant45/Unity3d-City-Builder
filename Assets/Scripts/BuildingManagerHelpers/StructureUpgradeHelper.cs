@@ -52,11 +52,11 @@ public class StructureUpgradeHelper : StructureModificationHelper
     {
         if (structureData != null)
         {
-            var zoneStructure = (ZoneStructureSO)structureData;
             Type dataType = structureData.GetType();
             structureData.upgradeActive = true;
             if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
+                var zoneStructure = (ZoneStructureSO)structureData;
                 structureData = zoneStructure;
                 _resourceManager.SetUpgradedPopulationAmount(zoneStructure.GetResidentsAmount(), zoneStructure.SetUpgradedResidentsAmount());
             }
@@ -152,5 +152,25 @@ public class StructureUpgradeHelper : StructureModificationHelper
     {
         _structuresToBeModified.Clear();
         _newStructureData.Clear();
+    }
+
+    public GameObject AccessStructureInOldStructuresDictionary(Vector3 gridPosition)
+    {
+        var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
+        if (_oldStructuresBeforeUpgrade.ContainsKey(gridPositionInt))
+        {
+            return _oldStructuresBeforeUpgrade[gridPositionInt];
+        }
+        return null;
+    }
+
+    public StructureBaseSO AccessStructureInNewStructureDataDictionary(Vector3 gridPosition)
+    {
+        var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
+        if (_newStructureData.ContainsKey(gridPositionInt))
+        {
+            return _newStructureData[gridPositionInt];
+        }
+        return null;
     }
 }
