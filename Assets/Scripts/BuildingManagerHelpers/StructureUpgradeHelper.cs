@@ -78,39 +78,66 @@ public class StructureUpgradeHelper : StructureModificationHelper
 
         if (_grid.IsCellTaken(gridPosition) == true && inputStructure.upgradable == true && inputStructure.upgradeActive == false)
         {
-            var structureBase = _grid.GetStructureDataFromTheGrid(gridPosition);
-            var structure = _grid.GetStructureFromTheGrid(gridPosition);
+            var structureData = _grid.GetStructureDataFromTheGrid(gridPosition);
+            var structureGameObject = _grid.GetStructureFromTheGrid(gridPosition);
             var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
-                RevokeStructureUpgradePlacementAt(gridPositionInt, structure);
-                _resourceManager.ReduceShoppingCartAmount(structureBase.upgradePlacementCost);
+                RevokeStructureUpgradePlacementAt(gridPositionInt, structureGameObject);
+                _resourceManager.ReduceShoppingCartAmount(structureData.upgradePlacementCost);
             } 
             else
             {
-                AddOldStructureForUpgrade(gridPositionInt, structure);
-                PlaceUpgradedStructureAt(gridPosition, gridPositionInt, structureBase);
-                _resourceManager.AddToShoppingCartAmount(structureBase.upgradePlacementCost);
+                AddOldStructureForUpgrade(gridPositionInt, structureGameObject);
+                PlaceUpgradedGhostStructureAt(gridPosition, gridPositionInt, structureData);
+                _resourceManager.AddToShoppingCartAmount(structureData.upgradePlacementCost);
             }
 
         }
     }
 
-    private void RevokeStructureUpgradePlacementAt(Vector3Int gridPositionInt, GameObject structure)
+    private void RevokeStructureUpgradePlacementAt(Vector3Int gridPositionInt, GameObject structureGameObject)
     {
-        _placementManager.ResetBuildingLook(structure);
-        var upGradedStructure = _structuresToBeModified[gridPositionInt];
-        _placementManager.DestroySingleStructure(upGradedStructure);
-        _structuresToBeModified.Remove(gridPositionInt);
-        _oldStructuresBeforeUpgrade.Remove(gridPositionInt);
-        _newStructureData.Remove(gridPositionInt);
-        structure.SetActive(true);
+        DestroyUpgradeStructureGameObjectAt(gridPositionInt);
+        _placementManager.ResetBuildingLook(structureGameObject);
+        RemoveStructureToBeModified(gridPositionInt);
+        RemoveOldStructureForUpgrade(gridPositionInt, structureGameObject);
+        RemoveNewStuctureDataForUpgrade(gridPositionInt);
     }
 
-    private void AddOldStructureForUpgrade(Vector3Int gridPositionInt, GameObject structure)
+    private void PlaceUpgradedGhostStructureAt(Vector3 gridPosition, Vector3Int gridPositionInt, StructureBaseSO structureData)
     {
-        structure.SetActive(false);
-        _oldStructuresBeforeUpgrade.Add(gridPositionInt, structure);
+        structureData.prefab = _structureRepository.GetUpgradeBuildingPrefab(structureData);
+        AddNewStructureDataForUpgrade(gridPositionInt, structureData);
+        AddStructureToBeModified(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, structureData.prefab));
+    }
+
+    private void DestroyUpgradeStructureGameObjectAt(Vector3Int gridPositionInt)
+    {
+        var upGradedStructureGameObject = _structuresToBeModified[gridPositionInt];
+        _placementManager.DestroySingleStructure(upGradedStructureGameObject);
+    }
+
+    private void AddOldStructureForUpgrade(Vector3Int gridPositionInt, GameObject structureGameObject)
+    {
+        structureGameObject.SetActive(false);
+        _oldStructuresBeforeUpgrade.Add(gridPositionInt, structureGameObject);
+    }
+
+    private void RemoveOldStructureForUpgrade(Vector3Int gridPositionInt, GameObject structureGameObject)
+    {
+        structureGameObject.SetActive(true);
+        _oldStructuresBeforeUpgrade.Remove(gridPositionInt);
+    }
+
+    private void AddNewStructureDataForUpgrade(Vector3Int gridPositionInt, StructureBaseSO structureData)
+    {
+        _newStructureData.Add(gridPositionInt, structureData);
+    }
+
+    private void RemoveNewStuctureDataForUpgrade(Vector3Int gridPositionInt)
+    {
+        _newStructureData.Remove(gridPositionInt);
     }
 
     private void SetOldStructuresBackToActive()
@@ -134,13 +161,6 @@ public class StructureUpgradeHelper : StructureModificationHelper
             }
         }
         _oldStructuresBeforeUpgrade.Clear();
-    }
-
-    private void PlaceUpgradedStructureAt(Vector3 gridPosition, Vector3Int gridPositionInt, StructureBaseSO structureBase)
-    {
-        structureBase.prefab = _structureRepository.GetUpgradeBuildingPrefab(structureBase);
-        _newStructureData.Add(gridPositionInt, structureBase);
-        _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, structureBase.prefab));
     }
 
     public int StructureUpgradeIncome(StructureBaseSO structureData)

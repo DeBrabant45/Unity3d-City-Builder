@@ -68,4 +68,14 @@ public abstract class StructureModificationHelper
         }
         return null;
     }
+
+    public void AddStructureToBeModified(Vector3Int gridPositionInt, GameObject structureGameObject)
+    {
+        _structuresToBeModified.Add(gridPositionInt, structureGameObject);
+    }
+
+    public void RemoveStructureToBeModified(Vector3Int gridPositionInt)
+    {
+        _structuresToBeModified.Remove(gridPositionInt);
+    }
 }

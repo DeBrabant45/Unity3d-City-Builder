@@ -36,8 +36,8 @@ public static class TestHelpers
     public static StructureRepository CreateStructureRepositoryContainingZoneStructure()
     {
         StructureRepository structureRepository = Substitute.For<StructureRepository>();
-        CollectionSO collection = new CollectionSO();
-        ZoneStructureSO zone = new ZoneStructureSO();
+        CollectionSO collection = ScriptableObject.CreateInstance<CollectionSO>();
+        ZoneStructureSO zone = ScriptableObject.CreateInstance<ZoneStructureSO>();
         GameObject TestPrefab = new GameObject();
         GameObject TestPrefab2 = new GameObject();
         zone.buildingName = "Commercial";
