@@ -163,7 +163,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
         _oldStructuresBeforeUpgrade.Clear();
     }
 
-    public int StructureUpgradeIncome(StructureBaseSO structureData)
+    private int StructureUpgradeIncome(StructureBaseSO structureData)
     {
         return _structureRepository.GetStructureUpgradeIncome(structureData);
     }

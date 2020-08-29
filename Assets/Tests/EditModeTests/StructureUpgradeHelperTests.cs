@@ -10,11 +10,13 @@ namespace Tests
     [TestFixture]
     public class StructureUpgradeHelperTests
     {
-        private GameObject _tempObject = null;
+        private GameObject _gridPosition1GameObject = null;
+        private GameObject _gridPosition2GameObject = null;
         private GridStructure _grid;
         private GameObject _structureObject = new GameObject();
-        private StructureType _structureType = StructureType.Zone;
+  
         private Vector3 _gridPosition1 = new Vector3(3, 0, 3);
+        private Vector3 _gridPosition2 = new Vector3(6, 0, 6);
         private Vector3Int _gridPosition1Int;
         private StructureModificationHelper _structureModificationHelper;
 
@@ -23,9 +25,8 @@ namespace Tests
         {
             StructureRepository structureRepository = TestHelpers.CreateStructureRepositoryContainingZoneStructure();
             IPlacementManager placementManager = Substitute.For<IPlacementManager>();
-            _tempObject = new GameObject();
             _gridPosition1Int = Vector3Int.FloorToInt(_gridPosition1);
-            placementManager.CreateGhostStructure(default, default).ReturnsForAnyArgs(_tempObject);
+            placementManager.CreateGhostStructure(default, default).ReturnsForAnyArgs(_gridPosition1GameObject);
             _grid = new GridStructure(3, 10, 10);
             IResourceManager resourceManager = Substitute.For<IResourceManager>();
             resourceManager.CanIBuyIt(default).Returns(true);
@@ -51,14 +52,88 @@ namespace Tests
         
         // A Test behaves as an ordinary method
         [Test]
-        public void ResidentialZoneSelectForUpgradePasses()
+        public void ResidentialZoneSelectForUpgradeAddStructureToBeModifiedPasses()
         {
             ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.AreEqual(_tempObject, objectInDictionary);
-        }       
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
+        }         
         
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeAddStructureToBeModifiedFails()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition2);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.AreNotEqual(_gridPosition1GameObject, objectInDictionary);
+        }        
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeAddNewStructureDataForUpgradePasses()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.AreEqual(residentialZone, objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeAddNewStructureDataForUpgradeFails()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            ZoneStructureSO residentialZone2 = CreateResidentialZoneAtPosition(new Vector3Int(6, 0, 6));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.AreNotEqual(residentialZone2, objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeAddOldStructureForUpgradePasses()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.AreEqual(_gridPosition1GameObject, objectInOldStructureDictionary);
+        }          
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeAddOldStructureForUpgradeFails()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition2);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.AreNotEqual(_gridPosition1GameObject, objectInOldStructureDictionary);
+        }        
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeSetOldStructureGameObjectToInActiveForUpgradeUpgradePasses()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsTrue(objectInOldStructureDictionary.activeSelf == false);
+        }        
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneSelectForUpgradeSetOldStructureGameObjectToInActiveForUpgradeUpgradeFails()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsFalse(objectInOldStructureDictionary.activeSelf == true);
+        }
+
         // A Test behaves as an ordinary method
         [Test]
         public void ResidentialZoneRevokeStructureUpgradePlacementAtRemoveStructureToBeModifiedPasses()
@@ -81,13 +156,23 @@ namespace Tests
         }
 
         [Test]
-        public void ResidentialZoneRevokeStructureUpgradePlacementAtRemoveOldStructureForUpgradeAnSetOldStructureGameObectToActivePasses()
+        public void ResidentialZoneRevokeStructureUpgradePlacementAtSetOldStructureGameObectToActivePasses()
         {
             ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             var structureGameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
             Assert.IsTrue(structureGameObject.activeSelf == true);
+        }
+
+        [Test]
+        public void ResidentialZoneRevokeStructureUpgradePlacementAtSetOldStructureGameObectToActiveFails()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            var structureGameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            Assert.IsFalse(structureGameObject.activeSelf == false);
         }
 
         [Test]
@@ -133,7 +218,7 @@ namespace Tests
             ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.AreEqual(_tempObject, objectInDictionary);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
         }
 
         // A Test behaves as an ordinary method
@@ -165,7 +250,7 @@ namespace Tests
             ZoneStructureSO agricultureZone = CreateAgricultureZoneAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.AreEqual(_tempObject, objectInDictionary);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
         }
 
         // A Test behaves as an ordinary method
@@ -197,7 +282,7 @@ namespace Tests
             SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.AreEqual(_tempObject, objectInDictionary);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
         }
 
         // A Test behaves as an ordinary method
@@ -229,7 +314,7 @@ namespace Tests
             SingleFacilitySO waterTower = CreateWaterTowerSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.AreEqual(_tempObject, objectInDictionary);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
         }
 
         // A Test behaves as an ordinary method
@@ -262,7 +347,7 @@ namespace Tests
             SingleFacilitySO silo = CreateSiloSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.AreEqual(_tempObject, objectInDictionary);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
         }
 
         // A Test behaves as an ordinary method
