@@ -209,7 +209,29 @@ namespace Tests
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
             Assert.IsTrue(residentialZone.HasUpgraded());
-        }
+        }           
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneConfirmDestroyOldStructuresForUpgradePasses()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.ConfirmModifications();
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsNull(objectInOldStructureDictionary);
+        }         
+        
+        // A Test behaves as an ordinary method
+        [Test]
+        public void ResidentialZoneConfirmPlaceUpgradedStructuresOnTheMapUpgradePasses()
+        {
+            ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.ConfirmModifications();
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.IsNull(objectInNewStructureDictionary);
+        }             
 
         // A Test behaves as an ordinary method
         [Test]

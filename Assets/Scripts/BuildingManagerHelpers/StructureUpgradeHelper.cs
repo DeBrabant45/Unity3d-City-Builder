@@ -154,13 +154,13 @@ public class StructureUpgradeHelper : StructureModificationHelper
     {
         if (_oldStructuresBeforeUpgrade != null)
         {
-            foreach (var item in _oldStructuresBeforeUpgrade.Values)
+            foreach (var oldStructure in _oldStructuresBeforeUpgrade.Values)
             {
-                item.SetActive(true);
-                _placementManager.DestroySingleStructure(item);
+                oldStructure.SetActive(true);
+                _placementManager.DestroySingleStructure(oldStructure);
             }
+            _oldStructuresBeforeUpgrade.Clear();
         }
-        _oldStructuresBeforeUpgrade.Clear();
     }
 
     private int StructureUpgradeIncome(StructureBaseSO structureData)
