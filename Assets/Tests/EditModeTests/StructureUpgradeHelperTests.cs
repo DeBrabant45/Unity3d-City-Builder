@@ -245,13 +245,152 @@ namespace Tests
 
         // A Test behaves as an ordinary method
         [Test]
+        public void CommercialZoneSelectForUpgradeAddStructureToBeModifiedPasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeAddStructureToBeModifiedFails()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition2);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.AreNotEqual(_gridPosition1GameObject, objectInDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeAddNewStructureDataForUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.AreEqual(commercialZone, objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeAddNewStructureDataForUpgradeFails()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            ZoneStructureSO commercialZone2 = CreateCommercialZoneAtPosition(new Vector3Int(6, 0, 6));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.AreNotEqual(commercialZone2, objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeAddOldStructureForUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.AreEqual(_gridPosition1GameObject, objectInOldStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeAddOldStructureForUpgradeFails()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition2);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.AreNotEqual(_gridPosition1GameObject, objectInOldStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeSetOldStructureGameObjectToInActiveForUpgradeUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsTrue(objectInOldStructureDictionary.activeSelf == false);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneSelectForUpgradeSetOldStructureGameObjectToInActiveForUpgradeUpgradeFails()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsFalse(objectInOldStructureDictionary.activeSelf == true);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneRevokeStructureUpgradePlacementAtRemoveStructureToBeModifiedPasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.IsNull(objectInDictionary);
+        }
+
+        [Test]
+        public void CommercialZoneRevokeStructureUpgradePlacementAtRemoveOldStructureForUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsNull(objectInOldStructureDictionary);
+        }
+
+        [Test]
+        public void CommercialZoneRevokeStructureUpgradePlacementAtSetOldStructureGameObectToActivePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            var structureGameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            Assert.IsTrue(structureGameObject.activeSelf == true);
+        }
+
+        [Test]
+        public void CommercialZoneRevokeStructureUpgradePlacementAtSetOldStructureGameObectToActiveFails()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            var structureGameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            Assert.IsFalse(structureGameObject.activeSelf == false);
+        }
+
+        [Test]
+        public void CommercialZoneRevokeStructureUpgradePlacementAtRemoveNewStuctureDataForUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.IsNull(objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
         public void CommercialZoneCancelUpgradePasses()
         {
             ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.CancelModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
             Assert.IsNull(objectInDictionary);
+            Assert.IsNull(objectInOldStructureDictionary);
+            Assert.IsNull(objectInNewStructureDictionary);
         }
 
         // A Test behaves as an ordinary method
@@ -263,7 +402,29 @@ namespace Tests
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
             Assert.IsTrue(commercialZone.HasUpgraded());
-        }        
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneConfirmDestroyOldStructuresForUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.ConfirmModifications();
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsNull(objectInOldStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void CommercialZoneConfirmPlaceUpgradedStructuresOnTheMapUpgradePasses()
+        {
+            ZoneStructureSO commercialZone = CreateCommercialZoneAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.ConfirmModifications();
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.IsNull(objectInNewStructureDictionary);
+        }       
         
         // A Test behaves as an ordinary method
         [Test]
@@ -295,8 +456,8 @@ namespace Tests
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
             Assert.IsTrue(agricultureZone.HasUpgraded());
-        }        
-        
+        }
+
         // A Test behaves as an ordinary method
         [Test]
         public void PowerPlantSingleFacilitySelectForUpgradePasses()
@@ -309,13 +470,152 @@ namespace Tests
 
         // A Test behaves as an ordinary method
         [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeAddStructureToBeModifiedPasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.AreEqual(_gridPosition1GameObject, objectInDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeAddStructureToBeModifiedFails()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition2);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.AreNotEqual(_gridPosition1GameObject, objectInDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeAddNewStructureDataForUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.AreEqual(powerPlant, objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeAddNewStructureDataForUpgradeFails()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            ZoneStructureSO commercialZone2 = CreateCommercialZoneAtPosition(new Vector3Int(6, 0, 6));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.AreNotEqual(commercialZone2, objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeAddOldStructureForUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.AreEqual(_gridPosition1GameObject, objectInOldStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeAddOldStructureForUpgradeFails()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _gridPosition1GameObject = _grid.GetStructureFromTheGrid(_gridPosition2);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.AreNotEqual(_gridPosition1GameObject, objectInOldStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeSetOldStructureGameObjectToInActiveForUpgradeUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsTrue(objectInOldStructureDictionary.activeSelf == false);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilitySelectForUpgradeSetOldStructureGameObjectToInActiveForUpgradeUpgradeFails()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsFalse(objectInOldStructureDictionary.activeSelf == true);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilityRevokeStructureUpgradePlacementAtRemoveStructureToBeModifiedPasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            Assert.IsNull(objectInDictionary);
+        }
+
+        [Test]
+        public void PowerPlantSingleFacilityRevokeStructureUpgradePlacementAtRemoveOldStructureForUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsNull(objectInOldStructureDictionary);
+        }
+
+        [Test]
+        public void PowerPlantSingleFacilityRevokeStructureUpgradePlacementAtSetOldStructureGameObectToActivePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            var structureGameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            Assert.IsTrue(structureGameObject.activeSelf == true);
+        }
+
+        [Test]
+        public void PowerPlantSingleFacilityRevokeStructureUpgradePlacementAtSetOldStructureGameObectToActiveFails()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            var structureGameObject = _grid.GetStructureFromTheGrid(_gridPosition1);
+            Assert.IsFalse(structureGameObject.activeSelf == false);
+        }
+
+        [Test]
+        public void PowerPlantSingleFacilityRevokeStructureUpgradePlacementAtRemoveNewStuctureDataForUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.IsNull(objectInNewStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
         public void PowerPlantSingleFacilityCancelUpgradePasses()
         {
             SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.CancelModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
             Assert.IsNull(objectInDictionary);
+            Assert.IsNull(objectInOldStructureDictionary);
+            Assert.IsNull(objectInNewStructureDictionary);
         }
 
         // A Test behaves as an ordinary method
@@ -327,6 +627,28 @@ namespace Tests
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
             Assert.IsTrue(powerPlant.HasUpgraded());
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilityConfirmDestroyOldStructuresForUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.ConfirmModifications();
+            GameObject objectInOldStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInOldStructuresDictionary(_gridPosition1);
+            Assert.IsNull(objectInOldStructureDictionary);
+        }
+
+        // A Test behaves as an ordinary method
+        [Test]
+        public void PowerPlantSingleFacilityConfirmPlaceUpgradedStructuresOnTheMapUpgradePasses()
+        {
+            SingleFacilitySO powerPlant = CreatePowerPlantSingleFacilityAtPosition(new Vector3Int(3, 0, 3));
+            _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
+            _structureModificationHelper.ConfirmModifications();
+            StructureBaseSO objectInNewStructureDictionary = ((StructureUpgradeHelper)_structureModificationHelper).AccessStructureInNewStructureDataDictionary(_gridPosition1);
+            Assert.IsNull(objectInNewStructureDictionary);
         }
 
         // A Test behaves as an ordinary method
