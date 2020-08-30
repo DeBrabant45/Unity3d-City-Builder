@@ -36,8 +36,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(upgradeAmountText.gameObject);
         HideElement(upgradedText.gameObject);
         HideElement(upgradeToggle.gameObject);
+        HideElement(residentsText.gameObject);
+        HideElement(incomeText.gameObject);
         SetText(nameText, data.buildingName);
-        SetText(incomeText, data.GetIncome() + "");
         SetText(upkeepText, data.upkeepCost + "");
     }
 
@@ -62,8 +63,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         Show();
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        SetText(upkeepText, data.upkeepCost + "");
+        HideElement(upkeepText.gameObject);
         HideElement(upgradeAmountText.gameObject);
+        HideElement(residentsText.gameObject);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
         CheckStructureToDisplayWaterToggle(data);

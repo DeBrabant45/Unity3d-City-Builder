@@ -9,8 +9,8 @@ public static class TestHelpers
     public static StructureRepository CreateStructureRepositoryContainingRoad()
     {
         StructureRepository structureRepository = Substitute.For<StructureRepository>();
-        CollectionSO collection = new CollectionSO();
-        RoadStructureSO road = new RoadStructureSO();
+        CollectionSO collection = ScriptableObject.CreateInstance<CollectionSO>();
+        RoadStructureSO road = ScriptableObject.CreateInstance<RoadStructureSO>();
         road.buildingName = "Road";
         road.prefab = GetAGameObjectWithMaterial();
         collection.roadStructure = road;
