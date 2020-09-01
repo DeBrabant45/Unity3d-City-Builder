@@ -21,10 +21,12 @@ MonoBehaviour:
   requirePower: 1
   requireWater: 1
   requireSilo: 0
+  requireHealthcare: 1
   upgradable: 1
   upgradeActive: 0
   upgradePlacementCost: 250
   structureRange: 1
+  maxFacilitySearchRange: 5
   upgradePrefab: {fileID: 0}
   prefabVariants:
   - {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}
@@ -40,4 +42,3 @@ MonoBehaviour:
   upgradedIncome: 20
   upgradedUpkeep: 0
   zoneType: 0
-  maxFacilitySearchRange: 5

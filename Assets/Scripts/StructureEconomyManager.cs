@@ -16,40 +16,8 @@ public static class StructureEconomyManager
     public static void PrepareZoneStructure(Vector3Int gridPosition, GridStructure grid)
     {
         PrepareNewStructure(gridPosition, grid);
-        ZoneStructureSO zoneData = (ZoneStructureSO)grid.GetStructureDataFromTheGrid(gridPosition);
-        if(DoesStructureRequireAnyResources(zoneData))
-        {
-            var structuresAroundPositions = grid.GetStructurePositionInRange(gridPosition, zoneData.maxFacilitySearchRange);
-            foreach (var structurePositionNearBy in structuresAroundPositions)
-            {
-                var data = grid.GetStructureDataFromTheGrid(structurePositionNearBy);
-                if(data.GetType() == typeof(SingleFacilitySO))
-                {
-                    SingleFacilitySO facility = (SingleFacilitySO)data;
-                    if((facility.facilityType == FacilityType.Power && zoneData.HasPower() == false && zoneData.requirePower)
-                        || (facility.facilityType == FacilityType.Water && zoneData.HasWater() == false && zoneData.requireWater)
-                        || (facility.facilityType == FacilityType.Silo && zoneData.HasSilo() == false && zoneData.requireSilo))
-                    {
-                        if(grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
-                        {
-                            if(facility.IsFull() == false)
-                            {
-                                facility.AddClient(new StructureBaseSO[] { zoneData });
-                                if (DoesStructureRequireAnyResources(zoneData) == false)
-                                {
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private static bool DoesStructureRequireAnyResources(ZoneStructureSO zoneData)
-    {
-        return(zoneData.requirePower && zoneData.HasPower() == false) || (zoneData.requireWater && zoneData.HasWater() == false) || (zoneData.requireSilo && zoneData.HasSilo() == false);
+        StructureBaseSO structureData = grid.GetStructureDataFromTheGrid(gridPosition);
+        AddFacilityTypeToStructure(gridPosition, grid, structureData);
     }
 
     public static void PrepareRoadStructure(Vector3Int gridPosition, GridStructure grid)
@@ -61,10 +29,11 @@ public static class StructureEconomyManager
 
     public static void PrepareFacilityStructure(Vector3Int gridPosition, GridStructure grid)
     {
-        PrepareNewStructure(gridPosition, grid);
+        PrepareZoneStructure(gridPosition, grid);
         SingleFacilitySO facilityData = (SingleFacilitySO)grid.GetStructureDataFromTheGrid(gridPosition);
         var structuresAroundFacility = grid.GetStructuresDataInRange(gridPosition, facilityData.singleStructureRange);
         facilityData.AddClient(structuresAroundFacility);
+        AddFacilityTypeToStructure(gridPosition, grid, facilityData);
     }
 
     public static IEnumerable<StructureBaseSO> PrepareFacilityRemoval(Vector3Int gridPosition, GridStructure grid)
@@ -139,6 +108,47 @@ public static class StructureEconomyManager
         else if (structureType == typeof(SingleFacilitySO))
         {
             PrepareFacilityStructureForUpgrade(gridPosition, grid, structureData);
+        }
+    }
+
+    private static bool DoesStructureRequireAnyResources(StructureBaseSO structureData)
+    {
+        return (structureData.requirePower && structureData.HasPower() == false) 
+            || (structureData.requireWater && structureData.HasWater() == false) 
+            || (structureData.requireSilo && structureData.HasSilo() == false)
+            || (structureData.requireHealthcare && structureData.HasHealthcare() == false);
+    }
+
+    private static void AddFacilityTypeToStructure(Vector3Int gridPosition, GridStructure grid, StructureBaseSO structureData)
+    {
+        if (DoesStructureRequireAnyResources(structureData))
+        {
+            var structuresAroundPositions = grid.GetStructurePositionInRange(gridPosition, structureData.maxFacilitySearchRange);
+            foreach (var structurePositionNearBy in structuresAroundPositions)
+            {
+                var data = grid.GetStructureDataFromTheGrid(structurePositionNearBy);
+                if (data.GetType() == typeof(SingleFacilitySO))
+                {
+                    SingleFacilitySO facility = (SingleFacilitySO)data;
+                    if ((facility.facilityType == FacilityType.Power && structureData.HasPower() == false && structureData.requirePower)
+                        || (facility.facilityType == FacilityType.Water && structureData.HasWater() == false && structureData.requireWater)
+                        || (facility.facilityType == FacilityType.Silo && structureData.HasSilo() == false && structureData.requireSilo)
+                        || (facility.facilityType == FacilityType.Healthcare && structureData.HasHealthcare() == false && structureData.requireHealthcare))
+                    {
+                        if (grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
+                        {
+                            if (facility.IsFull() == false)
+                            {
+                                facility.AddClient(new StructureBaseSO[] { structureData });
+                                if (DoesStructureRequireAnyResources(structureData) == false)
+                                {
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

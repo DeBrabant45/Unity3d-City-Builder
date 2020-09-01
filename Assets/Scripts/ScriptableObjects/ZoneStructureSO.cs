@@ -19,7 +19,6 @@ public class ZoneStructureSO : StructureBaseSO
     public int upgradedIncome;
     public int upgradedUpkeep;
     public ZoneType zoneType;
-    public int maxFacilitySearchRange;
 
 
     public int GetResidentsAmount()

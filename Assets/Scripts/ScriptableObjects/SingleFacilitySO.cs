@@ -18,19 +18,21 @@ public class SingleFacilitySO : SingleStructureBaseSO
     {
         if(_customers.Contains(client))
         {
-            if(facilityType == FacilityType.Water)
+            switch(facilityType)
             {
-                client.RemoveWaterFacility();
+                case FacilityType.Water:
+                    client.RemoveWaterFacility();
+                    break;
+                case FacilityType.Power:
+                    client.RemovePowerFacility();
+                    break;
+                case FacilityType.Silo:
+                    client.RemoveSiloFacility();
+                    break;
+                case FacilityType.Healthcare:
+                    client.RemoveHealthcareFacility();
+                    break;
             }
-            if (facilityType == FacilityType.Power)
-            {
-                client.RemovePowerFacility();
-            }
-            if(facilityType == FacilityType.Silo)
-            {
-                client.RemoveSiloFacility();
-            }
-
             _customers.Remove(client);
         }
     }
@@ -71,6 +73,11 @@ public class SingleFacilitySO : SingleStructureBaseSO
                     if (nearByStructure.AddSiloFacility(this))
                         _customers.Add(nearByStructure);
                 }
+                if (facilityType == FacilityType.Healthcare && nearByStructure.requireHealthcare)
+                {
+                    if (nearByStructure.AddHealthcareFacility(this))
+                        _customers.Add(nearByStructure);
+                }
             }
         }
     }
@@ -97,5 +104,6 @@ public enum FacilityType
     Power,
     Water,
     Silo,
+    Healthcare,
     None
 }
