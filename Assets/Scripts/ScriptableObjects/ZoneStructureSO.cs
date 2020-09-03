@@ -6,18 +6,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New zone structure", menuName = "CityBuilder/StructureData/ZoneStructure")]
 public class ZoneStructureSO : StructureBaseSO
 {
-    public GameObject upgradePrefab;
     public GameObject[] prefabVariants;
-    public GameObject[] upgradePrefabVariants;
+    //public GameObject upgradePrefab;
+    //public GameObject[] upgradePrefabVariants;
+    public int[] upgradedResidentsAmount;
 
     [SerializeField]
     protected int residentsAmount;
-    [SerializeField]
-    protected int upgradedResidentsAmount;
 
-    public int upgradedHappinessThreshold;
-    public int upgradedIncome;
-    public int upgradedUpkeep;
+    //public int upgradedHappinessThreshold;
+    //public int upgradedIncome;
+    //public int upgradedUpkeep;
     public ZoneType zoneType;
 
 
@@ -28,9 +27,9 @@ public class ZoneStructureSO : StructureBaseSO
 
     public int SetUpgradedResidentsAmount()
     {
-        if (upgradeActive == true)
+        if(upgradedResidentsAmount.Length > 0)
         {
-            residentsAmount = upgradedResidentsAmount;
+            return residentsAmount = upgradedResidentsAmount[upgradeLevel];
         }
         return residentsAmount;
     }

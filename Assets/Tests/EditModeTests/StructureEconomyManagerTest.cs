@@ -229,11 +229,11 @@ namespace Tests
             agricultureZone.requirePower = true;
             agricultureZone.requireWater = true;
             agricultureZone.upgradable = true;
-            agricultureZone.upgradeActive = false;
+            agricultureZone.fullyUpgradedLevel = false;
             agricultureZone.upkeepCost = 0;
             agricultureZone.prefab = TestPrefab;
             agricultureZone.maxFacilitySearchRange = 2;
-            agricultureZone.upgradePrefab = TestPrefab2;
+            agricultureZone.upgradeLevelPrefabs[0] = TestPrefab2;
             return agricultureZone;
         }
 
@@ -248,10 +248,10 @@ namespace Tests
             silo.requirePower = false;
             silo.requireWater = false;
             silo.upgradable = true;
-            silo.upgradeActive = false;
+            silo.fullyUpgradedLevel = false;
             silo.upkeepCost = 0;
             silo.prefab = TestPrefab;
-            silo.upgradePrefab = TestPrefab2;
+            silo.upgradeLevelPrefabs[0] = TestPrefab2;
             return silo;
         }
 

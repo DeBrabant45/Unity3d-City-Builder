@@ -38,7 +38,7 @@ namespace Tests
         public void ResidentialZoneHasAlreadyUpgraded()
         {
             ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(0, 0, 0));
-            residentialZone.upgradeActive = true;
+            residentialZone.fullyUpgradedLevel = true;
             Assert.True(residentialZone.HasUpgraded());
         }
 
@@ -721,15 +721,21 @@ namespace Tests
             ZoneStructureSO residentialZone = ScriptableObject.CreateInstance<ZoneStructureSO>();
             GameObject TestPrefab = new GameObject();
             GameObject TestPrefab2 = new GameObject();
+            residentialZone.buildingName = "ResidentialZone";
+            residentialZone.zoneType = ZoneType.Residential;
             residentialZone.requireRoadAccess = true;
             residentialZone.requirePower = true;
             residentialZone.requireWater = true;
             residentialZone.upgradable = true;
-            residentialZone.upgradeActive = false;
+            residentialZone.fullyUpgradedLevel = false;
             residentialZone.upkeepCost = 0;
             residentialZone.prefab = TestPrefab;
-            residentialZone.upgradePrefabVariants = new GameObject[1] { TestPrefab2 };
             residentialZone.maxFacilitySearchRange = 2;
+            residentialZone.upgradeLevel = 0;
+            residentialZone.upgradeIncome = new int[1] { 1 };
+            residentialZone.upgradePlacementCost = new int[1] { 0 };
+            residentialZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
+            residentialZone.upgradedResidentsAmount = new int[1] { 0 };
             return residentialZone;
         }        
         
@@ -744,11 +750,14 @@ namespace Tests
             commercialZone.requirePower = true;
             commercialZone.requireWater = true;
             commercialZone.upgradable = true;
-            commercialZone.upgradeActive = false;
+            commercialZone.fullyUpgradedLevel = false;
             commercialZone.upkeepCost = 0;
             commercialZone.prefab = TestPrefab;
             commercialZone.maxFacilitySearchRange = 2;
-            commercialZone.upgradePrefab = TestPrefab2;
+            commercialZone.upgradeLevel = 0;
+            commercialZone.upgradeIncome = new int[1] { 1 };
+            commercialZone.upgradePlacementCost = new int[1] { 1 };
+            commercialZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
             return commercialZone;
         }
 
@@ -763,11 +772,14 @@ namespace Tests
             agricultureZone.requirePower = true;
             agricultureZone.requireWater = true;
             agricultureZone.upgradable = true;
-            agricultureZone.upgradeActive = false;
+            agricultureZone.fullyUpgradedLevel = false;
             agricultureZone.upkeepCost = 0;
             agricultureZone.prefab = TestPrefab;
             agricultureZone.maxFacilitySearchRange = 2;
-            agricultureZone.upgradePrefab = TestPrefab2;
+            agricultureZone.upgradeLevel = 0;
+            agricultureZone.upgradeIncome = new int[1] { 1 };
+            agricultureZone.upgradePlacementCost = new int[1] { 1 };
+            agricultureZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
             return agricultureZone;
         }
 
@@ -782,10 +794,13 @@ namespace Tests
             powerPlant.requirePower = false;
             powerPlant.requireWater = false;
             powerPlant.upgradable = true;
-            powerPlant.upgradeActive = false;
+            powerPlant.fullyUpgradedLevel = false;
             powerPlant.upkeepCost = 0;
             powerPlant.prefab = TestPrefab;
-            powerPlant.upgradePrefab = TestPrefab2;
+            powerPlant.upgradeLevel = 0;
+            powerPlant.upgradePlacementCost = new int[1] { 1 };
+            powerPlant.maxCustomersUpgraded = new int[1] { 1 };
+            powerPlant.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
             return powerPlant;
         }
 
@@ -800,10 +815,13 @@ namespace Tests
             waterTower.requirePower = false;
             waterTower.requireWater = false;
             waterTower.upgradable = true;
-            waterTower.upgradeActive = false;
+            waterTower.fullyUpgradedLevel = false;
             waterTower.upkeepCost = 0;
             waterTower.prefab = TestPrefab;
-            waterTower.upgradePrefab = TestPrefab2;
+            waterTower.upgradeLevel = 0;
+            waterTower.upgradePlacementCost = new int[1] { 1 };
+            waterTower.maxCustomersUpgraded = new int[1] { 1 };
+            waterTower.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
             return waterTower;
         }
 
@@ -818,10 +836,13 @@ namespace Tests
             silo.requirePower = false;
             silo.requireWater = false;
             silo.upgradable = true;
-            silo.upgradeActive = false;
+            silo.fullyUpgradedLevel = false;
             silo.upkeepCost = 0;
             silo.prefab = TestPrefab;
-            silo.upgradePrefab = TestPrefab2;
+            silo.upgradeLevel = 0;
+            silo.upgradePlacementCost = new int[1] { 1 };
+            silo.maxCustomersUpgraded = new int[1] { 1 };
+            silo.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
             return silo;
         }
 

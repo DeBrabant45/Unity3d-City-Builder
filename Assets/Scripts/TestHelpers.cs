@@ -43,10 +43,10 @@ public static class TestHelpers
         zone.buildingName = "Commercial";
         zone.prefab = GetAGameObjectWithMaterial();
         zone.upgradable = true;
-        zone.upgradeActive = false;
+        zone.fullyUpgradedLevel = false;
         zone.prefab = TestPrefab;
-        zone.upgradePrefab = TestPrefab2;
-        zone.upgradePrefabVariants = new GameObject[1];
+        //zone.upgradePrefab = TestPrefab2;
+        //zone.upgradePrefabVariants = new GameObject[1];
         collection.zoneStructures = new List<ZoneStructureSO>();
         collection.zoneStructures.Add(zone);
         structureRepository.modelDataCollection = collection;

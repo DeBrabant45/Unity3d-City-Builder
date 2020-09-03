@@ -21,16 +21,21 @@ MonoBehaviour:
   requirePower: 1
   requireWater: 1
   requireSilo: 0
+  requireHealthcare: 0
+  fullyUpgradedLevel: 0
   upgradable: 1
-  upgradeActive: 0
-  upgradePlacementCost: 400
+  upgradeLevel: 0
+  upgradeLevelPrefabs:
+  - {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07, type: 3}
+  - {fileID: 6870371079923077599, guid: 72a7f07404f80e248a26bf96e29539ff, type: 3}
+  upgradePlacementCost: 90010000c2010000
+  upgradeIncome: 3c0000005a000000
   structureRange: 1
+  maxFacilitySearchRange: 5
   upgradePrefab: {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07,
     type: 3}
   prefabVariants: []
   upgradePrefabVariants: []
-  upgradedHappinessThreshold: 0
-  upgradedIncome: 60
-  upgradedUpkeep: 0
+  upgradedResidentsAmount: 
+  residentsAmount: 0
   zoneType: 2
-  maxFacilitySearchRange: 5

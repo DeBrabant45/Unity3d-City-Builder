@@ -49,7 +49,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(upkeepText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        SetText(upgradeAmountText, data.upgradePlacementCost + "");
+        SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
         CheckStructureToDisplayResidentsText(data);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
@@ -61,17 +61,17 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
     public void DisplayFacilityStructureInfo(SingleFacilitySO data)
     {
         Show();
+        HideElement(upkeepText.gameObject);
+        HideElement(residentsText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        HideElement(upkeepText.gameObject);
-        HideElement(upgradeAmountText.gameObject);
-        HideElement(residentsText.gameObject);
+        SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
+        SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
         CheckStructureToDisplayWaterToggle(data);
         CheckStructureToDisplayUpgradeToggle(data);
         CheckStructureToDisplaySiloToggle(data);
-        SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
     }
 
     private void HideElement(GameObject element)

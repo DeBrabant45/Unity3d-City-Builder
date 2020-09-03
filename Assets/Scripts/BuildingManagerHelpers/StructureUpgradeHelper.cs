@@ -53,21 +53,21 @@ public class StructureUpgradeHelper : StructureModificationHelper
         if (structureData != null)
         {
             Type dataType = structureData.GetType();
-            structureData.upgradeActive = true;
             if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
                 var zoneStructure = (ZoneStructureSO)structureData;
                 structureData = zoneStructure;
                 _resourceManager.SetUpgradedPopulationAmount(zoneStructure.GetResidentsAmount(), zoneStructure.SetUpgradedResidentsAmount());
             }
-            if (dataType == typeof(ZoneStructureSO))
-            {
-                structureData.SetUpgradedIncome(StructureUpgradeIncome(structureData));
-            }
             if(dataType == typeof(SingleFacilitySO))
             {
                 ((SingleFacilitySO)structureData).SetUpgradedMaxCustomers();
             }
+            else
+            {
+                structureData.GetUpgradedIncome();
+            }
+            structureData.IncreaseUpgradeLevel();
         }
     }
 
@@ -76,7 +76,7 @@ public class StructureUpgradeHelper : StructureModificationHelper
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
         var inputStructure = _grid.GetStructureDataFromTheGrid(inputPosition);
 
-        if (_grid.IsCellTaken(gridPosition) == true && inputStructure.upgradable == true && inputStructure.upgradeActive == false)
+        if (_grid.IsCellTaken(gridPosition) == true && inputStructure.upgradable == true && inputStructure.IsFullyUpgraded() == false)
         {
             var structureData = _grid.GetStructureDataFromTheGrid(gridPosition);
             var structureGameObject = _grid.GetStructureFromTheGrid(gridPosition);
@@ -84,13 +84,13 @@ public class StructureUpgradeHelper : StructureModificationHelper
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
                 RevokeStructureUpgradePlacementAt(gridPositionInt, structureGameObject);
-                _resourceManager.ReduceShoppingCartAmount(structureData.upgradePlacementCost);
+                _resourceManager.ReduceShoppingCartAmount(structureData.GetUpgradePlacementCost());
             } 
             else
             {
                 AddOldStructureForUpgrade(gridPositionInt, structureGameObject);
                 PlaceUpgradedGhostStructureAt(gridPosition, gridPositionInt, structureData);
-                _resourceManager.AddToShoppingCartAmount(structureData.upgradePlacementCost);
+                _resourceManager.AddToShoppingCartAmount(structureData.GetUpgradePlacementCost());
             }
 
         }
@@ -107,9 +107,9 @@ public class StructureUpgradeHelper : StructureModificationHelper
 
     private void PlaceUpgradedGhostStructureAt(Vector3 gridPosition, Vector3Int gridPositionInt, StructureBaseSO structureData)
     {
-        structureData.prefab = _structureRepository.GetUpgradeBuildingPrefab(structureData);
+        //structureData.prefab = _structureRepository.GetUpgradeBuildingPrefab(structureData);
         AddNewStructureDataForUpgrade(gridPositionInt, structureData);
-        AddStructureToBeModified(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, structureData.prefab));
+        AddStructureToBeModified(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, structureData.GetUpgradedPrefab()));
     }
 
     private void DestroyUpgradeStructureGameObjectAt(Vector3Int gridPositionInt)
@@ -163,10 +163,10 @@ public class StructureUpgradeHelper : StructureModificationHelper
         }
     }
 
-    private int StructureUpgradeIncome(StructureBaseSO structureData)
-    {
-        return _structureRepository.GetStructureUpgradeIncome(structureData);
-    }
+    //private int StructureUpgradeIncome(StructureBaseSO structureData)
+    //{
+    //    return _structureRepository.GetStructureUpgradeIncome(structureData);
+    //}
 
     private void ResetHelpersData()
     {

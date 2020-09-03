@@ -33,7 +33,6 @@ public class UIController : MonoBehaviour
 
     public GameObject zonesPanel;
     public GameObject facilitiesPanel;
-    public GameObject communityFacilitiesPanel;
     public GameObject roadsPanel;
     public Button closeBuildMenuBtn;
 
@@ -133,7 +132,6 @@ public class UIController : MonoBehaviour
     {
         CreateButtonsInPanel(zonesPanel.transform, structureRepository.GetZoneNames(), OnBuildZoneCallback);
         CreateButtonsInPanel(facilitiesPanel.transform, structureRepository.GetSingleStructureNames(), OnBuildSingleStructureCallback);
-        CreateButtonsInPanel(communityFacilitiesPanel.transform, structureRepository.GetCommunityFacilityNames(), OnBuildSingleStructureCallback);
         CreateButtonsInPanel(roadsPanel.transform, new List<string>() { structureRepository.GetRoadStructureName() }, OnBuildRoadCallback);
     }
 

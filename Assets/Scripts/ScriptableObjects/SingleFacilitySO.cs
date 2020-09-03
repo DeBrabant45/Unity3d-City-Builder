@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New facility", menuName = "CityBuilder/StructureData/Facility")]
@@ -10,8 +11,8 @@ public class SingleFacilitySO : SingleStructureBaseSO
 
     public int maxCustomers;
     public int upkeepPerCustomer;
-    public GameObject upgradePrefab;
-    public int maxCustomersUpgraded;
+    //public GameObject upgradePrefab;
+    public int[] maxCustomersUpgraded;
     public FacilityType facilityType = FacilityType.None;
 
     public void RemoveClient(StructureBaseSO client)
@@ -39,7 +40,11 @@ public class SingleFacilitySO : SingleStructureBaseSO
 
     public int SetUpgradedMaxCustomers()
     {
-        return maxCustomers = maxCustomersUpgraded;
+        if(upgradeLevel != maxCustomersUpgraded.Count())
+        {
+            return maxCustomers = maxCustomersUpgraded[upgradeLevel];
+        }
+        return maxCustomers;
     }
 
     public override int GetIncome()

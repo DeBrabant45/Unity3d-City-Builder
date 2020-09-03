@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class StructureBaseSO : ScriptableObject
@@ -18,14 +19,20 @@ public abstract class StructureBaseSO : ScriptableObject
     public GameObject prefab;
     public int placementCost;
     public int upkeepCost;
+
     public bool requireRoadAccess;
     public bool requirePower;
     public bool requireWater;
     public bool requireSilo;
     public bool requireHealthcare;
+
+    public bool fullyUpgradedLevel = false;
     public bool upgradable = false;
-    public bool upgradeActive = false;
-    public int upgradePlacementCost;
+    public int upgradeLevel = -1;
+    public GameObject[] upgradeLevelPrefabs;
+    public int[] upgradePlacementCost;
+    public int[] upgradeIncome;
+
     public int structureRange = 1;
     public int maxFacilitySearchRange;
 
@@ -40,13 +47,49 @@ public abstract class StructureBaseSO : ScriptableObject
         return income;
     }
 
-    public virtual int SetUpgradedIncome(int upgradeIncome)
+    public virtual int GetUpgradedIncome()
     {
-        if(upgradeActive == true)
+        if(upgradeIncome.Length > 0)
         {
-            income = upgradeIncome;
+            return income = upgradeIncome[upgradeLevel];
         }
         return income;
+    }
+
+    public void IncreaseUpgradeLevel()
+    {
+        if(upgradeLevel != upgradeLevelPrefabs.Count())
+        {
+            upgradeLevel++;
+            IsFullyUpgraded();
+        }
+    }
+
+    public int GetUpgradePlacementCost()
+    {
+        if(upgradeLevel != upgradePlacementCost.Count())
+        {
+            return upgradePlacementCost[upgradeLevel];
+        }
+        return placementCost;
+    }
+
+    public GameObject GetUpgradedPrefab()
+    {
+        if(upgradeLevel != upgradeLevelPrefabs.Count())
+        {
+            return upgradeLevelPrefabs[upgradeLevel];
+        }
+        return null;
+    }
+
+    public bool IsFullyUpgraded()
+    {
+        if(upgradeLevel == upgradeLevelPrefabs.Count())
+        {
+            return fullyUpgradedLevel = true;
+        }
+        return fullyUpgradedLevel = false;
     }
 
     public bool HasPower()
@@ -76,7 +119,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public bool HasUpgraded()
     {
-        return upgradeActive;
+        return fullyUpgradedLevel;
     }
 
     public void RemovePowerFacility()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Healthcare
   m_EditorClassIdentifier: 
   income: 1
-  buildingName: Hospital
+  buildingName: Healthcare
   prefab: {fileID: 3120162510222770716, guid: 4b5206f3e56a62c4881338c9217ae7d4, type: 3}
   placementCost: 500
   upkeepCost: 0
