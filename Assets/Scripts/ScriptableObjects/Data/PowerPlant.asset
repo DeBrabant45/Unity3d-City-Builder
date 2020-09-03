@@ -21,14 +21,18 @@ MonoBehaviour:
   requirePower: 0
   requireWater: 0
   requireSilo: 0
+  requireHealthcare: 0
   upgradable: 1
-  upgradeActive: 0
-  upgradePlacementCost: 0
+  fullyUpgraded: 0
+  upgradeLevelPrefabs:
+  - {fileID: 8372497345375219286, guid: 9425ec87116fa60428b8388e715de008, type: 3}
+  upgradePlacementCost: dc050000
+  upgradeIncome: 
+  upgradeLevel: 0
   structureRange: 1
+  maxFacilitySearchRange: 0
   singleStructureRange: 5
   maxCustomers: 10
   upkeepPerCustomer: 0
-  upgradePrefab: {fileID: 8372497345375219286, guid: 9425ec87116fa60428b8388e715de008,
-    type: 3}
-  maxCustomersUpgraded: 20
+  maxCustomersUpgraded: 14000000
   facilityType: 0

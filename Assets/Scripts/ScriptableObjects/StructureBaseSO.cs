@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
 using UnityEngine;
 
 public abstract class StructureBaseSO : ScriptableObject
@@ -26,12 +26,13 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireSilo;
     public bool requireHealthcare;
 
-    public bool fullyUpgradedLevel = false;
     public bool upgradable = false;
-    public int upgradeLevel = -1;
+    public bool fullyUpgraded = false;
     public GameObject[] upgradeLevelPrefabs;
     public int[] upgradePlacementCost;
     public int[] upgradeIncome;
+    [SerializeField]
+    private int upgradeLevel;
 
     public int structureRange = 1;
     public int maxFacilitySearchRange;
@@ -41,6 +42,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public SingleFacilitySO SiloProvider { get => _siloProvider; }
     public SingleFacilitySO HealthcareProvider { get => _healthcareProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
+    public int UpgradeLevel { get => upgradeLevel; }
 
     public virtual int GetIncome()
     {
@@ -49,7 +51,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public virtual int GetUpgradedIncome()
     {
-        if(upgradeIncome.Length > 0)
+        if(upgradeLevel < upgradeIncome.Length)
         {
             return income = upgradeIncome[upgradeLevel];
         }
@@ -58,7 +60,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public void IncreaseUpgradeLevel()
     {
-        if(upgradeLevel != upgradeLevelPrefabs.Count())
+        if(upgradeLevel < upgradeLevelPrefabs.Length)
         {
             upgradeLevel++;
             IsFullyUpgraded();
@@ -67,7 +69,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public int GetUpgradePlacementCost()
     {
-        if(upgradeLevel != upgradePlacementCost.Count())
+        if(upgradeLevel < upgradePlacementCost.Length)
         {
             return upgradePlacementCost[upgradeLevel];
         }
@@ -76,7 +78,7 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public GameObject GetUpgradedPrefab()
     {
-        if(upgradeLevel != upgradeLevelPrefabs.Count())
+        if(upgradeLevel < upgradeLevelPrefabs.Length)
         {
             return upgradeLevelPrefabs[upgradeLevel];
         }
@@ -85,11 +87,11 @@ public abstract class StructureBaseSO : ScriptableObject
 
     public bool IsFullyUpgraded()
     {
-        if(upgradeLevel == upgradeLevelPrefabs.Count())
+        if(upgradeLevel == upgradeLevelPrefabs.Length)
         {
-            return fullyUpgradedLevel = true;
+            return fullyUpgraded = true;
         }
-        return fullyUpgradedLevel = false;
+        return fullyUpgraded = false;
     }
 
     public bool HasPower()
@@ -117,9 +119,9 @@ public abstract class StructureBaseSO : ScriptableObject
         return _healthcareProvider != null;
     }
 
-    public bool HasUpgraded()
+    public bool HasFullyUpgraded()
     {
-        return fullyUpgradedLevel;
+        return fullyUpgraded;
     }
 
     public void RemovePowerFacility()

@@ -40,9 +40,9 @@ public class SingleFacilitySO : SingleStructureBaseSO
 
     public int SetUpgradedMaxCustomers()
     {
-        if(upgradeLevel != maxCustomersUpgraded.Count())
+        if(UpgradeLevel != maxCustomersUpgraded.Count())
         {
-            return maxCustomers = maxCustomersUpgraded[upgradeLevel];
+            return maxCustomers = maxCustomersUpgraded[UpgradeLevel];
         }
         return maxCustomers;
     }

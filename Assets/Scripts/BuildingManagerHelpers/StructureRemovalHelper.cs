@@ -52,7 +52,7 @@ public class StructureRemovalHelper : StructureModificationHelper
             Type dataType = structureData.GetType();
             if (dataType == typeof(ZoneStructureSO) && ((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
             {
-                if(structureData.HasUpgraded() == true)
+                if(structureData.HasFullyUpgraded() == true)
                 {
                     _resourceManager.ReducePopulation(((ZoneStructureSO)structureData).SetUpgradedResidentsAmount());
                 }

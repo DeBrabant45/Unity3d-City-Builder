@@ -19,7 +19,6 @@ public class ZoneStructureSO : StructureBaseSO
     //public int upgradedUpkeep;
     public ZoneType zoneType;
 
-
     public int GetResidentsAmount()
     {
         return residentsAmount;
@@ -27,9 +26,9 @@ public class ZoneStructureSO : StructureBaseSO
 
     public int SetUpgradedResidentsAmount()
     {
-        if(upgradedResidentsAmount.Length > 0)
+        if(UpgradeLevel < upgradedResidentsAmount.Length)
         {
-            return residentsAmount = upgradedResidentsAmount[upgradeLevel];
+            return residentsAmount = upgradedResidentsAmount[UpgradeLevel];
         }
         return residentsAmount;
     }

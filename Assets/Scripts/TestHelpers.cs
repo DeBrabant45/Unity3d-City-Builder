@@ -43,7 +43,7 @@ public static class TestHelpers
         zone.buildingName = "Commercial";
         zone.prefab = GetAGameObjectWithMaterial();
         zone.upgradable = true;
-        zone.fullyUpgradedLevel = false;
+        zone.fullyUpgraded = false;
         zone.prefab = TestPrefab;
         //zone.upgradePrefab = TestPrefab2;
         //zone.upgradePrefabVariants = new GameObject[1];

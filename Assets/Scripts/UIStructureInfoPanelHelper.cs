@@ -49,7 +49,8 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(upkeepText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
+        //SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
+        CheckStructureToDisplayUpgradeAmountText(data);
         CheckStructureToDisplayResidentsText(data);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
@@ -65,8 +66,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(residentsText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
+        //SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
         SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
+        CheckStructureToDisplayUpgradeAmountText(data);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
         CheckStructureToDisplayWaterToggle(data);
@@ -134,8 +136,8 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
 
     private void CheckStructureToDisplayUpgradeToggle(StructureBaseSO structure)
     {
-        SetToggle(upgradeToggle, structure.HasUpgraded());
-        if (structure.HasUpgraded() == true)
+        SetToggle(upgradeToggle, structure.HasFullyUpgraded());
+        if (structure.HasFullyUpgraded() == true)
         {
             HideElement(upgradeAmountText.gameObject);
         }
@@ -166,6 +168,18 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         else
         {
             HideElement(residentsText.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayUpgradeAmountText(StructureBaseSO structure)
+    {
+        if (structure.upgradable == true)
+        {
+            SetText(upgradeAmountText, structure.GetUpgradePlacementCost() + "");
+        }
+        else
+        {
+            HideElement(upgradeAmountText.gameObject);
         }
     }
 }

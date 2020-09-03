@@ -22,13 +22,13 @@ MonoBehaviour:
   requireWater: 0
   requireSilo: 0
   requireHealthcare: 0
-  fullyUpgradedLevel: 0
   upgradable: 1
-  upgradeLevel: 0
+  fullyUpgraded: 0
   upgradeLevelPrefabs:
   - {fileID: 6261175787222129641, guid: 22c737b1417cb4246bbd8e2cd2e6c6a7, type: 3}
-  upgradePlacementCost: c8000000
+  upgradePlacementCost: b0040000
   upgradeIncome: 
+  upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 0
   singleStructureRange: 5

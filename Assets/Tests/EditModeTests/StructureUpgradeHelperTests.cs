@@ -38,8 +38,8 @@ namespace Tests
         public void ResidentialZoneHasAlreadyUpgraded()
         {
             ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(0, 0, 0));
-            residentialZone.fullyUpgradedLevel = true;
-            Assert.True(residentialZone.HasUpgraded());
+            residentialZone.fullyUpgraded = true;
+            Assert.True(residentialZone.HasFullyUpgraded());
         }
 
         // A Test behaves as an ordinary method
@@ -47,7 +47,7 @@ namespace Tests
         public void ResidentialZoneHasNotUpgraded()
         {
             ZoneStructureSO residentialZone = CreateResidentialZoneAtPosition(new Vector3Int(0, 0, 0));
-            Assert.False(residentialZone.HasUpgraded());
+            Assert.False(residentialZone.HasFullyUpgraded());
         }        
         
         // A Test behaves as an ordinary method
@@ -208,7 +208,7 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.IsTrue(residentialZone.HasUpgraded());
+            Assert.IsTrue(residentialZone.HasFullyUpgraded());
         }           
         
         // A Test behaves as an ordinary method
@@ -401,7 +401,7 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.IsTrue(commercialZone.HasUpgraded());
+            Assert.IsTrue(commercialZone.HasFullyUpgraded());
         }
 
         // A Test behaves as an ordinary method
@@ -455,7 +455,7 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.IsTrue(agricultureZone.HasUpgraded());
+            Assert.IsTrue(agricultureZone.HasFullyUpgraded());
         }
 
         // A Test behaves as an ordinary method
@@ -626,7 +626,7 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.IsTrue(powerPlant.HasUpgraded());
+            Assert.IsTrue(powerPlant.HasFullyUpgraded());
         }
 
         // A Test behaves as an ordinary method
@@ -680,7 +680,7 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.IsTrue(waterTower.HasUpgraded());
+            Assert.IsTrue(waterTower.HasFullyUpgraded());
         }
 
 
@@ -713,7 +713,7 @@ namespace Tests
             _structureModificationHelper.PrepareStructureForModification(_gridPosition1, "", StructureType.None);
             _structureModificationHelper.ConfirmModifications();
             GameObject objectInDictionary = _structureModificationHelper.AccessStructureInDictionary(_gridPosition1);
-            Assert.IsTrue(silo.HasUpgraded());
+            Assert.IsTrue(silo.HasFullyUpgraded());
         }
 
         private static ZoneStructureSO CreateResidentialZone()
@@ -727,11 +727,11 @@ namespace Tests
             residentialZone.requirePower = true;
             residentialZone.requireWater = true;
             residentialZone.upgradable = true;
-            residentialZone.fullyUpgradedLevel = false;
+            residentialZone.fullyUpgraded = false;
             residentialZone.upkeepCost = 0;
             residentialZone.prefab = TestPrefab;
             residentialZone.maxFacilitySearchRange = 2;
-            residentialZone.upgradeLevel = 0;
+            //residentialZone.upgradeLevel = 0;
             residentialZone.upgradeIncome = new int[1] { 1 };
             residentialZone.upgradePlacementCost = new int[1] { 0 };
             residentialZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
@@ -750,11 +750,11 @@ namespace Tests
             commercialZone.requirePower = true;
             commercialZone.requireWater = true;
             commercialZone.upgradable = true;
-            commercialZone.fullyUpgradedLevel = false;
+            commercialZone.fullyUpgraded = false;
             commercialZone.upkeepCost = 0;
             commercialZone.prefab = TestPrefab;
             commercialZone.maxFacilitySearchRange = 2;
-            commercialZone.upgradeLevel = 0;
+            //commercialZone.upgradeLevel = 0;
             commercialZone.upgradeIncome = new int[1] { 1 };
             commercialZone.upgradePlacementCost = new int[1] { 1 };
             commercialZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
@@ -772,11 +772,11 @@ namespace Tests
             agricultureZone.requirePower = true;
             agricultureZone.requireWater = true;
             agricultureZone.upgradable = true;
-            agricultureZone.fullyUpgradedLevel = false;
+            agricultureZone.fullyUpgraded = false;
             agricultureZone.upkeepCost = 0;
             agricultureZone.prefab = TestPrefab;
             agricultureZone.maxFacilitySearchRange = 2;
-            agricultureZone.upgradeLevel = 0;
+            //agricultureZone.upgradeLevel = 0;
             agricultureZone.upgradeIncome = new int[1] { 1 };
             agricultureZone.upgradePlacementCost = new int[1] { 1 };
             agricultureZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
@@ -794,10 +794,10 @@ namespace Tests
             powerPlant.requirePower = false;
             powerPlant.requireWater = false;
             powerPlant.upgradable = true;
-            powerPlant.fullyUpgradedLevel = false;
+            powerPlant.fullyUpgraded = false;
             powerPlant.upkeepCost = 0;
             powerPlant.prefab = TestPrefab;
-            powerPlant.upgradeLevel = 0;
+            //powerPlant.upgradeLevel = 0;
             powerPlant.upgradePlacementCost = new int[1] { 1 };
             powerPlant.maxCustomersUpgraded = new int[1] { 1 };
             powerPlant.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
@@ -815,10 +815,10 @@ namespace Tests
             waterTower.requirePower = false;
             waterTower.requireWater = false;
             waterTower.upgradable = true;
-            waterTower.fullyUpgradedLevel = false;
+            waterTower.fullyUpgraded = false;
             waterTower.upkeepCost = 0;
             waterTower.prefab = TestPrefab;
-            waterTower.upgradeLevel = 0;
+            //waterTower.upgradeLevel = 0;
             waterTower.upgradePlacementCost = new int[1] { 1 };
             waterTower.maxCustomersUpgraded = new int[1] { 1 };
             waterTower.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
@@ -836,10 +836,10 @@ namespace Tests
             silo.requirePower = false;
             silo.requireWater = false;
             silo.upgradable = true;
-            silo.fullyUpgradedLevel = false;
+            silo.fullyUpgraded = false;
             silo.upkeepCost = 0;
             silo.prefab = TestPrefab;
-            silo.upgradeLevel = 0;
+            //silo.upgradeLevel = 0;
             silo.upgradePlacementCost = new int[1] { 1 };
             silo.maxCustomersUpgraded = new int[1] { 1 };
             silo.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
