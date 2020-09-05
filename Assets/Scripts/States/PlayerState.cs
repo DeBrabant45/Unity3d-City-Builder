@@ -53,6 +53,12 @@ public abstract class PlayerState
 
     }
 
+    internal void OnBuildManufacturer(string structureName)
+    {
+        this._buildingManager.CancelModification();
+        this._gameManager.TransitionToState(this._gameManager.buildingManufacturerState, structureName);
+    }
+
     public virtual void OnBuildZone(string structureName)
     {
         this._buildingManager.CancelModification();

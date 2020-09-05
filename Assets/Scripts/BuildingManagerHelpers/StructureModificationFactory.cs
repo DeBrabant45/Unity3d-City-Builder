@@ -5,6 +5,7 @@ using UnityEngine;
 
 public static class StructureModificationFactory
 {
+    private static StructureModificationHelper _manufacturerPlacementHelper;
     private static StructureModificationHelper _singleStructurePlacementHelper;
     private static StructureModificationHelper _structureRemovalHelper;
     private static StructureModificationHelper _roadStructurePlacementHelper;
@@ -13,6 +14,7 @@ public static class StructureModificationFactory
 
     public static void PrepareFactory(StructureRepository structureRepository, GridStructure grid, IPlacementManager placementManager, IResourceManager resourceManager)
     {
+        _manufacturerPlacementHelper = new ManufacturerPlacementHelper(structureRepository, grid, placementManager, resourceManager);
         _singleStructurePlacementHelper = new SingleStructurePlacementHelper(structureRepository, grid, placementManager, resourceManager);
         _structureRemovalHelper = new StructureRemovalHelper(structureRepository, grid, placementManager, resourceManager);
         _strutureUpgradeHelper = new StructureUpgradeHelper(structureRepository, grid, placementManager, resourceManager);
@@ -37,6 +39,10 @@ public static class StructureModificationFactory
         else if(classType == typeof(PlayerUpgradeBuildingState))
         {
             return _strutureUpgradeHelper;
+        }
+        else if(classType == typeof(PlayerBuildingManufacturerState))
+        {
+            return _manufacturerPlacementHelper;
         }
         else
         {

@@ -10,6 +10,7 @@ public class UIController : MonoBehaviour
     private Action<string> _onBuildZoneHandler;
     private Action<string> _onBuildSingleStructureHandler;
     private Action<string> _onBuildRoadHandler;
+    private Action<string> _onBuildManufacturerHandler;
 
     private Action _onCancelActionHandler;
     private Action _onRemoveActionHandler;
@@ -33,6 +34,7 @@ public class UIController : MonoBehaviour
 
     public GameObject zonesPanel;
     public GameObject facilitiesPanel;
+    public GameObject manufacturersPanel;
     public GameObject roadsPanel;
     public Button closeBuildMenuBtn;
 
@@ -132,6 +134,7 @@ public class UIController : MonoBehaviour
     {
         CreateButtonsInPanel(zonesPanel.transform, structureRepository.GetZoneNames(), OnBuildZoneCallback);
         CreateButtonsInPanel(facilitiesPanel.transform, structureRepository.GetSingleStructureNames(), OnBuildSingleStructureCallback);
+        CreateButtonsInPanel(manufacturersPanel.transform, structureRepository.GetManufacturerNames(), OnBuildManufacturerCallback);
         CreateButtonsInPanel(roadsPanel.transform, new List<string>() { structureRepository.GetRoadStructureName() }, OnBuildRoadCallback);
     }
 
@@ -187,12 +190,19 @@ public class UIController : MonoBehaviour
         structureInfoPanelHelper.DisplayFacilityStructureInfo(data);
     }
 
+    private void OnBuildManufacturerCallback(string nameOfStructure)
+    {
+        PrepareUIForBuilding();
+        _onBuildManufacturerHandler?.Invoke(nameOfStructure);
+        OnCloseMenuHandler();
+    }
+
     private void OnBuildZoneCallback(string nameOfStructure)
     {
         PrepareUIForBuilding();
         _onBuildZoneHandler?.Invoke(nameOfStructure);
         OnCloseMenuHandler();
-    }
+    } 
 
     private void OnBuildRoadCallback(string nameOfStructure)
     {
@@ -238,6 +248,16 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonClickedSound();
         buildingMenuPanel.SetActive(false);
+    }
+
+    public void AddListenerOnBuildManufacturerEvent(Action<string> listener)
+    {
+        _onBuildManufacturerHandler += listener;
+    }
+
+    public void RemoveListenerOnBuildManufacturerEvent(Action<string> listener)
+    {
+        _onBuildManufacturerHandler -= listener;
     }
 
     public void AddListenerOnBuildZoneEvent(Action<string> listener)

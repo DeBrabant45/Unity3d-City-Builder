@@ -7,5 +7,6 @@ public class CollectionSO : ScriptableObject
 {
     public RoadStructureSO roadStructure;
     public List<SingleStructureBaseSO> singleStructures;
+    public List<ManufacturerBaseSO> manufacturers;
     public List<ZoneStructureSO> zoneStructures;
 }

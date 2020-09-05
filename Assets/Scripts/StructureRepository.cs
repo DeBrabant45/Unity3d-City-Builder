@@ -18,6 +18,11 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.singleStructures.Select(facility => facility.buildingName).ToList();
     }
 
+    public List<string> GetManufacturerNames()
+    {
+        return modelDataCollection.manufacturers.Select(factory => factory.buildingName).ToList();
+    }
+
     public string GetRoadStructureName()
     {
         return modelDataCollection.roadStructure.buildingName;
@@ -75,6 +80,8 @@ public class StructureRepository : MonoBehaviour
     {
         switch (structureType)
         {
+            case StructureType.Manufacturer:
+                return modelDataCollection.manufacturers.Where(structure => structure.buildingName == structureName).FirstOrDefault();
             case StructureType.Zone:
                 return modelDataCollection.zoneStructures.Where(structure => structure.buildingName == structureName).FirstOrDefault();
             case StructureType.SingleStructure:
@@ -155,6 +162,7 @@ public enum StructureType
 {
     Zone,
     SingleStructure,
+    Manufacturer,
     Road,
     None
 }

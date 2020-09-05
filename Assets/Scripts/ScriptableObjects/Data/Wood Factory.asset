@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d940f4360f16454582baf055d6e16c0, type: 3}
+  m_Name: Wood Factory
+  m_EditorClassIdentifier: 
+  income: 0
+  buildingName: 
+  prefab: {fileID: 0}
+  placementCost: 0
+  upkeepCost: 0
+  requireRoadAccess: 0
+  requirePower: 0
+  requireWater: 0
+  requireSilo: 0
+  requireHealthcare: 0
+  upgradable: 0
+  fullyUpgraded: 0
+  upgradeLevelPrefabs: []
+  upgradePlacementCost: 
+  upgradeIncome: 
+  upgradeLevel: 0
+  structureRange: 1
+  maxFacilitySearchRange: 0

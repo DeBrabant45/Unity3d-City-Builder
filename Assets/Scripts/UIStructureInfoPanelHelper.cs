@@ -49,7 +49,6 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(upkeepText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        //SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
         CheckStructureToDisplayUpgradeAmountText(data);
         CheckStructureToDisplayResidentsText(data);
         CheckStructureToDisplayPowerToggle(data);
@@ -66,7 +65,6 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(residentsText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
-        //SetText(upgradeAmountText, data.GetUpgradePlacementCost() + "");
         SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
         CheckStructureToDisplayUpgradeAmountText(data);
         CheckStructureToDisplayPowerToggle(data);
