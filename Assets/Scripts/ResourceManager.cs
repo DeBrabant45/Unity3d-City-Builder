@@ -10,15 +10,21 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     [SerializeField]
     private int _removalPrice = 20;
     [SerializeField]
-    private float _moneyCalculationInterval = 2;
+    private float _moneyCalculationInterval;
+    [SerializeField]
+    private float _woodCalculationInterval;
+    [SerializeField]
+    private int _startWoodAmount = 10;
     private MoneyHelper _moneyHelper;
     private BuildingManager _buildingManager;
     private PopulationHelper _populationHelper;
     private ShoppingCartHelper _shoppingCartHelper;
+    private WoodMaterialHelper _woodMaterialHelper;
 
     public UIController uIController;
     public int StartMoneyAmount { get => _startMoneyAmount; }
     public float MoneyCalculationInterval { get => _moneyCalculationInterval; }
+    public float WoodCalculationInterval { get => _woodCalculationInterval; }
     int IResourceManager.RemovalPrice { get => _removalPrice; }
 
 
@@ -28,6 +34,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         _moneyHelper = new MoneyHelper(_startMoneyAmount);
         _populationHelper = new PopulationHelper();
         _shoppingCartHelper = new ShoppingCartHelper();
+        _woodMaterialHelper = new WoodMaterialHelper(_startWoodAmount);
         UpdateUI();
     }
 
@@ -35,6 +42,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         this._buildingManager = buildingManager;
         InvokeRepeating("CalculateTownIncome", 0, MoneyCalculationInterval);
+        InvokeRepeating("CalculateTownTotalWoodAmount", 0, WoodCalculationInterval);
     }
 
     public void SpendMoney(int amount)
@@ -89,6 +97,12 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         }
     }
 
+    public void CalculateTownTotalWoodAmount()
+    {
+        _woodMaterialHelper.CalculateWoodAmount(_buildingManager.GetAllStructures());
+        UpdateUI();
+    }
+
     private void OnDisable()
     {
         CancelInvoke();
@@ -105,6 +119,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         uIController.SetMoneyValue(_moneyHelper.MoneyAmount);
         uIController.SetPopulationValue(_populationHelper.Population);
         uIController.SetShoppingCartValue(_shoppingCartHelper.ShoppingCartAmount);
+        uIController.SetWoodValue(_woodMaterialHelper.WoodAmount);
     }
 
     public void SetUpgradedPopulationAmount(int pastAmount, int newAmount)

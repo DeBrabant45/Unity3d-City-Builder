@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI moneyValue;
     public TextMeshProUGUI shoppingCartValue;
     public TextMeshProUGUI populationValue;
+    public TextMeshProUGUI woodMaterialValue;
 
     public GameObject insufficientFundsPanel;
     public Button closeInsufficientFundsBtn;
@@ -168,6 +169,11 @@ public class UIController : MonoBehaviour
     public void SetMoneyValue(int moneyAmount)
     {
         moneyValue.text = moneyAmount + "";
+    }
+
+    public void SetWoodValue(int woodAmount)
+    {
+        woodMaterialValue.text = woodAmount + "";
     }
 
     public void SetShoppingCartValue(int cartAmount)

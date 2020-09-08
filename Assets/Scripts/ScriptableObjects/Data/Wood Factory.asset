@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d940f4360f16454582baf055d6e16c0, type: 3}
   m_Name: Wood Factory
   m_EditorClassIdentifier: 
-  income: 0
-  buildingName: 
-  prefab: {fileID: 0}
+  income: 2
+  buildingName: Wood Factory
+  prefab: {fileID: 7694764856782211585, guid: 8d0ddc33a9dc29442b5291be639906fb, type: 3}
   placementCost: 0
   upkeepCost: 0
-  requireRoadAccess: 0
-  requirePower: 0
-  requireWater: 0
+  requireRoadAccess: 1
+  requirePower: 1
+  requireWater: 1
   requireSilo: 0
   requireHealthcare: 0
   upgradable: 0

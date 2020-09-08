@@ -10,6 +10,8 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     public int RemovalPrice { get; }
 
+    public float WoodCalculationInterval { get; }
+
     public void AddMoneyAmount(int amount)
     {
 
@@ -66,6 +68,11 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
     }
 
     public void SetUpgradedPopulationAmount(int pastAmount, int newAmount)
+    {
+
+    }
+
+    public void CalculateTownTotalWoodAmount()
     {
 
     }
