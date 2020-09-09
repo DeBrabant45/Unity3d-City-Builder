@@ -44,11 +44,11 @@ public class WoodMaterialHelper
 
     private void CollectWoodAmount(IEnumerable<StructureBaseSO> buildings)
     {
-        if(buildings.GetType() == typeof(ManufacturerBaseSO))
+        foreach (var structure in buildings)
         {
-            foreach (var structure in buildings)
+            if(structure.GetType() == typeof(ManufacturerBaseSO))
             {
-                WoodAmount += ((ManufacturerBaseSO)structure).GetIncome();
+                WoodAmount += ((ManufacturerBaseSO)structure).GetMaterialAmount();
             }
         }
     }
