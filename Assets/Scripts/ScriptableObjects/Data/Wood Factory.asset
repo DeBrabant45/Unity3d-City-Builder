@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d940f4360f16454582baf055d6e16c0, type: 3}
   m_Name: Wood Factory
   m_EditorClassIdentifier: 
-  income: 2
+  income: 0
   buildingName: Wood Factory
   prefab: {fileID: 7694764856782211585, guid: 8d0ddc33a9dc29442b5291be639906fb, type: 3}
   placementCost: 0
@@ -30,3 +30,5 @@ MonoBehaviour:
   upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 0
+  materialAmount: 2
+  materialBuildTimer: 10
