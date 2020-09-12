@@ -50,20 +50,24 @@ public class PlayerSelectionState : PlayerState
         return;
     }
 
-    private void UpdateStructureInfoPanel(StructureBaseSO data)
+    private void UpdateStructureInfoPanel(StructureBaseSO structureData)
     {
-        Type dataType = data.GetType();
-        if (dataType == typeof(SingleFacilitySO))
+        Type structureDataType = structureData.GetType();
+        if (structureDataType == typeof(SingleFacilitySO))
         {
-            this._gameManager.uIController.DisplayFacilityStructureInfo((SingleFacilitySO)data);
+            this._gameManager.uIController.DisplayFacilityStructureInfo((SingleFacilitySO)structureData);
         }
-        else if (dataType == typeof(ZoneStructureSO))
+        else if (structureDataType == typeof(ZoneStructureSO))
         {
-            this._gameManager.uIController.DisplayZoneStructureInfo((ZoneStructureSO)data);
+            this._gameManager.uIController.DisplayZoneStructureInfo((ZoneStructureSO)structureData);
+        }
+        else if(structureDataType == typeof(ManufacturerBaseSO))
+        {
+            this._gameManager.uIController.DisplayManufactureStructureInfo((ManufacturerBaseSO)structureData);
         }
         else
         {
-            this._gameManager.uIController.DisplayBasicStructureInfo(data);
+            this._gameManager.uIController.DisplayBasicStructureInfo(structureData);
         }
     }
 

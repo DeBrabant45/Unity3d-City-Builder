@@ -29,11 +29,18 @@ public static class StructureEconomyManager
 
     public static void PrepareFacilityStructure(Vector3Int gridPosition, GridStructure grid)
     {
-        PrepareZoneStructure(gridPosition, grid);
+        PrepareNewStructure(gridPosition, grid);
         SingleFacilitySO facilityData = (SingleFacilitySO)grid.GetStructureDataFromTheGrid(gridPosition);
         var structuresAroundFacility = grid.GetStructuresDataInRange(gridPosition, facilityData.singleStructureRange);
         facilityData.AddClient(structuresAroundFacility);
         AddFacilityTypeToStructure(gridPosition, grid, facilityData);
+    }
+
+    private static void PrepareManufactureStructure(Vector3Int gridPosition, GridStructure grid)
+    {
+        PrepareNewStructure(gridPosition, grid);
+        StructureBaseSO structureData = grid.GetStructureDataFromTheGrid(gridPosition);
+        AddFacilityTypeToStructure(gridPosition, grid, structureData);
     }
 
     public static IEnumerable<StructureBaseSO> PrepareFacilityRemoval(Vector3Int gridPosition, GridStructure grid)
@@ -50,6 +57,12 @@ public static class StructureEconomyManager
     }
 
     public static void PrepareStructureForRemoval(Vector3Int gridPosition, GridStructure grid)
+    {
+        var structureData = grid.GetStructureDataFromTheGrid(gridPosition);
+        structureData.PrepareForRemoval();
+    }
+
+    private static void PrepareManufactureRemoval(Vector3Int gridPosition, GridStructure grid)
     {
         var structureData = grid.GetStructureDataFromTheGrid(gridPosition);
         structureData.PrepareForRemoval();
@@ -81,6 +94,10 @@ public static class StructureEconomyManager
         {
             PrepareFacilityStructure(gridPosition, grid);
         }
+        else
+        {
+            PrepareManufactureStructure(gridPosition, grid);
+        }
     }
 
     public static void CheckStructureTypeForRemovalPreparation(Type structureType, Vector3Int gridPosition, GridStructure grid)
@@ -96,6 +113,10 @@ public static class StructureEconomyManager
         else if (structureType == typeof(SingleFacilitySO))
         {
             PrepareFacilityRemoval(gridPosition, grid);
+        }
+        else
+        {
+            PrepareManufactureRemoval(gridPosition, grid);
         }
     }
 

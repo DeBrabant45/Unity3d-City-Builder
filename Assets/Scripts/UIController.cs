@@ -196,6 +196,11 @@ public class UIController : MonoBehaviour
         structureInfoPanelHelper.DisplayFacilityStructureInfo(data);
     }
 
+    public void DisplayManufactureStructureInfo(ManufacturerBaseSO data)
+    {
+        structureInfoPanelHelper.DisplayManufactureStructureInfo(data);
+    }
+
     private void OnBuildManufacturerCallback(string nameOfStructure)
     {
         PrepareUIForBuilding();

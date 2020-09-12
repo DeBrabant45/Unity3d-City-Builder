@@ -29,6 +29,6 @@ MonoBehaviour:
   upgradeIncome: 
   upgradeLevel: 0
   structureRange: 1
-  maxFacilitySearchRange: 0
+  maxFacilitySearchRange: 5
   materialAmount: 2
   materialBuildTimer: 10

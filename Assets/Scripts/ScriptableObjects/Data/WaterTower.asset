@@ -30,7 +30,7 @@ MonoBehaviour:
   upgradeIncome: 
   upgradeLevel: 0
   structureRange: 1
-  maxFacilitySearchRange: 0
+  maxFacilitySearchRange: 5
   singleStructureRange: 5
   maxCustomers: 10
   upkeepPerCustomer: 0

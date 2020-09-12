@@ -12,6 +12,7 @@ public class ManufacturerBaseSO : StructureBaseSO
     [SerializeField]
     private int materialBuildTimer;
     private Stopwatch stopwatch = new Stopwatch();
+    private int materialCountDown;
 
     public int GetMaterialAmount()
     {
@@ -34,4 +35,11 @@ public class ManufacturerBaseSO : StructureBaseSO
 
         return false;
     }
+
+    public int GetMaterialCountDownTimer()
+    {
+        return materialCountDown;
+    }
+
+
 }

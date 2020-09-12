@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIStructureInfoPanelHelper : MonoBehaviour
 {
-    public TextMeshProUGUI nameText, residentsText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText;
+    public TextMeshProUGUI nameText, residentsText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText, materialBuildTimeText;
     public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle;
 
     // Start is called before the first frame update
@@ -38,6 +40,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(upgradeToggle.gameObject);
         HideElement(residentsText.gameObject);
         HideElement(incomeText.gameObject);
+        HideElement(materialBuildTimeText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(upkeepText, data.upkeepCost + "");
     }
@@ -49,6 +52,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(upkeepText.gameObject);
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
+        CheckStructureToDisplayMaterialBuildTimeText(data);
         CheckStructureToDisplayUpgradeAmountText(data);
         CheckStructureToDisplayResidentsText(data);
         CheckStructureToDisplayPowerToggle(data);
@@ -66,6 +70,24 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         SetText(nameText, data.buildingName);
         SetText(incomeText, data.GetIncome() + "");
         SetText(clientText, data.GetNumberOfCustomers() + "/" + data.maxCustomers);
+        CheckStructureToDisplayMaterialBuildTimeText(data);
+        CheckStructureToDisplayUpgradeAmountText(data);
+        CheckStructureToDisplayPowerToggle(data);
+        CheckStructureToDisplayRoadToggle(data);
+        CheckStructureToDisplayWaterToggle(data);
+        CheckStructureToDisplayUpgradeToggle(data);
+        CheckStructureToDisplaySiloToggle(data);
+    }
+
+    public void DisplayManufactureStructureInfo(ManufacturerBaseSO data)
+    {
+        Show();
+        HideElement(incomeText.gameObject);
+        HideElement(upkeepText.gameObject);
+        HideElement(clientText.gameObject);
+        HideElement(residentsText.gameObject);
+        SetText(nameText, data.buildingName);
+        CheckStructureToDisplayMaterialBuildTimeText(data);
         CheckStructureToDisplayUpgradeAmountText(data);
         CheckStructureToDisplayPowerToggle(data);
         CheckStructureToDisplayRoadToggle(data);
@@ -166,6 +188,18 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         else
         {
             HideElement(residentsText.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayMaterialBuildTimeText(StructureBaseSO structure)
+    {
+        if (structure.GetType() == typeof(ManufacturerBaseSO))
+        {
+            SetText(materialBuildTimeText, ((ManufacturerBaseSO)structure).GetMaterialCountDownTimer() + "");
+        }
+        else
+        {
+            HideElement(materialBuildTimeText.gameObject);
         }
     }
 
