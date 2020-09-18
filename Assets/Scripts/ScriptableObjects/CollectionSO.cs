@@ -9,4 +9,8 @@ public class CollectionSO : ScriptableObject
     public List<SingleStructureBaseSO> singleStructures;
     public List<ManufacturerBaseSO> manufacturers;
     public List<ZoneStructureSO> zoneStructures;
+
+    public List<StructureBaseSO> residentialStructures;
+    public List<StructureBaseSO> commercialStructures;
+    public List<StructureBaseSO> agricultureStructures;
 }

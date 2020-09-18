@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 10
   buildingName: Residential
+  buildingImage: {fileID: 21300000, guid: fe98b12919bb55049af63c512c36b70b, type: 3}
   prefab: {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}
   placementCost: 100
   upkeepCost: 0
@@ -22,25 +23,20 @@ MonoBehaviour:
   requireWater: 1
   requireSilo: 0
   requireHealthcare: 1
-  fullyUpgradedLevel: 0
   upgradable: 1
-  upgradeLevel: 0
+  fullyUpgraded: 0
   upgradeLevelPrefabs:
   - {fileID: 6407806084271674788, guid: 57c398b4b793a614293c3d48d8ea46ab, type: 3}
   - {fileID: 4979051744302872479, guid: 06096a1e4c0f223409936dc5959b1768, type: 3}
   upgradePlacementCost: 96000000c8000000
   upgradeIncome: 140000001e000000
+  upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 5
-  upgradePrefab: {fileID: 0}
+  residentsAmount: 2
   prefabVariants:
   - {fileID: 8033323200218459389, guid: 190271b57943f7f4db9c39b8b015e331, type: 3}
   - {fileID: 7005307079094063810, guid: c77e949770bd8a54f8256dab2e9d5956, type: 3}
   - {fileID: 4424897985589242500, guid: 2578772fa254f6f4593ab5496d706359, type: 3}
-  upgradePrefabVariants:
-  - {fileID: 6407806084271674788, guid: 57c398b4b793a614293c3d48d8ea46ab, type: 3}
-  - {fileID: 2679059358018586621, guid: 024b517407c9ae44993494f0b31da891, type: 3}
-  - {fileID: 6743178300494436748, guid: 1b89a9244d90032439c6154c27e062fd, type: 3}
   upgradedResidentsAmount: 0400000008000000
-  residentsAmount: 2
   zoneType: 0

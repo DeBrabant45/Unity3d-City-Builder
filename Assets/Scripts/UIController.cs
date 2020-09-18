@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -38,7 +39,16 @@ public class UIController : MonoBehaviour
     public GameObject roadsPanel;
     public Button closeBuildMenuBtn;
 
+    public GameObject residentialSelectMenuPanel;
+    public GameObject commercialSelectMenuPanel;
+    public GameObject agricultureSelectMenuPanel;
+
+    public Button residentialOpenMenuBtn;
+    public Button commercialOpenMenuBtn;
+    public Button agricultureOpenMenuBtn;
+
     public GameObject buildButtonPrefab;
+    public GameObject buildPanelPrefab;
 
     public TextMeshProUGUI moneyValue;
     public TextMeshProUGUI shoppingCartValue;
@@ -68,6 +78,16 @@ public class UIController : MonoBehaviour
         upgradeBtn.onClick.AddListener(OnUpgradeHandler);
         closeBuildMenuBtn.onClick.AddListener(OnCloseMenuHandler);
 
+        PrepareBuildMenu();
+
+        residentialSelectMenuPanel.SetActive(false);
+        commercialSelectMenuPanel.SetActive(false);
+        agricultureSelectMenuPanel.SetActive(false);
+
+        residentialOpenMenuBtn.onClick.AddListener(OnOpenResidentialMenu);
+        commercialOpenMenuBtn.onClick.AddListener(OnOpenCommercialMenu);
+        agricultureOpenMenuBtn.onClick.AddListener(OnOpenAgricultureMenu);
+
         helpMenuPanel.SetActive(false);
         openHelpMenuBtn.onClick.AddListener(OnOpenHelpMenu);
         closeHelpMenuBtn.onClick.AddListener(OnCloseHelpMenu);
@@ -79,6 +99,33 @@ public class UIController : MonoBehaviour
         replayGameBtn.onClick.AddListener(OnReplayGame);
 
         fadePanel.SetActive(true);
+    }
+
+    private void OnOpenCommercialMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        commercialSelectMenuPanel.SetActive(true);
+    }
+
+    private void OnCloseComericalMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        commercialSelectMenuPanel.SetActive(false);
+    }
+
+    private void OnOpenResidentialMenu()
+    {
+        buildingMenuPanel.SetActive(false);
+        AudioManager.Instance.PlayButtonClickedSound();
+        residentialSelectMenuPanel.SetActive(true);
+    }
+
+    private void OnOpenAgricultureMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        agricultureSelectMenuPanel.SetActive(true);
     }
 
     private void OnCloseInsufficientFundsAlert()
@@ -128,35 +175,142 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonClickedSound();
         buildingMenuPanel.SetActive(true);
-         PrepareBuildMenu();
     }
 
     private void PrepareBuildMenu()
     {
-        CreateButtonsInPanel(zonesPanel.transform, structureRepository.GetZoneNames(), OnBuildZoneCallback);
-        CreateButtonsInPanel(facilitiesPanel.transform, structureRepository.GetSingleStructureNames(), OnBuildSingleStructureCallback);
-        CreateButtonsInPanel(manufacturersPanel.transform, structureRepository.GetManufacturerNames(), OnBuildManufacturerCallback);
-        CreateButtonsInPanel(roadsPanel.transform, new List<string>() { structureRepository.GetRoadStructureName() }, OnBuildRoadCallback);
+        CreateResidentialBuildMenu();
+        CreateCommercialBuildMenu();
+        CreateAgricultureBuildMenu();
     }
 
-
-    private void CreateButtonsInPanel(Transform panelTransform, List<string> dataToShow, Action<string> callback)
+    private void CreateResidentialBuildMenu()
     {
-        if(dataToShow.Count > panelTransform.childCount)
+        CreateBuildMenu(residentialSelectMenuPanel.transform, structureRepository.GetResidentialInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateCommercialBuildMenu()
+    {
+        CreateBuildMenu(commercialSelectMenuPanel.transform, structureRepository.GetCommercialInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateAgricultureBuildMenu()
+    {
+        CreateBuildMenu(agricultureSelectMenuPanel.transform, structureRepository.GetAgricultureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateBuildMenu(Transform panelTranform, List<StructureBaseSO> structureData, Action<string> callback, Action backToMenuAction, Action cancelAction)
+    {
+        CreateChildPanel(panelTranform, structureData);
+        AddStructureDataToPanelChildButton(panelTranform, structureData, callback);
+        AddStructureDataToPanelChildText(panelTranform, structureData);
+        AddStructureDataToPanelChildImage(panelTranform, structureData);
+        SetBackButtonActionInPanel(panelTranform, backToMenuAction);
+        SetCancelButtonActionInPanel(panelTranform, cancelAction);
+    }
+
+    private void CreateChildPanel(Transform panelTransform, List<StructureBaseSO> dataToShow)
+    {
+        if(dataToShow.Count >= panelTransform.childCount)
         {
-            int quantityDifference = dataToShow.Count - panelTransform.childCount;
+            int quantityDifference = dataToShow.Count - (panelTransform.childCount-1);
             for(int i = 0; i < quantityDifference; i++)
             {
-                Instantiate(buildButtonPrefab, panelTransform);
+                Instantiate(buildPanelPrefab, panelTransform);
             }
         }
-        for(int i = 0; i < panelTransform.childCount; i++)
+    }
+
+    void AddStructureDataToPanelChildButton(Transform panelTransform, List<StructureBaseSO> dataToShow, Action<string> callback)
+    {
+        foreach (Transform panelChild in panelTransform)
         {
-            var button = panelTransform.GetChild(i).GetComponent<Button>();
-            if(button != null)
+            if (panelChild.gameObject.name != "ToolsPanel")
             {
-                button.GetComponentInChildren<TextMeshProUGUI>().text = dataToShow[i];
-                button.onClick.AddListener(() => callback(button.GetComponentInChildren<TextMeshProUGUI>().text));
+                foreach (Transform childOfPanelChild in panelChild)
+                {
+                    var panelChildbutton = childOfPanelChild.GetComponent<Button>();
+                    if (panelChildbutton != null)
+                    {
+                        foreach (var data in dataToShow)
+                        {
+                            panelChildbutton.GetComponentInChildren<TextMeshProUGUI>().text = data.buildingName;
+                            panelChildbutton.onClick.AddListener(() => callback(panelChildbutton.GetComponentInChildren<TextMeshProUGUI>().text));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void AddStructureDataToPanelChildText(Transform panelTransform, List<StructureBaseSO> structureData)
+    {
+        foreach (Transform panelChild in panelTransform)
+        {
+            if (panelChild.gameObject.name != "ToolsPanel")
+            {
+                var panelChildText = panelChild.GetComponentInChildren<TextMeshProUGUI>();
+                if (panelChildText != null)
+                {
+                    foreach (var structure in structureData)
+                    {
+                        panelChildText.GetComponentInChildren<TextMeshProUGUI>().text = "Placement cost: " + structure.placementCost;
+                    }
+                }
+            }
+        }
+    }
+
+    void AddStructureDataToPanelChildImage(Transform panelTransform, List<StructureBaseSO> structureData)
+    {
+        foreach (Transform panelChild in panelTransform)
+        {
+            if (panelChild.gameObject.name != "ToolsPanel")
+            {
+                var panelChildImage = panelChild.GetComponent<Image>();
+                if (panelChildImage != null)
+                {
+                    foreach (var structure in structureData)
+                    {
+                        panelChildImage.GetComponent<Image>().sprite = structure.buildingImage;
+                    }
+                }
+            }
+        }
+    }
+
+    void SetBackButtonActionInPanel(Transform panelTransform, Action callback)
+    {
+        foreach (Transform panelChild in panelTransform)
+        {
+            if (panelChild.gameObject.name == "ToolsPanel")
+            {
+                foreach (Transform childOfPanelChild in panelChild)
+                {
+                    if (childOfPanelChild.gameObject.name == "BackBtn")
+                    {
+                        var panelChildbutton = childOfPanelChild.GetComponent<Button>();
+                        panelChildbutton.onClick.AddListener(() => callback());
+                    }
+                }
+            }
+        }
+    }
+
+    void SetCancelButtonActionInPanel(Transform panelTransform, Action callback)
+    {
+        foreach (Transform panelChild in panelTransform)
+        {
+            if (panelChild.gameObject.name == "ToolsPanel")
+            {
+                foreach (Transform childOfPanelChild in panelChild)
+                {
+                    if (childOfPanelChild.gameObject.name == "CancelBtn")
+                    {
+                        var panelChildbutton = childOfPanelChild.GetComponent<Button>();
+                        panelChildbutton.onClick.AddListener(() => callback());
+                    }
+                }
             }
         }
     }
@@ -199,6 +353,24 @@ public class UIController : MonoBehaviour
     public void DisplayManufactureStructureInfo(ManufacturerBaseSO data)
     {
         structureInfoPanelHelper.DisplayManufactureStructureInfo(data);
+    }
+
+    private void OnBackToBuildMenu()
+    {
+        CloseAllSelectMenus();
+        buildingMenuPanel.SetActive(true);
+    }
+
+    private void OnCancelSelectionMenu()
+    {
+        CloseAllSelectMenus();
+    }
+
+    private void CloseAllSelectMenus()
+    {
+        residentialSelectMenuPanel.SetActive(false);
+        commercialSelectMenuPanel.SetActive(false);
+        agricultureSelectMenuPanel.SetActive(false);
     }
 
     private void OnBuildManufacturerCallback(string nameOfStructure)
@@ -259,6 +431,9 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonClickedSound();
         buildingMenuPanel.SetActive(false);
+        residentialSelectMenuPanel.SetActive(false);
+        commercialSelectMenuPanel.SetActive(false);
+        agricultureSelectMenuPanel.SetActive(false);
     }
 
     public void AddListenerOnBuildManufacturerEvent(Action<string> listener)

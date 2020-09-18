@@ -3,10 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StructureRepository : MonoBehaviour
 {
     public CollectionSO modelDataCollection;
+
+    public List<StructureBaseSO> GetResidentialInfo()
+    {
+        return modelDataCollection.residentialStructures;
+    }
+
+    public List<StructureBaseSO> GetCommercialInfo()
+    {
+        return modelDataCollection.commercialStructures;
+    }
+
+    public List<StructureBaseSO> GetAgricultureInfo()
+    {
+        return modelDataCollection.agricultureStructures;
+    }
 
     public List<string> GetZoneNames()
     {

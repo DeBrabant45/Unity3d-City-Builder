@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class StructureBaseSO : ScriptableObject
 {
@@ -16,6 +17,7 @@ public abstract class StructureBaseSO : ScriptableObject
     private RoadStructureSO _roadProvider = null;
 
     public string buildingName;
+    public Sprite buildingImage;
     public GameObject prefab;
     public int placementCost;
     public int upkeepCost;
