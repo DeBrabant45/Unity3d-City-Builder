@@ -13,4 +13,11 @@ public class CollectionSO : ScriptableObject
     public List<StructureBaseSO> residentialStructures;
     public List<StructureBaseSO> commercialStructures;
     public List<StructureBaseSO> agricultureStructures;
+
+    public List<StructureBaseSO> utilitiesStructures;
+    public List<StructureBaseSO> emergencyStructures;
+
+    public List<StructureBaseSO> manufactureStructures;
+
+    public List<StructureBaseSO> roadStructures;
 }

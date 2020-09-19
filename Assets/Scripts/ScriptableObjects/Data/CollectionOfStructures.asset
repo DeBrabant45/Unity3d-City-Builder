@@ -31,3 +31,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
   agricultureStructures:
   - {fileID: 11400000, guid: 09ecc4d1d9d510a419ed9949bb0e5434, type: 2}
+  utilitiesStructures:
+  - {fileID: 11400000, guid: fb21ccef14f2c854e809704a43378235, type: 2}
+  - {fileID: 11400000, guid: 02b0394423bfd5b46833a18e4fdbd588, type: 2}
+  - {fileID: 11400000, guid: 81c0e53be08c6484ea4d5e513aee025a, type: 2}
+  emergencyStructures:
+  - {fileID: 11400000, guid: e01d12f1ac42b7f4cb4ef4ab5f19ae4f, type: 2}
+  manufactureStructures:
+  - {fileID: 11400000, guid: 6b84f5725d9799e42984032c30da48a9, type: 2}
+  roadStructures:
+  - {fileID: 11400000, guid: 83fb5b9fb38d930458c12f7a5f1cfbd0, type: 2}

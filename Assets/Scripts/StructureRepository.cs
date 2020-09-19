@@ -24,6 +24,26 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.agricultureStructures;
     }
 
+    public List<StructureBaseSO> GetRoadInfo()
+    {
+        return modelDataCollection.roadStructures;
+    }
+
+    public List<StructureBaseSO> GetEmergencyInfo()
+    {
+        return modelDataCollection.emergencyStructures;
+    }
+
+    public List<StructureBaseSO> GetUtilitiesInfo()
+    {
+        return modelDataCollection.utilitiesStructures;
+    }
+
+    public List<StructureBaseSO> GetManufactureInfo()
+    {
+        return modelDataCollection.manufactureStructures;
+    }
+
     public List<string> GetZoneNames()
     {
         return modelDataCollection.zoneStructures.Select(zone => zone.buildingName).ToList();
