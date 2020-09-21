@@ -36,9 +36,9 @@ public class ManufacturerBaseSO : StructureBaseSO
         return false;
     }
 
-    public int GetMaterialCountDownTimer()
+    public int GetMaterialBuildTimer()
     {
-        return materialCountDown;
+        return materialBuildTimer;
     }
 
 

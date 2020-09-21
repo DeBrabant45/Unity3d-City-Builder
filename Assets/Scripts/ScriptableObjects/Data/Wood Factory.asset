@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 0
   buildingName: Wood Factory
-  prefab: {fileID: 7694764856782211585, guid: 8d0ddc33a9dc29442b5291be639906fb, type: 3}
+  buildingImage: {fileID: 0}
+  prefab: {fileID: 5653278205169466693, guid: b25309e801b4aac4c8fd0a89a73a2926, type: 3}
   placementCost: 0
   upkeepCost: 0
   requireRoadAccess: 1

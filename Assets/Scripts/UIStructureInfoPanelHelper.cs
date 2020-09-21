@@ -195,7 +195,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
     {
         if (structure.GetType() == typeof(ManufacturerBaseSO))
         {
-            SetText(materialBuildTimeText, ((ManufacturerBaseSO)structure).GetMaterialCountDownTimer() + "");
+            SetText(materialBuildTimeText, ((ManufacturerBaseSO)structure).GetMaterialBuildTimer() + "'s");
         }
         else
         {
