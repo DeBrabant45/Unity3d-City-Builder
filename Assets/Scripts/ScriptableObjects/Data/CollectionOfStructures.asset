@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e01d12f1ac42b7f4cb4ef4ab5f19ae4f, type: 2}
   manufacturers:
   - {fileID: 11400000, guid: 6b84f5725d9799e42984032c30da48a9, type: 2}
+  - {fileID: 11400000, guid: 1f9a48bf2920861408606632db213ffe, type: 2}
   zoneStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
@@ -39,5 +40,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e01d12f1ac42b7f4cb4ef4ab5f19ae4f, type: 2}
   manufactureStructures:
   - {fileID: 11400000, guid: 6b84f5725d9799e42984032c30da48a9, type: 2}
+  - {fileID: 11400000, guid: 1f9a48bf2920861408606632db213ffe, type: 2}
   roadStructures:
   - {fileID: 11400000, guid: 83fb5b9fb38d930458c12f7a5f1cfbd0, type: 2}

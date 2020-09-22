@@ -20,6 +20,8 @@ public abstract class StructureBaseSO : ScriptableObject
     public Sprite buildingImage;
     public GameObject prefab;
     public int placementCost;
+    public int requiredWoodAmount;
+    public int requiredSteelAmount;
     public int upkeepCost;
 
     public bool requireRoadAccess;
@@ -49,6 +51,16 @@ public abstract class StructureBaseSO : ScriptableObject
     public virtual int GetIncome()
     {
         return income;
+    }
+
+    public int GetRequiredWoodAmountForBuild()
+    {
+        return requiredWoodAmount;
+    }
+
+    public int GetRequiredSteelAmountForBuild()
+    {
+        return requiredSteelAmount;
     }
 
     public virtual int GetUpgradedIncome()

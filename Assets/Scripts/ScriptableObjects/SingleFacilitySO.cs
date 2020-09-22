@@ -11,7 +11,6 @@ public class SingleFacilitySO : SingleStructureBaseSO
 
     public int maxCustomers;
     public int upkeepPerCustomer;
-    //public GameObject upgradePrefab;
     public int[] maxCustomersUpgraded;
     public FacilityType facilityType = FacilityType.None;
 

@@ -84,9 +84,13 @@ public class ZonePlacementHelper : StructureModificationHelper
 
     private HashSet<Vector3Int> CalculateZoneCost(HashSet<Vector3Int> newPositionsSet)
     {
-        _resourceManager.ReduceShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
+        _resourceManager.ReduceMoneyFromShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
+        _resourceManager.ReduceWoodFromShoppingCartAmount(_structuresOldQty * _structureData.requiredWoodAmount);
+        _resourceManager.ReduceSteelFromShoppingCartAmount(_structuresOldQty * _structureData.requiredSteelAmount);
         _structuresOldQty = newPositionsSet.Count;
-        _resourceManager.AddToShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
+        _resourceManager.AddMoneyToShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
+        _resourceManager.AddWoodToShoppingCartAmount(_structuresOldQty * _structureData.requiredWoodAmount);
+        _resourceManager.AddSteelToShoppingCartAmount(_structuresOldQty * _structureData.requiredSteelAmount);
         return newPositionsSet;
     }
 

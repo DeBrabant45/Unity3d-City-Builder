@@ -17,7 +17,7 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
-    public void AddToShoppingCartAmount(int amount)
+    public void AddMoneyToShoppingCartAmount(int amount)
     {
 
     }
@@ -32,12 +32,7 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
-    public bool CanIBuyIt(int amount)
-    {
-        return true;
-    }
-
-    public int ShoppingCartAmount()
+    public int ShoppingCartMoneyAmount()
     {
         return 0;
     }
@@ -52,7 +47,7 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
 
     }
 
-    public void ReduceShoppingCartAmount(int amount)
+    public void ReduceMoneyFromShoppingCartAmount(int amount)
     {
 
     }
@@ -75,5 +70,40 @@ public class ResourceManagerTestStub : MonoBehaviour, IResourceManager
     public void CalculateTownTotalWoodAmount()
     {
 
+    }
+
+    public void AddWoodToShoppingCartAmount(int amount)
+    {
+
+    }
+
+    public void ReduceWoodFromShoppingCartAmount(int amount)
+    {
+
+    }
+
+    public void AddSteelToShoppingCartAmount(int amount)
+    {
+
+    }
+
+    public void ReduceSteelFromShoppingCartAmount(int amount)
+    {
+
+    }
+
+    public bool CanIBuyIt(int moneyAmount, int steelAmount, int woodAmount)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public int ShoppingCartWoodAmount()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public int ShoppingCartSteelAmount()
+    {
+        throw new System.NotImplementedException();
     }
 }

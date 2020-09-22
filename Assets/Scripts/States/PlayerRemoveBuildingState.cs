@@ -22,7 +22,7 @@ public class PlayerRemoveBuildingState : PlayerState
 
     public override void OnConfirmAction()
     {
-        if (_resourceManager.CanIBuyIt(_resourceManager.ShoppingCartAmount()))
+        if (_resourceManager.CanIBuyIt(_resourceManager.ShoppingCartMoneyAmount(), 0, 0))
         {
             AudioManager.Instance.PlayRemoveSound();
             this._buildingManager.ConfirmModification();

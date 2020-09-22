@@ -65,9 +65,12 @@ public class UIController : MonoBehaviour
     public GameObject buildPanelPrefab;
 
     public TextMeshProUGUI moneyValue;
-    public TextMeshProUGUI shoppingCartValue;
+    public TextMeshProUGUI shoppingCartMoneyValue;
+    public TextMeshProUGUI shoppingCartWoodValue;
+    public TextMeshProUGUI shoppingCartSteelValue;
     public TextMeshProUGUI populationValue;
     public TextMeshProUGUI woodMaterialValue;
+    public TextMeshProUGUI steelMaterialValue;
 
     public GameObject insufficientFundsPanel;
     public Button closeInsufficientFundsBtn;
@@ -391,9 +394,24 @@ public class UIController : MonoBehaviour
         woodMaterialValue.text = woodAmount + "";
     }
 
-    public void SetShoppingCartValue(int cartAmount)
+    internal void SetSteelValue(int steelAmount)
     {
-        shoppingCartValue.text = cartAmount + "";
+        steelMaterialValue.text = steelAmount + "";
+    }
+
+    public void SetShoppingCartMoneyValue(int cartAmount)
+    {
+        shoppingCartMoneyValue.text = cartAmount + "";
+    }
+
+    public void SetShoppingCartWoodValue(int cartAmount)
+    {
+        shoppingCartWoodValue.text = cartAmount + "";
+    }
+
+    public void SetShoppingCartSteelValue(int cartAmount)
+    {
+        shoppingCartSteelValue.text = cartAmount + "";
     }
 
     public void DisplayBasicStructureInfo(StructureBaseSO data)

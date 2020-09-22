@@ -21,12 +21,12 @@ public class SingleStructurePlacementHelper : StructureModificationHelper
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
                 RevokeStructurePlacementAt(gridPositionInt);
-                _resourceManager.ReduceShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.ReduceMoneyFromShoppingCartAmount(_structureData.placementCost);
             }
             else
             {
                 PlaceNewStructureAt(gridPosition, buildingPrefab, gridPositionInt);
-                _resourceManager.AddToShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.AddMoneyToShoppingCartAmount(_structureData.placementCost);
             }
 
         }

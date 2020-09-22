@@ -4,25 +4,57 @@ using UnityEngine;
 
 public class ShoppingCartHelper
 {
-    private int _shoppingCartAmount;
+    private int _shoppingCartMoneyAmount;
+    private int _shoppingCartWoodAmount;
+    private int _shoppingCartSteelAmount;
 
-    public int ShoppingCartAmount { get => _shoppingCartAmount; private set => _shoppingCartAmount = value; }
+    public int ShoppingCartMoneyAmount { get => _shoppingCartMoneyAmount; }
+    public int ShoppingCartWoodAmount { get => _shoppingCartWoodAmount; }
+    public int ShoppingCartSteelAmount { get => _shoppingCartSteelAmount; }
 
-    public void AddShoppingCartAmount(int amount)
+    public void AddMoneyToShoppingCartAmount(int amount)
     {
-        ShoppingCartAmount += amount;
+        _shoppingCartMoneyAmount += amount;
     }
 
-    public void ReduceShoppingCartAmount(int amount)
+    public void ReduceMoneyFromShoppingCartAmount(int amount)
     {
-        if (ShoppingCartAmount > 0)
+        if (_shoppingCartMoneyAmount > 0)
         {
-            ShoppingCartAmount -= amount;
+            _shoppingCartMoneyAmount -= amount;
+        }
+    }
+
+    public void AddWoodToShoppingCartAmount(int amount)
+    {
+        _shoppingCartWoodAmount += amount;
+    }
+
+    public void ReduceWoodFromShoppingCartAmount(int amount)
+    {
+        if (_shoppingCartWoodAmount > 0)
+        {
+            _shoppingCartWoodAmount -= amount;
+        }
+    }
+
+    public void AddSteelToShoppingCartAmount(int amount)
+    {
+        _shoppingCartSteelAmount += amount;
+    }
+
+    public void ReduceSteelFromShoppingCartAmount(int amount)
+    {
+        if (_shoppingCartSteelAmount > 0)
+        {
+            _shoppingCartSteelAmount -= amount;
         }
     }
 
     public void ClearShoppingCartAmount()
     {
-        _shoppingCartAmount = 0;
+        _shoppingCartMoneyAmount = 0;
+        _shoppingCartSteelAmount = 0;
+        _shoppingCartWoodAmount = 0;
     }
 }

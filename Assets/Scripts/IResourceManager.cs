@@ -8,14 +8,20 @@
     void AddMoneyAmount(int amount);
     void CalculateTownIncome();
     void CalculateTownTotalWoodAmount();
-    bool CanIBuyIt(int amount);
+    bool CanIBuyIt(int moneyAmount, int steelAmount, int woodAmount);
     void SpendMoney(int amount);
     void PrepareResourceManager(BuildingManager buildingManager);
     void AddToPopulation(int amount);
     void ReducePopulation(int amount);
     void SetUpgradedPopulationAmount(int pastAmount, int newAmount);
-    void AddToShoppingCartAmount(int amount);
-    void ReduceShoppingCartAmount(int amount);
-    int ShoppingCartAmount();
+    void AddMoneyToShoppingCartAmount(int amount);
+    void ReduceMoneyFromShoppingCartAmount(int amount);
+    void AddWoodToShoppingCartAmount(int amount);
+    void ReduceWoodFromShoppingCartAmount(int amount);
+    void AddSteelToShoppingCartAmount(int amount);
+    void ReduceSteelFromShoppingCartAmount(int amount);
+    int ShoppingCartMoneyAmount();
+    int ShoppingCartWoodAmount();
+    int ShoppingCartSteelAmount();
     void ClearShoppingCartAmount();
 }

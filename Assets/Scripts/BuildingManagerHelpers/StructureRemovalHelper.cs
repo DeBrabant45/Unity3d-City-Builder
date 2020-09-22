@@ -75,12 +75,12 @@ public class StructureRemovalHelper : StructureModificationHelper
             if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
                 RevokeStructureRemovalPlacementAt(gridPositionInt, structure);
-                _resourceManager.ReduceShoppingCartAmount(_resourceManager.RemovalPrice);
+                _resourceManager.ReduceMoneyFromShoppingCartAmount(_resourceManager.RemovalPrice);
             }
             else
             {
                 AddStructureForRemoval(gridPositionInt, structure);
-                _resourceManager.AddToShoppingCartAmount(_resourceManager.RemovalPrice);
+                _resourceManager.AddMoneyToShoppingCartAmount(_resourceManager.RemovalPrice);
             }
 
         }

@@ -8,28 +8,31 @@ using UnityEngine;
 public class ManufacturerBaseSO : StructureBaseSO
 {
     [SerializeField]
-    private int materialAmount;
+    private int _materialAmount;
     [SerializeField]
-    private int materialBuildTimer;
-    private Stopwatch stopwatch = new Stopwatch();
-    private int materialCountDown;
+    private int _materialBuildTimer;
+    [SerializeField]
+    private ManufactureType _manufactureType = ManufactureType.None;
+    private Stopwatch _stopwatch = new Stopwatch();
+
+    public ManufactureType ManufactureType { get => _manufactureType; }
 
     public int GetMaterialAmount()
     {
         if(MaterialPlaceTimer() == true)
         {
-            return materialAmount;
+            return _materialAmount;
         }
         return 0;
     }
 
     private bool MaterialPlaceTimer()
     {
-        stopwatch.Start();
-        while (stopwatch.Elapsed >= TimeSpan.FromSeconds(materialBuildTimer))
+        _stopwatch.Start();
+        while (_stopwatch.Elapsed >= TimeSpan.FromSeconds(_materialBuildTimer))
         {
-            stopwatch.Stop();
-            stopwatch.Reset();
+            _stopwatch.Stop();
+            _stopwatch.Reset();
             return true;
         }
 
@@ -38,8 +41,13 @@ public class ManufacturerBaseSO : StructureBaseSO
 
     public int GetMaterialBuildTimer()
     {
-        return materialBuildTimer;
+        return _materialBuildTimer;
     }
+}
 
-
+public enum ManufactureType
+{
+    Wood,
+    Steel,
+    None
 }

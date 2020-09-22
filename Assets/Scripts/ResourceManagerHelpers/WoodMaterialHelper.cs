@@ -6,9 +6,9 @@ public class WoodMaterialHelper
 {
     private int _woodAmount;
 
-    public WoodMaterialHelper(int moneyAmount)
+    public WoodMaterialHelper(int woodAmount)
     {
-        this._woodAmount = moneyAmount;
+        this._woodAmount = woodAmount;
     }
 
     public int WoodAmount
@@ -46,7 +46,7 @@ public class WoodMaterialHelper
     {
         foreach (var structure in buildings)
         {
-            if(structure.GetType() == typeof(ManufacturerBaseSO))
+            if(structure.GetType() == typeof(ManufacturerBaseSO) && ((ManufacturerBaseSO)structure).ManufactureType == ManufactureType.Wood)
             {
                 WoodAmount += ((ManufacturerBaseSO)structure).GetMaterialAmount();
             }

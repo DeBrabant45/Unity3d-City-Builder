@@ -20,7 +20,7 @@ public abstract class PlayerState
 
     public virtual void OnConfirmAction()
     {
-        if(_resourceManager.CanIBuyIt(_resourceManager.ShoppingCartAmount()))
+        if(_resourceManager.CanIBuyIt(_resourceManager.ShoppingCartMoneyAmount(), _resourceManager.ShoppingCartSteelAmount(), _resourceManager.ShoppingCartWoodAmount()))
         {
             AudioManager.Instance.PlayPlaceBuildingSound();
             this._buildingManager.ConfirmModification();

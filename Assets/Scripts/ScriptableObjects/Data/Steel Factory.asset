@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d940f4360f16454582baf055d6e16c0, type: 3}
-  m_Name: Wood Factory
+  m_Name: Steel Factory
   m_EditorClassIdentifier: 
   income: 0
-  buildingName: Wood Factory
+  buildingName: Steel Factory
   buildingImage: {fileID: 0}
-  prefab: {fileID: 5653278205169466693, guid: b25309e801b4aac4c8fd0a89a73a2926, type: 3}
+  prefab: {fileID: 5119923302283471143, guid: c387b0c315c407643ae61199c8f8bc9f, type: 3}
   placementCost: 0
   upkeepCost: 0
   requireRoadAccess: 1
@@ -33,4 +33,4 @@ MonoBehaviour:
   maxFacilitySearchRange: 5
   _materialAmount: 2
   _materialBuildTimer: 10
-  _manufactureType: 0
+  _manufactureType: 1

@@ -23,12 +23,12 @@ public class RoadPlacementModificationHelper : StructureModificationHelper
             if(_structuresToBeModified.ContainsKey(gridPositionInt))
             {
                 RevokeRoadPlacementAt(gridPositionInt);
-                _resourceManager.ReduceShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.ReduceMoneyFromShoppingCartAmount(_structureData.placementCost);
             }
             else
             {
                 PlaceNewRoadAt(roadStructure, gridPosition, gridPositionInt);
-                _resourceManager.AddToShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.AddMoneyToShoppingCartAmount(_structureData.placementCost);
             }
             AdjustNeighborsRoadStructures(gridPosition);
         }
