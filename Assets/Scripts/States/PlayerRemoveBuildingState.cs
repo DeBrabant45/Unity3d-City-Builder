@@ -30,7 +30,6 @@ public class PlayerRemoveBuildingState : PlayerState
         }
         else
         {
-            AudioManager.Instance.PlayInsufficientFundsSound();
             this._gameManager.uIController.PrepareUIForBuilding();
         }
     }

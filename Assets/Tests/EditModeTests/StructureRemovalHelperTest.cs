@@ -33,7 +33,7 @@ namespace Tests
                 _grid.PlaceStructureOnTheGrid(_tempObject, _gridPosition2, null);
 
                 IResourceManager resourceManager = Substitute.For<IResourceManager>();
-                //resourceManager.CanIBuyIt(default).Returns(true);
+                resourceManager.CanIBuyIt(default, default, default).Returns(true);
 
                 _structureModificationHelper = new StructureRemovalHelper(structureRepository, _grid, placementManager, resourceManager);
             }

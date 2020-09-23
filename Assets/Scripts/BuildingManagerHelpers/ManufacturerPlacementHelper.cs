@@ -22,11 +22,15 @@ public class ManufacturerPlacementHelper : StructureModificationHelper
             {
                 RevokeStructurePlacementAt(gridPositionInt);
                 _resourceManager.ReduceMoneyFromShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.ReduceSteelFromShoppingCartAmount(_structureData.requiredSteelAmount);
+                _resourceManager.ReduceWoodFromShoppingCartAmount(_structureData.requiredWoodAmount);
             }
             else
             {
                 PlaceNewStructureAt(gridPosition, buildingPrefab, gridPositionInt);
                 _resourceManager.AddMoneyToShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.AddSteelToShoppingCartAmount(_structureData.requiredSteelAmount);
+                _resourceManager.AddWoodToShoppingCartAmount(_structureData.requiredWoodAmount);
             }
 
         }

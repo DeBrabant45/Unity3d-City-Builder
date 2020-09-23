@@ -28,7 +28,6 @@ public abstract class PlayerState
         }
         else
         {
-            AudioManager.Instance.PlayInsufficientFundsSound();
             this._gameManager.uIController.PrepareUIForBuilding();
         }
     }

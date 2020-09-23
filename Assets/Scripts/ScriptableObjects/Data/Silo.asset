@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 50
   buildingName: Silo
+  buildingImage: {fileID: 0}
   prefab: {fileID: 6834496759894321885, guid: 439daa8ae3cba794d982b41f126b297f, type: 3}
   placementCost: 500
+  requiredWoodAmount: 0
+  requiredSteelAmount: 3
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 0

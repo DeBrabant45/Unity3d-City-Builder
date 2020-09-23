@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 10
   buildingName: Water Tower
+  buildingImage: {fileID: 0}
   prefab: {fileID: 4348033691383183626, guid: da1ccb4d57ce0d544bafc66e448dc41c, type: 3}
   placementCost: 1000
+  requiredWoodAmount: 2
+  requiredSteelAmount: 3
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 0

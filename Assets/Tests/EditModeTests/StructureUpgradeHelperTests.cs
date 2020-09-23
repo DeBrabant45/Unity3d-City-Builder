@@ -29,7 +29,7 @@ namespace Tests
             placementManager.CreateGhostStructure(default, default).ReturnsForAnyArgs(_gridPosition1GameObject);
             _grid = new GridStructure(3, 10, 10);
             IResourceManager resourceManager = Substitute.For<IResourceManager>();
-            //resourceManager.CanIBuyIt(default).Returns(true);
+            resourceManager.CanIBuyIt(default, default, default).Returns(true);
             _structureModificationHelper = new StructureUpgradeHelper(structureRepository, _grid, placementManager, resourceManager);
         }
 

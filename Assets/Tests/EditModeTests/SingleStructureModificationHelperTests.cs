@@ -24,7 +24,7 @@ namespace Tests
             StructureRepository structureRepository = TestHelpers.CreateStructureRepositoryContainingRoad();
             IPlacementManager placementManager = Substitute.For<IPlacementManager>();
             IResourceManager resourceManager = Substitute.For<IResourceManager>();
-            //resourceManager.CanIBuyIt(default).Returns(true);
+            resourceManager.CanIBuyIt(default, default, default).Returns(true);
             _tempObject = new GameObject();
             placementManager.CreateGhostStructure(default, default).ReturnsForAnyArgs(_tempObject);
             _grid = new GridStructure(3, 10, 10);

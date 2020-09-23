@@ -73,6 +73,7 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI steelMaterialValue;
 
     public GameObject insufficientFundsPanel;
+    public TextMeshProUGUI insufficientFundsText;
     public Button closeInsufficientFundsBtn;
 
     public GameObject gameOverPanel;
@@ -120,6 +121,18 @@ public class UIController : MonoBehaviour
         replayGameBtn.onClick.AddListener(OnReplayGame);
 
         fadePanel.SetActive(true);
+    }
+
+    public void OnOpenInsufficientFundsAlertBox()
+    {
+        AudioManager.Instance.PlayInsufficientFundsSound();
+        insufficientFundsPanel.SetActive(true);
+        SetInsufficientFundsText(1, 2, 3);
+    }
+
+    public string SetInsufficientFundsText(int money, int wood, int steel)
+    {
+        return insufficientFundsText.text = "You have insufficient founds for " + money + wood + steel;
     }
 
     private void OnOpenMaufactureMenu()

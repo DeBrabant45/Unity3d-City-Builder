@@ -86,7 +86,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
 
     private void InsufficientFundsAlertBox()
     {
-        uIController.insufficientFundsPanel.SetActive(true);
+        uIController.OnOpenInsufficientFundsAlertBox();
     }
 
     public bool CanIBuyIt(int moneyAmount, int steelAmount, int woodAmount)
