@@ -127,9 +127,10 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayInsufficientFundsSound();
         insufficientFundsPanel.SetActive(true);
-        SetInsufficientFundsText(1, 2, 3);
+        SetInsufficientFundsText(1, 2, 3); //update
     }
 
+    //figure out what you want to do with this
     public string SetInsufficientFundsText(int money, int wood, int steel)
     {
         return insufficientFundsText.text = "You have insufficient founds for " + money + wood + steel;

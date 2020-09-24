@@ -17,6 +17,8 @@ MonoBehaviour:
   buildingImage: {fileID: 0}
   prefab: {fileID: 5119923302283471143, guid: c387b0c315c407643ae61199c8f8bc9f, type: 3}
   placementCost: 0
+  requiredWoodAmount: 0
+  requiredSteelAmount: 0
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 1

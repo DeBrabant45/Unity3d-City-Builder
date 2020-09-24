@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
-  m_Name: Residential
+  m_Name: Apartments
   m_EditorClassIdentifier: 
-  income: 20
-  buildingName: Residential
+  income: 60
+  buildingName: Apartments
   buildingImage: {fileID: 21300000, guid: fe98b12919bb55049af63c512c36b70b, type: 3}
-  prefab: {fileID: 7089446466725765581, guid: d503d6233ae52864c86c6a3407cce9b2, type: 3}
-  placementCost: 100
+  prefab: {fileID: 520303068852865390, guid: a1cd774e1983fb64fb4ab74835135994, type: 3}
+  placementCost: 200
   requiredWoodAmount: 2
   requiredSteelAmount: 2
   upkeepCost: 0
@@ -28,17 +28,14 @@ MonoBehaviour:
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 7950705192795131184, guid: 8a24f8d6a40bd0749a168a3f03e5357b, type: 3}
-  - {fileID: 363929550386254456, guid: b73534c171f24814a8f1ee80bcd649c9, type: 3}
-  upgradePlacementCost: c80000002c010000
-  upgradeIncome: 280000003c000000
+  - {fileID: 8142831457550672319, guid: 58d2ec40710638b41ae3a2cbd43ef586, type: 3}
+  - {fileID: 2171802612863633059, guid: bed6c12d8a437504a9c5b35492b303f7, type: 3}
+  upgradePlacementCost: 2c01000090010000
+  upgradeIncome: 5000000064000000
   upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 5
-  residentsAmount: 2
-  prefabVariants:
-  - {fileID: 7089446466725765581, guid: d503d6233ae52864c86c6a3407cce9b2, type: 3}
-  - {fileID: 7089446466725765581, guid: d503d6233ae52864c86c6a3407cce9b2, type: 3}
-  - {fileID: 7089446466725765581, guid: d503d6233ae52864c86c6a3407cce9b2, type: 3}
-  upgradedResidentsAmount: 0400000006000000
+  residentsAmount: 6
+  prefabVariants: []
+  upgradedResidentsAmount: 080000000a000000
   zoneType: 0

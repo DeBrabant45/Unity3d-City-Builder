@@ -153,45 +153,6 @@ public class StructureRepository : MonoBehaviour
         var residentialPrefabVariantsRandomRange = UnityEngine.Random.Range(0, residentialPrefabVariantsCount);
         return zones.Select(zone => zone.prefabVariants[residentialPrefabVariantsRandomRange]).FirstOrDefault();
     }
-
-    //public GameObject GetUpgradeBuildingPrefab(StructureBaseSO structureData)
-    //{
-    //    GameObject upgradeStructurePrefabToReturn = null;
-    //    Type structureDataType = structureData.GetType();
-    //    if (structureDataType == typeof(ZoneStructureSO))
-    //    {
-    //        upgradeStructurePrefabToReturn = GetZoneUpgradePrefab(structureData);
-    //    }
-    //    else if (structureDataType == typeof(SingleFacilitySO))
-    //    {
-    //        upgradeStructurePrefabToReturn = GetFacilityUpgradePrefab(structureData);
-    //    }
-
-    //    return upgradeStructurePrefabToReturn;
-    //}
-
-    //private GameObject GetFacilityUpgradePrefab(StructureBaseSO structureData)
-    //{
-    //    return ((SingleFacilitySO)structureData).upgradePrefab;
-    //}
-
-    //private GameObject GetZoneUpgradePrefab(StructureBaseSO structureData)
-    //{
-    //    if (((ZoneStructureSO)structureData).zoneType == ZoneType.Residential)
-    //    {
-    //        return SetRandomResidentialUpgradePrefab();
-    //    }
-
-    //    return ((ZoneStructureSO)structureData).upgradePrefab;
-    //}
-
-    //public GameObject SetRandomResidentialUpgradePrefab()
-    //{
-    //    var zones = modelDataCollection.zoneStructures;
-    //    var residentialUpgradePrefabVariantsCount = zones.Select(zone => zone.upgradePrefabVariants).Count();
-    //    var residentialUpgradePrefabVariantsRandomRange = UnityEngine.Random.Range(0, residentialUpgradePrefabVariantsCount);
-    //    return zones.Select(zone => zone.upgradePrefabVariants[residentialUpgradePrefabVariantsRandomRange]).FirstOrDefault();
-    //}
 }
 
 public enum StructureType

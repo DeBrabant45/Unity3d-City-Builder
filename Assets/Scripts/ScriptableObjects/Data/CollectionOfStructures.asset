@@ -25,9 +25,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
   - {fileID: 11400000, guid: 09ecc4d1d9d510a419ed9949bb0e5434, type: 2}
+  - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
   residentialStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
-  - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
+  - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
   commercialStructures:
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
   agricultureStructures:
