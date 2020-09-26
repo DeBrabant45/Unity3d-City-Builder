@@ -40,7 +40,8 @@ public class UIController : MonoBehaviour
     public Button closeBuildMenuBtn;
 
     public GameObject residentialSelectMenuPanel;
-    public GameObject commercialSelectMenuPanel;
+    public GameObject commercialStoreSelectMenuPanel;
+    public GameObject commercialBusinessSelectMenuPanel;
     public GameObject agricultureSelectMenuPanel;
 
     public GameObject utilitiesSelectMenuPanel;
@@ -51,7 +52,8 @@ public class UIController : MonoBehaviour
     public GameObject roadSelectMenuPanel;
 
     public Button residentialOpenMenuBtn;
-    public Button commercialOpenMenuBtn;
+    public Button commercialStoreOpenMenuBtn;
+    public Button commercialBusinessOpenMenuBtn;
     public Button agricultureOpenMenuBtn;
 
     public Button utilitiesOpenMenuBtn;
@@ -100,7 +102,8 @@ public class UIController : MonoBehaviour
         CloseAllSelectMenus();
 
         residentialOpenMenuBtn.onClick.AddListener(OnOpenResidentialMenu);
-        commercialOpenMenuBtn.onClick.AddListener(OnOpenCommercialMenu);
+        commercialStoreOpenMenuBtn.onClick.AddListener(OnOpenCommercialStoreMenu);
+        commercialBusinessOpenMenuBtn.onClick.AddListener(OnOpenCommercialBusinessMenu);
         agricultureOpenMenuBtn.onClick.AddListener(OnOpenAgricultureMenu);
 
         utilitiesOpenMenuBtn.onClick.AddListener(OnOpenUtilitiesMenu);
@@ -121,6 +124,13 @@ public class UIController : MonoBehaviour
         replayGameBtn.onClick.AddListener(OnReplayGame);
 
         fadePanel.SetActive(true);
+    }
+
+    private void OnOpenCommercialBusinessMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        commercialBusinessSelectMenuPanel.SetActive(true);
     }
 
     public void OnOpenInsufficientFundsAlertBox()
@@ -164,11 +174,11 @@ public class UIController : MonoBehaviour
         roadSelectMenuPanel.SetActive(true);
     }
 
-    private void OnOpenCommercialMenu()
+    private void OnOpenCommercialStoreMenu()
     {
         AudioManager.Instance.PlayButtonClickedSound();
         buildingMenuPanel.SetActive(false);
-        commercialSelectMenuPanel.SetActive(true);
+        commercialStoreSelectMenuPanel.SetActive(true);
     }
 
     private void OnOpenResidentialMenu()
@@ -237,7 +247,8 @@ public class UIController : MonoBehaviour
     private void PrepareBuildMenu()
     {
         CreateResidentialBuildMenu();
-        CreateCommercialBuildMenu();
+        CreateCommercialStoreBuildMenu();
+        CreateCommercialBusinessBuildMenu();
         CreateAgricultureBuildMenu();
         CreateRoadBuildMenu();
         CreateUtilitiesBuildMenu();
@@ -250,9 +261,14 @@ public class UIController : MonoBehaviour
         CreateBuildMenu(residentialSelectMenuPanel.transform, structureRepository.GetResidentialInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
-    private void CreateCommercialBuildMenu()
+    private void CreateCommercialStoreBuildMenu()
     {
-        CreateBuildMenu(commercialSelectMenuPanel.transform, structureRepository.GetCommercialInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(commercialStoreSelectMenuPanel.transform, structureRepository.GetCommercialStoreInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }    
+    
+    private void CreateCommercialBusinessBuildMenu()
+    {
+        CreateBuildMenu(commercialBusinessSelectMenuPanel.transform, structureRepository.GetCommercialBusinessInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateAgricultureBuildMenu()
@@ -464,7 +480,8 @@ public class UIController : MonoBehaviour
     private void CloseAllSelectMenus()
     {
         residentialSelectMenuPanel.SetActive(false);
-        commercialSelectMenuPanel.SetActive(false);
+        commercialStoreSelectMenuPanel.SetActive(false);
+        commercialBusinessSelectMenuPanel.SetActive(false);
         agricultureSelectMenuPanel.SetActive(false);
         utilitiesSelectMenuPanel.SetActive(false);
         emergencySelectMenuPanel.SetActive(false);

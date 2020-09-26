@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
-  m_Name: Commercial
+  m_Name: Gray Office
   m_EditorClassIdentifier: 
   income: 30
-  buildingName: Commercial
+  buildingName: Gray Office
   buildingImage: {fileID: 21300000, guid: 8c15cce24eed0bf4d81b0003dd220564, type: 3}
-  prefab: {fileID: 4175728992974988726, guid: 8f482776b4ee0bc4f935e72822405008, type: 3}
+  prefab: {fileID: 1748978854982552965, guid: 085f02287b1283e4cb7010037e2aa7ed, type: 3}
   placementCost: 200
   requiredWoodAmount: 2
   requiredSteelAmount: 2
@@ -28,8 +28,8 @@ MonoBehaviour:
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07, type: 3}
-  - {fileID: 6870371079923077599, guid: 72a7f07404f80e248a26bf96e29539ff, type: 3}
+  - {fileID: 6922672321114773693, guid: 19724f8c935c8d14fa17c135317b2a72, type: 3}
+  - {fileID: 2186099029409199486, guid: fec34aa7d54b0034fb9e76c4a7385413, type: 3}
   upgradePlacementCost: 90010000c2010000
   upgradeIncome: 3c0000005a000000
   upgradeLevel: 0

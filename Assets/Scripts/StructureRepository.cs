@@ -14,9 +14,14 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.residentialStructures;
     }
 
-    public List<StructureBaseSO> GetCommercialInfo()
+    public List<StructureBaseSO> GetCommercialStoreInfo()
     {
-        return modelDataCollection.commercialStructures;
+        return modelDataCollection.commercialStoreStructures;
+    }    
+    
+    public List<StructureBaseSO> GetCommercialBusinessInfo()
+    {
+        return modelDataCollection.commercialBusinessStructures;
     }
 
     public List<StructureBaseSO> GetAgricultureInfo()

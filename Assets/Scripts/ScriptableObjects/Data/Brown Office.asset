@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
+  m_Name: Brown Office
+  m_EditorClassIdentifier: 
+  income: 30
+  buildingName: Brown Office
+  buildingImage: {fileID: 21300000, guid: 8c15cce24eed0bf4d81b0003dd220564, type: 3}
+  prefab: {fileID: 9157325660303461256, guid: f574fdd478f093647bb8305305ae8c98, type: 3}
+  placementCost: 200
+  requiredWoodAmount: 2
+  requiredSteelAmount: 2
+  upkeepCost: 0
+  requireRoadAccess: 1
+  requirePower: 1
+  requireWater: 1
+  requireSilo: 0
+  requireHealthcare: 0
+  upgradable: 1
+  fullyUpgraded: 0
+  upgradeLevelPrefabs:
+  - {fileID: 8211801472273669587, guid: 8de38a42ccc96264e82d5819d12a6934, type: 3}
+  - {fileID: 8932716831121990896, guid: ff9c1bf52e24fda4a9e926304bc357f7, type: 3}
+  upgradePlacementCost: 90010000c2010000
+  upgradeIncome: 3c0000005a000000
+  upgradeLevel: 0
+  structureRange: 1
+  maxFacilitySearchRange: 5
+  residentsAmount: 0
+  prefabVariants: []
+  upgradedResidentsAmount: 
+  zoneType: 2
