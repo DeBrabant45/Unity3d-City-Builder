@@ -11406,6 +11406,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7038389658020974516, guid: 156fd5a9613bbeb4bb38c51d4446f617,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -299
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 156fd5a9613bbeb4bb38c51d4446f617, type: 3}
 --- !u!224 &2116627540 stripped
@@ -14280,6 +14285,16 @@ PrefabInstance:
       propertyPath: commercialBusinessOpenMenuBtn
       value: 
       objectReference: {fileID: 1843952101}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: commercialStoreSelectMenuPanel
+      value: 
+      objectReference: {fileID: 124269545}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: commercialStoreOpenMenuBtn
+      value: 
+      objectReference: {fileID: 1580180449}
     - target: {fileID: 7729659233332718105, guid: d9de72c96eeb81c46a3594e52b771924,
         type: 3}
       propertyPath: m_LocalPosition.x

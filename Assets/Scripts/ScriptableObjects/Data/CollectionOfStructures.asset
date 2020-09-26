@@ -37,11 +37,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
   - {fileID: 11400000, guid: 519d724eac9cc474ebee5c8b3f45acc1, type: 2}
-  commercialStructures:
-  - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
+  commercialStoreStructures:
   - {fileID: 11400000, guid: 1cac0e74aa8b95f459bf078946dd016a, type: 2}
   - {fileID: 11400000, guid: c1fc2841666a34f4fb5bb20a22ebcfae, type: 2}
-  commercialBusiness:
+  - {fileID: 11400000, guid: d62971a52d2d56c43a9a795ce248140e, type: 2}
+  commercialBusinessStructures:
   - {fileID: 11400000, guid: e769cf360fd4a934c875bbc5c9dcc5ce, type: 2}
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
   - {fileID: 11400000, guid: 0585f234158a6bb4dad2ec7e851a36d9, type: 2}
