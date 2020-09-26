@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
-  m_Name: Residential
+  m_Name: Farmhouse
   m_EditorClassIdentifier: 
   income: 20
-  buildingName: Singlehouse
-  buildingImage: {fileID: 21300000, guid: 61cadef47c152294a996252053d1a534, type: 3}
-  prefab: {fileID: 7089446466725765581, guid: d503d6233ae52864c86c6a3407cce9b2, type: 3}
+  buildingName: Farmhouse
+  buildingImage: {fileID: 21300000, guid: 7600e508e75431c44bb5d200b7c85020, type: 3}
+  prefab: {fileID: 3286272179830376987, guid: 10f3bdf0ca66ce643af22bff957417ce, type: 3}
   placementCost: 100
   requiredWoodAmount: 2
   requiredSteelAmount: 2
@@ -28,8 +28,8 @@ MonoBehaviour:
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 7950705192795131184, guid: 8a24f8d6a40bd0749a168a3f03e5357b, type: 3}
-  - {fileID: 363929550386254456, guid: b73534c171f24814a8f1ee80bcd649c9, type: 3}
+  - {fileID: 1598229588260515978, guid: 74b8862d10540304fb7b7f3c8ce8922d, type: 3}
+  - {fileID: 9038101141660283380, guid: 9eef3efb295c1684495080d43dbd5e41, type: 3}
   upgradePlacementCost: c80000002c010000
   upgradeIncome: 280000003c000000
   upgradeLevel: 0

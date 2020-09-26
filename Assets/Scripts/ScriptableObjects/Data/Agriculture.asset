@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Agriculture
   m_EditorClassIdentifier: 
   income: 20
-  buildingName: Agriculture
+  buildingName: Barn
   buildingImage: {fileID: 21300000, guid: 32dac774d15e61c468c648756f266456, type: 3}
   prefab: {fileID: 7468051901424741856, guid: 1a1641d19afd6af4f9e6ea08325f104d, type: 3}
   placementCost: 150
