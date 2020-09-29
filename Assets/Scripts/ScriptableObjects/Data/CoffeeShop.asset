@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Coffee Shop
-  buildingImage: {fileID: 21300000, guid: 8c15cce24eed0bf4d81b0003dd220564, type: 3}
+  buildingImage: {fileID: 21300000, guid: f3a5a89a6807b4f49ac62f993436cb59, type: 3}
   prefab: {fileID: 6125991224542742590, guid: fec531786b1ab044bb8885ae53e25d0b, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

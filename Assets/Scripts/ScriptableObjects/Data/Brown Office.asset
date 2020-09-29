@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Brown Office
-  buildingImage: {fileID: 21300000, guid: 8c15cce24eed0bf4d81b0003dd220564, type: 3}
+  buildingImage: {fileID: 21300000, guid: 2f16ba78f37553f44887aa2521aaaa13, type: 3}
   prefab: {fileID: 9157325660303461256, guid: f574fdd478f093647bb8305305ae8c98, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

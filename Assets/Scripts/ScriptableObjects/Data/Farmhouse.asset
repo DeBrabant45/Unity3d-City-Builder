@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 20
   buildingName: Farmhouse
-  buildingImage: {fileID: 21300000, guid: 7600e508e75431c44bb5d200b7c85020, type: 3}
+  buildingImage: {fileID: 21300000, guid: c26c3d5377d0f9e47a565c8e8990f49b, type: 3}
   prefab: {fileID: 3286272179830376987, guid: 10f3bdf0ca66ce643af22bff957417ce, type: 3}
   placementCost: 100
   requiredWoodAmount: 2

@@ -363,11 +363,17 @@ public class UIController : MonoBehaviour
         {
             if (panelChild.gameObject.name != "ToolsPanel")
             {
-                var panelChildImage = panelChild.GetComponent<Image>();
-                if (panelChildImage != null)
+                foreach (Transform childOfPanelChild in panelChild)
                 {
-                    panelChildImage.GetComponent<Image>().sprite = structureData[count].buildingImage;
-                    count++;
+                    if (childOfPanelChild.gameObject.name == "StructureImage")
+                    {
+                        var childOfPanelChildImage = panelChild.GetComponent<Image>();
+                        if (childOfPanelChildImage != null)
+                        {
+                            childOfPanelChild.GetComponent<Image>().sprite = structureData[count].buildingImage;
+                            count++;
+                        }
+                    }
                 }
             }
         }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 60
   buildingName: Apartments
-  buildingImage: {fileID: 21300000, guid: 4b64f58564abeac498e8987930a5b6cb, type: 3}
+  buildingImage: {fileID: 21300000, guid: fa0d41ccb91591b4680794fdca82b8ff, type: 3}
   prefab: {fileID: 520303068852865390, guid: a1cd774e1983fb64fb4ab74835135994, type: 3}
   placementCost: 200
   requiredWoodAmount: 2
