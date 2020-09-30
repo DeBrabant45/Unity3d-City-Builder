@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4345104915793050049}
   - component: {fileID: 4345104915793986697}
   m_Layer: 0
-  m_Name: industrial_power_plant_Prefab
+  m_Name: Factory2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

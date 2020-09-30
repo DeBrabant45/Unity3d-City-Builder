@@ -84,7 +84,7 @@ public class UIController : MonoBehaviour
     public GameObject fadePanel;
 
     public UIStructureInfoPanelHelper structureInfoPanelHelper;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -126,6 +126,11 @@ public class UIController : MonoBehaviour
         fadePanel.SetActive(true);
     }
 
+    public void ReloadGame()
+    {
+        gameOverPanel.SetActive(true);
+    }
+
     private void OnOpenCommercialBusinessMenu()
     {
         AudioManager.Instance.PlayButtonClickedSound();
@@ -137,13 +142,16 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayInsufficientFundsSound();
         insufficientFundsPanel.SetActive(true);
-        SetInsufficientFundsText(1, 2, 3); //update
     }
 
     //figure out what you want to do with this
     public string SetInsufficientFundsText(int money, int wood, int steel)
     {
-        return insufficientFundsText.text = "You have insufficient founds for " + money + wood + steel;
+        if(money != 0 && wood != 0 && steel != 0 )
+        {
+            insufficientFundsText.text = "You have insufficient founds your currency is " + money + ", you also have insufficient material " + " Wood amount is " + wood + " and Steel amount is " + steel;
+        }
+        return insufficientFundsText.text;
     }
 
     private void OnOpenMaufactureMenu()

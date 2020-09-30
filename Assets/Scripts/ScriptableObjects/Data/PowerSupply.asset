@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b6c265081efd354ca70dfce98e7c767, type: 3}
-  m_Name: WaterTower
+  m_Name: PowerSupply
   m_EditorClassIdentifier: 
   income: 10
-  buildingName: Water Tower
-  buildingImage: {fileID: 0}
-  prefab: {fileID: 4348033691383183626, guid: da1ccb4d57ce0d544bafc66e448dc41c, type: 3}
+  buildingName: Power Supply
+  buildingImage: {fileID: 21300000, guid: cfb502775e3ed0141a8a877c2f66485b, type: 3}
+  prefab: {fileID: 1874159045682050738, guid: dd1a6dc5c298f884590bc21cbf736ea9, type: 3}
   placementCost: 1000
-  requiredWoodAmount: 2
-  requiredSteelAmount: 3
+  requiredWoodAmount: 0
+  requiredSteelAmount: 0
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 0
@@ -28,14 +28,14 @@ MonoBehaviour:
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 6261175787222129641, guid: 22c737b1417cb4246bbd8e2cd2e6c6a7, type: 3}
-  upgradePlacementCost: b0040000
+  - {fileID: 8372497345375219286, guid: 9425ec87116fa60428b8388e715de008, type: 3}
+  upgradePlacementCost: dc050000
   upgradeIncome: 
   upgradeLevel: 0
   structureRange: 1
-  maxFacilitySearchRange: 5
+  maxFacilitySearchRange: 0
   singleStructureRange: 5
   maxCustomers: 10
   upkeepPerCustomer: 0
   maxCustomersUpgraded: 14000000
-  facilityType: 1
+  facilityType: 0

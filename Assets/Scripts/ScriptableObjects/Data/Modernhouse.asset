@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
-  m_Name: Residential
+  m_Name: Modernhouse
   m_EditorClassIdentifier: 
   income: 20
-  buildingName: Singlehouse
+  buildingName: Modernhouse
   buildingImage: {fileID: 21300000, guid: ddd0ed336e8694548b17f21fbefba43b, type: 3}
   prefab: {fileID: 7089446466725765581, guid: d503d6233ae52864c86c6a3407cce9b2, type: 3}
   placementCost: 100

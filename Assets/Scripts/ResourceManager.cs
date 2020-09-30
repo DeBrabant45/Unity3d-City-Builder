@@ -81,7 +81,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
 
     private void ReloadGame()
     {
-        uIController.gameOverPanel.SetActive(true);
+        uIController.ReloadGame();
     }
 
     private void InsufficientFundsAlertBox()
@@ -101,6 +101,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         }
         else
         {
+            uIController.SetInsufficientFundsText(moneyAmount, steelAmount, woodAmount);
             InsufficientFundsAlertBox();
             return false;
         }

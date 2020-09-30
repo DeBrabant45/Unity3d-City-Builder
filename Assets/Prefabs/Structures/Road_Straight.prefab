@@ -38,11 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8086410936750855142}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: ecadbb444d2189c46991c7c9fd2ff900,
-        type: 3}
-      propertyPath: m_Name
-      value: Street_Straight
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ecadbb444d2189c46991c7c9fd2ff900,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +97,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ecadbb444d2189c46991c7c9fd2ff900,
+        type: 3}
+      propertyPath: m_Name
+      value: Street_Straight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecadbb444d2189c46991c7c9fd2ff900, type: 3}

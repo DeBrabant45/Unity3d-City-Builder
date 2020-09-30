@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 0
   buildingName: Road
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 3b987d39db598164186553f9e3d504ad, type: 3}
   prefab: {fileID: 1046759497217224246, guid: 2a74761dd523f864398408b1fea40e6f, type: 3}
   placementCost: 20
+  requiredWoodAmount: 0
+  requiredSteelAmount: 0
   upkeepCost: 5
   requireRoadAccess: 0
   requirePower: 0
