@@ -32,6 +32,8 @@ MonoBehaviour:
   - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
   upgradePlacementCost: c8000000fa000000
   upgradeIncome: 280000003c000000
+  upgradeRequiredWoodAmount: 04000000
+  upgradeRequiredSteelAmount: 03000000
   upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 5

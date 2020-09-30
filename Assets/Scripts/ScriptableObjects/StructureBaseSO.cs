@@ -35,6 +35,8 @@ public abstract class StructureBaseSO : ScriptableObject
     public GameObject[] upgradeLevelPrefabs;
     public int[] upgradePlacementCost;
     public int[] upgradeIncome;
+    public int[] upgradeRequiredWoodAmount;
+    public int[] upgradeRequiredSteelAmount;
     [SerializeField]
     private int upgradeLevel;
 
@@ -88,6 +90,24 @@ public abstract class StructureBaseSO : ScriptableObject
             return upgradePlacementCost[upgradeLevel];
         }
         return placementCost;
+    }
+
+    public int GetUpgradeRequiredWoodAmount()
+    {
+        if(upgradeLevel < upgradeRequiredWoodAmount.Length)
+        {
+            return upgradeRequiredWoodAmount[upgradeLevel];
+        }
+        return requiredWoodAmount;
+    }
+
+    public int GetUpgradeRequiredSteelAmount()
+    {
+        if (upgradeLevel < upgradeRequiredSteelAmount.Length)
+        {
+            return upgradeRequiredSteelAmount[upgradeLevel];
+        }
+        return requiredSteelAmount;
     }
 
     public GameObject GetUpgradedPrefab()

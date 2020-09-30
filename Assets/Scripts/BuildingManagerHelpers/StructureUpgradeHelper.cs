@@ -85,12 +85,16 @@ public class StructureUpgradeHelper : StructureModificationHelper
             {
                 RevokeStructureUpgradePlacementAt(gridPositionInt, structureGameObject);
                 _resourceManager.ReduceMoneyFromShoppingCartAmount(structureData.GetUpgradePlacementCost());
+                _resourceManager.ReduceSteelFromShoppingCartAmount(structureData.GetUpgradeRequiredSteelAmount());
+                _resourceManager.ReduceWoodFromShoppingCartAmount(structureData.GetUpgradeRequiredWoodAmount());
             } 
             else
             {
                 AddOldStructureForUpgrade(gridPositionInt, structureGameObject);
                 PlaceUpgradedGhostStructureAt(gridPosition, gridPositionInt, structureData);
                 _resourceManager.AddMoneyToShoppingCartAmount(structureData.GetUpgradePlacementCost());
+                _resourceManager.AddSteelToShoppingCartAmount(structureData.GetUpgradeRequiredSteelAmount());
+                _resourceManager.AddWoodToShoppingCartAmount(structureData.GetUpgradeRequiredWoodAmount());
             }
 
         }
