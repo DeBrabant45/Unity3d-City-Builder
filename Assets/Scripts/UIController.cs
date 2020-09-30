@@ -75,7 +75,19 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI steelMaterialValue;
 
     public GameObject insufficientFundsPanel;
-    public TextMeshProUGUI insufficientFundsText;
+
+    public GameObject insufficientFundsMoneyPanel;
+    public TextMeshProUGUI insufficientFundsMoneyValue;
+    public TextMeshProUGUI insufficientFundsMoneyShoppingCartValue;
+
+    public GameObject insufficientFundsWoodPanel;
+    public TextMeshProUGUI insufficientFundsWoodValue;
+    public TextMeshProUGUI insufficientFundsWoodShoppingCartValue;
+
+    public GameObject insufficientFundsSteelPanel;
+    public TextMeshProUGUI insufficientFundsSteelValue;
+    public TextMeshProUGUI insufficientFundsSteelShoppingCartValue;
+
     public Button closeInsufficientFundsBtn;
 
     public GameObject gameOverPanel;
@@ -126,6 +138,27 @@ public class UIController : MonoBehaviour
         fadePanel.SetActive(true);
     }
 
+    private void GetInsufficientFundsWoodPanel()
+    {
+        insufficientFundsWoodPanel.SetActive(true);
+        insufficientFundsWoodValue.text = woodMaterialValue.text;
+        insufficientFundsWoodShoppingCartValue.text = shoppingCartWoodValue.text;
+    }
+
+    private void GetInsufficientFundsSteelPanel()
+    {
+        insufficientFundsSteelPanel.SetActive(true);
+        insufficientFundsSteelValue.text = steelMaterialValue.text;
+        insufficientFundsSteelShoppingCartValue.text = shoppingCartSteelValue.text;
+    }
+
+    private void GetInsufficientFundsMoneyPanel()
+    {
+        insufficientFundsMoneyPanel.SetActive(true);
+        insufficientFundsMoneyValue.text = moneyValue.text;
+        insufficientFundsMoneyShoppingCartValue.text = shoppingCartMoneyValue.text;
+    }
+
     public void ReloadGame()
     {
         gameOverPanel.SetActive(true);
@@ -142,16 +175,9 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayInsufficientFundsSound();
         insufficientFundsPanel.SetActive(true);
-    }
-
-    //figure out what you want to do with this
-    public string SetInsufficientFundsText(int money, int wood, int steel)
-    {
-        if(money != 0 && wood != 0 && steel != 0 )
-        {
-            insufficientFundsText.text = "You have insufficient founds your currency is " + money + ", you also have insufficient material " + " Wood amount is " + wood + " and Steel amount is " + steel;
-        }
-        return insufficientFundsText.text;
+        GetInsufficientFundsWoodPanel();
+        GetInsufficientFundsSteelPanel();
+        GetInsufficientFundsMoneyPanel();
     }
 
     private void OnOpenMaufactureMenu()

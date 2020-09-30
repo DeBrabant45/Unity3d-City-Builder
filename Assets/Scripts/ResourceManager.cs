@@ -101,7 +101,6 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         }
         else
         {
-            uIController.SetInsufficientFundsText(moneyAmount, steelAmount, woodAmount);
             InsufficientFundsAlertBox();
             return false;
         }
