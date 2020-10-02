@@ -30,6 +30,8 @@ MonoBehaviour:
   upgradeLevelPrefabs: []
   upgradePlacementCost: 
   upgradeIncome: 
+  upgradeRequiredWoodAmount: 
+  upgradeRequiredSteelAmount: 
   upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 5
