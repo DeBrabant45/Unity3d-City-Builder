@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6c265081efd354ca70dfce98e7c767, type: 3}
+  m_Name: Fire Station
+  m_EditorClassIdentifier: 
+  income: 1
+  buildingName: Fire Station
+  buildingImage: {fileID: 0}
+  prefab: {fileID: 8114714577109509665, guid: 88b4ab12be8eba548b00dbe1e1842ee6, type: 3}
+  placementCost: 500
+  requiredWoodAmount: 0
+  requiredSteelAmount: 0
+  upkeepCost: 0
+  requireRoadAccess: 1
+  requirePower: 1
+  requireWater: 1
+  requireSilo: 0
+  requireHealthcare: 0
+  requireLawEnforcement: 0
+  requireFireProtection: 0
+  upgradable: 0
+  fullyUpgraded: 0
+  upgradeLevelPrefabs: []
+  upgradePlacementCost: 
+  upgradeIncome: 
+  upgradeRequiredWoodAmount: 
+  upgradeRequiredSteelAmount: 
+  upgradeLevel: 0
+  structureRange: 1
+  maxFacilitySearchRange: 5
+  singleStructureRange: 10
+  maxCustomers: 20
+  upkeepPerCustomer: 0
+  maxCustomersUpgraded: 
+  facilityType: 5

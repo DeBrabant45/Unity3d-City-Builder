@@ -137,7 +137,9 @@ public static class StructureEconomyManager
         return (structureData.requirePower && structureData.HasPower() == false) 
             || (structureData.requireWater && structureData.HasWater() == false) 
             || (structureData.requireSilo && structureData.HasSilo() == false)
-            || (structureData.requireHealthcare && structureData.HasHealthcare() == false);
+            || (structureData.requireHealthcare && structureData.HasHealthcare() == false)
+            || (structureData.requireLawEnforcement && structureData.HasLawEnforcement() == false) 
+            || (structureData.requireFireProtection && structureData.HasFireProtection() == false); 
     }
 
     private static void AddFacilityTypeToStructure(Vector3Int gridPosition, GridStructure grid, StructureBaseSO structureData)
@@ -154,7 +156,9 @@ public static class StructureEconomyManager
                     if ((facility.facilityType == FacilityType.Power && structureData.HasPower() == false && structureData.requirePower)
                         || (facility.facilityType == FacilityType.Water && structureData.HasWater() == false && structureData.requireWater)
                         || (facility.facilityType == FacilityType.Silo && structureData.HasSilo() == false && structureData.requireSilo)
-                        || (facility.facilityType == FacilityType.Healthcare && structureData.HasHealthcare() == false && structureData.requireHealthcare))
+                        || (facility.facilityType == FacilityType.Healthcare && structureData.HasHealthcare() == false && structureData.requireHealthcare)
+                        || (facility.facilityType == FacilityType.LawEnforcement && structureData.HasLawEnforcement() == false && structureData.requireLawEnforcement)
+                        || (facility.facilityType == FacilityType.FireProtection && structureData.HasFireProtection() == false && structureData.requireFireProtection))
                     {
                         if (grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
                         {

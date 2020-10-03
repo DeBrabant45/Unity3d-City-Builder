@@ -32,6 +32,12 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 case FacilityType.Healthcare:
                     client.RemoveHealthcareFacility();
                     break;
+                case FacilityType.LawEnforcement:
+                    client.RemoveLawEnforcementFacility();
+                    break;
+                case FacilityType.FireProtection:
+                    client.RemoveFireProtectionFacility();
+                    break;
             }
             _customers.Remove(client);
         }
@@ -82,6 +88,16 @@ public class SingleFacilitySO : SingleStructureBaseSO
                     if (nearByStructure.AddHealthcareFacility(this))
                         _customers.Add(nearByStructure);
                 }
+                if (facilityType == FacilityType.LawEnforcement && nearByStructure.requireLawEnforcement)
+                {
+                    if (nearByStructure.AddLawEnforcementFacility(this))
+                        _customers.Add(nearByStructure);
+                }
+                if (facilityType == FacilityType.FireProtection && nearByStructure.requireFireProtection)
+                {
+                    if (nearByStructure.AddFireProtectionFacility(this))
+                        _customers.Add(nearByStructure);
+                }
             }
         }
     }
@@ -109,5 +125,7 @@ public enum FacilityType
     Water,
     Silo,
     Healthcare,
+    LawEnforcement,
+    FireProtection,
     None
 }

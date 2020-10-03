@@ -14,6 +14,8 @@ public abstract class StructureBaseSO : ScriptableObject
     private SingleFacilitySO _waterProvider = null;
     private SingleFacilitySO _siloProvider = null;
     private SingleFacilitySO _healthcareProvider = null;
+    private SingleFacilitySO _lawEnforcementProvider = null;
+    private SingleFacilitySO _fireProtectionProvider = null;
     private RoadStructureSO _roadProvider = null;
 
     public string buildingName;
@@ -29,6 +31,8 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireWater;
     public bool requireSilo;
     public bool requireHealthcare;
+    public bool requireLawEnforcement;
+    public bool requireFireProtection;
 
     public bool upgradable = false;
     public bool fullyUpgraded = false;
@@ -47,8 +51,11 @@ public abstract class StructureBaseSO : ScriptableObject
     public SingleFacilitySO WaterProvider { get => _waterProvider; }
     public SingleFacilitySO SiloProvider { get => _siloProvider; }
     public SingleFacilitySO HealthcareProvider { get => _healthcareProvider; }
+    public SingleFacilitySO LawEnforcementProvider { get => _lawEnforcementProvider; }
+    public SingleFacilitySO FireProtectionProvider { get => _fireProtectionProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
     public int UpgradeLevel { get => upgradeLevel; }
+
 
     public virtual int GetIncome()
     {
@@ -153,6 +160,16 @@ public abstract class StructureBaseSO : ScriptableObject
         return _healthcareProvider != null;
     }
 
+    public bool HasLawEnforcement()
+    {
+        return _lawEnforcementProvider != null;
+    }
+
+    public bool HasFireProtection()
+    {
+        return _fireProtectionProvider != null;
+    }
+
     public bool HasFullyUpgraded()
     {
         return fullyUpgraded;
@@ -172,9 +189,19 @@ public abstract class StructureBaseSO : ScriptableObject
         _siloProvider = null;
     }
 
-    internal void RemoveHealthcareFacility()
+    public void RemoveHealthcareFacility()
     {
         _healthcareProvider = null;
+    }
+
+    public void RemoveLawEnforcementFacility()
+    {
+        _lawEnforcementProvider = null;
+    }
+
+    public void RemoveFireProtectionFacility()
+    {
+        _fireProtectionProvider = null;
     }
 
     public void RemoveRoadProivder()
@@ -227,6 +254,26 @@ public abstract class StructureBaseSO : ScriptableObject
         return false;
     }
 
+    public bool AddLawEnforcementFacility(SingleFacilitySO facility)
+    {
+        if(_lawEnforcementProvider == null)
+        {
+            _lawEnforcementProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
+    public bool AddFireProtectionFacility(SingleFacilitySO facility)
+    {
+        if(_fireProtectionProvider == null)
+        {
+            _fireProtectionProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
     public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
@@ -244,6 +291,14 @@ public abstract class StructureBaseSO : ScriptableObject
         if(_healthcareProvider != null)
         {
             _healthcareProvider.RemoveClient(this);
+        }
+        if (_lawEnforcementProvider != null)
+        {
+            _lawEnforcementProvider.RemoveClient(this);
+        }
+        if(_fireProtectionProvider != null)
+        {
+            _fireProtectionProvider.RemoveClient(this);
         }
 
         return null;

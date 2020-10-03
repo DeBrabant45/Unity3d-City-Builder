@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class UIStructureInfoPanelHelper : MonoBehaviour
 {
     public TextMeshProUGUI nameText, residentsText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText, materialBuildTimeText;
-    public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle;
+    public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle, heatlhcareToggle, lawEnforcementToggle, fireProtectionToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(clientText.gameObject);
         HideElement(powerToggle.gameObject);
         HideElement(waterToggle.gameObject);
+        HideElement(lawEnforcementToggle.gameObject);
+        HideElement(fireProtectionToggle.gameObject);
+        HideElement(heatlhcareToggle.gameObject);
         HideElement(roadToggle.gameObject);
         HideElement(siloToggle.gameObject);
         HideElement(upgradeAmountText.gameObject);
@@ -60,6 +63,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         CheckStructureToDisplayWaterToggle(data);
         CheckStructureToDisplayUpgradeToggle(data);
         CheckStructureToDisplaySiloToggle(data);
+        CheckStructureToDisplayLawEnforcementToggle(data);
+        CheckStructureToDisplayFireProtectionToggle(data);
+        CheckStructureToDisplayHealthcareToggle(data);
     }
 
     public void DisplayFacilityStructureInfo(SingleFacilitySO data)
@@ -77,6 +83,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         CheckStructureToDisplayWaterToggle(data);
         CheckStructureToDisplayUpgradeToggle(data);
         CheckStructureToDisplaySiloToggle(data);
+        CheckStructureToDisplayLawEnforcementToggle(data);
+        CheckStructureToDisplayFireProtectionToggle(data);
+        CheckStructureToDisplayHealthcareToggle(data);
     }
 
     public void DisplayManufactureStructureInfo(ManufacturerBaseSO data)
@@ -94,6 +103,9 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         CheckStructureToDisplayWaterToggle(data);
         CheckStructureToDisplayUpgradeToggle(data);
         CheckStructureToDisplaySiloToggle(data);
+        CheckStructureToDisplayLawEnforcementToggle(data);
+        CheckStructureToDisplayFireProtectionToggle(data);
+        CheckStructureToDisplayHealthcareToggle(data);
     }
 
     private void HideElement(GameObject element)
@@ -176,6 +188,42 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         else
         {
             HideElement(waterToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayLawEnforcementToggle(StructureBaseSO structure)
+    {
+        if (structure.requireLawEnforcement)
+        {
+            SetToggle(lawEnforcementToggle, structure.HasLawEnforcement());
+        }
+        else
+        {
+            HideElement(lawEnforcementToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayFireProtectionToggle(StructureBaseSO structure)
+    {
+        if (structure.requireFireProtection)
+        {
+            SetToggle(fireProtectionToggle, structure.HasFireProtection());
+        }
+        else
+        {
+            HideElement(fireProtectionToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayHealthcareToggle(StructureBaseSO structure)
+    {
+        if (structure.requireHealthcare)
+        {
+            SetToggle(heatlhcareToggle, structure.HasHealthcare());
+        }
+        else
+        {
+            HideElement(heatlhcareToggle.gameObject);
         }
     }
 
