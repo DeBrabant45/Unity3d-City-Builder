@@ -25,6 +25,9 @@ MonoBehaviour:
   requireWater: 1
   requireSilo: 0
   requireHealthcare: 0
+  requireLawEnforcement: 1
+  requireFireProtection: 1
+  requirePostalService: 1
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs:
@@ -32,6 +35,8 @@ MonoBehaviour:
   - {fileID: 6870371079923077599, guid: 72a7f07404f80e248a26bf96e29539ff, type: 3}
   upgradePlacementCost: 90010000c2010000
   upgradeIncome: 3c0000005a000000
+  upgradeRequiredWoodAmount: 
+  upgradeRequiredSteelAmount: 
   upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 5

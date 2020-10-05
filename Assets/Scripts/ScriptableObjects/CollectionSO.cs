@@ -17,6 +17,7 @@ public class CollectionSO : ScriptableObject
 
     public List<StructureBaseSO> utilitiesStructures;
     public List<StructureBaseSO> emergencyStructures;
+    public List<StructureBaseSO> governmentStructures;
 
     public List<StructureBaseSO> manufactureStructures;
 

@@ -49,6 +49,11 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.manufactureStructures;
     }
 
+    public List<StructureBaseSO> GetGovernmentStructureInfo()
+    {
+        return modelDataCollection.governmentStructures;
+    }
+
     public List<string> GetZoneNames()
     {
         return modelDataCollection.zoneStructures.Select(zone => zone.buildingName).ToList();

@@ -46,6 +46,7 @@ public class UIController : MonoBehaviour
 
     public GameObject utilitiesSelectMenuPanel;
     public GameObject emergencySelectMenuPanel;
+    public GameObject governmentSelectMenuPanel;
 
     public GameObject manufactureSelectMenuPanel;
 
@@ -58,6 +59,7 @@ public class UIController : MonoBehaviour
 
     public Button utilitiesOpenMenuBtn;
     public Button emergencyOpenMenuBtn;
+    public Button governmentOpenMenuBtn;
 
     public Button manufactureOpenMenuBtn;
 
@@ -120,6 +122,7 @@ public class UIController : MonoBehaviour
 
         utilitiesOpenMenuBtn.onClick.AddListener(OnOpenUtilitiesMenu);
         emergencyOpenMenuBtn.onClick.AddListener(OnOpenEmergencyMenu);
+        governmentOpenMenuBtn.onClick.AddListener(OnOpenGovernmentMenu);
 
         manufactureOpenMenuBtn.onClick.AddListener(OnOpenMaufactureMenu);
 
@@ -162,6 +165,13 @@ public class UIController : MonoBehaviour
     public void ReloadGame()
     {
         gameOverPanel.SetActive(true);
+    }
+
+    private void OnOpenGovernmentMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        governmentSelectMenuPanel.SetActive(true);
     }
 
     private void OnOpenCommercialBusinessMenu()
@@ -288,6 +298,7 @@ public class UIController : MonoBehaviour
         CreateUtilitiesBuildMenu();
         CreateEmergencyBuildMenu();
         CreateManufactureBuildMenu();
+        CreateGovernmentBuildMenu();
     }
 
     private void CreateResidentialBuildMenu()
@@ -318,6 +329,11 @@ public class UIController : MonoBehaviour
     private void CreateEmergencyBuildMenu()
     {
         CreateBuildMenu(emergencySelectMenuPanel.transform, structureRepository.GetEmergencyInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateGovernmentBuildMenu()
+    {
+        CreateBuildMenu(governmentSelectMenuPanel.transform, structureRepository.GetGovernmentStructureInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateManufactureBuildMenu()
@@ -527,6 +543,7 @@ public class UIController : MonoBehaviour
         emergencySelectMenuPanel.SetActive(false);
         manufactureSelectMenuPanel.SetActive(false);
         roadSelectMenuPanel.SetActive(false);
+        governmentSelectMenuPanel.SetActive(false);
     }
 
     private void OnBuildManufacturerCallback(string nameOfStructure)

@@ -24,7 +24,10 @@ MonoBehaviour:
   requirePower: 1
   requireWater: 1
   requireSilo: 0
-  requireHealthcare: 0
+  requireHealthcare: 1
+  requireLawEnforcement: 1
+  requireFireProtection: 1
+  requirePostalService: 1
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:

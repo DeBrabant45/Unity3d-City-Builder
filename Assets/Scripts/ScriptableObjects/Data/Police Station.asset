@@ -26,7 +26,8 @@ MonoBehaviour:
   requireSilo: 0
   requireHealthcare: 0
   requireLawEnforcement: 0
-  requireFireProtection: 0
+  requireFireProtection: 1
+  requirePostalService: 1
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []

@@ -38,6 +38,9 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 case FacilityType.FireProtection:
                     client.RemoveFireProtectionFacility();
                     break;
+                case FacilityType.Postal:
+                    client.RemovePostalFacility();
+                    break;
             }
             _customers.Remove(client);
         }
@@ -68,37 +71,77 @@ public class SingleFacilitySO : SingleStructureBaseSO
         {
             if(maxCustomers > _customers.Count && nearByStructure != this)
             {
-                if(facilityType == FacilityType.Power && nearByStructure.requirePower)
-                {
-                    if (nearByStructure.AddPowerFacility(this))
-                        _customers.Add(nearByStructure);
-                }
-                if(facilityType == FacilityType.Water && nearByStructure.requireWater)
-                {
-                    if (nearByStructure.AddWaterFacility(this))
-                        _customers.Add(nearByStructure);
-                }
-                if (facilityType == FacilityType.Silo && nearByStructure.requireSilo)
-                {
-                    if (nearByStructure.AddSiloFacility(this))
-                        _customers.Add(nearByStructure);
-                }
-                if (facilityType == FacilityType.Healthcare && nearByStructure.requireHealthcare)
-                {
-                    if (nearByStructure.AddHealthcareFacility(this))
-                        _customers.Add(nearByStructure);
-                }
-                if (facilityType == FacilityType.LawEnforcement && nearByStructure.requireLawEnforcement)
-                {
-                    if (nearByStructure.AddLawEnforcementFacility(this))
-                        _customers.Add(nearByStructure);
-                }
-                if (facilityType == FacilityType.FireProtection && nearByStructure.requireFireProtection)
-                {
-                    if (nearByStructure.AddFireProtectionFacility(this))
-                        _customers.Add(nearByStructure);
-                }
+                AddPowerFacilityToClient(nearByStructure);
+                AddWaterFacilityToClient(nearByStructure);
+                AddSiloToClient(nearByStructure);
+                AddHealthcareToClient(nearByStructure);
+                AddLawEnforcementToClient(nearByStructure);
+                AddFireProtectionToClient(nearByStructure);
+                AddPostalServiceToClient(nearByStructure);
             }
+        }
+    }
+
+    private void AddPostalServiceToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.Postal && nearByStructure.requirePostalService)
+        {
+            if (nearByStructure.AddPostalFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddFireProtectionToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.FireProtection && nearByStructure.requireFireProtection)
+        {
+            if (nearByStructure.AddFireProtectionFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddLawEnforcementToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.LawEnforcement && nearByStructure.requireLawEnforcement)
+        {
+            if (nearByStructure.AddLawEnforcementFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddHealthcareToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.Healthcare && nearByStructure.requireHealthcare)
+        {
+            if (nearByStructure.AddHealthcareFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddSiloToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.Silo && nearByStructure.requireSilo)
+        {
+            if (nearByStructure.AddSiloFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddWaterFacilityToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.Water && nearByStructure.requireWater)
+        {
+            if (nearByStructure.AddWaterFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddPowerFacilityToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.Power && nearByStructure.requirePower)
+        {
+            if (nearByStructure.AddPowerFacility(this))
+                _customers.Add(nearByStructure);
         }
     }
 
@@ -127,5 +170,6 @@ public enum FacilityType
     Healthcare,
     LawEnforcement,
     FireProtection,
+    Postal,
     None
 }

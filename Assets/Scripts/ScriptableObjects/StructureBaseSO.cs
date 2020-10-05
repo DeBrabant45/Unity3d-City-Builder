@@ -16,6 +16,7 @@ public abstract class StructureBaseSO : ScriptableObject
     private SingleFacilitySO _healthcareProvider = null;
     private SingleFacilitySO _lawEnforcementProvider = null;
     private SingleFacilitySO _fireProtectionProvider = null;
+    private SingleFacilitySO _postalProvider = null;
     private RoadStructureSO _roadProvider = null;
 
     public string buildingName;
@@ -33,6 +34,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireHealthcare;
     public bool requireLawEnforcement;
     public bool requireFireProtection;
+    public bool requirePostalService;
 
     public bool upgradable = false;
     public bool fullyUpgraded = false;
@@ -53,9 +55,9 @@ public abstract class StructureBaseSO : ScriptableObject
     public SingleFacilitySO HealthcareProvider { get => _healthcareProvider; }
     public SingleFacilitySO LawEnforcementProvider { get => _lawEnforcementProvider; }
     public SingleFacilitySO FireProtectionProvider { get => _fireProtectionProvider; }
+    public SingleFacilitySO PostalProvider { get => _postalProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
     public int UpgradeLevel { get => upgradeLevel; }
-
 
     public virtual int GetIncome()
     {
@@ -170,6 +172,11 @@ public abstract class StructureBaseSO : ScriptableObject
         return _fireProtectionProvider != null;
     }
 
+    public bool HasPostalService()
+    {
+        return _postalProvider != null;
+    }
+
     public bool HasFullyUpgraded()
     {
         return fullyUpgraded;
@@ -207,6 +214,11 @@ public abstract class StructureBaseSO : ScriptableObject
     public void RemoveRoadProivder()
     {
         _roadProvider = null;
+    }
+
+    public void RemovePostalFacility()
+    {
+        _postalProvider = null;
     }
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)
@@ -274,6 +286,16 @@ public abstract class StructureBaseSO : ScriptableObject
         return false;
     }
 
+    public bool AddPostalFacility(SingleFacilitySO facility)
+    {
+        if(_postalProvider == null)
+        {
+            _postalProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
     public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
@@ -299,6 +321,10 @@ public abstract class StructureBaseSO : ScriptableObject
         if(_fireProtectionProvider != null)
         {
             _fireProtectionProvider.RemoveClient(this);
+        }
+        if (_postalProvider != null)
+        {
+            _postalProvider.RemoveClient(this);
         }
 
         return null;

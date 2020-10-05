@@ -139,7 +139,8 @@ public static class StructureEconomyManager
             || (structureData.requireSilo && structureData.HasSilo() == false)
             || (structureData.requireHealthcare && structureData.HasHealthcare() == false)
             || (structureData.requireLawEnforcement && structureData.HasLawEnforcement() == false) 
-            || (structureData.requireFireProtection && structureData.HasFireProtection() == false); 
+            || (structureData.requireFireProtection && structureData.HasFireProtection() == false) 
+            || (structureData.requirePostalService && structureData.HasPostalService() == false); 
     }
 
     private static void AddFacilityTypeToStructure(Vector3Int gridPosition, GridStructure grid, StructureBaseSO structureData)
@@ -158,7 +159,8 @@ public static class StructureEconomyManager
                         || (facility.facilityType == FacilityType.Silo && structureData.HasSilo() == false && structureData.requireSilo)
                         || (facility.facilityType == FacilityType.Healthcare && structureData.HasHealthcare() == false && structureData.requireHealthcare)
                         || (facility.facilityType == FacilityType.LawEnforcement && structureData.HasLawEnforcement() == false && structureData.requireLawEnforcement)
-                        || (facility.facilityType == FacilityType.FireProtection && structureData.HasFireProtection() == false && structureData.requireFireProtection))
+                        || (facility.facilityType == FacilityType.FireProtection && structureData.HasFireProtection() == false && structureData.requireFireProtection)
+                        || (facility.facilityType == FacilityType.Postal && structureData.HasPostalService() == false && structureData.requirePostalService))
                     {
                         if (grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
                         {
