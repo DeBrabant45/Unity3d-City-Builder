@@ -41,6 +41,9 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 case FacilityType.Postal:
                     client.RemovePostalFacility();
                     break;
+                case FacilityType.Banking:
+                    client.RemoveBankingFacility();
+                    break;
             }
             _customers.Remove(client);
         }
@@ -78,6 +81,7 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 AddLawEnforcementToClient(nearByStructure);
                 AddFireProtectionToClient(nearByStructure);
                 AddPostalServiceToClient(nearByStructure);
+                AddBankingServiceToClient(nearByStructure);
             }
         }
     }
@@ -87,6 +91,15 @@ public class SingleFacilitySO : SingleStructureBaseSO
         if (facilityType == FacilityType.Postal && nearByStructure.requirePostalService)
         {
             if (nearByStructure.AddPostalFacility(this))
+                _customers.Add(nearByStructure);
+        }
+    }
+
+    private void AddBankingServiceToClient(StructureBaseSO nearByStructure)
+    {
+        if (facilityType == FacilityType.Banking && nearByStructure.requireBankService)
+        {
+            if (nearByStructure.AddBankingFacility(this))
                 _customers.Add(nearByStructure);
         }
     }
@@ -171,5 +184,6 @@ public enum FacilityType
     LawEnforcement,
     FireProtection,
     Postal,
+    Banking,
     None
 }

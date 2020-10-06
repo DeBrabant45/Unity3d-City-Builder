@@ -731,11 +731,12 @@ namespace Tests
             residentialZone.upkeepCost = 0;
             residentialZone.prefab = TestPrefab;
             residentialZone.maxFacilitySearchRange = 2;
-            //residentialZone.upgradeLevel = 0;
             residentialZone.upgradeIncome = new int[1] { 1 };
             residentialZone.upgradePlacementCost = new int[1] { 0 };
             residentialZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
             residentialZone.upgradedResidentsAmount = new int[1] { 0 };
+            residentialZone.upgradeRequiredSteelAmount = new int[1] { 0 };
+            residentialZone.upgradeRequiredWoodAmount = new int[1] { 0 };
             return residentialZone;
         }        
         
@@ -754,10 +755,11 @@ namespace Tests
             commercialZone.upkeepCost = 0;
             commercialZone.prefab = TestPrefab;
             commercialZone.maxFacilitySearchRange = 2;
-            //commercialZone.upgradeLevel = 0;
             commercialZone.upgradeIncome = new int[1] { 1 };
             commercialZone.upgradePlacementCost = new int[1] { 1 };
             commercialZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
+            commercialZone.upgradeRequiredSteelAmount = new int[1] { 0 };
+            commercialZone.upgradeRequiredWoodAmount = new int[1] { 0 };
             return commercialZone;
         }
 
@@ -776,10 +778,11 @@ namespace Tests
             agricultureZone.upkeepCost = 0;
             agricultureZone.prefab = TestPrefab;
             agricultureZone.maxFacilitySearchRange = 2;
-            //agricultureZone.upgradeLevel = 0;
             agricultureZone.upgradeIncome = new int[1] { 1 };
             agricultureZone.upgradePlacementCost = new int[1] { 1 };
             agricultureZone.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
+            agricultureZone.upgradeRequiredSteelAmount = new int[1] { 0 };
+            agricultureZone.upgradeRequiredWoodAmount = new int[1] { 0 };
             return agricultureZone;
         }
 
@@ -797,10 +800,11 @@ namespace Tests
             powerPlant.fullyUpgraded = false;
             powerPlant.upkeepCost = 0;
             powerPlant.prefab = TestPrefab;
-            //powerPlant.upgradeLevel = 0;
             powerPlant.upgradePlacementCost = new int[1] { 1 };
             powerPlant.maxCustomersUpgraded = new int[1] { 1 };
             powerPlant.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
+            powerPlant.upgradeRequiredSteelAmount = new int[1] { 0 };
+            powerPlant.upgradeRequiredWoodAmount = new int[1] { 0 };
             return powerPlant;
         }
 
@@ -818,10 +822,11 @@ namespace Tests
             waterTower.fullyUpgraded = false;
             waterTower.upkeepCost = 0;
             waterTower.prefab = TestPrefab;
-            //waterTower.upgradeLevel = 0;
             waterTower.upgradePlacementCost = new int[1] { 1 };
             waterTower.maxCustomersUpgraded = new int[1] { 1 };
             waterTower.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
+            waterTower.upgradeRequiredSteelAmount = new int[1] { 0 };
+            waterTower.upgradeRequiredWoodAmount = new int[1] { 0 };
             return waterTower;
         }
 
@@ -839,10 +844,11 @@ namespace Tests
             silo.fullyUpgraded = false;
             silo.upkeepCost = 0;
             silo.prefab = TestPrefab;
-            //silo.upgradeLevel = 0;
             silo.upgradePlacementCost = new int[1] { 1 };
             silo.maxCustomersUpgraded = new int[1] { 1 };
             silo.upgradeLevelPrefabs = new GameObject[1] { TestPrefab2 };
+            silo.upgradeRequiredSteelAmount = new int[1] { 0 };
+            silo.upgradeRequiredWoodAmount = new int[1] { 0 };
             return silo;
         }
 

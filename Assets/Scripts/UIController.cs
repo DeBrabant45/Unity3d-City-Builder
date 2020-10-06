@@ -141,25 +141,40 @@ public class UIController : MonoBehaviour
         fadePanel.SetActive(true);
     }
 
-    private void GetInsufficientFundsWoodPanel()
+    public void ActivateInsufficientFundsWoodPanel()
     {
         insufficientFundsWoodPanel.SetActive(true);
         insufficientFundsWoodValue.text = woodMaterialValue.text;
         insufficientFundsWoodShoppingCartValue.text = shoppingCartWoodValue.text;
     }
 
-    private void GetInsufficientFundsSteelPanel()
+    public void DeactivateInsufficientFundsWoodPanel()
+    {
+        insufficientFundsWoodPanel.SetActive(false);
+    }
+
+    public void ActivateInsufficientFundsSteelPanel()
     {
         insufficientFundsSteelPanel.SetActive(true);
         insufficientFundsSteelValue.text = steelMaterialValue.text;
         insufficientFundsSteelShoppingCartValue.text = shoppingCartSteelValue.text;
     }
 
-    private void GetInsufficientFundsMoneyPanel()
+    public void DeactivateInsufficientFundsSteelPanel()
+    {
+        insufficientFundsSteelPanel.SetActive(false);
+    }
+
+    public void ActivateInsufficientFundsMoneyPanel()
     {
         insufficientFundsMoneyPanel.SetActive(true);
         insufficientFundsMoneyValue.text = moneyValue.text;
         insufficientFundsMoneyShoppingCartValue.text = shoppingCartMoneyValue.text;
+    }
+
+    public void DeactivateInsufficientFundsMoneyPanel()
+    {
+        insufficientFundsMoneyPanel.SetActive(false);
     }
 
     public void ReloadGame()
@@ -185,9 +200,6 @@ public class UIController : MonoBehaviour
     {
         AudioManager.Instance.PlayInsufficientFundsSound();
         insufficientFundsPanel.SetActive(true);
-        GetInsufficientFundsWoodPanel();
-        GetInsufficientFundsSteelPanel();
-        GetInsufficientFundsMoneyPanel();
     }
 
     private void OnOpenMaufactureMenu()

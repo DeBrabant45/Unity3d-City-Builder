@@ -28,6 +28,7 @@ MonoBehaviour:
   requireLawEnforcement: 1
   requireFireProtection: 1
   requirePostalService: 1
+  requireBankService: 1
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:

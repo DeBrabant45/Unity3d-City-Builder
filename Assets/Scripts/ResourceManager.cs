@@ -84,11 +84,6 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         uIController.ReloadGame();
     }
 
-    private void InsufficientFundsAlertBox()
-    {
-        uIController.OnOpenInsufficientFundsAlertBox();
-    }
-
     public bool CanIBuyIt(int moneyAmount, int steelAmount, int woodAmount)
     {
         if (_moneyHelper.MoneyAmount >= moneyAmount && _steelMaterialHelper.SteelAmount >= steelAmount && _woodMaterialHelper.WoodAmount >= woodAmount)
@@ -102,7 +97,51 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         else
         {
             InsufficientFundsAlertBox();
+            InsufficientMoneyAlertDisplay(moneyAmount);
+            InsufficientSteelAlertDisplay(steelAmount);
+            InsufficientWoodAlertDisplay(woodAmount);
             return false;
+        }
+    }
+
+    private void InsufficientFundsAlertBox()
+    {
+        uIController.OnOpenInsufficientFundsAlertBox();
+    }
+
+    private void InsufficientSteelAlertDisplay(int steelRequested)
+    {
+        if (_steelMaterialHelper.SteelAmount < steelRequested)
+        {
+            uIController.ActivateInsufficientFundsSteelPanel();
+        }
+        else
+        {
+            uIController.DeactivateInsufficientFundsSteelPanel();
+        }
+    }
+
+    private void InsufficientMoneyAlertDisplay(int moneyRequested)
+    {
+        if(_moneyHelper.MoneyAmount < moneyRequested)
+        {
+            uIController.ActivateInsufficientFundsMoneyPanel();
+        }
+        else
+        {
+            uIController.DeactivateInsufficientFundsMoneyPanel();
+        }
+    }
+
+    private void InsufficientWoodAlertDisplay(int woodRequested)
+    {
+        if(_woodMaterialHelper.WoodAmount < woodRequested)
+        {
+            uIController.ActivateInsufficientFundsWoodPanel();
+        }
+        else
+        {
+            uIController.DeactivateInsufficientFundsWoodPanel();
         }
     }
 

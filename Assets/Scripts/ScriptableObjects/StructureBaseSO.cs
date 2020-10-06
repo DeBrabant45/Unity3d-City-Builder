@@ -16,6 +16,7 @@ public abstract class StructureBaseSO : ScriptableObject
     private SingleFacilitySO _healthcareProvider = null;
     private SingleFacilitySO _lawEnforcementProvider = null;
     private SingleFacilitySO _fireProtectionProvider = null;
+    private SingleFacilitySO _bankProvider = null;
     private SingleFacilitySO _postalProvider = null;
     private RoadStructureSO _roadProvider = null;
 
@@ -35,6 +36,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireLawEnforcement;
     public bool requireFireProtection;
     public bool requirePostalService;
+    public bool requireBankService;
 
     public bool upgradable = false;
     public bool fullyUpgraded = false;
@@ -56,6 +58,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public SingleFacilitySO LawEnforcementProvider { get => _lawEnforcementProvider; }
     public SingleFacilitySO FireProtectionProvider { get => _fireProtectionProvider; }
     public SingleFacilitySO PostalProvider { get => _postalProvider; }
+    public SingleFacilitySO BankProvider { get => _bankProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
     public int UpgradeLevel { get => upgradeLevel; }
 
@@ -177,6 +180,11 @@ public abstract class StructureBaseSO : ScriptableObject
         return _postalProvider != null;
     }
 
+    public bool HasBankingService()
+    {
+        return _bankProvider != null;
+    }
+
     public bool HasFullyUpgraded()
     {
         return fullyUpgraded;
@@ -219,6 +227,11 @@ public abstract class StructureBaseSO : ScriptableObject
     public void RemovePostalFacility()
     {
         _postalProvider = null;
+    }
+
+    public void RemoveBankingFacility()
+    {
+        _bankProvider = null;
     }
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)
@@ -296,6 +309,16 @@ public abstract class StructureBaseSO : ScriptableObject
         return false;
     }
 
+    public bool AddBankingFacility(SingleFacilitySO facility)
+    {
+        if(_bankProvider == null)
+        {
+            _bankProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
     public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
@@ -325,6 +348,10 @@ public abstract class StructureBaseSO : ScriptableObject
         if (_postalProvider != null)
         {
             _postalProvider.RemoveClient(this);
+        }
+        if(_bankProvider != null)
+        {
+            _bankProvider.RemoveClient(this);
         }
 
         return null;
