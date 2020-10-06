@@ -15,7 +15,7 @@ MonoBehaviour:
   income: 0
   buildingName: Steel Factory
   buildingImage: {fileID: 0}
-  prefab: {fileID: 5119923302283471143, guid: c387b0c315c407643ae61199c8f8bc9f, type: 3}
+  prefab: {fileID: 6816432669765599835, guid: aebdba2f4658be54ba5909c7601ac074, type: 3}
   placementCost: 0
   requiredWoodAmount: 0
   requiredSteelAmount: 0
@@ -25,6 +25,10 @@ MonoBehaviour:
   requireWater: 1
   requireSilo: 0
   requireHealthcare: 0
+  requireLawEnforcement: 0
+  requireFireProtection: 0
+  requirePostalService: 0
+  requireBankService: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []

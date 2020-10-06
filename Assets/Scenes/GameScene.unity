@@ -13738,6 +13738,16 @@ PrefabInstance:
       propertyPath: _steelCalculationInterval
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4660870648543468106, guid: a4322498de46c31409e4464ff8499410,
+        type: 3}
+      propertyPath: _startWoodAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660870648543468106, guid: a4322498de46c31409e4464ff8499410,
+        type: 3}
+      propertyPath: _startSteelAmount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4660870648543468107, guid: a4322498de46c31409e4464ff8499410,
         type: 3}
       propertyPath: m_Name
