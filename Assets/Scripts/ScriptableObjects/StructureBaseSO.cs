@@ -18,6 +18,7 @@ public abstract class StructureBaseSO : ScriptableObject
     private SingleFacilitySO _fireProtectionProvider = null;
     private SingleFacilitySO _bankProvider = null;
     private SingleFacilitySO _postalProvider = null;
+    private SingleFacilitySO _grabageProvider = null;
     private RoadStructureSO _roadProvider = null;
 
     public string buildingName;
@@ -37,6 +38,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requireFireProtection;
     public bool requirePostalService;
     public bool requireBankService;
+    public bool requireGarbageService;
 
     public bool upgradable = false;
     public bool fullyUpgraded = false;
@@ -59,6 +61,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public SingleFacilitySO FireProtectionProvider { get => _fireProtectionProvider; }
     public SingleFacilitySO PostalProvider { get => _postalProvider; }
     public SingleFacilitySO BankProvider { get => _bankProvider; }
+    public SingleFacilitySO GrabageProvider { get => _grabageProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
     public int UpgradeLevel { get => upgradeLevel; }
 
@@ -185,6 +188,11 @@ public abstract class StructureBaseSO : ScriptableObject
         return _bankProvider != null;
     }
 
+    public bool HasGarbageService()
+    {
+        return _grabageProvider != null;
+    }
+
     public bool HasFullyUpgraded()
     {
         return fullyUpgraded;
@@ -232,6 +240,11 @@ public abstract class StructureBaseSO : ScriptableObject
     public void RemoveBankingFacility()
     {
         _bankProvider = null;
+    }
+
+    public void RemoveGarbageFacility()
+    {
+        _grabageProvider = null;
     }
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)
@@ -319,6 +332,16 @@ public abstract class StructureBaseSO : ScriptableObject
         return false;
     }
 
+    public bool AddGarbageFacility(SingleFacilitySO facility)
+    {
+        if(_grabageProvider == null)
+        {
+            _grabageProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
     public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
@@ -352,6 +375,10 @@ public abstract class StructureBaseSO : ScriptableObject
         if(_bankProvider != null)
         {
             _bankProvider.RemoveClient(this);
+        }
+        if (_grabageProvider != null)
+        {
+            _grabageProvider.RemoveClient(this);
         }
 
         return null;

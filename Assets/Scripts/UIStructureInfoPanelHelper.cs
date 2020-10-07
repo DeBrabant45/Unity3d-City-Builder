@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class UIStructureInfoPanelHelper : MonoBehaviour
 {
     public TextMeshProUGUI nameText, residentsText, incomeText, upkeepText, upgradeAmountText, upgradedText, clientText, materialBuildTimeText;
-    public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle, heatlhcareToggle, lawEnforcementToggle, fireProtectionToggle, postalServiceToggle, bankingServiceToggle;
+    public Toggle powerToggle, waterToggle, roadToggle, siloToggle, upgradeToggle, heatlhcareToggle, lawEnforcementToggle, fireProtectionToggle, postalServiceToggle, bankingServiceToggle, garbageServiceToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         HideElement(lawEnforcementToggle.gameObject);
         HideElement(fireProtectionToggle.gameObject);
         HideElement(bankingServiceToggle.gameObject);
+        HideElement(garbageServiceToggle.gameObject);
         HideElement(heatlhcareToggle.gameObject);
         HideElement(roadToggle.gameObject);
         HideElement(siloToggle.gameObject);
@@ -70,6 +71,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         CheckStructureToDisplayHealthcareToggle(data);
         CheckStructureToDisplayPostalServiceToggle(data);
         CheckStructureToDisplayBankingServiceToggle(data);
+        CheckStructureToDisplayGarbageServiceToggle(data);
     }
 
     public void DisplayFacilityStructureInfo(SingleFacilitySO data)
@@ -92,6 +94,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         CheckStructureToDisplayHealthcareToggle(data);
         CheckStructureToDisplayPostalServiceToggle(data);
         CheckStructureToDisplayBankingServiceToggle(data);
+        CheckStructureToDisplayGarbageServiceToggle(data);
     }
 
     public void DisplayManufactureStructureInfo(ManufacturerBaseSO data)
@@ -114,6 +117,7 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         CheckStructureToDisplayHealthcareToggle(data);
         CheckStructureToDisplayPostalServiceToggle(data);
         CheckStructureToDisplayBankingServiceToggle(data);
+        CheckStructureToDisplayGarbageServiceToggle(data);
     }
 
     private void HideElement(GameObject element)
@@ -256,6 +260,18 @@ public class UIStructureInfoPanelHelper : MonoBehaviour
         else
         {
             HideElement(bankingServiceToggle.gameObject);
+        }
+    }
+
+    private void CheckStructureToDisplayGarbageServiceToggle(StructureBaseSO structure)
+    {
+        if(structure.requireGarbageService)
+        {
+            SetToggle(garbageServiceToggle, structure.HasGarbageService());
+        }
+        else
+        {
+            HideElement(garbageServiceToggle.gameObject);
         }
     }
 

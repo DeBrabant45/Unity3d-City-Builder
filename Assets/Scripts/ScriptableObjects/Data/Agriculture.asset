@@ -15,7 +15,7 @@ MonoBehaviour:
   income: 20
   buildingName: Barn
   buildingImage: {fileID: 21300000, guid: cca7f1a3616d163459c800ada12afdac, type: 3}
-  prefab: {fileID: 7468051901424741856, guid: 1a1641d19afd6af4f9e6ea08325f104d, type: 3}
+  prefab: {fileID: 5513003228192175551, guid: e44a3b5b46f92c04dabcca23e5538f28, type: 3}
   placementCost: 150
   requiredWoodAmount: 3
   requiredSteelAmount: 2
@@ -29,6 +29,7 @@ MonoBehaviour:
   requireFireProtection: 0
   requirePostalService: 0
   requireBankService: 0
+  requireGarbageService: 0
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:

@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6997f89d9b412e74d852a29a2810a8cf, type: 2}
   - {fileID: 11400000, guid: a89329b58980f8143861045d5707165b, type: 2}
   - {fileID: 11400000, guid: 62a0e3bdc5e104048bbb900855f87df7, type: 2}
+  - {fileID: 11400000, guid: 62cffaab1d2761f4e9f8d68bcf333654, type: 2}
   manufacturers:
   - {fileID: 11400000, guid: 6b84f5725d9799e42984032c30da48a9, type: 2}
   - {fileID: 11400000, guid: 1f9a48bf2920861408606632db213ffe, type: 2}
@@ -64,6 +65,7 @@ MonoBehaviour:
   governmentStructures:
   - {fileID: 11400000, guid: a89329b58980f8143861045d5707165b, type: 2}
   - {fileID: 11400000, guid: 62a0e3bdc5e104048bbb900855f87df7, type: 2}
+  - {fileID: 11400000, guid: 62cffaab1d2761f4e9f8d68bcf333654, type: 2}
   manufactureStructures:
   - {fileID: 11400000, guid: 6b84f5725d9799e42984032c30da48a9, type: 2}
   - {fileID: 11400000, guid: 1f9a48bf2920861408606632db213ffe, type: 2}

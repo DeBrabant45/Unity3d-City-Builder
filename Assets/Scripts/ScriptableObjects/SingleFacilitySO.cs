@@ -44,6 +44,9 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 case FacilityType.Banking:
                     client.RemoveBankingFacility();
                     break;
+                case FacilityType.Garbage:
+                    client.RemoveGarbageFacility();
+                    break;
             }
             _customers.Remove(client);
         }
@@ -82,7 +85,17 @@ public class SingleFacilitySO : SingleStructureBaseSO
                 AddFireProtectionToClient(nearByStructure);
                 AddPostalServiceToClient(nearByStructure);
                 AddBankingServiceToClient(nearByStructure);
+                AddGarbageServiceToClient(nearByStructure);
             }
+        }
+    }
+
+    private void AddGarbageServiceToClient(StructureBaseSO nearByStructure)
+    {
+        if(facilityType == FacilityType.Garbage && nearByStructure.requireGarbageService)
+        {
+            if (nearByStructure.AddGarbageFacility(this))
+                _customers.Add(nearByStructure);
         }
     }
 
@@ -185,5 +198,6 @@ public enum FacilityType
     FireProtection,
     Postal,
     Banking,
+    Garbage,
     None
 }
