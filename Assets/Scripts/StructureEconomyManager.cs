@@ -142,7 +142,8 @@ public static class StructureEconomyManager
             || (structureData.requireFireProtection && structureData.HasFireProtection() == false) 
             || (structureData.requirePostalService && structureData.HasPostalService() == false) 
             || (structureData.requireBankService && structureData.HasBankingService() == false) 
-            || (structureData.requireGarbageService && structureData.HasGarbageService() == false); 
+            || (structureData.requireGarbageService && structureData.HasGarbageService() == false) 
+            || (structureData.requireEducationSerivce && structureData.HasEducationService() == false); 
     }
 
     private static void AddFacilityTypeToStructure(Vector3Int gridPosition, GridStructure grid, StructureBaseSO structureData)
@@ -164,7 +165,8 @@ public static class StructureEconomyManager
                         || (facility.facilityType == FacilityType.FireProtection && structureData.HasFireProtection() == false && structureData.requireFireProtection)
                         || (facility.facilityType == FacilityType.Postal && structureData.HasPostalService() == false && structureData.requirePostalService)
                         || (facility.facilityType == FacilityType.Banking && structureData.HasBankingService() == false && structureData.requireBankService)
-                        || (facility.facilityType == FacilityType.Garbage && structureData.HasGarbageService() == false && structureData.requireGarbageService))
+                        || (facility.facilityType == FacilityType.Garbage && structureData.HasGarbageService() == false && structureData.requireGarbageService)
+                        || (facility.facilityType == FacilityType.Education && structureData.HasEducationService() == false && structureData.requireEducationSerivce))
                     {
                         if (grid.ArePositionsInRange(gridPosition, structurePositionNearBy, facility.singleStructureRange))
                         {

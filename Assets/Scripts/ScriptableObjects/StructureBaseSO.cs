@@ -19,6 +19,7 @@ public abstract class StructureBaseSO : ScriptableObject
     private SingleFacilitySO _bankProvider = null;
     private SingleFacilitySO _postalProvider = null;
     private SingleFacilitySO _grabageProvider = null;
+    private SingleFacilitySO _educationProvider = null;
     private RoadStructureSO _roadProvider = null;
 
     public string buildingName;
@@ -39,6 +40,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public bool requirePostalService;
     public bool requireBankService;
     public bool requireGarbageService;
+    public bool requireEducationSerivce;
 
     public bool upgradable = false;
     public bool fullyUpgraded = false;
@@ -54,6 +56,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public int maxFacilitySearchRange;
 
     public SingleFacilitySO PowerProvider { get => _powerProvider; }
+
     public SingleFacilitySO WaterProvider { get => _waterProvider; }
     public SingleFacilitySO SiloProvider { get => _siloProvider; }
     public SingleFacilitySO HealthcareProvider { get => _healthcareProvider; }
@@ -62,6 +65,7 @@ public abstract class StructureBaseSO : ScriptableObject
     public SingleFacilitySO PostalProvider { get => _postalProvider; }
     public SingleFacilitySO BankProvider { get => _bankProvider; }
     public SingleFacilitySO GrabageProvider { get => _grabageProvider; }
+    public SingleFacilitySO EducationProvider { get => _educationProvider; }
     public RoadStructureSO RoadProvider { get => _roadProvider; }
     public int UpgradeLevel { get => upgradeLevel; }
 
@@ -193,6 +197,11 @@ public abstract class StructureBaseSO : ScriptableObject
         return _grabageProvider != null;
     }
 
+    public bool HasEducationService()
+    {
+        return _educationProvider != null;
+    }
+
     public bool HasFullyUpgraded()
     {
         return fullyUpgraded;
@@ -245,6 +254,11 @@ public abstract class StructureBaseSO : ScriptableObject
     public void RemoveGarbageFacility()
     {
         _grabageProvider = null;
+    }
+
+    public void RemoveEducationFacility()
+    {
+        _educationProvider = null;
     }
 
     public void PrepareStructure(IEnumerable<StructureBaseSO> structuresInRange)
@@ -342,6 +356,17 @@ public abstract class StructureBaseSO : ScriptableObject
         return false;
     }
 
+    public bool AddEducationFacility(SingleFacilitySO facility)
+    {
+        if (_educationProvider == null)
+        {
+            _educationProvider = facility;
+            return true;
+        }
+        return false;
+    }
+
+
     public virtual IEnumerable<StructureBaseSO> PrepareForRemoval()
     {
         if(_powerProvider != null)
@@ -379,6 +404,10 @@ public abstract class StructureBaseSO : ScriptableObject
         if (_grabageProvider != null)
         {
             _grabageProvider.RemoveClient(this);
+        }
+        if (_educationProvider != null)
+        {
+            _educationProvider.RemoveClient(this);
         }
 
         return null;

@@ -30,6 +30,7 @@ MonoBehaviour:
   requirePostalService: 1
   requireBankService: 1
   requireGarbageService: 1
+  requireEducationSerivce: 1
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
