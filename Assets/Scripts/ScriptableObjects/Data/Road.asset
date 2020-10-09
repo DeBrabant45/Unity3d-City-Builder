@@ -25,11 +25,19 @@ MonoBehaviour:
   requireWater: 0
   requireSilo: 0
   requireHealthcare: 0
+  requireLawEnforcement: 0
+  requireFireProtection: 0
+  requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []
   upgradePlacementCost: 
   upgradeIncome: 
+  upgradeRequiredWoodAmount: 
+  upgradeRequiredSteelAmount: 
   upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 0
