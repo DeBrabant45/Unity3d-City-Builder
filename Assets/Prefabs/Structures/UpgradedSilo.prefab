@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3604047585788916308}
   m_Layer: 0
-  m_Name: Agricultural_2
+  m_Name: UpgradedSilo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,15 +38,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3604047585788916308}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 0124e0cceb24438499ba0528b6cce5e1,
-        type: 3}
-      propertyPath: m_Name
-      value: Silo_House
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.18
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
         type: 3}
@@ -56,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.18
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
         type: 3}
@@ -97,6 +92,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 0124e0cceb24438499ba0528b6cce5e1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0124e0cceb24438499ba0528b6cce5e1,
+        type: 3}
+      propertyPath: m_Name
+      value: Silo_House
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0124e0cceb24438499ba0528b6cce5e1, type: 3}

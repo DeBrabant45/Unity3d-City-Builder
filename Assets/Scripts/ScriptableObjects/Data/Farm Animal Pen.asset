@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
+  m_Name: Farm Animal Pen
+  m_EditorClassIdentifier: 
+  income: 5
+  buildingName: Animal Pen
+  buildingImage: {fileID: 0}
+  prefab: {fileID: 2786665667146546459, guid: a591910bf4f7b9f49bf3140c839d8004, type: 3}
+  placementCost: 20
+  requiredWoodAmount: 0
+  requiredSteelAmount: 0
+  upkeepCost: 0
+  requireRoadAccess: 0
+  requirePower: 0
+  requireWater: 1
+  requireSilo: 0
+  requireHealthcare: 0
+  requireLawEnforcement: 0
+  requireFireProtection: 1
+  requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
+  upgradable: 0
+  fullyUpgraded: 0
+  upgradeLevelPrefabs:
+  - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
+  - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
+  upgradePlacementCost: c8000000fa000000
+  upgradeIncome: 280000003c000000
+  upgradeRequiredWoodAmount: 04000000
+  upgradeRequiredSteelAmount: 03000000
+  upgradeLevel: 0
+  structureRange: 1
+  maxFacilitySearchRange: 5
+  residentsAmount: 0
+  prefabVariants: []
+  upgradedResidentsAmount: 
+  zoneType: 1
