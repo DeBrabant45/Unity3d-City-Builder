@@ -70,18 +70,6 @@ public class ZonePlacementHelper : StructureModificationHelper
         }
     }
 
-    private GameObject SetZonePrefab()
-    {
-        if (_structureData.GetType() == typeof(ZoneStructureSO) && ((ZoneStructureSO)_structureData).zoneType == ZoneType.Residential)
-        {
-            return _structureRepository.SetRandomResidentaialPrefab();
-        }
-        else
-        {
-            return _structureData.prefab;
-        }
-    }
-
     private HashSet<Vector3Int> CalculateZoneCost(HashSet<Vector3Int> newPositionsSet)
     {
         _resourceManager.ReduceMoneyFromShoppingCartAmount(_structuresOldQty * _structureData.placementCost);

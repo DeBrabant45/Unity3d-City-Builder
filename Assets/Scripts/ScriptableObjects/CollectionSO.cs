@@ -14,6 +14,8 @@ public class CollectionSO : ScriptableObject
     public List<StructureBaseSO> commercialStoreStructures;
     public List<StructureBaseSO> commercialBusinessStructures;
     public List<StructureBaseSO> agricultureStructures;
+    public List<StructureBaseSO> entertainmentStructures;
+    public List<StructureBaseSO> parkStructures;
 
     public List<StructureBaseSO> utilitiesStructures;
     public List<StructureBaseSO> emergencyStructures;

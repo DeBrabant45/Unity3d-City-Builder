@@ -43,6 +43,8 @@ public class UIController : MonoBehaviour
     public GameObject commercialStoreSelectMenuPanel;
     public GameObject commercialBusinessSelectMenuPanel;
     public GameObject agricultureSelectMenuPanel;
+    public GameObject entertainmentSelectMenuPanel;
+    public GameObject parkSelectMenuPanel;
 
     public GameObject utilitiesSelectMenuPanel;
     public GameObject emergencySelectMenuPanel;
@@ -56,6 +58,8 @@ public class UIController : MonoBehaviour
     public Button commercialStoreOpenMenuBtn;
     public Button commercialBusinessOpenMenuBtn;
     public Button agricultureOpenMenuBtn;
+    public Button entertainmentOpenMenuBtn;
+    public Button parkOpenMenuBtn;
 
     public Button utilitiesOpenMenuBtn;
     public Button emergencyOpenMenuBtn;
@@ -119,6 +123,8 @@ public class UIController : MonoBehaviour
         commercialStoreOpenMenuBtn.onClick.AddListener(OnOpenCommercialStoreMenu);
         commercialBusinessOpenMenuBtn.onClick.AddListener(OnOpenCommercialBusinessMenu);
         agricultureOpenMenuBtn.onClick.AddListener(OnOpenAgricultureMenu);
+        entertainmentOpenMenuBtn.onClick.AddListener(OnOpenEntertainmentMenu);
+        parkOpenMenuBtn.onClick.AddListener(OnOpenParkMenu);
 
         utilitiesOpenMenuBtn.onClick.AddListener(OnOpenUtilitiesMenu);
         emergencyOpenMenuBtn.onClick.AddListener(OnOpenEmergencyMenu);
@@ -180,6 +186,20 @@ public class UIController : MonoBehaviour
     public void ReloadGame()
     {
         gameOverPanel.SetActive(true);
+    }
+
+    private void OnOpenParkMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        parkSelectMenuPanel.SetActive(true);
+    }
+
+    private void OnOpenEntertainmentMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        entertainmentSelectMenuPanel.SetActive(true);
     }
 
     private void OnOpenGovernmentMenu()
@@ -311,6 +331,8 @@ public class UIController : MonoBehaviour
         CreateEmergencyBuildMenu();
         CreateManufactureBuildMenu();
         CreateGovernmentBuildMenu();
+        CreateEntertainmentBuildMenu();
+        CreateParkBuildMenu();
     }
 
     private void CreateResidentialBuildMenu()
@@ -351,6 +373,16 @@ public class UIController : MonoBehaviour
     private void CreateManufactureBuildMenu()
     {
         CreateBuildMenu(manufactureSelectMenuPanel.transform, structureRepository.GetManufactureInfo(), OnBuildManufacturerCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateEntertainmentBuildMenu()
+    {
+        CreateBuildMenu(entertainmentSelectMenuPanel.transform, structureRepository.GetEntertainmentStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateParkBuildMenu()
+    {
+        CreateBuildMenu(parkSelectMenuPanel.transform, structureRepository.GetParkStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateRoadBuildMenu()
@@ -556,6 +588,8 @@ public class UIController : MonoBehaviour
         manufactureSelectMenuPanel.SetActive(false);
         roadSelectMenuPanel.SetActive(false);
         governmentSelectMenuPanel.SetActive(false);
+        entertainmentSelectMenuPanel.SetActive(false);
+        parkSelectMenuPanel.SetActive(false);
     }
 
     private void OnBuildManufacturerCallback(string nameOfStructure)

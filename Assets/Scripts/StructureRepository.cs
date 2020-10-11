@@ -9,71 +9,6 @@ public class StructureRepository : MonoBehaviour
 {
     public CollectionSO modelDataCollection;
 
-    public List<StructureBaseSO> GetResidentialInfo()
-    {
-        return modelDataCollection.residentialStructures;
-    }
-
-    public List<StructureBaseSO> GetCommercialStoreInfo()
-    {
-        return modelDataCollection.commercialStoreStructures;
-    }    
-    
-    public List<StructureBaseSO> GetCommercialBusinessInfo()
-    {
-        return modelDataCollection.commercialBusinessStructures;
-    }
-
-    public List<StructureBaseSO> GetAgricultureInfo()
-    {
-        return modelDataCollection.agricultureStructures;
-    }
-
-    public List<StructureBaseSO> GetRoadInfo()
-    {
-        return modelDataCollection.roadStructures;
-    }
-
-    public List<StructureBaseSO> GetEmergencyInfo()
-    {
-        return modelDataCollection.emergencyStructures;
-    }
-
-    public List<StructureBaseSO> GetUtilitiesInfo()
-    {
-        return modelDataCollection.utilitiesStructures;
-    }
-
-    public List<StructureBaseSO> GetManufactureInfo()
-    {
-        return modelDataCollection.manufactureStructures;
-    }
-
-    public List<StructureBaseSO> GetGovernmentStructureInfo()
-    {
-        return modelDataCollection.governmentStructures;
-    }
-
-    public List<string> GetZoneNames()
-    {
-        return modelDataCollection.zoneStructures.Select(zone => zone.buildingName).ToList();
-    }
-
-    public List<string> GetSingleStructureNames()
-    {
-        return modelDataCollection.singleStructures.Select(facility => facility.buildingName).ToList();
-    }
-
-    public List<string> GetManufacturerNames()
-    {
-        return modelDataCollection.manufacturers.Select(factory => factory.buildingName).ToList();
-    }
-
-    public string GetRoadStructureName()
-    {
-        return modelDataCollection.roadStructure.buildingName;
-    }
-
     public GameObject GetBuildingPrefabByName(string structureName, StructureType structureType)
     {
         GameObject structurePrefabToReturn = null;
@@ -99,18 +34,6 @@ public class StructureRepository : MonoBehaviour
 
         return structurePrefabToReturn;
     }
-
-    //public int GetStructureUpgradeIncome(StructureBaseSO structureData)
-    //{
-    //    int upgradeAmountToReturn = 0;
-    //    Type structureDataType = structureData.GetType();
-    //    if (structureDataType == typeof(ZoneStructureSO))
-    //    {
-    //        upgradeAmountToReturn = ((ZoneStructureSO)structureData).upgradedIncome;
-    //    }
-
-    //    return upgradeAmountToReturn;
-    //}
 
     private GameObject GetZoneBuildingPrefabByName(string structureName)
     {
@@ -156,12 +79,64 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.roadStructure.prefab;
     }
 
-    public GameObject SetRandomResidentaialPrefab()
+    public List<StructureBaseSO> GetResidentialInfo()
     {
-        var zones = modelDataCollection.zoneStructures;
-        var residentialPrefabVariantsCount = zones.Select(zone => zone.prefabVariants).Count();
-        var residentialPrefabVariantsRandomRange = UnityEngine.Random.Range(0, residentialPrefabVariantsCount);
-        return zones.Select(zone => zone.prefabVariants[residentialPrefabVariantsRandomRange]).FirstOrDefault();
+        return modelDataCollection.residentialStructures;
+    }
+
+    public List<StructureBaseSO> GetCommercialStoreInfo()
+    {
+        return modelDataCollection.commercialStoreStructures;
+    }
+
+    public List<StructureBaseSO> GetCommercialBusinessInfo()
+    {
+        return modelDataCollection.commercialBusinessStructures;
+    }
+
+    public List<StructureBaseSO> GetAgricultureInfo()
+    {
+        return modelDataCollection.agricultureStructures;
+    }
+
+    public List<StructureBaseSO> GetRoadInfo()
+    {
+        return modelDataCollection.roadStructures;
+    }
+
+    public List<StructureBaseSO> GetEmergencyInfo()
+    {
+        return modelDataCollection.emergencyStructures;
+    }
+
+    public List<StructureBaseSO> GetUtilitiesInfo()
+    {
+        return modelDataCollection.utilitiesStructures;
+    }
+
+    public List<StructureBaseSO> GetManufactureInfo()
+    {
+        return modelDataCollection.manufactureStructures;
+    }
+
+    public List<StructureBaseSO> GetGovernmentStructureInfo()
+    {
+        return modelDataCollection.governmentStructures;
+    }
+
+    public List<StructureBaseSO> GetEntertainmentStructureInfo()
+    {
+        return modelDataCollection.entertainmentStructures;
+    }
+
+    public List<StructureBaseSO> GetParkStructureInfo()
+    {
+        return modelDataCollection.parkStructures;
+    }
+
+    public List<string> GetZoneNames()
+    {
+        return modelDataCollection.zoneStructures.Select(zone => zone.buildingName).ToList();
     }
 }
 

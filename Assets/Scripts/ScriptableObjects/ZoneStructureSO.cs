@@ -7,11 +7,13 @@ using UnityEngine;
 public class ZoneStructureSO : StructureBaseSO
 {
     [SerializeField]
-    protected int residentsAmount;
+    private int residentsAmount;
 
     public GameObject[] prefabVariants;
     public int[] upgradedResidentsAmount;
     public ZoneType zoneType;
+
+    public int ResidentsAmount { get => residentsAmount; }
 
     public int GetResidentsAmount()
     {
@@ -32,5 +34,7 @@ public enum ZoneType
 {
     Residential,
     Agridcultural,
-    Commercial
+    Commercial,
+    Entertainment,
+    Park
 }
