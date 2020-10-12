@@ -45,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7321d22eb7b01ee44ae14e68199f3892, type: 2}
   - {fileID: 11400000, guid: 6e73264bfac8fb749b176d3bb1551cf9, type: 2}
   - {fileID: 11400000, guid: 3f0954f1acffdb541a12fa9c40dbae98, type: 2}
+  - {fileID: 11400000, guid: 57a0d219b14478140b2b521236e73c83, type: 2}
   residentialStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
@@ -67,6 +68,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e73264bfac8fb749b176d3bb1551cf9, type: 2}
   parkStructures:
   - {fileID: 11400000, guid: 3f0954f1acffdb541a12fa9c40dbae98, type: 2}
+  - {fileID: 11400000, guid: 57a0d219b14478140b2b521236e73c83, type: 2}
   utilitiesStructures:
   - {fileID: 11400000, guid: fb21ccef14f2c854e809704a43378235, type: 2}
   - {fileID: 11400000, guid: 02b0394423bfd5b46833a18e4fdbd588, type: 2}

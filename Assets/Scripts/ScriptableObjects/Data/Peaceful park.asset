@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
+  m_Name: Peaceful park
+  m_EditorClassIdentifier: 
+  income: 0
+  buildingName: Peaceful Park
+  buildingImage: {fileID: 0}
+  prefab: {fileID: 7177753057764830550, guid: 0bd640774a1db4d47ace49901fa1da05, type: 3}
+  placementCost: 10
+  requiredWoodAmount: 2
+  requiredSteelAmount: 2
+  upkeepCost: 0
+  requireRoadAccess: 1
+  requirePower: 0
+  requireWater: 0
+  requireSilo: 0
+  requireHealthcare: 0
+  requireLawEnforcement: 1
+  requireFireProtection: 1
+  requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 1
+  requireEducationSerivce: 0
+  upgradable: 0
+  fullyUpgraded: 0
+  upgradeLevelPrefabs:
+  - {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07, type: 3}
+  - {fileID: 6870371079923077599, guid: 72a7f07404f80e248a26bf96e29539ff, type: 3}
+  upgradePlacementCost: 90010000c2010000
+  upgradeIncome: 3c0000005a000000
+  upgradeRequiredWoodAmount: 
+  upgradeRequiredSteelAmount: 
+  upgradeLevel: 0
+  structureRange: 1
+  maxFacilitySearchRange: 5
+  residentsAmount: 0
+  prefabVariants: []
+  upgradedResidentsAmount: 
+  zoneType: 4
