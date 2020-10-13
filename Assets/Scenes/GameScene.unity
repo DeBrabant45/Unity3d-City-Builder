@@ -9679,7 +9679,7 @@ PrefabInstance:
     - target: {fileID: 1432426000394235155, guid: 54d5689f1eb11ad41aa5146af6d1d6fc,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1432426000394235155, guid: 54d5689f1eb11ad41aa5146af6d1d6fc,
         type: 3}
@@ -9699,12 +9699,12 @@ PrefabInstance:
     - target: {fileID: 1432426000394235155, guid: 54d5689f1eb11ad41aa5146af6d1d6fc,
         type: 3}
       propertyPath: m_text
-      value: Commercial
+      value: Stores
       objectReference: {fileID: 0}
     - target: {fileID: 1432426000394235155, guid: 54d5689f1eb11ad41aa5146af6d1d6fc,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1432426000394235157, guid: 54d5689f1eb11ad41aa5146af6d1d6fc,
         type: 3}

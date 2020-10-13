@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Auto Repair
-  buildingImage: {fileID: 21300000, guid: 694d87647232e8f43ae92e637c0e55f9, type: 3}
+  buildingImage: {fileID: 0}
   prefab: {fileID: 4834350823948317448, guid: bfdde56593b582a4fb631cd0fdff999e, type: 3}
   placementCost: 200
   requiredWoodAmount: 2
@@ -28,6 +28,9 @@ MonoBehaviour:
   requireLawEnforcement: 1
   requireFireProtection: 1
   requirePostalService: 1
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs:

@@ -51,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a44cf426a62cc164889b369ebe13f88a, type: 2}
   - {fileID: 11400000, guid: 5495c2876f734704b98fa6a5aae5d575, type: 2}
   - {fileID: 11400000, guid: 6c4f2af2c3f0e574ebcb702188101108, type: 2}
+  - {fileID: 11400000, guid: 698a734d1bd4c11439eb98940a106f0b, type: 2}
   residentialStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
@@ -60,6 +61,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1fc2841666a34f4fb5bb20a22ebcfae, type: 2}
   - {fileID: 11400000, guid: 8d050f9a2caed2248bf6c59540f83af1, type: 2}
   - {fileID: 11400000, guid: d62971a52d2d56c43a9a795ce248140e, type: 2}
+  - {fileID: 11400000, guid: 698a734d1bd4c11439eb98940a106f0b, type: 2}
   commercialBusinessStructures:
   - {fileID: 11400000, guid: e769cf360fd4a934c875bbc5c9dcc5ce, type: 2}
   - {fileID: 11400000, guid: cc552804fab2e8f4ea600b505180d156, type: 2}
