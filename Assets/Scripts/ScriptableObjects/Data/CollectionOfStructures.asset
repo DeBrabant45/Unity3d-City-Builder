@@ -33,7 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 09ecc4d1d9d510a419ed9949bb0e5434, type: 2}
   - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
   - {fileID: 11400000, guid: 519d724eac9cc474ebee5c8b3f45acc1, type: 2}
-  - {fileID: 11400000, guid: 1cac0e74aa8b95f459bf078946dd016a, type: 2}
+  - {fileID: 11400000, guid: 42e6b99933fd421449050b8295f5083a, type: 2}
   - {fileID: 11400000, guid: c1fc2841666a34f4fb5bb20a22ebcfae, type: 2}
   - {fileID: 11400000, guid: d62971a52d2d56c43a9a795ce248140e, type: 2}
   - {fileID: 11400000, guid: e769cf360fd4a934c875bbc5c9dcc5ce, type: 2}
@@ -46,12 +46,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e73264bfac8fb749b176d3bb1551cf9, type: 2}
   - {fileID: 11400000, guid: 3f0954f1acffdb541a12fa9c40dbae98, type: 2}
   - {fileID: 11400000, guid: 57a0d219b14478140b2b521236e73c83, type: 2}
+  - {fileID: 11400000, guid: be3ced4b0615a31499f57bbfa259145b, type: 2}
+  - {fileID: 11400000, guid: 45510abaf74bc3740b5a726ed79daf81, type: 2}
+  - {fileID: 11400000, guid: a44cf426a62cc164889b369ebe13f88a, type: 2}
+  - {fileID: 11400000, guid: 5495c2876f734704b98fa6a5aae5d575, type: 2}
+  - {fileID: 11400000, guid: 6c4f2af2c3f0e574ebcb702188101108, type: 2}
   residentialStructures:
   - {fileID: 11400000, guid: 611a6f58152d09747a917ed4591bd254, type: 2}
   - {fileID: 11400000, guid: 81c37c1614e23284a8ebf9784ec18575, type: 2}
   - {fileID: 11400000, guid: 519d724eac9cc474ebee5c8b3f45acc1, type: 2}
   commercialStoreStructures:
-  - {fileID: 11400000, guid: 1cac0e74aa8b95f459bf078946dd016a, type: 2}
+  - {fileID: 11400000, guid: 5495c2876f734704b98fa6a5aae5d575, type: 2}
   - {fileID: 11400000, guid: c1fc2841666a34f4fb5bb20a22ebcfae, type: 2}
   - {fileID: 11400000, guid: 8d050f9a2caed2248bf6c59540f83af1, type: 2}
   - {fileID: 11400000, guid: d62971a52d2d56c43a9a795ce248140e, type: 2}
@@ -69,6 +74,12 @@ MonoBehaviour:
   parkStructures:
   - {fileID: 11400000, guid: 3f0954f1acffdb541a12fa9c40dbae98, type: 2}
   - {fileID: 11400000, guid: 57a0d219b14478140b2b521236e73c83, type: 2}
+  restaurantStructures:
+  - {fileID: 11400000, guid: 6c4f2af2c3f0e574ebcb702188101108, type: 2}
+  - {fileID: 11400000, guid: 45510abaf74bc3740b5a726ed79daf81, type: 2}
+  - {fileID: 11400000, guid: be3ced4b0615a31499f57bbfa259145b, type: 2}
+  - {fileID: 11400000, guid: a44cf426a62cc164889b369ebe13f88a, type: 2}
+  - {fileID: 11400000, guid: 42e6b99933fd421449050b8295f5083a, type: 2}
   utilitiesStructures:
   - {fileID: 11400000, guid: fb21ccef14f2c854e809704a43378235, type: 2}
   - {fileID: 11400000, guid: 02b0394423bfd5b46833a18e4fdbd588, type: 2}

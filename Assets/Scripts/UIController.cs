@@ -45,6 +45,7 @@ public class UIController : MonoBehaviour
     public GameObject agricultureSelectMenuPanel;
     public GameObject entertainmentSelectMenuPanel;
     public GameObject parkSelectMenuPanel;
+    public GameObject restaurantSelectMenuPanel;
 
     public GameObject utilitiesSelectMenuPanel;
     public GameObject emergencySelectMenuPanel;
@@ -60,6 +61,7 @@ public class UIController : MonoBehaviour
     public Button agricultureOpenMenuBtn;
     public Button entertainmentOpenMenuBtn;
     public Button parkOpenMenuBtn;
+    public Button restaurantOpenMenuBtn;
 
     public Button utilitiesOpenMenuBtn;
     public Button emergencyOpenMenuBtn;
@@ -125,6 +127,7 @@ public class UIController : MonoBehaviour
         agricultureOpenMenuBtn.onClick.AddListener(OnOpenAgricultureMenu);
         entertainmentOpenMenuBtn.onClick.AddListener(OnOpenEntertainmentMenu);
         parkOpenMenuBtn.onClick.AddListener(OnOpenParkMenu);
+        restaurantOpenMenuBtn.onClick.AddListener(OnOpenRestaurantMenu);
 
         utilitiesOpenMenuBtn.onClick.AddListener(OnOpenUtilitiesMenu);
         emergencyOpenMenuBtn.onClick.AddListener(OnOpenEmergencyMenu);
@@ -186,6 +189,13 @@ public class UIController : MonoBehaviour
     public void ReloadGame()
     {
         gameOverPanel.SetActive(true);
+    }
+
+    private void OnOpenRestaurantMenu()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        buildingMenuPanel.SetActive(false);
+        restaurantSelectMenuPanel.SetActive(true);
     }
 
     private void OnOpenParkMenu()
@@ -333,6 +343,7 @@ public class UIController : MonoBehaviour
         CreateGovernmentBuildMenu();
         CreateEntertainmentBuildMenu();
         CreateParkBuildMenu();
+        CreateRestaurantBuildMenu();
     }
 
     private void CreateResidentialBuildMenu()
@@ -383,6 +394,11 @@ public class UIController : MonoBehaviour
     private void CreateParkBuildMenu()
     {
         CreateBuildMenu(parkSelectMenuPanel.transform, structureRepository.GetParkStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+    }
+
+    private void CreateRestaurantBuildMenu()
+    {
+        CreateBuildMenu(restaurantSelectMenuPanel.transform, structureRepository.GetRestaurantStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateRoadBuildMenu()
@@ -590,6 +606,7 @@ public class UIController : MonoBehaviour
         governmentSelectMenuPanel.SetActive(false);
         entertainmentSelectMenuPanel.SetActive(false);
         parkSelectMenuPanel.SetActive(false);
+        restaurantSelectMenuPanel.SetActive(false);
     }
 
     private void OnBuildManufacturerCallback(string nameOfStructure)

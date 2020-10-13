@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
-  m_Name: Drugstore
+  m_Name: Pet Grooming
   m_EditorClassIdentifier: 
   income: 30
-  buildingName: Drugstore
-  buildingImage: {fileID: 21300000, guid: 9e6d574fc839b854792ed29816d3c0a5, type: 3}
-  prefab: {fileID: 2710696274891821726, guid: f1f5fd795344230448607f860b76506f, type: 3}
+  buildingName: Paws n Claws
+  buildingImage: {fileID: 0}
+  prefab: {fileID: 6269187924991832003, guid: 74db258510169c1479598cc5f19805da, type: 3}
   placementCost: 200
   requiredWoodAmount: 2
   requiredSteelAmount: 2

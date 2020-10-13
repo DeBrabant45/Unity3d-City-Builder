@@ -134,6 +134,11 @@ public class StructureRepository : MonoBehaviour
         return modelDataCollection.parkStructures;
     }
 
+    public List<StructureBaseSO> GetRestaurantStructureInfo()
+    {
+        return modelDataCollection.restaurantStructures;
+    }
+
     public List<string> GetZoneNames()
     {
         return modelDataCollection.zoneStructures.Select(zone => zone.buildingName).ToList();
