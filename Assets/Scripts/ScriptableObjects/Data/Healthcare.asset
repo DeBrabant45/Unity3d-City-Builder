@@ -14,22 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Healthcare
-  prefab: {fileID: 3120162510222770716, guid: 4b5206f3e56a62c4881338c9217ae7d4, type: 3}
+  buildingImage: {fileID: 0}
+  prefab: {fileID: 3120162510222770716, guid: fa982ca82e2fc8645a2c053b1dc5ae7a, type: 3}
   placementCost: 500
+  requiredWoodAmount: 0
+  requiredSteelAmount: 0
   upkeepCost: 0
   requireRoadAccess: 1
   requirePower: 1
   requireWater: 1
   requireSilo: 0
   requireHealthcare: 0
+  requireLawEnforcement: 0
+  requireFireProtection: 0
+  requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
-  upgradeActive: 0
-  upgradePlacementCost: 0
+  fullyUpgraded: 0
+  upgradeLevelPrefabs: []
+  upgradePlacementCost: 
+  upgradeIncome: 
+  upgradeRequiredWoodAmount: 
+  upgradeRequiredSteelAmount: 
+  upgradeLevel: 0
   structureRange: 1
   maxFacilitySearchRange: 5
   singleStructureRange: 10
   maxCustomers: 20
   upkeepPerCustomer: 0
-  upgradePrefab: {fileID: 0}
-  maxCustomersUpgraded: 0
+  maxCustomersUpgraded: 
   facilityType: 3

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Police Station
-  buildingImage: {fileID: 0}
-  prefab: {fileID: 2221103267764255764, guid: 7c5883d5527e4614fa2155a49ef04dbb, type: 3}
+  buildingImage: {fileID: 21300000, guid: b7ff973349216de498bd730556fc7edc, type: 3}
+  prefab: {fileID: 2221103267764255764, guid: 2e5bd822f92f9ab4c833d409e92b1e4d, type: 3}
   placementCost: 500
   requiredWoodAmount: 0
   requiredSteelAmount: 0
@@ -28,6 +28,9 @@ MonoBehaviour:
   requireLawEnforcement: 0
   requireFireProtection: 1
   requirePostalService: 1
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []

@@ -15,7 +15,7 @@ MonoBehaviour:
   income: 0
   buildingName: City Foutain
   buildingImage: {fileID: 0}
-  prefab: {fileID: 7177753057764830550, guid: eb01406f2aab41f40917eff4ecd8ec0c, type: 3}
+  prefab: {fileID: 7177753057764830550, guid: 767df5d8c917c2a41b2f10b2ee793f08, type: 3}
   placementCost: 10
   requiredWoodAmount: 2
   requiredSteelAmount: 2
