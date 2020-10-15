@@ -34,8 +34,8 @@ MonoBehaviour:
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
-  - {fileID: 3883134425248197775, guid: 6234abf20e7f96a458ccffad3c047986, type: 3}
+  - {fileID: 7468051901424741856, guid: 02ae0514cb522da4783a993b743e2bdd, type: 3}
+  - {fileID: 9106711246412282113, guid: bd6d58c52f488b84db33162f40cbc26b, type: 3}
   upgradePlacementCost: c8000000fa000000
   upgradeIncome: 280000003c000000
   upgradeRequiredWoodAmount: 04000000
