@@ -15,7 +15,7 @@ MonoBehaviour:
   income: 10
   buildingName: Power Supply
   buildingImage: {fileID: 21300000, guid: cfb502775e3ed0141a8a877c2f66485b, type: 3}
-  prefab: {fileID: 1874159045682050738, guid: dd1a6dc5c298f884590bc21cbf736ea9, type: 3}
+  prefab: {fileID: 7994061623444097002, guid: 731a6562305a28c488c6387f2d929bd9, type: 3}
   placementCost: 1000
   requiredWoodAmount: 2
   requiredSteelAmount: 1
@@ -28,10 +28,13 @@ MonoBehaviour:
   requireLawEnforcement: 0
   requireFireProtection: 1
   requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 8372497345375219286, guid: 9425ec87116fa60428b8388e715de008, type: 3}
+  - {fileID: 7994061623444097002, guid: 35af856adc48eb8479869d9421199591, type: 3}
   upgradePlacementCost: dc050000
   upgradeIncome: 
   upgradeRequiredWoodAmount: 04000000

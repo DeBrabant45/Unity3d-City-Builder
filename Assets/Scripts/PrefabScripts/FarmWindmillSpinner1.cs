@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindmillSpinner : MonoBehaviour
+public class FarmWindmillSpinner : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeend = 0;
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Rotate(0, 0, movementSpeend);
+        gameObject.transform.Rotate(0, movementSpeend, 0);
     }
 }
