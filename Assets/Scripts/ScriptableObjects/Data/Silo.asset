@@ -25,10 +25,16 @@ MonoBehaviour:
   requireWater: 0
   requireSilo: 0
   requireHealthcare: 0
+  requireLawEnforcement: 0
+  requireFireProtection: 0
+  requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 4768111254948687981, guid: 9f01b4b35abb83644aca4b178f08b75f, type: 3}
+  - {fileID: 6834496759894321885, guid: cdfd347d556fd754db0cad6e5b05f11a, type: 3}
   upgradePlacementCost: e8030000
   upgradeIncome: 
   upgradeRequiredWoodAmount: 04000000
