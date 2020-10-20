@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f0de997fdbe5624e933a49ac5c10fa8, type: 3}
-  m_Name: Strip Mall
+  m_Name: Gym
   m_EditorClassIdentifier: 
   income: 30
-  buildingName: Strip Mall
+  buildingName: Gym
   buildingImage: {fileID: 0}
-  prefab: {fileID: 6197952996223687781, guid: 437552a26ba9a22448d7296d6f53f2c3, type: 3}
+  prefab: {fileID: 6000413849025942850, guid: bffd2eca8ea1d0d4c8e239a2c9426fe8, type: 3}
   placementCost: 200
   requiredWoodAmount: 2
   requiredSteelAmount: 2
@@ -33,10 +33,8 @@ MonoBehaviour:
   requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
-  upgradeLevelPrefabs:
-  - {fileID: 6425462728982059652, guid: 2b91b3cd56bc13a43b4f91eb3eb89a07, type: 3}
-  - {fileID: 6870371079923077599, guid: 72a7f07404f80e248a26bf96e29539ff, type: 3}
-  upgradePlacementCost: 90010000c2010000
+  upgradeLevelPrefabs: []
+  upgradePlacementCost: 
   upgradeIncome: 3c0000005a000000
   upgradeRequiredWoodAmount: 
   upgradeRequiredSteelAmount: 
