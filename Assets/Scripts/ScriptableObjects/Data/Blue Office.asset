@@ -29,11 +29,13 @@ MonoBehaviour:
   requireFireProtection: 1
   requirePostalService: 1
   requireBankService: 1
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 4854037333125967221, guid: 04eeccf1cb9800140ab7a273951a24c6, type: 3}
-  - {fileID: 1409847191287401608, guid: a83b9476af550b14d84da8feb15ec356, type: 3}
+  - {fileID: 6211175576981786411, guid: 218fdeff0c784ab419e0652be6b8bf60, type: 3}
+  - {fileID: 6211175576981786411, guid: 198b01039308ccc47a8c2a430da942c5, type: 3}
   upgradePlacementCost: 58020000bc020000
   upgradeIncome: 96000000c8000000
   upgradeRequiredWoodAmount: 0400000008000000
