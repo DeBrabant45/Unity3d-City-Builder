@@ -58,20 +58,40 @@ public class PlacementManager : MonoBehaviour, IPlacementManager
     {
         foreach (Transform child in newStructure.transform)
         {
-            var renderer = child.GetComponent<MeshRenderer>();
-            if (_originalMaterials.ContainsKey(child.gameObject) == false)
+            SetMeshRendererToTransparent(child, colorToSet);
+            foreach (Transform childOfChild in child.transform)
             {
-                _originalMaterials.Add(child.gameObject, renderer.materials);
+                SetMeshRendererToTransparent(childOfChild, colorToSet);
             }
-            Material[] materialsToSet = new Material[renderer.materials.Length];
-            colorToSet.a = 0.5f;
-            for (int i = 0; i < materialsToSet.Length; i++)
-            {
-                materialsToSet[i] = transparentMaterial;
-                materialsToSet[i].color = colorToSet;
-            }
-            renderer.materials = materialsToSet;
         }
+    }
+
+    private Color SetMeshRendererToTransparent(Transform gameObject, Color colorToSet)
+    {
+        var meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            colorToSet = ChangeMaterialToTransparent(colorToSet, gameObject, meshRenderer);
+        }
+
+        return colorToSet;
+    }
+
+    private Color ChangeMaterialToTransparent(Color colorToSet, Transform child, MeshRenderer renderer)
+    {
+        if (_originalMaterials.ContainsKey(child.gameObject) == false)
+        {
+            _originalMaterials.Add(child.gameObject, renderer.materials);
+        }
+        Material[] materialsToSet = new Material[renderer.materials.Length];
+        colorToSet.a = 0.5f;
+        for (int i = 0; i < materialsToSet.Length; i++)
+        {
+            materialsToSet[i] = transparentMaterial;
+            materialsToSet[i].color = colorToSet;
+        }
+        renderer.materials = materialsToSet;
+        return colorToSet;
     }
 
     public void PlaceStructuresOnTheMap(IEnumerable<GameObject> structureCollection)
@@ -88,10 +108,22 @@ public class PlacementManager : MonoBehaviour, IPlacementManager
     {
         foreach (Transform child in structure.transform)
         {
-            var renderer = child.GetComponent<MeshRenderer>();
-            if (_originalMaterials.ContainsKey(child.gameObject))
+            SetMeshRendererBackToOriginalState(child);
+            foreach (Transform childOfChild in child.transform)
             {
-                renderer.materials = _originalMaterials[child.gameObject];
+                SetMeshRendererBackToOriginalState(childOfChild);
+            }
+        }
+    }
+
+    private void SetMeshRendererBackToOriginalState(Transform gameObject)
+    {
+        var meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            if (_originalMaterials.ContainsKey(gameObject.gameObject))
+            {
+                meshRenderer.materials = _originalMaterials[gameObject.gameObject];
             }
         }
     }
