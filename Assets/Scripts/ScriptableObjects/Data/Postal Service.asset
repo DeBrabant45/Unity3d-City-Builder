@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Post Office
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 5e34865fe7cbf0b44843998c19d6f5c3, type: 3}
   prefab: {fileID: 304994799448245605, guid: e6abcbbcdc04f964f88215d5693e14be, type: 3}
   placementCost: 500
   requiredWoodAmount: 0
@@ -28,6 +28,9 @@ MonoBehaviour:
   requireLawEnforcement: 1
   requireFireProtection: 1
   requirePostalService: 0
+  requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []

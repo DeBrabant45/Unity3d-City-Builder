@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Drugstore
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 7029c28688ecb774d9cf6cf7b75b1c17, type: 3}
   prefab: {fileID: 2169491960633100705, guid: 0e7af6155ae7f634dbd4d55c531164dd, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

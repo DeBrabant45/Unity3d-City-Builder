@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 5
   buildingName: Animal Pen
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 88658ac9b95ed5a4d80e719d64fa7918, type: 3}
   prefab: {fileID: 2786665667146546459, guid: a591910bf4f7b9f49bf3140c839d8004, type: 3}
   placementCost: 20
   requiredWoodAmount: 0

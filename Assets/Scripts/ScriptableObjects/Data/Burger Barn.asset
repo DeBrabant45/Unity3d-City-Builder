@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Burger Barn
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: b4b519b0ab2cac549b87ddbec576722d, type: 3}
   prefab: {fileID: 8124427693931156156, guid: d3890545a86d3b64ab291754e2a15e60, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

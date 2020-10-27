@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Cinema
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 5b9c7c157fda8e244be61a755302a2e4, type: 3}
   prefab: {fileID: 6216059663857719671, guid: 34443529da4ec70409f61e92f2a65c81, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Fire Station
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: bc28fe18d22a18b41a576ffa79df7892, type: 3}
   prefab: {fileID: 8114714577109509665, guid: 701460b72edc4ef41a7a284ed7769722, type: 3}
   placementCost: 500
   requiredWoodAmount: 0

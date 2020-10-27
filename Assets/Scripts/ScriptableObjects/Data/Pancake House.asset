@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Pancake House
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 1ebcfc3e41505aa42af28e167c16014b, type: 3}
   prefab: {fileID: 875984565339717235, guid: c5a7194eecaf2c24d8e929693e68ea69, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 5
   buildingName: Chicken Coop
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: cb984fedbcf446549907eff3894062e3, type: 3}
   prefab: {fileID: 3481889079107539856, guid: 1df0a234ccd19654a8190ffa7578de92, type: 3}
   placementCost: 40
   requiredWoodAmount: 0

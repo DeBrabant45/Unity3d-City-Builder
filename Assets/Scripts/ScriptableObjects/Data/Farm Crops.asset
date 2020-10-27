@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 5
   buildingName: Farm Crops
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 7964153ed70dd7949b509826d1cab893, type: 3}
   prefab: {fileID: 2413515566893386479, guid: d01043f4ba607c84a9d14db7fa2ddf91, type: 3}
   placementCost: 40
   requiredWoodAmount: 0

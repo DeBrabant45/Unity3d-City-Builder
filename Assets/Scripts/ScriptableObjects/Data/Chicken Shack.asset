@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Doodle-Doo's
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 7081c7534f1fa954f95fcdcdbf9148b0, type: 3}
   prefab: {fileID: 8416959655229986334, guid: 8b395ec88f65ef944b85d562948ffdad, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

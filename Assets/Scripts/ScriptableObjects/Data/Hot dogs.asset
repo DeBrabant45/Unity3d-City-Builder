@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Wiener World
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 6024a278688e42a459a3099d0fc232e4, type: 3}
   prefab: {fileID: 5535689109543739511, guid: c8aa2ece93ea891429b48dfca04390a2, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

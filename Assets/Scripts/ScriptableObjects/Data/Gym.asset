@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 30
   buildingName: Gym
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 59da28c8b6c437241891268725ed2bde, type: 3}
   prefab: {fileID: 6000413849025942850, guid: bffd2eca8ea1d0d4c8e239a2c9426fe8, type: 3}
   placementCost: 200
   requiredWoodAmount: 2

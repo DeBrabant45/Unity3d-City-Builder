@@ -68,8 +68,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0585f234158a6bb4dad2ec7e851a36d9, type: 2}
   agricultureStructures:
   - {fileID: 11400000, guid: 09ecc4d1d9d510a419ed9949bb0e5434, type: 2}
-  - {fileID: 11400000, guid: 310df83b883f3344cab7c27b570e756d, type: 2}
   - {fileID: 11400000, guid: 701f1a543bd728444bcbcb87111d58c6, type: 2}
+  - {fileID: 11400000, guid: 310df83b883f3344cab7c27b570e756d, type: 2}
   - {fileID: 11400000, guid: 7321d22eb7b01ee44ae14e68199f3892, type: 2}
   entertainmentStructures:
   - {fileID: 11400000, guid: 6e73264bfac8fb749b176d3bb1551cf9, type: 2}

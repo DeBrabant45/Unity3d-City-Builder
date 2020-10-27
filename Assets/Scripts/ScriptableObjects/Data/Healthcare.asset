@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Healthcare
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 60cb1b4f256f6f44fae51f3b54d582cc, type: 3}
   prefab: {fileID: 3120162510222770716, guid: fa982ca82e2fc8645a2c053b1dc5ae7a, type: 3}
   placementCost: 500
   requiredWoodAmount: 0

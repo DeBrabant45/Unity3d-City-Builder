@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 0
   buildingName: City Foutain
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 01efa3d194e51d646b7f0b89f2e098a1, type: 3}
   prefab: {fileID: 7177753057764830550, guid: 767df5d8c917c2a41b2f10b2ee793f08, type: 3}
   placementCost: 10
   requiredWoodAmount: 2

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 0
   buildingName: Peaceful Park
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 4891f01854318594fa47eeebb02d006a, type: 3}
   prefab: {fileID: 7177753057764830550, guid: 0bd640774a1db4d47ace49901fa1da05, type: 3}
   placementCost: 10
   requiredWoodAmount: 2

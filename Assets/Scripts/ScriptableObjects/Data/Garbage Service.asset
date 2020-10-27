@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Garbage HQ
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 00a8be0b66db680418835bbde834e6a0, type: 3}
   prefab: {fileID: 421615011241975457, guid: 88dd80a0317896a4fbc37280a51b7f16, type: 3}
   placementCost: 500
   requiredWoodAmount: 0
@@ -30,6 +30,7 @@ MonoBehaviour:
   requirePostalService: 1
   requireBankService: 0
   requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []

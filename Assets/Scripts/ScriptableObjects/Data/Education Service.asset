@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 1
   buildingName: Schoolhouse
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 5550fc2191d1fd0428d6011a67d43bd4, type: 3}
   prefab: {fileID: 5513003228192175551, guid: e44a3b5b46f92c04dabcca23e5538f28, type: 3}
   placementCost: 500
   requiredWoodAmount: 0

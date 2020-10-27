@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   income: 0
   buildingName: Steel Factory
-  buildingImage: {fileID: 0}
+  buildingImage: {fileID: 21300000, guid: 6eb174339c6234d4c91542b11eee35cd, type: 3}
   prefab: {fileID: 6816432669765599835, guid: aebdba2f4658be54ba5909c7601ac074, type: 3}
   placementCost: 0
   requiredWoodAmount: 0
@@ -29,6 +29,8 @@ MonoBehaviour:
   requireFireProtection: 0
   requirePostalService: 0
   requireBankService: 0
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 0
   fullyUpgraded: 0
   upgradeLevelPrefabs: []
