@@ -23,13 +23,13 @@ public class PlayerBuildingZoneState : PlayerState
         this._buildingManager.PrepareStructureForModification(position, this._structureName, StructureType.Zone);
     }
 
-    public override void OnInputPointerChange(Vector3 position)
-    {
-        this._buildingManager.PrepareStructureForModification(position, this._structureName, StructureType.Zone);
-    }
+    //public override void OnInputPointerChange(Vector3 position)
+    //{
+    //    this._buildingManager.PrepareStructureForModification(position, this._structureName, StructureType.Zone);
+    //}
 
-    public override void OnInputPointerup()
-    {
-        this._buildingManager.StopContinuousPlacement();
-    }
+    //public override void OnInputPointerup()
+    //{
+    //    this._buildingManager.StopContinuousPlacement();
+    //}
 }

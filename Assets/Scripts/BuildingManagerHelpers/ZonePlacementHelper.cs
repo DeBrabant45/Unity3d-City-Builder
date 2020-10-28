@@ -22,70 +22,45 @@ public class ZonePlacementHelper : StructureModificationHelper
     public override void PrepareStructureForModification(Vector3 inputPosition, string structureName, StructureType structureType)
     {
         base.PrepareStructureForModification(inputPosition, structureName, structureType);
-
+        GameObject buildingPrefab = _structureData.prefab;
         Vector3 gridPosition = _grid.CalculateGridPosition(inputPosition);
-        if(_startPositionAcquired == false && _grid.IsCellTaken(gridPosition) == false)
+        var gridPositionInt = Vector3Int.FloorToInt(gridPosition);
+
+        if (!_grid.IsCellTaken(gridPosition))
         {
-            _startPoint = gridPosition;
-            _startPositionAcquired = true;
-        }
-        if(_startPositionAcquired == true && (_previousEndPosition == null || ZoneCalculator.CheckIfPositionHasChanged(gridPosition, _previousEndPosition.Value, _grid)))
-        {
-            PlaceNewZoneUpToPosition(gridPosition);
-        }
-
-    }
-
-    private void PlaceNewZoneUpToPosition(Vector3 endPoint)
-    {
-        Vector3Int minPoint = Vector3Int.FloorToInt(_startPoint);
-        Vector3Int maxPoint = Vector3Int.FloorToInt(endPoint);
-
-        ZoneCalculator.PrepareStartAndEndPoints(_startPoint, endPoint, ref minPoint, ref maxPoint, _mapBottomLeftCorner);
-        HashSet<Vector3Int> newPositionsSet = _grid.GetAllPositionsFromTo(minPoint, maxPoint);
-
-        newPositionsSet = CalculateZoneCost(newPositionsSet);
-
-        _previousEndPosition = endPoint;
-        ZoneCalculator.CalculateZone(newPositionsSet, _structuresToBeModified, _gameObjectsToReuse);
-
-        foreach (var positionToPlaceStructure in newPositionsSet)
-        {
-            if(_grid.IsCellTaken(positionToPlaceStructure))
-                continue;
-
-            GameObject structureToAdd = null;
-            if(_gameObjectsToReuse.Count > 0)
+            if (_structuresToBeModified.ContainsKey(gridPositionInt))
             {
-                var gameObjectToReuse = _gameObjectsToReuse.Dequeue();
-                gameObjectToReuse.SetActive(true);
-                structureToAdd = _placementManager.MoveStructureOnTheMap(positionToPlaceStructure, gameObjectToReuse, _structureData.prefab);
-            }      
+                RevokeStructurePlacementAt(gridPositionInt);
+                _resourceManager.ReduceMoneyFromShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.ReduceSteelFromShoppingCartAmount(_structureData.requiredSteelAmount);
+                _resourceManager.ReduceWoodFromShoppingCartAmount(_structureData.requiredWoodAmount);
+            }
             else
             {
-                structureToAdd = _placementManager.CreateGhostStructure(positionToPlaceStructure, _structureData.prefab);
+                PlaceNewStructureAt(gridPosition, buildingPrefab, gridPositionInt);
+                _resourceManager.AddMoneyToShoppingCartAmount(_structureData.placementCost);
+                _resourceManager.AddSteelToShoppingCartAmount(_structureData.requiredSteelAmount);
+                _resourceManager.AddWoodToShoppingCartAmount(_structureData.requiredWoodAmount);
             }
 
-            _structuresToBeModified.Add(positionToPlaceStructure, structureToAdd);
         }
     }
 
-    private HashSet<Vector3Int> CalculateZoneCost(HashSet<Vector3Int> newPositionsSet)
+    private void PlaceNewStructureAt(Vector3 gridPosition, GameObject buildingPrefab, Vector3Int gridPositionInt)
     {
-        _resourceManager.ReduceMoneyFromShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
-        _resourceManager.ReduceWoodFromShoppingCartAmount(_structuresOldQty * _structureData.requiredWoodAmount);
-        _resourceManager.ReduceSteelFromShoppingCartAmount(_structuresOldQty * _structureData.requiredSteelAmount);
-        _structuresOldQty = newPositionsSet.Count;
-        _resourceManager.AddMoneyToShoppingCartAmount(_structuresOldQty * _structureData.placementCost);
-        _resourceManager.AddWoodToShoppingCartAmount(_structuresOldQty * _structureData.requiredWoodAmount);
-        _resourceManager.AddSteelToShoppingCartAmount(_structuresOldQty * _structureData.requiredSteelAmount);
-        return newPositionsSet;
+        _structuresToBeModified.Add(gridPositionInt, _placementManager.CreateGhostStructure(gridPosition, buildingPrefab));
+    }
+
+    private void RevokeStructurePlacementAt(Vector3Int gridPositionInt)
+    {
+        var structure = _structuresToBeModified[gridPositionInt];
+        _placementManager.DestroySingleStructure(structure);
+        _structuresToBeModified.Remove(gridPositionInt);
     }
 
     public override void CancelModifications()
     {
         base.CancelModifications();
-        ResetZonePlacementHelper();
     }
 
     public override void ConfirmModifications()
@@ -95,21 +70,6 @@ public class ZonePlacementHelper : StructureModificationHelper
             _resourceManager.AddToPopulation(((ZoneStructureSO)_structureData).GetResidentsAmount() * _structuresToBeModified.Count);
         }
         base.ConfirmModifications();
-        ResetZonePlacementHelper();
     }
 
-    private void ResetZonePlacementHelper()
-    {
-        _structuresOldQty = 0;
-        _placementManager.RemoveStructures(_gameObjectsToReuse);
-        _gameObjectsToReuse.Clear();
-        _startPositionAcquired = false;
-        _previousEndPosition = null;
-    }
-
-    public override void StopContinuousPlacement()
-    {
-        _startPositionAcquired = false;
-        base.StopContinuousPlacement();
-    }
 }
