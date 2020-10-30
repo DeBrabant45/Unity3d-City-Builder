@@ -161,14 +161,59 @@ public class ResourceManager : MonoBehaviour, IResourceManager
 
     public void CalculateTownTotalWoodAmount()
     {
-        _woodMaterialHelper.CalculateWoodAmount(_buildingManager.GetAllStructures());
-        UpdateUI();
+        if(IsThereAnyWoodManufacturesOnGrid())
+        {
+            _woodMaterialHelper.CalculateWoodAmount(_buildingManager.GetAllStructures());
+            UpdateUI();
+        }
+        NoWoodAvailableGameOver();
+    }
+
+    private bool IsThereAnyWoodManufacturesOnGrid()
+    {
+        foreach (var structure in _buildingManager.GetAllStructures())
+        {
+            if (structure.GetType() == typeof(ManufacturerBaseSO) && ((ManufacturerBaseSO)structure).ManufactureType == ManufactureType.Wood)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void NoWoodAvailableGameOver()
+    {
+        if(_woodMaterialHelper.WoodAmount == 0 && IsThereAnyWoodManufacturesOnGrid() == false)
+        {
+            ReloadGame();
+        }
     }
 
     public void CalculateTownTotalSteelAmount()
     {
         _steelMaterialHelper.CalculateSteelAmount(_buildingManager.GetAllStructures());
         UpdateUI();
+        NoSteelAvailableGameOver();
+    }
+
+    private bool IsThereAnySteelManufacturesOnGrid()
+    {
+        foreach (var structure in _buildingManager.GetAllStructures())
+        {
+            if (structure.GetType() == typeof(ManufacturerBaseSO) && ((ManufacturerBaseSO)structure).ManufactureType == ManufactureType.Steel)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void NoSteelAvailableGameOver()
+    {
+        if (_steelMaterialHelper.SteelAmount == 0 && IsThereAnySteelManufacturesOnGrid() == false)
+        {
+            ReloadGame();
+        }
     }
 
     private void OnDisable()

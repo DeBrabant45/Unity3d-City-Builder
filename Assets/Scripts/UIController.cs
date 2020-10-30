@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     public Button cancelActionBtn;
     public Button confirmActionBtn;
     public GameObject cancelActionPanel;
+    public GameObject mainBuildPanel;
 
     public GameObject buildingMenuPanel;
     public Button openBuildingMenuBtn;
@@ -74,12 +75,19 @@ public class UIController : MonoBehaviour
     public GameObject buildButtonPrefab;
     public GameObject buildPanelPrefab;
 
+    public GameObject moneyPanel;
     public TextMeshProUGUI moneyValue;
+
+    public GameObject shoppingCartPanel;
     public TextMeshProUGUI shoppingCartMoneyValue;
     public TextMeshProUGUI shoppingCartWoodValue;
     public TextMeshProUGUI shoppingCartSteelValue;
+
+    public GameObject populationPanel;
     public TextMeshProUGUI populationValue;
+    public GameObject woodMaterialPanel;
     public TextMeshProUGUI woodMaterialValue;
+    public GameObject steelMaterialPanel;
     public TextMeshProUGUI steelMaterialValue;
 
     public GameObject insufficientFundsPanel;
@@ -99,6 +107,8 @@ public class UIController : MonoBehaviour
     public Button closeInsufficientFundsBtn;
 
     public GameObject gameOverPanel;
+    public TextMeshProUGUI gameOverReason;
+    public TextMeshProUGUI gameOverTip;
     public Button replayGameBtn;
 
     public GameObject fadePanel;
@@ -108,6 +118,12 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainBuildPanel.SetActive(true);
+        moneyPanel.SetActive(true);
+        shoppingCartPanel.SetActive(true);
+        woodMaterialPanel.SetActive(true);
+        steelMaterialPanel.SetActive(true);
+        populationPanel.SetActive(true);
         cancelActionPanel.SetActive(false);
         cancelActionBtn.onClick.AddListener(OnCancelActionCallback);
         confirmActionBtn.onClick.AddListener(OnConfirmActionCallback);
@@ -188,7 +204,22 @@ public class UIController : MonoBehaviour
 
     public void ReloadGame()
     {
+        CloseAllSelectMenus();
+        DeactivateOnScreenUI();
+        HideStructureInfo();
         gameOverPanel.SetActive(true);
+    }
+
+    private void DeactivateOnScreenUI()
+    {
+        buildingMenuPanel.SetActive(false);
+        cancelActionPanel.SetActive(false);
+        mainBuildPanel.SetActive(false);
+        moneyPanel.SetActive(false);
+        shoppingCartPanel.SetActive(false);
+        woodMaterialPanel.SetActive(false);
+        steelMaterialPanel.SetActive(false);
+        populationPanel.SetActive(false);
     }
 
     private void OnOpenRestaurantMenu()

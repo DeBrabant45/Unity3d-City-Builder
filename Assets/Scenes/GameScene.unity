@@ -776,6 +776,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e143521a7767347bb4fca81c44ef61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &175530855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2193265379765804836, guid: f6a0fa1c7815f7b4db9536f7efbf11aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 4801354172052701459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &211063301 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 250117331338678227, guid: 802725b54398eaa49a2dcf79504ac562,
@@ -5700,6 +5706,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124340689}
   m_CullTransparentMesh: 0
+--- !u!1 &1127877887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7064304167920769149, guid: c8774dc088fe0eb4488279f02ad5a50e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7064304167896787449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1154211120 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5914525277370162031, guid: 5b34c42f4c5ed064c9ed147c83f3e517,
@@ -5723,6 +5735,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1215900225322913238, guid: 9790d3c138acff44488066e0b48ccb7d,
     type: 3}
   m_PrefabInstance: {fileID: 1215900226340587684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1177930482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7719575228371360013, guid: 43b5184a7ad57fa46a58ff6bf97e4eb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 3805271424646178002}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1202424671
 GameObject:
@@ -10102,6 +10120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1593888854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1525278283070327072, guid: 8bf271c427130b04db81e3cf83cd92c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6688369983497408911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1633189574
 GameObject:
   m_ObjectHideFlags: 0
@@ -17712,6 +17736,36 @@ PrefabInstance:
       propertyPath: restaurantOpenMenuBtn
       value: 
       objectReference: {fileID: 417523144}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: mainBuildPanel
+      value: 
+      objectReference: {fileID: 6688369983788856357}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: shoppingCartPanel
+      value: 
+      objectReference: {fileID: 1525278282485157704}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: moneyPanel
+      value: 
+      objectReference: {fileID: 1593888854}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: populationPanel
+      value: 
+      objectReference: {fileID: 175530855}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: woodMaterialPanel
+      value: 
+      objectReference: {fileID: 1177930482}
+    - target: {fileID: 7729659233332718104, guid: d9de72c96eeb81c46a3594e52b771924,
+        type: 3}
+      propertyPath: steelMaterialPanel
+      value: 
+      objectReference: {fileID: 1127877887}
     - target: {fileID: 7729659233332718105, guid: d9de72c96eeb81c46a3594e52b771924,
         type: 3}
       propertyPath: m_LocalPosition.x
