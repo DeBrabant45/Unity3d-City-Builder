@@ -64,6 +64,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         catch (MoneyException)
         {
             ReloadGame();
+            ActivateCurrencyAmountGameOverInfo();
         }
     }
 
@@ -82,6 +83,21 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     private void ReloadGame()
     {
         uIController.ReloadGame();
+    }
+
+    private void ActivateWoodMaterialGameOverInfo()
+    {
+        uIController.ActivateWoodMaterialGameOverInfo();
+    }
+
+    private void ActivateSteelMaterialGameOverInfo()
+    {
+        uIController.ActivateSteelMaterialGameOverInfo();
+    }
+
+    private void ActivateCurrencyAmountGameOverInfo()
+    {
+        uIController.ActivateCurrencyAmountGameOverInfo();
     }
 
     public bool CanIBuyIt(int moneyAmount, int steelAmount, int woodAmount)
@@ -156,6 +172,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         {
             UpdateUI();
             ReloadGame();
+            ActivateCurrencyAmountGameOverInfo();
         }
     }
 
@@ -186,6 +203,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         if(_woodMaterialHelper.WoodAmount == 0 && IsThereAnyWoodManufacturesOnGrid() == false)
         {
             ReloadGame();
+            ActivateWoodMaterialGameOverInfo();
         }
     }
 
@@ -213,6 +231,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         if (_steelMaterialHelper.SteelAmount == 0 && IsThereAnySteelManufacturesOnGrid() == false)
         {
             ReloadGame();
+            ActivateSteelMaterialGameOverInfo();
         }
     }
 

@@ -107,8 +107,9 @@ public class UIController : MonoBehaviour
     public Button closeInsufficientFundsBtn;
 
     public GameObject gameOverPanel;
-    public TextMeshProUGUI gameOverReason;
-    public TextMeshProUGUI gameOverTip;
+    public GameObject woodMaterialGameOver;
+    public GameObject steelMaterialGameOver;
+    public GameObject currencyAmountGameOver;
     public Button replayGameBtn;
 
     public GameObject fadePanel;
@@ -161,6 +162,9 @@ public class UIController : MonoBehaviour
         closeInsufficientFundsBtn.onClick.AddListener(OnCloseInsufficientFundsAlert);
 
         gameOverPanel.SetActive(false);
+        woodMaterialGameOver.SetActive(false);
+        steelMaterialGameOver.SetActive(false);
+        currencyAmountGameOver.SetActive(false);
         replayGameBtn.onClick.AddListener(OnReplayGame);
 
         fadePanel.SetActive(true);
@@ -208,6 +212,21 @@ public class UIController : MonoBehaviour
         DeactivateOnScreenUI();
         HideStructureInfo();
         gameOverPanel.SetActive(true);
+    }
+
+    public void ActivateWoodMaterialGameOverInfo()
+    {
+        woodMaterialGameOver.SetActive(true);
+    }
+
+    public void ActivateSteelMaterialGameOverInfo()
+    {
+        steelMaterialGameOver.SetActive(true);
+    }
+
+    public void ActivateCurrencyAmountGameOverInfo()
+    {
+        currencyAmountGameOver.SetActive(true);
     }
 
     private void DeactivateOnScreenUI()
