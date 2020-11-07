@@ -30,9 +30,20 @@ public class UIController : MonoBehaviour
     public Button removeBtn;
     public Button upgradeBtn;
 
-    public GameObject helpMenuPanel;
-    public Button openHelpMenuBtn;
-    public Button closeHelpMenuBtn;
+    public GameObject selectMenuInfoPanel;
+    public Button openSelectMenuInfoBtn;
+    public Button closeSelectMenuInfoBtn;
+
+    public GameObject selectHelpInfoPanel;
+    public Button openSelectHelpInfoBtn;
+
+    public GameObject selectControlsInfoPanel;
+    public Button openSelectControlsInfoBtn;
+
+    public GameObject selectQuitInfoPanel;
+    public Button openSelectQuitInfoBtn;
+    public Button quitGameBtn;
+    public Button closeQuitInfoBtn;
 
     public GameObject zonesPanel;
     public GameObject facilitiesPanel;
@@ -154,9 +165,20 @@ public class UIController : MonoBehaviour
 
         roadOpenMenuBtn.onClick.AddListener(OnOpenRoadeMenu);
 
-        helpMenuPanel.SetActive(false);
-        openHelpMenuBtn.onClick.AddListener(OnOpenHelpMenu);
-        closeHelpMenuBtn.onClick.AddListener(OnCloseHelpMenu);
+        selectMenuInfoPanel.SetActive(false);
+        openSelectMenuInfoBtn.onClick.AddListener(OnOpenSelectMenu);
+        closeSelectMenuInfoBtn.onClick.AddListener(OnCloseSelectMenu);
+
+        selectHelpInfoPanel.SetActive(false);
+        openSelectHelpInfoBtn.onClick.AddListener(OnOpenSelectHelpInfo);
+
+        selectControlsInfoPanel.SetActive(false);
+        openSelectControlsInfoBtn.onClick.AddListener(OnOpenSelectControlsInfo);
+
+        selectQuitInfoPanel.SetActive(false);
+        openSelectQuitInfoBtn.onClick.AddListener(OnOpenSelectQuitInfo);
+        quitGameBtn.onClick.AddListener(QuitGame);
+        closeQuitInfoBtn.onClick.AddListener(OnCloseSelectMenu);
 
         insufficientFundsPanel.SetActive(false);
         closeInsufficientFundsBtn.onClick.AddListener(OnCloseInsufficientFundsAlert);
@@ -168,6 +190,35 @@ public class UIController : MonoBehaviour
         replayGameBtn.onClick.AddListener(OnReplayGame);
 
         fadePanel.SetActive(true);
+    }
+
+    private void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    private void OnOpenSelectQuitInfo()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        selectControlsInfoPanel.SetActive(false);
+        selectHelpInfoPanel.SetActive(false);
+        selectQuitInfoPanel.SetActive(true);
+    }
+
+    private void OnOpenSelectControlsInfo()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        selectQuitInfoPanel.SetActive(false);
+        selectHelpInfoPanel.SetActive(false);
+        selectControlsInfoPanel.SetActive(true);
+    }
+
+    private void OnOpenSelectHelpInfo()
+    {
+        AudioManager.Instance.PlayButtonClickedSound();
+        selectControlsInfoPanel.SetActive(false);
+        selectQuitInfoPanel.SetActive(false);
+        selectHelpInfoPanel.SetActive(true);
     }
 
     public void ActivateInsufficientFundsWoodPanel()
@@ -344,16 +395,20 @@ public class UIController : MonoBehaviour
         levelManager.LoadLevel(1);
     }
 
-    private void OnCloseHelpMenu()
+    private void OnCloseSelectMenu()
     {
         AudioManager.Instance.PlayButtonClickedSound();
-        helpMenuPanel.SetActive(false);
+        selectMenuInfoPanel.SetActive(false);
+        selectControlsInfoPanel.SetActive(false);
+        selectHelpInfoPanel.SetActive(false);
+        selectQuitInfoPanel.SetActive(false);
     }
 
-    private void OnOpenHelpMenu()
+    private void OnOpenSelectMenu()
     {
         AudioManager.Instance.PlayButtonClickedSound();
-        helpMenuPanel.SetActive(true);
+        selectMenuInfoPanel.SetActive(true);
+        selectControlsInfoPanel.SetActive(true);
     }
 
     private void OnUpgradeHandler()
