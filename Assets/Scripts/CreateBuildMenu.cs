@@ -8,16 +8,6 @@ using TMPro;
 
 public class CreateBuildMenu
 {
-    public void CreateMenu(GameObject buildPanelPrefab, Transform panelTranform, List<StructureBaseSO> structureData, Action<string> callback, Action backToMenuAction, Action cancelAction)
-    {
-        CreateChildPanel(buildPanelPrefab, panelTranform, structureData);
-        AddStructureDataToPanelChildButton(panelTranform, structureData, callback);
-        AddStructureDataToPanelChildText(panelTranform, structureData);
-        AddStructureDataToPanelChildImage(panelTranform, structureData);
-        SetBackButtonActionInPanel(panelTranform, backToMenuAction);
-        SetCancelButtonActionInPanel(panelTranform, cancelAction);
-    }
-
     public void CreateChildPanel(GameObject buildPanelPrefab, Transform panelTransform, List<StructureBaseSO> dataToShow)
     {
         if (dataToShow.Count >= panelTransform.childCount)
