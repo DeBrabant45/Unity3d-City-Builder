@@ -127,6 +127,8 @@ public class UIController : MonoBehaviour
 
     public UIStructureInfoPanelHelper structureInfoPanelHelper;
 
+    private CreateBuildMenu _createBuildMenu = new CreateBuildMenu();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -453,181 +455,72 @@ public class UIController : MonoBehaviour
 
     private void CreateResidentialBuildMenu()
     {
-        CreateBuildMenu(residentialSelectMenuPanel.transform, structureRepository.GetResidentialInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, residentialSelectMenuPanel.transform, structureRepository.GetResidentialInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateCommercialStoreBuildMenu()
     {
-        CreateBuildMenu(commercialStoreSelectMenuPanel.transform, structureRepository.GetCommercialStoreInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, commercialStoreSelectMenuPanel.transform, structureRepository.GetCommercialStoreInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }    
     
     private void CreateCommercialBusinessBuildMenu()
     {
-        CreateBuildMenu(commercialBusinessSelectMenuPanel.transform, structureRepository.GetCommercialBusinessInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, commercialBusinessSelectMenuPanel.transform, structureRepository.GetCommercialBusinessInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateAgricultureBuildMenu()
     {
-        CreateBuildMenu(agricultureSelectMenuPanel.transform, structureRepository.GetAgricultureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, agricultureSelectMenuPanel.transform, structureRepository.GetAgricultureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateUtilitiesBuildMenu()
     {
-        CreateBuildMenu(utilitiesSelectMenuPanel.transform, structureRepository.GetUtilitiesInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, utilitiesSelectMenuPanel.transform, structureRepository.GetUtilitiesInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateEmergencyBuildMenu()
     {
-        CreateBuildMenu(emergencySelectMenuPanel.transform, structureRepository.GetEmergencyInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, emergencySelectMenuPanel.transform, structureRepository.GetEmergencyInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateGovernmentBuildMenu()
     {
-        CreateBuildMenu(governmentSelectMenuPanel.transform, structureRepository.GetGovernmentStructureInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, governmentSelectMenuPanel.transform, structureRepository.GetGovernmentStructureInfo(), OnBuildSingleStructureCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateManufactureBuildMenu()
     {
-        CreateBuildMenu(manufactureSelectMenuPanel.transform, structureRepository.GetManufactureInfo(), OnBuildManufacturerCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, manufactureSelectMenuPanel.transform, structureRepository.GetManufactureInfo(), OnBuildManufacturerCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateEntertainmentBuildMenu()
     {
-        CreateBuildMenu(entertainmentSelectMenuPanel.transform, structureRepository.GetEntertainmentStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, entertainmentSelectMenuPanel.transform, structureRepository.GetEntertainmentStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateParkBuildMenu()
     {
-        CreateBuildMenu(parkSelectMenuPanel.transform, structureRepository.GetParkStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, parkSelectMenuPanel.transform, structureRepository.GetParkStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateRestaurantBuildMenu()
     {
-        CreateBuildMenu(restaurantSelectMenuPanel.transform, structureRepository.GetRestaurantStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, restaurantSelectMenuPanel.transform, structureRepository.GetRestaurantStructureInfo(), OnBuildZoneCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
     private void CreateRoadBuildMenu()
     {
-        CreateBuildMenu(roadSelectMenuPanel.transform, structureRepository.GetRoadInfo(), OnBuildRoadCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
+        CreateBuildMenu(buildPanelPrefab, roadSelectMenuPanel.transform, structureRepository.GetRoadInfo(), OnBuildRoadCallback, OnBackToBuildMenu, OnCancelSelectionMenu);
     }
 
-    private void CreateBuildMenu(Transform panelTranform, List<StructureBaseSO> structureData, Action<string> callback, Action backToMenuAction, Action cancelAction)
+    private void CreateBuildMenu(GameObject buildPanelPrefab, Transform panelTranform, List<StructureBaseSO> structureData, Action<string> callback, Action backToMenuAction, Action cancelAction)
     {
-        CreateChildPanel(panelTranform, structureData);
-        AddStructureDataToPanelChildButton(panelTranform, structureData, callback);
-        AddStructureDataToPanelChildText(panelTranform, structureData);
-        AddStructureDataToPanelChildImage(panelTranform, structureData);
-        SetBackButtonActionInPanel(panelTranform, backToMenuAction);
-        SetCancelButtonActionInPanel(panelTranform, cancelAction);
-    }
-
-    private void CreateChildPanel(Transform panelTransform, List<StructureBaseSO> dataToShow)
-    {
-        if(dataToShow.Count >= panelTransform.childCount)
-        {
-            int quantityDifference = dataToShow.Count - (panelTransform.childCount-1);
-            for(int i = 0; i < quantityDifference; i++)
-            {
-                Instantiate(buildPanelPrefab, panelTransform);
-            }
-        }
-    }
-
-    void AddStructureDataToPanelChildButton(Transform panelTransform, List<StructureBaseSO> dataToShow, Action<string> callback)
-    {
-        int count = 0;
-        foreach (Transform panelChild in panelTransform)
-        {
-            if (panelChild.gameObject.name != "ToolsPanel")
-            {
-                foreach (Transform childOfPanelChild in panelChild)
-                {
-                    var panelChildbutton = childOfPanelChild.GetComponent<Button>();
-                    if (panelChildbutton != null)
-                    {
-                        panelChildbutton.GetComponentInChildren<TextMeshProUGUI>().text = dataToShow[count].buildingName;
-                        panelChildbutton.onClick.AddListener(() => callback(panelChildbutton.GetComponentInChildren<TextMeshProUGUI>().text));
-                        count++;
-                    }
-                }
-            }
-        }
-    }
-
-    void AddStructureDataToPanelChildText(Transform panelTransform, List<StructureBaseSO> structureData)
-    {
-        int count = 0;
-        foreach (Transform panelChild in panelTransform)
-        {
-            if (panelChild.gameObject.name != "ToolsPanel")
-            {
-                var panelChildText = panelChild.GetComponentInChildren<TextMeshProUGUI>();
-                if (panelChildText != null)
-                {
-                    panelChildText.GetComponentInChildren<TextMeshProUGUI>().text = "Placement cost: " + structureData[count].placementCost;
-                    count++;
-                }
-            }
-        }
-    }
-
-    void AddStructureDataToPanelChildImage(Transform panelTransform, List<StructureBaseSO> structureData)
-    {
-        int count = 0;
-        foreach (Transform panelChild in panelTransform)
-        {
-            if (panelChild.gameObject.name != "ToolsPanel")
-            {
-                foreach (Transform childOfPanelChild in panelChild)
-                {
-                    if (childOfPanelChild.gameObject.name == "StructureImage")
-                    {
-                        var childOfPanelChildImage = panelChild.GetComponent<Image>();
-                        if (childOfPanelChildImage != null)
-                        {
-                            childOfPanelChild.GetComponent<Image>().sprite = structureData[count].buildingImage;
-                            count++;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    void SetBackButtonActionInPanel(Transform panelTransform, Action callback)
-    {
-        foreach (Transform panelChild in panelTransform)
-        {
-            if (panelChild.gameObject.name == "ToolsPanel")
-            {
-                foreach (Transform childOfPanelChild in panelChild)
-                {
-                    if (childOfPanelChild.gameObject.name == "BackBtn")
-                    {
-                        var panelChildbutton = childOfPanelChild.GetComponent<Button>();
-                        panelChildbutton.onClick.AddListener(() => callback());
-                    }
-                }
-            }
-        }
-    }
-
-    void SetCancelButtonActionInPanel(Transform panelTransform, Action callback)
-    {
-        foreach (Transform panelChild in panelTransform)
-        {
-            if (panelChild.gameObject.name == "ToolsPanel")
-            {
-                foreach (Transform childOfPanelChild in panelChild)
-                {
-                    if (childOfPanelChild.gameObject.name == "CancelBtn")
-                    {
-                        var panelChildbutton = childOfPanelChild.GetComponent<Button>();
-                        panelChildbutton.onClick.AddListener(() => callback());
-                    }
-                }
-            }
-        }
+        _createBuildMenu.CreateChildPanel(buildPanelPrefab, panelTranform, structureData);
+        _createBuildMenu.AddStructureDataToPanelChildButton(panelTranform, structureData, callback);
+        _createBuildMenu.AddStructureDataToPanelChildText(panelTranform, structureData);
+        _createBuildMenu.AddStructureDataToPanelChildImage(panelTranform, structureData);
+        _createBuildMenu.SetBackButtonActionInPanel(panelTranform, backToMenuAction);
+        _createBuildMenu.SetCancelButtonActionInPanel(panelTranform, cancelAction);
     }
 
     public void SetPopulationValue(int population)
