@@ -42,5 +42,5 @@ MonoBehaviour:
   structureRange: 1
   maxFacilitySearchRange: 5
   _materialAmount: 2
-  _materialBuildTimer: 10
+  _materialBuildTimer: 30
   _manufactureType: 1
