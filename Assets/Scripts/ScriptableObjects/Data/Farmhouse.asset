@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Farmhouse
   m_EditorClassIdentifier: 
   income: 20
-  buildingName: Farmhouse
+  buildingName: 'Colonial '
   buildingImage: {fileID: 21300000, guid: c26c3d5377d0f9e47a565c8e8990f49b, type: 3}
   prefab: {fileID: 3286272179830376987, guid: 10f3bdf0ca66ce643af22bff957417ce, type: 3}
   placementCost: 100
@@ -29,10 +29,12 @@ MonoBehaviour:
   requireFireProtection: 1
   requirePostalService: 1
   requireBankService: 1
+  requireGarbageService: 0
+  requireEducationSerivce: 0
   upgradable: 1
   fullyUpgraded: 0
   upgradeLevelPrefabs:
-  - {fileID: 1598229588260515978, guid: 74b8862d10540304fb7b7f3c8ce8922d, type: 3}
+  - {fileID: 3286272179830376987, guid: 637a49e8531eb1d43a6df5ba3dac4573, type: 3}
   - {fileID: 9038101141660283380, guid: 9eef3efb295c1684495080d43dbd5e41, type: 3}
   upgradePlacementCost: c80000002c010000
   upgradeIncome: 280000003c000000
