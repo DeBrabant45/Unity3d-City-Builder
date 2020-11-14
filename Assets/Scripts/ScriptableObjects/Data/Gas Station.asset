@@ -16,7 +16,7 @@ MonoBehaviour:
   buildingName: Gas Station
   buildingImage: {fileID: 21300000, guid: 9ed9db3b25437a646b8ccb737e6591a4, type: 3}
   prefab: {fileID: 61965852232870029, guid: 6eef26a222170c34ca52334b653cf0f9, type: 3}
-  placementCost: 200
+  placementCost: 180
   requiredWoodAmount: 2
   requiredSteelAmount: 2
   upkeepCost: 0

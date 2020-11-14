@@ -16,7 +16,7 @@ MonoBehaviour:
   buildingName: Brown Office
   buildingImage: {fileID: 21300000, guid: 2f16ba78f37553f44887aa2521aaaa13, type: 3}
   prefab: {fileID: 9157325660303461256, guid: f574fdd478f093647bb8305305ae8c98, type: 3}
-  placementCost: 500
+  placementCost: 550
   requiredWoodAmount: 2
   requiredSteelAmount: 2
   upkeepCost: 0

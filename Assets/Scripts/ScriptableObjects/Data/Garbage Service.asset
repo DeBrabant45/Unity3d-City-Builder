@@ -16,7 +16,7 @@ MonoBehaviour:
   buildingName: Garbage HQ
   buildingImage: {fileID: 21300000, guid: 00a8be0b66db680418835bbde834e6a0, type: 3}
   prefab: {fileID: 421615011241975457, guid: 88dd80a0317896a4fbc37280a51b7f16, type: 3}
-  placementCost: 500
+  placementCost: 250
   requiredWoodAmount: 0
   requiredSteelAmount: 0
   upkeepCost: 0
