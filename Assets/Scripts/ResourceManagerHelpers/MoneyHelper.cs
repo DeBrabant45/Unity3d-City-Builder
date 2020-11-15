@@ -17,7 +17,7 @@ public class MoneyHelper
         get => _moneyAmount;
         set
         {
-            if(value < 0)
+            if(value <= 0)
             {
                 _moneyAmount = 0;
                 throw new MoneyException("Not enough money");
