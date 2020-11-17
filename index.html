@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
@@ -80,20 +80,17 @@
                 display: none; /* Hidden by default */
                 position: fixed; /* Stay in place */
                 z-index: 1; /* Sit on top */
-                padding-top: 100px; /* Location of the box */
                 left: 0;
                 top: 0;
                 width: 100%; /* Full width */
                 height: 100%; /* Full height */
                 overflow: auto; /* Enable scroll if needed */
                 background-color: #4a4a4acf;
-
                  margin: auto;
                 -ms-flex-pack: center;
                 justify-content: center;
                 -ms-flex-direction: column;
                 flex-direction: column;
-
             }
 
             /* Modal Content */
@@ -102,7 +99,7 @@
                 margin: auto;
                 padding: 20px;
                 border-radius: 8px;
-                width: 80%;
+                text-align: left;
             }
 
             /* The Close Button */
@@ -123,8 +120,33 @@
                 margin: 20px;
             }
             .content-header {
+                text-align: center;
+            }
+            .content-email {
                 padding: 0px;
                 margin: 0px;
+                border-radius: 5px;
+            }
+            .content-small-header{
+                margin: 0px;
+                padding: 0px;
+            }
+            .content-email-input {
+                width: 60%;
+                border-radius: 5px;
+            }
+            .content-message{
+                border-radius: 5px;
+            }
+            .form-div-button {
+                padding: 8px;
+            }
+            .form-button {
+                padding: 5px;
+                margin: auto;
+                display: grid;
+                width: 40%;
+                border-radius: 5px;
             }
         </style>
 </head>
@@ -140,21 +162,24 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h1>Please leave me a detail review of the game!</h1>
+            <h1 class="content-header">Please leave me your feedback on the game</h1>
             <form action="https://formspree.io/f/xwkwqrkw" method="POST" enctype="multipart/form-data">
                 <div class="form-content">
-                    <h4 class="content-header">Your email:</h4>
-                    <input type="text" name="_replyto">
+                    <h4 class="content-email">Your email:</h4>
+                    <input class="content-email-input"type="text" name="_replyto">
                 </div>
                 <div class="form-content">
-                    <h4 class="content-header">Your message:</h4>
-                    <textarea name="message"></textarea>
+                    <h4 class="content-small-header">Your message:</h4>
+                    <textarea class="content-message" name="message" rows="6" cols="80"></textarea>
                 </div>
                 <div class="form-content">
-                    <h4 class="content-header">Your file:</h4="content-header">
+                    <h4 class="content-small-header">Your file:</h4="content-header">
+                    <br/>
                     <input type="file" name="upload">
                 </div>
-                <button type="submit">Send</button>
+                <div class="form-dive-button">
+                    <button class="form-button" type="submit">Send</button>
+                </div>
             </form>
         </div>
     </div>
