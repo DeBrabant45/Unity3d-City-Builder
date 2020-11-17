@@ -1,79 +1,189 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <zlink rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json");
-    	function startup() {
-		window.onresize = function() {
-			resizeGame();
-		};
-		resizeGame();
-	}
-	function resizeGame() {
-	
-		//	Ensure that the game fits within the width of its containing
-		//	div, and is shallower than the height of the containing window.
-	
-		var containerDiv = document.getElementById('containerDiv');
-		var element = document.getElementById('gameContainer');      // the element
-		
-		var widthLimitedScale = Math.floor( containerDiv.offsetWidth ) / 1920.0;
-		var heightLimitedScale = (Math.floor( window.innerHeight ) - 50) / 1080.0;
-		
-		var scale = widthLimitedScale;
-		if (heightLimitedScale < scale) scale = heightLimitedScale;
-		
-		element.style.width = Math.floor(1920 * scale) + 'px';
-		element.style.height = Math.floor(1080 * scale) + 'px';
-		element.style.margin = "auto";
+        <script src="TemplateData/UnityProgress.js"></script>
+        <script src="Build/UnityLoader.js"></script>
+        <script>
+            var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json");
+            function startup() {
+                window.onresize = function () {
+                    resizeGame();
+                };
+                resizeGame();
+            }
+            function resizeGame() {
 
-	}
-    </script>
-    <style>
-    		html {
-    			background-color: #000;
-    			color: #ccc;
-    			margin: 0;
-    			padding: 0;
-    		}
-    		body {
-    			margin: auto;
-    			padding-top: 1em;
-			padding-bottom:0em;
-    			padding: 2em;
-    			padding-top: 0em;
-    			text-align: center;
-    		}
- 
-		canvas {  
-		 width: 100%;  
-		 height: 100%;  
-		}
-		#gameContainer { margin: auto; }
-		#containerDiv {
-			object-fit: contain;
-			max-width: 100%;
-			max-height: 100%;
-			width: auto;
-			height: auto;
-			margin: 4em;
-			margin-top: 0em;
-			margin-bottom:.9em;
-   		}
- 	</style>
-  </head>
-  <body onload="startup();">
-  	<div id="containerDiv">
-		<div class="webgl-content">
-			<div id="gameContainer"></div>
-		</div>
-	</div>
-	</body>
+                //	Ensure that the game fits within the width of its containing
+                //	div, and is shallower than the height of the containing window.
+
+                var containerDiv = document.getElementById('containerDiv');
+                var element = document.getElementById('gameContainer');      // the element
+
+                var widthLimitedScale = Math.floor(containerDiv.offsetWidth) / 1920.0;
+                var heightLimitedScale = (Math.floor(window.innerHeight) - 50) / 1080.0;
+
+                var scale = widthLimitedScale;
+                if (heightLimitedScale < scale) scale = heightLimitedScale;
+
+                element.style.width = Math.floor(1920 * scale) + 'px';
+                element.style.height = Math.floor(1080 * scale) + 'px';
+                element.style.margin = "auto";
+
+            }
+
+/**/</script>
+        <style>
+
+            html {
+                background-color: #000;
+                color: #ccc;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                margin: auto;
+                padding-top: 1em;
+                padding-bottom: 0em;
+                padding: 2em;
+                padding-top: 0em;
+                text-align: center;
+            }
+
+            canvas {
+                width: 100%;
+                height: 100%;
+            }
+
+            #gameContainer {
+                margin: auto;
+            }
+
+            #containerDiv {
+                object-fit: contain;
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                margin: 4em;
+                margin-top: 0em;
+                margin-bottom: .9em;
+            }
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: #4a4a4acf;
+
+                 margin: auto;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -ms-flex-direction: column;
+                flex-direction: column;
+
+            }
+
+            /* Modal Content */
+            .modal-content {
+                background-color: black;
+                margin: auto;
+                padding: 20px;
+                border-radius: 8px;
+                width: 80%;
+            }
+
+            /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+                .close:hover,
+                .close:focus {
+                    color: #000;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+            .form-content {
+                margin: 20px;
+            }
+            .content-header {
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
+</head>
+<body onload="startup();">
+    <div id="containerDiv">
+        <div class="webgl-content">
+            <div id="gameContainer"></div>
+        </div>
+    </div>
+    <button id="myBtn">Open Modal</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1>Please leave me a detail review of the game!</h1>
+            <form action="https://formspree.io/f/xwkwqrkw" method="POST" enctype="multipart/form-data">
+                <div class="form-content">
+                    <h4 class="content-header">Your email:</h4>
+                    <input type="text" name="_replyto">
+                </div>
+                <div class="form-content">
+                    <h4 class="content-header">Your message:</h4>
+                    <textarea name="message"></textarea>
+                </div>
+                <div class="form-content">
+                    <h4 class="content-header">Your file:</h4="content-header">
+                    <input type="file" name="upload">
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
 </html>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "flex";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
