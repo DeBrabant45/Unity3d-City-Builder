@@ -75,25 +75,31 @@
                 margin-top: 0em;
                 margin-bottom: .9em;
             }
+            #myBtn {
+                padding: 8px;
+                border-radius: 5px;
+                background-color: rebeccapurple;
+                width: 20%;
+                margin: auto;
+                cursor: pointer;
+                font-size: 20px;
+            }
             /* The Modal (background) */
             .modal {
                 display: none; /* Hidden by default */
                 position: fixed; /* Stay in place */
                 z-index: 1; /* Sit on top */
-                padding-top: 100px; /* Location of the box */
                 left: 0;
                 top: 0;
                 width: 100%; /* Full width */
                 height: 100%; /* Full height */
                 overflow: auto; /* Enable scroll if needed */
                 background-color: #4a4a4acf;
-
                  margin: auto;
                 -ms-flex-pack: center;
                 justify-content: center;
                 -ms-flex-direction: column;
                 flex-direction: column;
-
             }
 
             /* Modal Content */
@@ -102,7 +108,7 @@
                 margin: auto;
                 padding: 20px;
                 border-radius: 8px;
-                width: 80%;
+                text-align: left;
             }
 
             /* The Close Button */
@@ -115,16 +121,68 @@
 
                 .close:hover,
                 .close:focus {
-                    color: #000;
+                    color: rebeccapurple;
                     text-decoration: none;
                     cursor: pointer;
                 }
+            .form-div {
+                padding: 10px 120px 30px 120px;
+            }
             .form-content {
-                margin: 20px;
+                padding: 5px;
             }
             .content-header {
+                text-align: center;
+                color: rebeccapurple;
+                margin: 0px;
+                padding: 0px;
+                font-size: 55px;
+            }
+            .content-p {
+                text-align: center;
+                margin: 0px;
+                padding: 0px;
+                font-size: 25px;
+            }
+            .content-email {
                 padding: 0px;
                 margin: 0px;
+                border-radius: 5px;
+                color: rebeccapurple;
+                padding-bottom: 5px;
+            }
+            .content-small-header {
+                margin: 0px;
+                padding: 0px;
+                color: rebeccapurple;
+                padding-bottom: 5px;
+            }
+            .content-email-input {
+                width: 100%;
+                border-radius: 5px;
+                background: darkgray;
+                color: black;
+                font-weight: bold;
+                border: 0;
+                padding: 5px;
+            }
+            .content-message {
+                border-radius: 5px;
+                background: darkgray;
+                color: black;
+                font-weight: bold;
+                width: 100%;
+            }
+            .form-div-button {
+                padding: 8px 0px;
+            }
+            .form-button {
+                padding: 8px;
+                border-radius: 5px;
+                text-align: center;
+                background-color: rebeccapurple;
+                margin: auto;
+                cursor: pointer;
             }
         </style>
 </head>
@@ -134,27 +192,34 @@
             <div id="gameContainer"></div>
         </div>
     </div>
-    <button id="myBtn">Open Modal</button>
+    <div id="myBtn">Feedback</div>
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h1>Please leave me a detail review of the game!</h1>
-            <form action="https://formspree.io/f/xwkwqrkw" method="POST" enctype="multipart/form-data">
+            <h1 class="content-header">Feedback Information</h1>
+            <p class="content-p">Please leave me your feedback on the game</p>
+            <form action="https://formspree.io/f/xwkwqrkw" method="POST" enctype="multipart/form-data" class="form-div">
                 <div class="form-content">
-                    <h4 class="content-header">Your email:</h4>
-                    <input type="text" name="_replyto">
+                    <h3 class="content-email">Your Name:</h3>
+                    <input class="content-email-input" type="text" name="name" placeholder="John Smith">
                 </div>
                 <div class="form-content">
-                    <h4 class="content-header">Your message:</h4>
-                    <textarea name="message"></textarea>
+                    <h3 class="content-email">Your email:</h3>
+                    <input class="content-email-input" type="text" name="_replyto" required placeholder="123@email.com *">
                 </div>
                 <div class="form-content">
-                    <h4 class="content-header">Your file:</h4="content-header">
+                    <h3 class="content-small-header">Your message:</h3>
+                    <textarea class="content-message" name="message" type="text" required rows="6" cols="50" placeholder="Required info for submission *"></textarea>
+                </div>
+                <div class="form-content">
+                    <h3 class="content-small-header">Your file:</h3>
                     <input type="file" name="upload">
                 </div>
-                <button type="submit">Send</button>
+                <div class="form-div-button">
+                    <div class="form-button" type="submit" onClick="document.forms[0].submit()">Send</div>
+                </div>
             </form>
         </div>
     </div>
