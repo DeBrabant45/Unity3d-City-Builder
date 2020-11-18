@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <zlink rel="stylesheet" href="TemplateData/style.css">
         <script src="TemplateData/UnityProgress.js"></script>
@@ -37,7 +38,7 @@
 
             }
 
-/**/</script>
+            /**/</script>
         <style>
 
             html {
@@ -75,6 +76,7 @@
                 margin-top: 0em;
                 margin-bottom: .9em;
             }
+
             #myBtn {
                 padding: 8px;
                 border-radius: 5px;
@@ -95,7 +97,7 @@
                 height: 100%; /* Full height */
                 overflow: auto; /* Enable scroll if needed */
                 background-color: #4a4a4acf;
-                 margin: auto;
+                margin: auto;
                 -ms-flex-pack: center;
                 justify-content: center;
                 -ms-flex-direction: column;
@@ -125,12 +127,15 @@
                     text-decoration: none;
                     cursor: pointer;
                 }
+
             .form-div {
                 padding: 10px 120px 30px 120px;
             }
+
             .form-content {
                 padding: 5px;
             }
+
             .content-header {
                 text-align: center;
                 color: rebeccapurple;
@@ -138,12 +143,14 @@
                 padding: 0px;
                 font-size: 55px;
             }
+
             .content-p {
                 text-align: center;
                 margin: 0px;
                 padding: 0px;
                 font-size: 25px;
             }
+
             .content-email {
                 padding: 0px;
                 margin: 0px;
@@ -151,12 +158,14 @@
                 color: rebeccapurple;
                 padding-bottom: 5px;
             }
+
             .content-small-header {
                 margin: 0px;
                 padding: 0px;
                 color: rebeccapurple;
                 padding-bottom: 5px;
             }
+
             .content-email-input {
                 width: 100%;
                 border-radius: 5px;
@@ -166,6 +175,7 @@
                 border: 0;
                 padding: 5px;
             }
+
             .content-message {
                 border-radius: 5px;
                 background: darkgray;
@@ -173,9 +183,11 @@
                 font-weight: bold;
                 width: 100%;
             }
+
             .form-div-button {
                 padding: 8px 0px;
             }
+
             .form-button {
                 padding: 8px;
                 border-radius: 5px;
@@ -183,6 +195,47 @@
                 background-color: rebeccapurple;
                 margin: auto;
                 cursor: pointer;
+            }
+
+            div.stars {
+                width: 270px;
+                display: inline-block;
+            }
+
+            input.star {
+                display: none;
+            }
+
+            label.star {
+                float:unset;
+                padding: 10px;
+                font-size: 36px;
+                color: #444;
+                transition: all .2s;
+            }
+
+            input.star:checked ~ label.star:before {
+                content: '\f005';
+                color: #FD4;
+                transition: all .25s;
+            }
+
+            input.star-5:checked ~ label.star:before {
+                color: #FE7;
+                text-shadow: 0 0 20px #952;
+            }
+
+            input.star-1:checked ~ label.star:before {
+                color: #F62;
+            }
+
+            label.star:hover {
+                transform: rotate(-15deg) scale(1.3);
+            }
+
+            label.star:before {
+                content: '\f006';
+                font-family: FontAwesome;
             }
         </style>
 </head>
@@ -201,6 +254,19 @@
             <h1 class="content-header">Feedback Information</h1>
             <p class="content-p">Please leave me your feedback on the game</p>
             <form action="https://formspree.io/f/xwkwqrkw" method="POST" enctype="multipart/form-data" class="form-div">
+                <div>
+                    <h3 class="content-email">Your Rating:</h3>
+                    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                    <label class="star star-5" for="star-5"></label>
+                    <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                    <label class="star star-4" for="star-4"></label>
+                    <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                    <label class="star star-3" for="star-3"></label>
+                    <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                    <label class="star star-2" for="star-2"></label>
+                    <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                    <label class="star star-1" for="star-1"></label>
+                </div>
                 <div class="form-content">
                     <h3 class="content-email">Your Name:</h3>
                     <input class="content-email-input" type="text" name="name" placeholder="John Smith">
@@ -211,7 +277,7 @@
                 </div>
                 <div class="form-content">
                     <h3 class="content-small-header">Your message:</h3>
-                    <textarea class="content-message" name="message" type="text" required rows="6" cols="50" placeholder="Required info for submission *"></textarea>
+                    <textarea class="content-message" name="message" type="text" rows="6" cols="50" placeholder="Fun game!"></textarea>
                 </div>
                 <div class="form-content">
                     <h3 class="content-small-header">Your file:</h3>
